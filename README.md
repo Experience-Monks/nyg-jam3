@@ -23,6 +23,11 @@ Second generation of the Jam3 Generator, many new features and breaking feature 
 * Linters
   * ESLint
   * Styleling
+  * Disallow git push if there is a violation in the linters
+    * This is also checked in the CI
+* Formaters
+  * Prettier in every IDE
+  * Runs automatically after every commit
 * Added Storybook
 * PWA
   * Service Worker
@@ -75,3 +80,22 @@ Second generation of the Jam3 Generator, many new features and breaking feature 
   * raf
   * debounced events
 * Big supported device matrix
+* Green License checking
+* CSS Standards
+  * SASS
+  * anim.scss + fonts.scss + global.scss + mixins.scss + polyfills.scss + shared.scss + vars.scss
+  * Everything that is reusable will be in vars.scss
+  * Basic color palette + variable for every case
+* Project WIKI
+* Basic project rules
+  * CODE_OF_CONDUCT.md
+  * CODE_REVIEW.md
+  * CONTRIBUTING.md
+  * FEATURES.md
+* Modernizr -> Progressive enhancement 
+* Pull Request
+  * Templates
+  * Lead + Optional reviewer
+  * Included the owner of the project (by commiter or lead dev)
+* Printing styling
+
