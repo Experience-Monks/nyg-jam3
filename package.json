@@ -1,0 +1,25 @@
+{
+  "name": "generator-jam3-v2",
+  "version": "0.1.0",
+  "description": "Second generation of the Jam3 Generator, many new features and breaking feature changes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/",
+    "create-app": "create-react-app my-app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jam3/generator-jam3-v2.git"
+  },
+  "author": "Iran Reyes <iranreyesfleitas@gmail.com> (http://www.iranreyes.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jam3/generator-jam3-v2/issues"
+  },
+  "homepage": "https://github.com/Jam3/generator-jam3-v2#readme",
+  "dependencies": {
+    "nyg": "^2.7.0"
+  },
+  "keywords": ["jam3", "project", "scaffold", "generator", "nyg"],
+  "devDependencies": {}
+}
