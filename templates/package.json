@@ -1,0 +1,59 @@
+{
+  "name": "prj-fb-messenger-redesign",
+  "version": "0.1.0",
+  "description": "New Messenger re-design",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "npm run release",
+    "release": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "ci-test": "cross-env CI=true npm run ci-test",
+    "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
+    "sass-lint": "stylelint './src/**/*.scss'",
+    "green-license": "jsgl -l .",
+    "precommit": "echo 'Pre-commit checks...' && lint-staged",
+    "prepush": "echo 'Pre-push checks...' && npm run js-lint && npm run sass-lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jam3/prj-fb-messenger-redesign.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jam3/prj-fb-messenger-redesign/issues"
+  },
+  "homepage": "https://messenger.fb.com",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "react-scripts": "1.1.1",
+    "babel-eslint": "8.0.2",
+    "eslint": "4.11.0",
+    "eslint-config-postcss": "^2.0.2",
+    "eslint-config-prettier": "2.8.0",
+    "eslint-config-react-app": "^2.0.1",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-promise": "3.6.0",
+    "eslint-plugin-react": "7.5.1",
+    "eslint-plugin-standard": "3.0.1",
+    "cross-env": "^5.1.1",
+    "husky": "^0.14.3",
+    "js-green-licenses": "0.4.0",
+    "lint-staged": "^4.3.0",
+    "prettier": "1.8.2",
+    "stylelint": "8.2.0"
+  },
+  "lint-staged": {
+    "private/prj-frontend/src/**/*.{js,jsx,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

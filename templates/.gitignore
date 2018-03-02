@@ -1,0 +1,25 @@
+## Frontend
+
+# Global
+.DS_Store
+*.log*
+
+# IDEs
+.vscode
+sketch
+
+# Node & Npm
+node_modules
+
+# Builds
+/build
+
+# Stats
+stats.html
+
+# Testing
+/coverage
+
+# Misc
+default-config.json
+final-config.json
