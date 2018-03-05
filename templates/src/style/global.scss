@@ -4,9 +4,19 @@
 
 @import 'fonts.scss';
 @import 'polyfills.scss';
-@import 'mixins.scss';
-@import 'vars.scss';
+@import 'shared.scss';
 
-* {
+html {
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }

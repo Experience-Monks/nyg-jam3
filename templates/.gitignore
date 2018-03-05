@@ -27,3 +27,6 @@ stats.html
 default-cra-rewrite-config.json
 final-cra-rewrite-config.json
 bundle-size-analizer.html
+
+# CSS files of src
+src/**/*.css
