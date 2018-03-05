@@ -49,6 +49,7 @@
     "js-green-licenses": "0.4.0",
     "lint-staged": "^4.3.0",
     "prettier": "1.8.2",
+    "prop-types": "15.6.1",
     "react-scripts": "1.1.1",
     "stats.js": "0.17.0",
     "stylelint": "8.2.0"

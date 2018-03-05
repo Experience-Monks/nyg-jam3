@@ -1,0 +1,34 @@
+export default function(propTypes, ignoreData = []) {
+  const ignoreList = [
+    'children',
+    'history',
+    'location',
+    'params',
+    'route',
+    'routes',
+    'routeParams',
+    'windowHeight',
+    'windowWidth',
+    'context',
+    'slug',
+    'fn',
+    'mobileLayout',
+    'tabletLayout',
+    'match',
+    'staticContext',
+    ...ignoreData
+  ];
+
+  return {
+    ...propTypes,
+    fn: function(props, self, componentName) {
+      const unspecifiedProps = Object.keys(props).filter(
+        prop => !propTypes.hasOwnProperty(prop) && !ignoreList.includes(prop)
+      );
+
+      if (unspecifiedProps.length) {
+        throw new TypeError(`Component ${componentName} has unspecified props: ${unspecifiedProps.join(', ')}`);
+      }
+    }
+  };
+}
