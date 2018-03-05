@@ -31,6 +31,8 @@
   "homepage": "https://messenger.fb.com",
   "dependencies": {
     "bowser": "1.9.2",
+    "gsap": "1.20.4",
+    "gsap-lite-promise": "github:iranreyes/gsap-lite-promise",
     "mobile-detect": "1.4.1",
     "raf": "3.4.0",
     "react": "^16.2.0",
@@ -61,7 +63,16 @@
     "stylelint": "8.2.0"
   },
   "lint-staged": {
-    "private/prj-frontend/src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
+    "private/prj-frontend/src/**/*.{js,jsx,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
   },
-  "browserslist": ["Explorer >= 10", "Safari >= 9", "Chrome >= 30", "Firefox >= 40", "iOS >= 9"]
+  "browserslist": [
+    "Explorer >= 10",
+    "Safari >= 9",
+    "Chrome >= 30",
+    "Firefox >= 40",
+    "iOS >= 9"
+  ]
 }
