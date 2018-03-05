@@ -8,6 +8,16 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  componentWillMount() {
+    if (process.env.NODE_ENV !== 'production') {
+      const { whyDidYouUpdate } = require('why-did-you-update');
+
+      if (document.location.search.indexOf('performance') >= 0) {
+        whyDidYouUpdate(React);
+      }
+    }
+  }
+
   render() {
     return [
       <div className="App">
