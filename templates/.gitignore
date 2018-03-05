@@ -26,3 +26,4 @@ stats.html
 # Create React App Dev
 default-cra-rewrite-config.json
 final-cra-rewrite-config.json
+bundle-size-analizer.html
