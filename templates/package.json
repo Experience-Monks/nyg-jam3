@@ -14,7 +14,11 @@
     "sass-lint": "stylelint './src/**/*.scss'",
     "green-license": "jsgl -l .",
     "precommit": "echo 'Pre-commit checks...' && lint-staged",
-    "prepush": "echo 'Pre-push checks...' && npm run js-lint && npm run sass-lint"
+    "prepush": "echo 'Pre-push checks...' && npm run js-lint && npm run sass-lint",
+    "audit-nsp": "nsp check",
+    "audit-snyk": "snyk auth [token] && snyk test",
+    "audit": "npm run audit-nsp",
+    "postinstall": "npm run audit"
   },
   "repository": {
     "type": "git",
@@ -48,9 +52,11 @@
     "husky": "^0.14.3",
     "js-green-licenses": "0.4.0",
     "lint-staged": "^4.3.0",
+    "nsp": "3.2.1",
     "prettier": "1.8.2",
     "prop-types": "15.6.1",
     "react-scripts": "1.1.1",
+    "snyk": "1.69.10",
     "stats.js": "0.17.0",
     "stylelint": "8.2.0"
   },
