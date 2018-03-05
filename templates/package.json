@@ -26,12 +26,13 @@
   },
   "homepage": "https://messenger.fb.com",
   "dependencies": {
+    "raf": "3.4.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
-    "react-scripts": "1.1.1",
     "babel-eslint": "8.0.2",
+    "cross-env": "^5.1.1",
     "eslint": "4.11.0",
     "eslint-config-postcss": "^2.0.2",
     "eslint-config-prettier": "2.8.0",
@@ -43,11 +44,12 @@
     "eslint-plugin-promise": "3.6.0",
     "eslint-plugin-react": "7.5.1",
     "eslint-plugin-standard": "3.0.1",
-    "cross-env": "^5.1.1",
     "husky": "^0.14.3",
     "js-green-licenses": "0.4.0",
     "lint-staged": "^4.3.0",
     "prettier": "1.8.2",
+    "react-scripts": "1.1.1",
+    "stats.js": "0.17.0",
     "stylelint": "8.2.0"
   },
   "lint-staged": {
