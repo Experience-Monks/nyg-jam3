@@ -23,6 +23,6 @@ stats.html
 # Testing
 /coverage
 
-# Misc
-default-config.json
-final-config.json
+# Create React App Dev
+default-cra-rewrite-config.json
+final-cra-rewrite-config.json
