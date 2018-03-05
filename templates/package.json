@@ -55,9 +55,7 @@
     "stylelint": "8.2.0"
   },
   "lint-staged": {
-    "private/prj-frontend/src/**/*.{js,jsx,json,css}": [
-      "prettier --write",
-      "git add"
-    ]
-  }
+    "private/prj-frontend/src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
+  },
+  "browserslist": ["Explorer >= 10", "Safari >= 9", "Chrome >= 30", "Firefox >= 40", "iOS >= 9"]
 }
