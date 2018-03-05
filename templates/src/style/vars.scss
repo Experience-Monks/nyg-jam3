@@ -1,0 +1,48 @@
+// Variables
+//
+// Add global variables here, color palette, those variables shared by components all applied to global styling
+
+// ====================================================================
+// Animation
+//
+// Easings and animation configuration variables
+// ====================================================================
+$landing-hero-out-ease: cubic-bezier(0.17, -0.12, 0, 1);
+$landing-hero-in-ease: cubic-bezier(0.17, 0.12, 0, 1);
+
+// ====================================================================
+// Base palette
+//
+// Grayscale and brand colors for use across the site.
+// ====================================================================
+
+$white: #fff;
+$black: #000;
+
+$grey: #737373;
+$grey-light: #f7f7f7;
+$grey-med: #e5e5e5;
+$grey-dark: #4a4a4a;
+
+$red: #d74e4e;
+
+$blue: #0084ff;
+$blue-light: #ddeaf8;
+$blue-dark: #004280;
+
+// ====================================================================
+// Generals
+//
+// Global color variables, used usually in sections
+// Global variables used across the web app
+// ====================================================================
+
+$page-bg-color: $white;
+$element-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.04);
+$generic-fonts: Helvetica, Arial, sans-serif;
+
+// ====================================================================
+// Nav bar
+// ====================================================================
+$navbar-height-mobile: 6rem;
+$navbar-height-desktop: 6rem;

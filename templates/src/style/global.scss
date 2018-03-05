@@ -1,0 +1,12 @@
+// Globals
+//
+// Global styling, normalize overwritten
+
+@import 'fonts.scss';
+@import 'polyfills.scss';
+@import 'mixins.scss';
+@import 'vars.scss';
+
+* {
+  box-sizing: border-box;
+}
