@@ -2,6 +2,7 @@
   "plugins": ["prettier"],
   "extends": ["react-app", "prettier"],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "import/no-webpack-loader-syntax": 0
   }
 }
