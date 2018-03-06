@@ -12,10 +12,10 @@
     "build-css": "node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/",
     "build-js": "npm run release",
     "test": "react-app-rewired test --env=jsdom",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
-    "green-license": "jsgl -l .",
     "precommit": "echo 'Pre-commit checks...' && lint-staged",
     "prepush": "echo 'Pre-push checks...' && npm run js-lint && npm run sass-lint",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -24,7 +24,8 @@
     "audit-nsp": "nsp check",
     "audit-snyk": "snyk auth [token] && snyk test",
     "audit": "npm run audit-nsp",
-    "postinstall": "npm run audit"
+    "postinstall": "npm run audit",
+    "dependency-report": "node scripts/dependencies-report"
   },
   "repository": {
     "type": "git",
@@ -67,7 +68,7 @@
     "eslint-plugin-react": "7.5.1",
     "eslint-plugin-standard": "3.0.1",
     "husky": "^0.14.3",
-    "js-green-licenses": "0.4.0",
+    "license-checker": "16.0.0",
     "lint-staged": "^4.3.0",
     "maxstache": "1.0.7",
     "minimist": "1.2.0",
@@ -88,16 +89,7 @@
     "why-did-you-update": "0.1.1"
   },
   "lint-staged": {
-    "private/prj-frontend/src/**/*.{js,jsx,json,css}": [
-      "prettier --write",
-      "git add"
-    ]
+    "private/prj-frontend/src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
   },
-  "browserslist": [
-    "Explorer >= 10",
-    "Safari >= 9",
-    "Chrome >= 30",
-    "Firefox >= 40",
-    "iOS >= 9"
-  ]
+  "browserslist": ["Explorer >= 10", "Safari >= 9", "Chrome >= 30", "Firefox >= 40", "iOS >= 9"]
 }
