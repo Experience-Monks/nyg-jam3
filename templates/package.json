@@ -13,8 +13,7 @@
     "build-js": "react-app-rewired build",
     "build-images": "node scripts/compress-images.js",
     "test": "react-app-rewired test --env=jsdom",
-    "watch-css":
-      "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
     "watch-images": "node scripts/compress-images.js --watch",
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
@@ -85,7 +84,9 @@
     "prettier": "1.8.2",
     "prop-types": "15.6.1",
     "react-app-rewire-eslint": "0.2.3",
+    "react-app-rewire-hot-loader": "1.0.0",
     "react-app-rewired": "1.4.1",
+    "react-hot-loader": "4.0.0",
     "react-scripts": "1.1.1",
     "snyk": "1.69.10",
     "stats.js": "0.17.0",
@@ -95,7 +96,16 @@
     "why-did-you-update": "0.1.1"
   },
   "lint-staged": {
-    "private/prj-frontend/src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
+    "private/prj-frontend/src/**/*.{js,jsx,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
   },
-  "browserslist": ["Explorer >= 10", "Safari >= 9", "Chrome >= 30", "Firefox >= 40", "iOS >= 9"]
+  "browserslist": [
+    "Explorer >= 10",
+    "Safari >= 9",
+    "Chrome >= 30",
+    "Firefox >= 40",
+    "iOS >= 9"
+  ]
 }

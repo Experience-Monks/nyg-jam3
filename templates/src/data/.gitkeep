@@ -1,0 +1,6 @@
+If you application should be fully controlled from some files or will fetch all the data from a future endpoint that is in development right now, add all your data inside this folder.
+
+Have the content centralized here will help to maintain copies and migrate to future solutions like endpoints.
+
+Note:
+Have it here doesn't mean you can not modularize the data per section, feels free to spread the data.json(s).

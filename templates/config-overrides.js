@@ -1,6 +1,7 @@
 const fs = require('fs');
 const Visualizer = require('webpack-visualizer-plugin');
 const rewireEslint = require('react-app-rewire-eslint');
+const rewireReactHotLoader = require('react-app-rewire-hot-loader');
 
 const DEBUG = false;
 
@@ -12,6 +13,9 @@ module.exports = function override(config, env) {
 
   // Rewire ESLint rules
   config = rewireEslint(config, env);
+
+  // Enabling HMR
+  config = rewireReactHotLoader(config, env);
 
   DEBUG && fs.writeFile('final-cra-rewrite-config.json', JSON.stringify(config));
   return config;
