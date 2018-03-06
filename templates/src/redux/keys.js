@@ -1,0 +1,4 @@
+export default {
+  SITE_LOADED: 'SITE_LOADED',
+  LANDING_LOADED: 'LANDING_LOADED'
+};

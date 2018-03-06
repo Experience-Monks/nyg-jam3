@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import Landing from '../Landing/Landing';
 
 import RotateScreen from '../../components/Rotate/Rotate';
 
 import detect from '../../util/detect';
 
-import logo from './logo.svg';
-import './App.css';
+import { pageLoaded } from '../../redux/actions/app';
 
 class App extends Component {
   componentWillMount() {
@@ -18,20 +21,42 @@ class App extends Component {
     }
   }
 
-  render() {
+  componentDidMount() {
+    this.props.pageLoaded(true);
+  }
+
+  routeRender = () => {
     return [
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>,
+      <section id="sections" key="sections">
+        <Switch>
+          <Route exact={true} path="/" component={Landing} />
+        </Switch>
+      </section>,
       detect.isMobile && <RotateScreen key="rotate" />
     ];
+  };
+
+  render() {
+    return (
+      <Router>
+        <Route render={this.routeRender} />
+      </Router>
+    );
   }
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    currentRoute: state.currentRoute
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    pageLoaded: val => dispatch(pageLoaded(val))
+  };
+};
+
+App.defaultProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
