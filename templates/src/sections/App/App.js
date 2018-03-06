@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Landing from '../Landing/Landing';
-import { AsyncAbout } from '../../util/async-section-handler';
+import { AsyncAbout, AsyncNotFound } from '../../util/async-section-handler';
 
 import RotateScreen from '../../components/Rotate/Rotate';
 
@@ -32,6 +32,7 @@ class App extends Component {
         <Switch>
           <Route exact={true} path="/" component={Landing} />
           <Route exact={true} path="/about" component={AsyncAbout} />
+          <Route component={AsyncNotFound} />
         </Switch>
       </section>,
       detect.isMobile && <RotateScreen key="rotate" />
