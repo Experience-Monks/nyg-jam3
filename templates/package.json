@@ -12,12 +12,14 @@
     "build-css": "node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/",
     "build-js": "npm run release",
     "test": "react-app-rewired test --env=jsdom",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
     "green-license": "jsgl -l .",
     "precommit": "echo 'Pre-commit checks...' && lint-staged",
     "prepush": "echo 'Pre-push checks...' && npm run js-lint && npm run sass-lint",
+    "storybook": "start-storybook -p 9001 -c .storybook",
     "component": "node scripts/component.js",
     "stateless-component": "node scripts/component.js --stateless",
     "audit-nsp": "nsp check",
@@ -50,6 +52,8 @@
     "redux": "3.7.2"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "3.3.14",
+    "@storybook/react": "3.3.14",
     "babel-eslint": "8.0.2",
     "chalk": "2.3.2",
     "cross-env": "^5.1.1",
@@ -83,16 +87,7 @@
     "why-did-you-update": "0.1.1"
   },
   "lint-staged": {
-    "private/prj-frontend/src/**/*.{js,jsx,json,css}": [
-      "prettier --write",
-      "git add"
-    ]
+    "private/prj-frontend/src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
   },
-  "browserslist": [
-    "Explorer >= 10",
-    "Safari >= 9",
-    "Chrome >= 30",
-    "Firefox >= 40",
-    "iOS >= 9"
-  ]
+  "browserslist": ["Explorer >= 10", "Safari >= 9", "Chrome >= 30", "Firefox >= 40", "iOS >= 9"]
 }
