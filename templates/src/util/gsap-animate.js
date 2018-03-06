@@ -7,7 +7,6 @@
  */
 
 require('gsap/src/uncompressed/plugins/CSSPlugin.js');
-require('gsap/src/uncompressed/plugins/ScrollToPlugin.js');
 require('gsap/src/uncompressed/TweenLite.js');
 
 const animate = require('gsap-lite-promise')(Promise, window.TweenLite);
