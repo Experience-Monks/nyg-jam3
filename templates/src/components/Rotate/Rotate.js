@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import RotateIcon from './rotate.svg';
+import RotateIcon from './assets/rotate.svg';
 
 import './Rotate.css';
 

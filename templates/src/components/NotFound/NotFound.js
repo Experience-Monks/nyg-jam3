@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import SvgContainer from '../SvgContainer/SvgContainer';
 
 import './NotFound.css';
-import notFoundSvg from '-!svg-inline-loader?classPrefix&idPrefix!./404.svg';
+import notFoundSvg from '-!svg-inline-loader?classPrefix&idPrefix!./assets/404.svg';
 
 import checkProps from '../../util/check-props';
 

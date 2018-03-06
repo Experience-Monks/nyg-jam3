@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { landingLoaded } from '../../redux/actions/landing';
 
-import logo from './logo.svg';
+import logo from './assets/logo.svg';
 import './Landing.css';
 
 class Landing extends Component {

@@ -5,15 +5,17 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all -p watch-css start-js",
+    "start": "npm-run-all -p watch-images watch-css start-js",
     "start-js": "react-app-rewired start",
-    "release": "react-app-rewired build",
-    "build": "npm-run-all build-css build-js",
+    "release": "cross-env NODE_ENV=production npm-run-all build-images build-css build-js",
+    "build": "npm run release",
     "build-css": "node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/",
-    "build-js": "npm run release",
+    "build-js": "react-app-rewired build",
+    "build-images": "node scripts/compress-images.js",
     "test": "react-app-rewired test --env=jsdom",
     "watch-css":
       "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "watch-images": "node scripts/compress-images.js --watch",
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
     "precommit": "echo 'Pre-commit checks...' && lint-staged",
@@ -35,7 +37,6 @@
   "bugs": {
     "url": "https://github.com/Jam3/prj-fb-messenger-redesign/issues"
   },
-  "homepage": "https://messenger.fb.com",
   "dependencies": {
     "bowser": "1.9.2",
     "gsap": "1.20.4",
@@ -68,6 +69,11 @@
     "eslint-plugin-react": "7.5.1",
     "eslint-plugin-standard": "3.0.1",
     "husky": "^0.14.3",
+    "imagemin": "5.3.1",
+    "imagemin-gifsicle": "5.2.0",
+    "imagemin-jpegtran": "5.0.2",
+    "imagemin-pngquant": "5.0.1",
+    "imagemin-svgo": "6.0.0",
     "license-checker": "16.0.0",
     "lint-staged": "^4.3.0",
     "maxstache": "1.0.7",

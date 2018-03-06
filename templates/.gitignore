@@ -30,3 +30,9 @@ bundle-size-analizer.html
 
 # CSS files of src
 src/**/*.css
+
+# Compressed images
+src/assets/images
+src/assets/svg
+src/components/**/assets
+src/sections/**/assets
