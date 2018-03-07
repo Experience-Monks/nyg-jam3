@@ -1,8 +1,8 @@
 import keys from '../keys';
 
-export function pageLoaded(loaded) {
+export const setWindowSize = function(windowSize) {
   return {
-    type: keys.SITE_LOADED,
-    loaded
+    type: keys.SET_WINDOW_SIZE,
+    windowSize
   };
-}
+};

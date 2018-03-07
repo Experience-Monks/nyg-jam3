@@ -11,7 +11,7 @@ import detect from '../../util/detect';
 import usePassiveEvent from '../../util/use-passive-event';
 import settings from '../../data/settings';
 
-import { pageLoaded } from '../../redux/actions/app';
+import { setWindowSize } from '../../redux/actions/app';
 
 class App extends Component {
   componentWillMount() {
@@ -27,12 +27,8 @@ class App extends Component {
     window.addEventListener('resize', debounce(this.onAppResize, settings.resizeDebounceTime), usePassiveEvent());
   }
 
-  componentDidMount() {
-    this.props.pageLoaded(true);
-  }
-
   onAppResize = () => {
-    // On Resize
+    this.props.setWindowSize({ width: window.innerWidth, height: window.innerHeight });
   };
 
   routeRender = () => {
@@ -65,7 +61,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    pageLoaded: val => dispatch(pageLoaded(val))
+    setWindowSize: val => dispatch(setWindowSize(val))
   };
 };
 
