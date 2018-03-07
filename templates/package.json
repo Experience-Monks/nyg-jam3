@@ -41,6 +41,7 @@
     "classnames": "2.2.5",
     "gsap": "1.20.4",
     "gsap-lite-promise": "github:iranreyes/gsap-lite-promise",
+    "howler": "2.0.9",
     "lodash.debounce": "4.0.8",
     "mobile-detect": "1.4.1",
     "normalize.css": "8.0.0",
