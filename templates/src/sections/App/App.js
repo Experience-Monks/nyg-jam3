@@ -25,6 +25,7 @@ class App extends Component {
     }
 
     window.addEventListener('resize', debounce(this.onAppResize, settings.resizeDebounceTime), usePassiveEvent());
+    this.onAppResize();
   }
 
   onAppResize = () => {
