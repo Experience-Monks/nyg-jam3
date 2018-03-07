@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import debounce from 'lodash.debounce';
 
 import Landing from '../Landing/Landing';
 import { AsyncAbout, AsyncNotFound } from '../../util/async-section-handler';
 
 import RotateScreen from '../../components/Rotate/Rotate';
-
 import detect from '../../util/detect';
+import usePassiveEvent from '../../util/use-passive-event';
+import settings from '../../data/settings';
 
 import { pageLoaded } from '../../redux/actions/app';
 
 class App extends Component {
   componentWillMount() {
+    // Setup performance measure tooling
     if (process.env.NODE_ENV !== 'production') {
       const { whyDidYouUpdate } = require('why-did-you-update');
 
@@ -20,11 +23,17 @@ class App extends Component {
         whyDidYouUpdate(React);
       }
     }
+
+    window.addEventListener('resize', debounce(this.onAppResize, settings.resizeDebounceTime), usePassiveEvent());
   }
 
   componentDidMount() {
     this.props.pageLoaded(true);
   }
+
+  onAppResize = () => {
+    // On Resize
+  };
 
   routeRender = () => {
     return [
