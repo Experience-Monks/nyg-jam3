@@ -3,6 +3,7 @@
   "extends": ["react-app", "prettier"],
   "rules": {
     "prettier/prettier": "error",
-    "import/no-webpack-loader-syntax": 0
+    "import/no-webpack-loader-syntax": 0,
+    "jsx-a11y/href-no-hash": 0
   }
 }
