@@ -1,9 +1,5 @@
 {
-  "name": "prj-fb-messenger-redesign",
-  "version": "0.1.0",
-  "description": "New Messenger re-design",
   "private": true,
-  "main": "index.js",
   "scripts": {
     "start": "npm-run-all -p watch-images watch-css start-js",
     "start-js": "react-app-rewired start",
@@ -32,7 +28,6 @@
     "type": "git",
     "url": "git+https://github.com/Jam3/prj-fb-messenger-redesign.git"
   },
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Jam3/prj-fb-messenger-redesign/issues"
   },
