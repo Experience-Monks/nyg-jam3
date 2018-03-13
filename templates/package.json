@@ -1,9 +1,8 @@
 {
-  "name": "prj-fb-messenger-redesign",
-  "version": "0.1.0",
-  "description": "New Messenger re-design",
+  "name": "jam3-new-app",
+  "version": "0.0.1",
+  "description": "Jam3 new app",
   "private": true,
-  "main": "index.js",
   "scripts": {
     "start": "npm-run-all -p watch-images watch-css start-js",
     "start-js": "react-app-rewired start",
@@ -13,7 +12,8 @@
     "build-js": "react-app-rewired build",
     "build-images": "node scripts/compress-images.js",
     "test": "react-app-rewired test --env=jsdom",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
     "watch-images": "node scripts/compress-images.js --watch",
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
@@ -101,16 +101,7 @@
     "why-did-you-update": "0.1.1"
   },
   "lint-staged": {
-    "private/prj-frontend/src/**/*.{js,jsx,json,css}": [
-      "prettier --write",
-      "git add"
-    ]
+    "private/prj-frontend/src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
   },
-  "browserslist": [
-    "Explorer >= 10",
-    "Safari >= 9",
-    "Chrome >= 30",
-    "Firefox >= 40",
-    "iOS >= 9"
-  ]
+  "browserslist": ["Explorer >= 10", "Safari >= 9", "Chrome >= 30", "Firefox >= 40", "iOS >= 9"]
 }
