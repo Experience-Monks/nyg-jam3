@@ -6,16 +6,6 @@
 
 @import 'vars.scss';
 
-/// Set Calibri Regular as font family
-/// @example scss Input
-///   .landing-section {
-///     @include font-calibre-regular();
-///   }
-@mixin font-calibre-regular() {
-  font-family: Calibre-Regular, #{$generic-fonts};
-  font-weight: normal;
-}
-
 /// Improve animation performance for containers
 /// @example scss Input
 ///   .card {
