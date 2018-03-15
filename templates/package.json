@@ -25,7 +25,7 @@
     "audit-nsp": "nsp check",
     "audit-snyk": "snyk auth [token] && snyk test",
     "audit": "npm run audit-nsp",
-    "postinstall": "npm run audit",
+    "postinstall": "npm-run-all audit build-css",
     "dependency-report": "node scripts/dependencies-report"
   },
   "repository": {
