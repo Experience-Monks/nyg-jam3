@@ -35,16 +35,18 @@ class App extends Component {
   };
 
   routeRender = () => {
-    return [
-      <section id="sections" key="sections">
-        <Switch>
-          <Route exact={true} path="/" component={Landing} />
-          <Route exact={true} path="/about" component={AsyncAbout} />
-          <Route component={AsyncNotFound} />
-        </Switch>
-      </section>,
-      detect.isMobile && <RotateScreen key="rotate" />
-    ];
+    return (
+      <React.Fragment>
+        <section id="sections" key="sections">
+          <Switch>
+            <Route exact={true} path="/" component={Landing} />
+            <Route exact={true} path="/about" component={AsyncAbout} />
+            <Route component={AsyncNotFound} />
+          </Switch>
+        </section>
+        {detect.isMobile && <RotateScreen key="rotate" />}
+      </React.Fragment>
+    );
   };
 
   render() {
