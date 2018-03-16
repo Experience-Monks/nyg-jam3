@@ -7,9 +7,11 @@ import Landing from '../Landing/Landing';
 import { AsyncAbout, AsyncNotFound } from '../../util/async-section-handler';
 
 import RotateScreen from '../../components/Rotate/Rotate';
+
+import settings from '../../data/settings';
+import appResize from '../../util/app-resize';
 import detect from '../../util/detect';
 import usePassiveEvent from '../../util/use-passive-event';
-import settings from '../../data/settings';
 
 import { setWindowSize } from '../../redux/actions/app';
 
@@ -29,7 +31,7 @@ class App extends Component {
   }
 
   onAppResize = () => {
-    this.props.setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    appResize();
   };
 
   routeRender = () => {

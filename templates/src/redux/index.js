@@ -4,10 +4,12 @@ import createHistory from 'history/createBrowserHistory';
 
 // Reducers
 import * as appReducers from './reducers/app';
+import * as layoutReducers from './reducers/layout';
 import * as landingReducers from './reducers/landing';
 
 const rootReducer = combineReducers({
   ...appReducers,
+  ...layoutReducers,
   ...landingReducers,
   routing: routerReducer
 });
