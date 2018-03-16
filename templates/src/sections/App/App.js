@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 
@@ -34,7 +34,7 @@ class App extends Component {
     appResize();
   };
 
-  routeRender = () => {
+  render() {
     return (
       <React.Fragment>
         <section id="sections" key="sections">
@@ -46,14 +46,6 @@ class App extends Component {
         </section>
         {detect.isMobile && <RotateScreen key="rotate" />}
       </React.Fragment>
-    );
-  };
-
-  render() {
-    return (
-      <Router>
-        <Route render={this.routeRender} />
-      </Router>
     );
   }
 }
@@ -72,4 +64,4 @@ const mapDispatchToProps = dispatch => {
 
 App.defaultProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
