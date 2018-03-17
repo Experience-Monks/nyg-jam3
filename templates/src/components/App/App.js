@@ -1,11 +1,8 @@
-import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 
-import Landing from '../Landing/Landing';
-import { AsyncAbout, AsyncNotFound } from '../../util/async-section-handler';
-
+import Pages from '../../components/Pages/Pages';
 import RotateScreen from '../../components/Rotate/Rotate';
 
 import settings from '../../data/settings';
@@ -36,16 +33,10 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <section id="sections" key="sections">
-          <Switch>
-            <Route exact={true} path="/" component={Landing} />
-            <Route exact={true} path="/about" component={AsyncAbout} />
-            <Route component={AsyncNotFound} />
-          </Switch>
-        </section>
-        {detect.isMobile && <RotateScreen key="rotate" />}
-      </React.Fragment>
+      <Fragment>
+        <Pages />
+        {detect.isMobile && <RotateScreen />}
+      </Fragment>
     );
   }
 }
@@ -64,4 +55,4 @@ const mapDispatchToProps = dispatch => {
 
 App.defaultProps = {};
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default connect(mapStateToProps, mapDispatchToProps)(App);

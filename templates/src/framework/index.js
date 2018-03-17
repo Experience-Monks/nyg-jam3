@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import store, { history } from '../redux';
 
-import App from '../sections/App/App';
+import App from '../components/App/App';
 
 import detect from '../util/detect';
 
