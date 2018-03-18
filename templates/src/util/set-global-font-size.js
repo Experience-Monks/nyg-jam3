@@ -1,7 +1,13 @@
 import settings from '../data/settings';
 import breakpointHandler from './breakpoint-handler';
 
-export default function(windowWidth, windowHeight) {
+/**
+ * Set fontsize to the HTML tag depending of the user resolution and the web app configuration
+ *
+ * @param {any} windowWidth
+ * @param {any} windowHeight
+ */
+function setGlobalFontSize(windowWidth, windowHeight) {
   const scale = settings.minScaleSize / settings.baseDesignWidth;
   let fontSize = settings.defaultFontSizePercent;
 
@@ -20,3 +26,5 @@ export default function(windowWidth, windowHeight) {
 
   document.documentElement.style.fontSize = `${fontSize * settings.percentToPxMultiplier}px`;
 }
+
+export default setGlobalFontSize;

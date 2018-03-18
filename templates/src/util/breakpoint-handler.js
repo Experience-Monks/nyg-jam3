@@ -27,32 +27,68 @@ const breakpointHandler = function() {
     { className: names.mobileLayout, predicate: w => w < desktopSmallLayout }
   ];
 
+  /**
+   * Return if the current layout is a phone
+   *
+   * @returns {Boolean}
+   */
   function isPhoneLayout() {
     return _getReduxLayoutInfo().includes(names.phoneLayout);
   }
 
+  /**
+   * Return if the current layout is a tablet
+   *
+   * @returns {Boolean}
+   */
   function isTabletLayout() {
     return _getReduxLayoutInfo().includes(names.tabletLayout);
   }
 
+  /**
+   * Return if the current layout is a phone or a tablet
+   *
+   * @returns {Boolean}
+   */
   function isMobileLayout() {
     return isPhoneLayout() || isTabletLayout();
   }
 
+  /**
+   * Return if the current layout is a desktop
+   *
+   * @returns {Boolean}
+   */
   function isDesktopLayout() {
     return _getReduxLayoutInfo().includes(names.desktopLayout);
   }
 
+  /**
+   * Access to the current Redux state layout information
+   *
+   * @returns {Boolean}
+   */
   function _getReduxLayoutInfo() {
     const currentReduxState = store.getState();
     return currentReduxState && currentReduxState.layout ? currentReduxState.layout : [];
   }
 
+  /**
+   * Update breakpoints in redux based on the current breakpoints
+   *
+   * @param {any} [w=window.innerWidth]
+   * @param {any} [h=window.innerHeight]
+   */
   function update(w = window.innerWidth, h = window.innerHeight) {
     const breakpointsList = _rules.filter(({ className, predicate }) => predicate(w)).map(val => val.className);
     _setBreakpoint(breakpointsList);
   }
 
+  /**
+   * Dispatch actions in redux to update the breakpoints
+   *
+   * @param {any} breakpointsList
+   */
   async function _setBreakpoint(breakpointsList) {
     await wait();
     if (!store.getState().layout || store.getState().layout[0] !== breakpointsList[0]) {

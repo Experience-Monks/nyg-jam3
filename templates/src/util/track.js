@@ -1,6 +1,12 @@
 window.dataLayer = window.dataLayer || [];
 
-export default function gtmEvent(action = false, payload = {}) {
+/**
+ * Dispatch an event with GTM
+ *
+ * @param {boolean} [action=false] - Action name
+ * @param {any} [payload={}] - Action data
+ */
+function gtmEvent(action = false, payload = {}) {
   if (action) {
     window.dataLayer.push({
       event: action,
@@ -8,3 +14,5 @@ export default function gtmEvent(action = false, payload = {}) {
     });
   }
 }
+
+export default gtmEvent;

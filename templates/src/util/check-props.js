@@ -1,3 +1,11 @@
+/**
+ * Check if there are unused properties or properties that were not set
+ *
+ * @export
+ * @param {any} propTypes
+ * @param {any} [ignoreData=[]]
+ * @returns {Boolean}
+ */
 export default function(propTypes, ignoreData = []) {
   const ignoreList = [
     'children',
