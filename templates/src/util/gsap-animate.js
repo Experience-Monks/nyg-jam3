@@ -9,7 +9,7 @@
 require('gsap/src/uncompressed/plugins/CSSPlugin.js');
 require('gsap/src/uncompressed/TweenLite.js');
 
-const animate = require('gsap-lite-promise')(Promise, window.TweenLite);
+const animate = require('gsap-promisify')(Promise, window.TweenLite);
 
 animate.staggerTo = function(els, duration, props, delay) {
   return Promise.all(
