@@ -26,7 +26,8 @@
     "audit-snyk": "snyk auth [token] && snyk test",
     "audit": "npm run audit-nsp",
     "postinstall": "npm-run-all audit build-css",
-    "dependency-report": "node scripts/dependencies-report"
+    "dependency-report": "node scripts/dependencies-report",
+    "svg-component": "svgr"
   },
   "repository": {
     "type": "git",
@@ -97,6 +98,7 @@
     "stats.js": "0.17.0",
     "stylelint": "8.2.0",
     "svg-inline-loader": "0.8.0",
+    "svgr": "1.9.0",
     "webpack-visualizer-plugin": "0.1.11",
     "why-did-you-update": "0.1.1"
   },

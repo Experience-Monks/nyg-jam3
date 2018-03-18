@@ -36,7 +36,7 @@ export default function() {
 
   // Webpack Hot Module Replacement API
   if (module.hot) {
-    module.hot.accept('../sections/App/App', () => {
+    module.hot.accept('../components/App/App', () => {
       render(App);
     });
   }
