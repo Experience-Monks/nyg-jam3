@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm-run-all -p watch-css start-js",
     "start-js": "react-app-rewired start",
-    "release": "cross-env NODE_ENV=production npm-run-all build-css build-js",
+    "release": "cross-env NODE_ENV=production npm-run-all generate-doc build-css build-js",
     "build": "npm run release",
     "build-css": "node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/",
     "build-js": "react-app-rewired build",
@@ -25,7 +25,8 @@
     "audit": "npm run audit-nsp",
     "postinstall": "npm-run-all audit build-css",
     "dependency-report": "node scripts/dependencies-report",
-    "svg-component": "svgr"
+    "svg-component": "svgr",
+    "generate-doc": "node scripts/generate-doc"
   },
   "repository": {
     "type": "git",
@@ -93,6 +94,7 @@
     "react-app-rewired": "1.4.1",
     "react-hot-loader": "4.0.0",
     "react-scripts": "1.1.1",
+    "sassdoc": "2.5.0",
     "snyk": "1.69.10",
     "stats.js": "0.17.0",
     "stylelint": "8.2.0",
