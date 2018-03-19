@@ -16,7 +16,7 @@
     "sass-lint": "stylelint './src/**/*.scss'",
     "precommit": "echo 'Pre-commit checks...' && lint-staged",
     "prepush": "echo 'Pre-push checks...' && npm run js-lint && npm run sass-lint",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook": "start-storybook -p 9001 -c .storybook -s src",
     "component": "node scripts/component.js",
     "stateless-component": "node scripts/component.js --stateless",
     "audit-nsp": "nsp check",
