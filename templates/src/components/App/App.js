@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 
@@ -55,4 +56,4 @@ const mapDispatchToProps = dispatch => {
 
 App.defaultProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
