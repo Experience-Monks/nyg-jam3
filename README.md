@@ -4,7 +4,7 @@ Jam3 Frontend App Generator with no build configuration and no prompts
 
 * [Generate an App](#generate-an-app) – How to generate a new app
 * [Developer Contribution Guide](https://github.com/Jam3/generator-jam3-v2/blob/master/CONTRIBUTING.md) – Read first if you are a developer
-* [User Guide](#user-guide) – How to develop apps bootstrapped with the generator
+* [Developer Guide](#developer-guide) – How to develop apps bootstrapped with the generator
 
 ## Generate an app
 
@@ -47,8 +47,8 @@ By default, runs tests related to files changed since the last commit.
 
 [Read more about testing.](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests)
 
-## User Guide
+## Developer Guide
 
 We are using `react-scripts` as base; you can checkout their [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md), all applies to our application
 
-You can checkout the [Extended User Guides](https://github.com/Jam3/generator-jam3-v2/blob/master/USER_GUIDE.md) to know more about the customizations.
+You can checkout our [Developer Guides](https://github.com/Jam3/generator-jam3-v2/blob/master/DEVELOPER_GUIDE.md) to know more about the customizations.
