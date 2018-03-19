@@ -1,9 +1,9 @@
 # Jam3 Generator [![stable](http://hughsk.github.io/stability-badges/dist/stable.svg)](http://github.com/hughsk/stability-badges)
 
-Jam3 Basic Frontend Application Generator with no build configuration and no prompts
+Jam3 Frontend App Generator with no build configuration and no prompts
 
-* [Generate an App](#generate-an-app) – How to generate a new app.
-* [Developer Contribution Guide](https://github.com/Jam3/generator-jam3-v2/blob/master/CONTRIBUTING.md) – Read this first if you are a developer
+* [Generate an App](#generate-an-app) – How to generate a new app
+* [Developer Contribution Guide](https://github.com/Jam3/generator-jam3-v2/blob/master/CONTRIBUTING.md) – Read first if you are a developer
 * [User Guide](#user-guide) – How to develop apps bootstrapped with the generator
 
 ## Generate an app
@@ -26,7 +26,8 @@ Inside the newly created project, you can run some built-in commands:
 Runs the app in development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-You will see automatically the changes in your app after modify the code, we are using HMR. You will see the build errors and lint warnings in the console.
+You will see automatically the changes in your app after modify the code, we are using HMR. 
+You will see the build errors and lint warnings in the console.
 
 
 ### `npm run build`
@@ -48,6 +49,6 @@ By default, runs tests related to files changed since the last commit.
 
 ## User Guide
 
-We are using `react-scripts` as a base you can checkout their [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md)
+We are using `react-scripts` as base; you can checkout their [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md), all applies to our application
 
-You can checkout the [Extended User Guides]() to know more about the customizations.
+You can checkout the [Extended User Guides](https://github.com/Jam3/generator-jam3-v2/blob/master/USER_GUIDE.md) to know more about the customizations.
