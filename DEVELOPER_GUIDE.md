@@ -1,5 +1,5 @@
 
-# Jam3 Generator User Guide
+# Jam3 Generator Developer Guide
 
 In this guide you will find the explanation behind every feature of the boilerplate and how to use it. To checkout the [base user guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md) follow the link.
 
