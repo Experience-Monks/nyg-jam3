@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 
-import RotateIcon from './assets/rotate.svg';
-
 import './Rotate.css';
+
+import RotateIcon from './assets/rotate.svg';
 
 import checkProps from '../../util/check-props';
 import detect from '../../util/detect';

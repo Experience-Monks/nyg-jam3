@@ -3,11 +3,12 @@ import detect from './detect';
 
 global.detect = detect;
 
-/*
-  Function: isSupported
-  Description: The algorithm is inclusive, so we enumerate everything we don't support, after that everything is supported
-  Explanation: First check OS constrains, if passed, move to special browser cases and then general constrains
-*/
+/**
+ * Returns if the current browser is supported by the web app
+ * The algorithm is inclusive, so we enumerate everything we don't support, after that everything is supported
+ *
+ * @returns {Boolean} supported
+ */
 function isSupported() {
   const userBrowser = detect.browser.toLowerCase();
   const userBrowserVersion = parseFloat(detect.browserVersion);
@@ -42,6 +43,11 @@ function isSupported() {
   return true;
 }
 
+/**
+ * Print current browser information
+ *
+ * @returns {String} Browser|Browser Version|OS|OS Version|UA
+ */
 function getBrowserInformation() {
   return `
     browser: ${detect.browser},

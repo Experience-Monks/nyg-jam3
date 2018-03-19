@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import SvgContainer from '../SvgContainer/SvgContainer';
+import SvgContainer from '../../components/SvgContainer/SvgContainer';
 
 import './NotFound.css';
 import notFoundSvg from '-!svg-inline-loader?classPrefix&idPrefix!./assets/404.svg';

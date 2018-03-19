@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 
-import Landing from '../Landing/Landing';
-import { AsyncAbout, AsyncNotFound } from '../../util/async-section-handler';
-
+import Pages from '../../components/Pages/Pages';
 import RotateScreen from '../../components/Rotate/Rotate';
+
+import settings from '../../data/settings';
+import appResize from '../../util/app-resize';
 import detect from '../../util/detect';
 import usePassiveEvent from '../../util/use-passive-event';
-import settings from '../../data/settings';
 
 import { setWindowSize } from '../../redux/actions/app';
 
@@ -29,27 +28,15 @@ class App extends Component {
   }
 
   onAppResize = () => {
-    this.props.setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-  };
-
-  routeRender = () => {
-    return [
-      <section id="sections" key="sections">
-        <Switch>
-          <Route exact={true} path="/" component={Landing} />
-          <Route exact={true} path="/about" component={AsyncAbout} />
-          <Route component={AsyncNotFound} />
-        </Switch>
-      </section>,
-      detect.isMobile && <RotateScreen key="rotate" />
-    ];
+    appResize();
   };
 
   render() {
     return (
-      <Router>
-        <Route render={this.routeRender} />
-      </Router>
+      <Fragment>
+        <Pages />
+        {detect.isMobile && <RotateScreen />}
+      </Fragment>
     );
   }
 }

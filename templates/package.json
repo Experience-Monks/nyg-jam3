@@ -1,20 +1,17 @@
 {
-  "name": "prj-fb-messenger-redesign",
-  "version": "0.1.0",
-  "description": "New Messenger re-design",
+  "name": "jam3-new-app",
+  "version": "0.0.1",
+  "description": "Jam3 new app",
   "private": true,
-  "main": "index.js",
   "scripts": {
-    "start": "npm-run-all -p watch-images watch-css start-js",
+    "start": "npm-run-all -p watch-css start-js",
     "start-js": "react-app-rewired start",
-    "release": "cross-env NODE_ENV=production npm-run-all build-images build-css build-js",
+    "release": "cross-env NODE_ENV=production npm-run-all generate-doc build-css build-js",
     "build": "npm run release",
     "build-css": "node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/",
     "build-js": "react-app-rewired build",
-    "build-images": "node scripts/compress-images.js",
     "test": "react-app-rewired test --env=jsdom",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
-    "watch-images": "node scripts/compress-images.js --watch",
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
     "precommit": "echo 'Pre-commit checks...' && lint-staged",
@@ -25,8 +22,10 @@
     "audit-nsp": "nsp check",
     "audit-snyk": "snyk auth [token] && snyk test",
     "audit": "npm run audit-nsp",
-    "postinstall": "npm run audit",
-    "dependency-report": "node scripts/dependencies-report"
+    "postinstall": "npm-run-all audit build-css",
+    "dependency-report": "node scripts/dependencies-report",
+    "svg-component": "svgr",
+    "generate-doc": "node scripts/generate-doc"
   },
   "repository": {
     "type": "git",
@@ -40,7 +39,8 @@
     "bowser": "1.9.2",
     "classnames": "2.2.5",
     "gsap": "1.20.4",
-    "gsap-lite-promise": "github:iranreyes/gsap-lite-promise",
+    "gsap-promisify": "1.0.0",
+    "history": "4.7.2",
     "howler": "2.0.9",
     "lodash.debounce": "4.0.8",
     "mobile-detect": "1.4.1",
@@ -67,6 +67,7 @@
     "eslint-config-react-app": "^2.0.1",
     "eslint-plugin-flowtype": "^2.39.1",
     "eslint-plugin-import": "2.9.0",
+    "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-promise": "3.6.0",
     "eslint-plugin-react": "7.5.1",
@@ -89,21 +90,27 @@
     "prop-types": "15.6.1",
     "react-app-rewire-eslint": "0.2.3",
     "react-app-rewire-hot-loader": "1.0.0",
+    "react-app-rewire-imagemin-plugin": "1.0.1",
     "react-app-rewired": "1.4.1",
     "react-hot-loader": "4.0.0",
     "react-scripts": "1.1.1",
+    "sassdoc": "2.5.0",
     "snyk": "1.69.10",
     "stats.js": "0.17.0",
     "stylelint": "8.2.0",
     "svg-inline-loader": "0.8.0",
+    "svgr": "1.9.0",
     "webpack-visualizer-plugin": "0.1.11",
     "why-did-you-update": "0.1.1"
   },
   "lint-staged": {
-    "private/prj-frontend/src/**/*.{js,jsx,json,css}": [
-      "prettier --write",
-      "git add"
-    ]
+    "gitDir": "../",
+    "linters": {
+      "private/prj-frontend/src/**/*.{js,jsx,json,css}": [
+        "prettier --write",
+        "git add"
+      ]
+    }
   },
   "browserslist": [
     "Explorer >= 10",

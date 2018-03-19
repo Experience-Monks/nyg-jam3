@@ -3,10 +3,22 @@ import soundModel from '../data/sounds';
 
 let soundMap = {};
 
+/**
+ * Is Object
+ *
+ * @param {any} val
+ * @returns {Boolean}
+ */
 function isObject(val) {
   return typeof val === 'object' && !Array.isArray(val) && val !== null;
 }
 
+/**
+ * Parse entry audio data
+ *
+ * @param {any} val
+ * @returns {any} data
+ */
 function parseData(val) {
   if (typeof val === 'string' || val instanceof String) {
     return [val];
@@ -25,6 +37,12 @@ function parseData(val) {
   }
 }
 
+/**
+ * Get a sound sprite
+ *
+ * @param {any} val
+ * @returns {any} Sound sprite
+ */
 function getSprite(val) {
   let sprite;
   Object.keys(soundMap).forEach(key => {
@@ -35,6 +53,11 @@ function getSprite(val) {
   return sprite;
 }
 
+/**
+ * Set map
+ *
+ * @param {any} model
+ */
 function setMap(model) {
   Object.keys(model).forEach(item => {
     let data = model[item];
@@ -46,6 +69,11 @@ function setMap(model) {
   });
 }
 
+/**
+ * Audio class with easy method for importing audio and sprites and play them
+ *
+ * @class AudioStore
+ */
 class AudioStore {
   constructor() {
     setMap(soundModel);

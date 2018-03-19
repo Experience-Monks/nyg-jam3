@@ -1,6 +1,11 @@
 let alreadyTested = false;
 let passiveSupported = false;
 
+/**
+ * Returns if passive event are supported
+ *
+ * @returns {Boolean} supported
+ */
 function isSupported() {
   if (alreadyTested) {
     return passiveSupported;
@@ -20,6 +25,13 @@ function isSupported() {
   }
 }
 
-export default function usePassiveEvent() {
+/**
+ * Passive event polyfill
+ *
+ * @returns {Object|Boolean} Passive event setup if is supported
+ */
+function usePassiveEvent() {
   return isSupported() ? { passive: true } : false;
 }
+
+export default usePassiveEvent;

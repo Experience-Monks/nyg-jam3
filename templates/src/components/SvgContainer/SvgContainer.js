@@ -5,6 +5,9 @@ import './SvgContainer.css';
 
 import checkProps from '../../util/check-props';
 
+/**
+ * @deprecated Create stateless component with the SVG code in JSX
+ */
 export default class SvgContainer extends React.PureComponent {
   constructor(props) {
     super(props);
