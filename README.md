@@ -51,4 +51,4 @@ By default, runs tests related to files changed since the last commit.
 
 We are using `react-scripts` as base; you can checkout their [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md), all applies to our application
 
-You can checkout our [Developer Guides](https://github.com/Jam3/generator-jam3-v2/blob/master/DEVELOPER_GUIDE.md) to know more about the customizations.
+You can checkout our [Developer Guides](https://github.com/Jam3/generator-jam3-v2/blob/master/DEVELOPER_GUIDE.md) to know more about the features and customizations.
