@@ -21,7 +21,7 @@ nyg nyg-jam3
 
 Inside the newly created project, you can run some built-in commands:
 
-### `npm start` or `yarn start`
+### `npm start`
 
 Runs the app in development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -29,7 +29,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 You will see automatically the changes in your app after modify the code, we are using HMR. You will see the build errors and lint warnings in the console.
 
 
-### `npm run build` or `yarn build`
+### `npm run build`
 
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -39,7 +39,7 @@ By default, it also [includes a service worker](https://github.com/facebook/crea
 
 Your app is ready to be deployed.
 
-### `npm test` or `yarn test`
+### `npm test`
 
 Runs the test watcher in an interactive mode.<br>
 By default, runs tests related to files changed since the last commit.
