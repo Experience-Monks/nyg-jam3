@@ -1,4 +1,4 @@
-# Contributing with the Jam3's generator
+# Contributing with the Jam3 Generator
 
 Thinking about get involve with the generator? Thanks!.
 
@@ -6,7 +6,11 @@ Following these guidelines helps to communicate the core ideas and the purpose o
 
 ## Core Ideas
 
-As much as possible, we try to avoid adding configuration and flags. The purpose of this tool is to generate an opinionated template with the Jam3's standards and best practices.
+The generator structure is based on the same idea than [Create React App](https://github.com/facebook/create-react-app). We created a full boilerplate and we are using `react-scripts` to run our development server and create the build.
+
+We are using [react-scripts](https://github.com/facebook/create-react-app/tree/next/packages/react-scripts) because is fully supported by the community and includes the best and updated react standards. In order to customize it we decided **not** to eject and we are using [react-app-rewired](https://github.com/timarney/react-app-rewired).
+
+The purpose of this tool is to generate an opinionated template with the Jam3's standards and best practices. This template doesn't have configurations or prompts.
 
 We included in the project the common used components and structure, it doesn't mean you need to use all of them and in that case our strategy is to delete it instead of having a massive configuration file with many cases, usually hardly to maintain.
 
