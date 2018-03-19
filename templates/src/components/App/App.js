@@ -11,7 +11,7 @@ import appResize from '../../util/app-resize';
 import detect from '../../util/detect';
 import usePassiveEvent from '../../util/use-passive-event';
 
-import { setWindowSize } from '../../redux/actions/app';
+import { setWindowSize } from '../../redux/modules/app';
 
 class App extends Component {
   componentWillMount() {
