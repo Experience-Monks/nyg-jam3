@@ -6,11 +6,13 @@ import createHistory from 'history/createBrowserHistory';
 import * as appReducers from './reducers/app';
 import * as layoutReducers from './reducers/layout';
 import * as landingReducers from './reducers/landing';
+import * as asyncReducers from './reducers/async';
 
 const rootReducer = combineReducers({
   ...appReducers,
   ...layoutReducers,
   ...landingReducers,
+  ...asyncReducers,
   routing: routerReducer
 });
 
