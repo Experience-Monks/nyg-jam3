@@ -30,15 +30,6 @@ $breakpoints: (
 
 @import 'vars.scss';
 
-/// Set Calibri Regular as font family
-/// @example scss Input
-///   .landing-section {
-///     @include font-spectral-regular();
-///   }
-@mixin font-regular() {
-  font-family: Spectral-Regular, #{$generic-fonts};
-}
-
 /// Improve animation performance for containers
 /// @example scss Input
 ///   .card {
