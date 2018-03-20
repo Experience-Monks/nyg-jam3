@@ -1,11 +1,11 @@
 import loadable from 'react-loadable';
 
 export const AsyncAbout = loadable({
-  loader: () => import('../sections/About/About'),
+  loader: () => import('../pages/About/About'),
   loading: () => null
 });
 
 export const AsyncNotFound = loadable({
-  loader: () => import('../components/NotFound/NotFound'),
+  loader: () => import('../pages/NotFound/NotFound'),
   loading: () => null
 });

@@ -48,5 +48,24 @@
         }
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["src/util/**/*.js"],
+      "rules": {
+        "require-jsdoc": [
+          "error",
+          {
+            "require": {
+              "FunctionDeclaration": true,
+              "ClassDeclaration": true,
+              "MethodDefinition": false,
+              "ArrowFunctionExpression": false,
+              "FunctionExpression": false
+            }
+          }
+        ]
+      }
+    }
+  ]
 }

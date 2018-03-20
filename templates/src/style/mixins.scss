@@ -11,9 +11,8 @@
 ///   .landing-section {
 ///     @include font-calibre-regular();
 ///   }
-@mixin font-calibre-regular() {
+@mixin font-regular() {
   font-family: Calibre-Regular, #{$generic-fonts};
-  font-weight: normal;
 }
 
 /// Improve animation performance for containers

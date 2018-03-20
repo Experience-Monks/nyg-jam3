@@ -16,6 +16,11 @@ const bots = [
   'googlebot'
 ];
 
+/**
+ * Check if the current browser is a bot
+ *
+ * @returns {Boolean}
+ */
 function checkBot() {
   let isBot = false;
   bots.forEach(function(cur) {
@@ -24,26 +29,56 @@ function checkBot() {
   return isBot;
 }
 
+/**
+ * Check if the current browser is the Facebook Webview Browser
+ *
+ * @returns {Boolean}
+ */
 function checkFacebook() {
   return ua.indexOf('fban') > -1 || ua.indexOf('fbav') > -1;
 }
 
+/**
+ * Check if the current browser is the Twitted Webview Browser
+ *
+ * @returns {Boolean}
+ */
 function checkTwitter() {
   return ua.indexOf('twitter') > -1;
 }
 
+/**
+ * Check if the current browser is the Instagram Webview Browser
+ *
+ * @returns {Boolean}
+ */
 function checkInstagram() {
   return ua.indexOf('instagram') > -1;
 }
 
+/**
+ * Check if the current browser is the Pinterest Webview Browser
+ *
+ * @returns {Boolean}
+ */
 function checkPinterest() {
   return ua.indexOf('pinterest') > -1;
 }
 
+/**
+ * Check if the current browser is an In-app browsers, e.g Facebook, Instragram, Twitter, Pinterest
+ *
+ * @returns {Boolean}
+ */
 function checkInAppBrowser() {
   return checkFacebook() || checkTwitter() || checkInstagram() || checkPinterest();
 }
 
+/**
+ * Check if the current browser version of an In-app browsers
+ *
+ * @returns {Number}
+ */
 function checkInAppBrowserVersion() {
   // take iOS version for Apple
   if (browser.ios) {
@@ -60,6 +95,11 @@ function checkInAppBrowserVersion() {
   return 9999;
 }
 
+/**
+ * Check if the current Operative System
+ *
+ * @returns {Boolean}
+ */
 function checkOS() {
   if (browser.mac) return 'mac';
   if (browser.windows) return 'windows';

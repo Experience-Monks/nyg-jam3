@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import store, { history } from '../redux';
-import App from '../sections/App/App';
+import App from '../components/App/App';
 import detect from '../util/detect';
 
 let defaultAppComponent = <App />;
@@ -34,7 +34,7 @@ export default function() {
 
   // Webpack Hot Module Replacement API
   if (module.hot) {
-    module.hot.accept('../sections/App/App', () => {
+    module.hot.accept('../components/App/App', () => {
       render(App);
     });
   }

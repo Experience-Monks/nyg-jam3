@@ -1,9 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
-import { matchPath } from 'react-router';
-import usePassiveEvent from '../../util/use-passive-event';
+
+import Pages from '../../components/Pages/Pages';
+import RotateScreen from '../../components/Rotate/Rotate';
+
 import settings from '../../data/settings';
+import appResize from '../../util/app-resize';
+import detect from '../../util/detect';
+import usePassiveEvent from '../../util/use-passive-event';
+
 import { setWindowSize } from '../../redux/actions/app';
 import routes from '../../routes';
 
@@ -22,19 +29,16 @@ class App extends Component {
   }
 
   onAppResize = () => {
-    this.props.setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-  };
-
-  matchPath = path => matchPath(window.location.pathname, path);
-
-  renderRoute = () => {
-    return routes
-      .filter(({ path }) => this.matchPath(path))
-      .map(({ Component, key, props }) => <Component key={key} {...props} history={this.props.history} />);
+    appResize();
   };
 
   render() {
-    return <div id="App">{this.renderRoute()}</div>;
+    return (
+      <Fragment>
+        <Pages />
+        {detect.isMobile && <RotateScreen />}
+      </Fragment>
+    );
   }
 }
 
@@ -52,4 +56,4 @@ const mapDispatchToProps = dispatch => {
 
 App.defaultProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
