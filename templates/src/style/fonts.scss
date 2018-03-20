@@ -7,13 +7,12 @@
 $base-path: '../assets/fonts/';
 
 @font-face {
-  font-family: Calibre-Regular;
-  font-weight: 500;
+  font-family: Spectral;
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0020-02dc;
-  src: local('Calibre'), local(Calibre), local('Calibre-Regular'),
-    url('#{$base-path}calibre/Calibre-Regular.woff2') format('woff2'),
-    url('#{$base-path}calibre/Calibre-Regular.woff') format('woff'),
-    url('#{$base-path}calibre/Calibre-Regular.ttf') format('truetype');
+  src: local('Spectral'), local(Spectral), local('Spectral-Regular'),
+    url('#{$base-path}Spectral/Spectral-Regular.woff2') format('woff2'),
+    url('#{$base-path}Spectral/Spectral-Regular.woff') format('woff'),
+    url('#{$base-path}Spectral/Spectral-Regular.ttf') format('truetype');
 }
