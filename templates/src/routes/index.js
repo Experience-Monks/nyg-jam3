@@ -1,11 +1,10 @@
 import loadable from 'react-loadable';
-import RotateScreen from '../components/Rotate/Rotate';
 
 const routes = [
   {
     key: 'About',
     Component: loadable({
-      loader: () => import('../sections/About/About'),
+      loader: () => import('../pages/About/About'),
       loading: () => null
     }),
     path: {
@@ -16,7 +15,7 @@ const routes = [
   {
     key: 'NotFound',
     Component: loadable({
-      loader: () => import('../components/NotFound/NotFound'),
+      loader: () => import('../pages/NotFound/NotFound'),
       loading: () => null
     }),
     path: {
@@ -27,7 +26,7 @@ const routes = [
   {
     key: 'Landing',
     Component: loadable({
-      loader: () => import('../sections/Landing/Landing'),
+      loader: () => import('../pages/Landing/Landing'),
       loading: () => null
     }),
     path: {

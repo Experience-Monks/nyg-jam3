@@ -1,9 +1,11 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { matchPath } from 'react-router';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './Pages.css';
 import checkProps from '../../util/check-props';
+import routes from '../../routes';
 
 class Pages extends React.PureComponent {
   matchPath = path => matchPath(window.location.pathname, path);

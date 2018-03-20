@@ -12,7 +12,6 @@ import detect from '../../util/detect';
 import usePassiveEvent from '../../util/use-passive-event';
 
 import { setWindowSize } from '../../redux/actions/app';
-import routes from '../../routes';
 
 class App extends Component {
   componentWillMount() {
