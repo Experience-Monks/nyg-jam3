@@ -25,14 +25,6 @@ const routes = [
     }
   },
   {
-    key: 'RotateScreen',
-    Component: RotateScreen,
-    path: {
-      path: '/rotate',
-      exact: true
-    }
-  },
-  {
     key: 'Landing',
     Component: loadable({
       loader: () => import('../sections/Landing/Landing'),
