@@ -4,6 +4,15 @@
 // http://sass-lang.com/documentation/file.SASS_REFERENCE.html#mixins
 // Add comment to every function
 
+//
+// https://github.com/eduardoboucas/include-media
+// Include-media is a sass library that helps write consistent, manageable, and size agnostic
+// media-queries.
+//
+@import 'include-media/dist/_include-media';
+$breakpoints: ('phone': 320px, 'phablet': 480px, 'tablet': 768px, 'desktop': 1024px, 'full': 1280px, 'large' : 1600px)
+  !default;
+
 @import 'vars.scss';
 
 /// Set Calibri Regular as font family
