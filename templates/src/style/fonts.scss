@@ -12,7 +12,7 @@ $base-path: '../assets/fonts/';
   font-style: normal;
   font-display: swap;
   src: local('Spectral'), local(Spectral), local('Spectral-Regular'),
-    url('#{$base-path}Spectral/Spectral-Regular.woff2') format('woff2'),
-    url('#{$base-path}Spectral/Spectral-Regular.woff') format('woff'),
-    url('#{$base-path}Spectral/Spectral-Regular.ttf') format('truetype');
+    url('#{$base-path}Spectral/woff2/Spectral-Regular.woff2') format('woff2'),
+    url('#{$base-path}Spectral/woff/Spectral-Regular.woff') format('woff'),
+    url('#{$base-path}Spectral/ttf/Spectral-Regular.ttf') format('truetype');
 }
