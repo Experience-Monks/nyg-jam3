@@ -9,9 +9,24 @@
 // Include-media is a sass library that helps write consistent, manageable, and size agnostic
 // media-queries.
 //
+// eg.
+// body {
+//   color : #FFF;
+//   @include media(">phone", "<=tablet") {
+//     color : #DDD;
+//   }
+// }
+//
 @import 'include-media/dist/_include-media';
-$breakpoints: ('phone': 320px, 'phablet': 480px, 'tablet': 768px, 'desktop': 1024px, 'full': 1280px, 'large' : 1600px)
-  !default;
+// prettier-ignore
+$breakpoints: (
+  'phone': 320px,
+  'phablet': 480px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'full': 1280px,
+  'large' : 1600px
+) !default;
 
 @import 'vars.scss';
 
