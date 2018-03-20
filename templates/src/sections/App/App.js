@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
-
-import Landing from '../Landing/Landing';
-import { AsyncAbout, AsyncNotFound } from '../../util/async-section-handler';
-
-import RotateScreen from '../../components/Rotate/Rotate';
-import detect from '../../util/detect';
+import { matchPath } from 'react-router';
 import usePassiveEvent from '../../util/use-passive-event';
 import settings from '../../data/settings';
-
 import { setWindowSize } from '../../redux/actions/app';
+import routes from '../../routes';
 
 class App extends Component {
   componentWillMount() {
@@ -23,7 +17,6 @@ class App extends Component {
         whyDidYouUpdate(React);
       }
     }
-
     window.addEventListener('resize', debounce(this.onAppResize, settings.resizeDebounceTime), usePassiveEvent());
     this.onAppResize();
   }
@@ -32,25 +25,16 @@ class App extends Component {
     this.props.setWindowSize({ width: window.innerWidth, height: window.innerHeight });
   };
 
-  routeRender = () => {
-    return [
-      <section id="sections" key="sections">
-        <Switch>
-          <Route exact={true} path="/" component={Landing} />
-          <Route exact={true} path="/about" component={AsyncAbout} />
-          <Route component={AsyncNotFound} />
-        </Switch>
-      </section>,
-      detect.isMobile && <RotateScreen key="rotate" />
-    ];
+  matchPath = path => matchPath(window.location.pathname, path);
+
+  renderRoute = () => {
+    return routes
+      .filter(({ path }) => this.matchPath(path))
+      .map(({ Component, key, props }) => <Component key={key} {...props} history={this.props.history} />);
   };
 
   render() {
-    return (
-      <Router>
-        <Route render={this.routeRender} />
-      </Router>
-    );
+    return <div id="App">{this.renderRoute()}</div>;
   }
 }
 

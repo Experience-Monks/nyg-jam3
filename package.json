@@ -18,8 +18,15 @@
   },
   "homepage": "https://github.com/Jam3/generator-jam3-v2#readme",
   "dependencies": {
-    "nyg": "^2.7.0"
+    "nyg": "^2.7.0",
+    "rimraf": "^2.6.2"
   },
-  "keywords": ["jam3", "project", "scaffold", "generator", "nyg"],
+  "keywords": [
+    "jam3",
+    "project",
+    "scaffold",
+    "generator",
+    "nyg"
+  ],
   "devDependencies": {}
 }
