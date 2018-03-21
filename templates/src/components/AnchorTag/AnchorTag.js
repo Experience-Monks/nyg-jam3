@@ -10,7 +10,7 @@ function AnchorTag({ className, href, target, onClick, download, text }) {
       href={href}
       onClick={onClick}
       target={target}
-      rel={target === '_blank' ? 'noopener' : ''}
+      rel={target === '_blank' ? 'noopener noreferrer' : ''}
       className={classnames(`AnchorTag`, className)}
       download={download}
     >
