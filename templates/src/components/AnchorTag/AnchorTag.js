@@ -9,6 +9,7 @@ function AnchorTag({ className, href, target, onClick, download, text }) {
     <a
       href={href}
       onClick={onClick}
+      target={target}
       rel={target === '_blank' ? 'noopener' : ''}
       className={classnames(`AnchorTag`, className)}
       download={download}
@@ -30,7 +31,7 @@ AnchorTag.propTypes = checkProps({
 AnchorTag.defaultProps = {
   className: '',
   href: '',
-  target: '',
+  target: '_self',
   onClick: f => f,
   download: false,
   text: ''
