@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './AnchorTag.css';
 import checkProps from '../../util/check-props';
+import { noop } from '../../util/basic-functions';
 
-function AnchorTag({ className, href, target, onClick, download, text }) {
+function AnchorTag({ className, href, target, onClick, download, title, children }) {
   return (
     <a
+      title={title}
       href={href}
       onClick={onClick}
       target={target}
@@ -14,27 +16,29 @@ function AnchorTag({ className, href, target, onClick, download, text }) {
       className={classnames(`AnchorTag`, className)}
       download={download}
     >
-      {text}
+      {children}
     </a>
   );
 }
 
-AnchorTag.propTypes = checkProps({
+AnchorTag.propTypes = {
   className: PropTypes.string,
   href: PropTypes.string,
   target: PropTypes.string,
   onClick: PropTypes.func,
-  download: PropTypes.bool,
-  text: PropTypes.string
-});
+  download: PropTypes.string,
+  title: PropTypes.string,
+  children: PropTypes.node
+};
 
 AnchorTag.defaultProps = {
+  title: '',
   className: '',
   href: '',
   target: '_self',
-  onClick: f => f,
-  download: false,
-  text: ''
+  onClick: noop,
+  download: '',
+  children: null
 };
 
 export default AnchorTag;
