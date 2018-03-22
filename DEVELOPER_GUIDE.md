@@ -10,6 +10,7 @@ In this guide you will find the explanation behind every feature of the boilerpl
 - [Nodejs and npm](#nodejs-and-npm)
 - [Git and LFS](#git-and-lfs)
 - [Build scripts](#build-scripts)
+- [Storybook](#storybook)
 
 ## Folder Structure
 
@@ -92,4 +93,68 @@ Don't refresh your screen all the time, save time. We are using [react-app-rewir
 
 #### Compressing images by default
 We added imagemin into the webpack pipeline, visit [react-app-rewire-imagemin-plugin](https://www.npmjs.com/package/react-app-rewire-imagemin-plugin) for more information
+
+## Components creation
+TBD
+
+1. `npm run component` & `npm run stateless-component`
+2. Architecture
+3. How to customize them
+
+
+## Storybook
+TBD
+
+How to use it, guidelines.
+
+## Performance
+TBD
+
+1. Split bundles
+2. Split redux configuration
+3. preload & precache
+4. Bundle sizes
+5. Async
+6. Passive events
+7. Debounce|throttle events
+
+## Responsiveness
+TBD
+
+1. Breakpoint handler + rems using. Pros + Cons
+
+## Unsupporting strategy
+TBD
+
+1. Included in the bundle, best practices
+
+## Animations
+TBD
+
+1. Less by default
+
+## React-Redux-Router
+TBD
+
+React v16 + React Router v4 + Redux. Don't be afraid to remove it :-)
+
+## Assets
+TBD
+
+1. Basic use of assets, how webpack include them and add hash.
+2. Async loading of some assets - in case we don't preload them
+3. SVGs
+
+## General documentation
+TBD
+
+/docs
+
+## Styling structure
+TBD
+
+1. Global files
+2. Variables - global and specific
+3. Mixins
+4. Documentation
 
