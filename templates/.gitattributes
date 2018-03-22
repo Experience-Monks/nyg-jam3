@@ -1,2 +1,2 @@
-src/assets-raw/sounds/**/* filter=lfs diff=lfs merge=lfs -text
-src/assets-raw/videos/**/* filter=lfs diff=lfs merge=lfs -text
+src/assets/sounds/**/* filter=lfs diff=lfs merge=lfs -text
+src/assets/videos/**/* filter=lfs diff=lfs merge=lfs -text
