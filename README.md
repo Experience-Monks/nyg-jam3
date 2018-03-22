@@ -47,6 +47,18 @@ By default, runs tests related to files changed since the last commit.
 
 [Read more about testing.](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests)
 
+## Developer Contribution Guide
+If you are looking to contribute with the generator is important to read the [Developer Contribution Guide](https://github.com/Jam3/generator-jam3-v2/blob/master/CONTRIBUTING.md)
+
+### Easy setup
+#### Contribute with boilerplate
+1. Go to `templates`
+2. Run `npm i`
+3. Ready to go, everything is inside that folder
+
+#### Contribute with the generation
+1. Review `index.js`, everything is there
+
 ## Developer Guide
 
 We are using `react-scripts` as base; you can checkout their [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md), all applies to our application
