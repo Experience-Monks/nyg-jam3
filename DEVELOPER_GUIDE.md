@@ -9,6 +9,7 @@ In this guide you will find the explanation behind every feature of the boilerpl
 - [Code styling](#code-styling)
 - [Nodejs and npm](#nodejs-and-npm)
 - [Git and LFS](#git-and-lfs)
+- [Build scripts](#build-scripts)
 
 ## Folder Structure
 
@@ -72,3 +73,23 @@ You will find the Git LFS configuration in `.gitattribute`, currently we are tra
 Before add your files to Git LFS have in mind a couple options:
 1. Evaluate host those files outside of the repository, could be a CDN
 2. In case you want to trick the cache and add a hash for those files use them inside specific components instead of the public folder
+
+## Build scripts
+Our build scripts are based on [react-scripts](https://www.npmjs.com/package/react-scripts), and under the hood is using Webpack with different configurations for develop and production. The default configurations are stable and supported for the community.
+
+To customize the current build pipelines, refer to the file [config-overrides.js](https://github.com/Jam3/generator-jam3-v2/blob/master/templates/config-overrides.js). If you wanna read more about it, please visit the [react-app-rewired](https://github.com/timarney/react-app-rewired) repository.
+
+### Built-in Customizations
+
+#### Visualizer
+Dependencies webpack visualizer, visit [npm](https://www.npmjs.com/package/webpack-visualizer-plugin) for more information
+
+#### Custom ESLint
+We use the same rules than react-scripts plus some customizations
+
+#### Hot Module Reload
+Don't refresh your screen all the time, save time. We are using [react-app-rewire-hot-loader](https://www.npmjs.com/package/react-app-rewire-hot-loader)
+
+#### Compressing images by default
+We added imagemin into the webpack pipeline, visit [react-app-rewire-imagemin-plugin](https://www.npmjs.com/package/react-app-rewire-imagemin-plugin) for more information
+
