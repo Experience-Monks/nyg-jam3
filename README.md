@@ -1,6 +1,6 @@
 # Jam3 Generator [![stable](http://hughsk.github.io/stability-badges/dist/stable.svg)](http://github.com/hughsk/stability-badges)
 
-Jam3 Frontend App Generator with no build configuration and no prompts
+Jam3 Frontend App Generator with no build configuration and no prompts.
 
 * [Generate an App](#generate-an-app) – How to generate a new app
 * [Developer Contribution Guide](https://github.com/Jam3/generator-jam3-v2/blob/master/CONTRIBUTING.md) – Read first if you are a developer
