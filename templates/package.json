@@ -11,7 +11,8 @@
     "build-css": "node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/",
     "build-js": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
     "linters": "npm run js-lint && npm run sass-lint",
@@ -106,17 +107,8 @@
   "lint-staged": {
     "gitDir": "../",
     "linters": {
-      "private/prj-frontend/src/**/*.{js,jsx,json,css}": [
-        "prettier --write",
-        "git add"
-      ]
+      "private/prj-frontend/src/**/*.{js,json,scss}": ["prettier --write", "git add"]
     }
   },
-  "browserslist": [
-    "Explorer >= 10",
-    "Safari >= 9",
-    "Chrome >= 30",
-    "Firefox >= 40",
-    "iOS >= 9"
-  ]
+  "browserslist": ["Explorer >= 10", "Safari >= 9", "Chrome >= 30", "Firefox >= 40", "iOS >= 9"]
 }
