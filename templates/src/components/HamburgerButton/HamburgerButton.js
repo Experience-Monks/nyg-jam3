@@ -8,7 +8,7 @@ import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
 import { noop } from '../../util/basic-functions';
 
-const STATES = {
+export const STATES = {
   idle: 'idle',
   close: 'close',
   back: 'back'
@@ -29,8 +29,8 @@ export default class HamburgerButton extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.buttonState !== this.props.buttonState) {
-      this.setState({ buttonState: nextProps.buttonState });
+    if (nextProps.state !== this.props.state) {
+      this.setState({ buttonState: nextProps.state });
     }
 
     if (nextProps.isMouseOver !== this.props.isMouseOver) {

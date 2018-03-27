@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import './Nav.css';
 
-import HamburgerButton from '../HamburgerButton/HamburgerButton';
+import HamburgerButton, { STATES } from '../HamburgerButton/HamburgerButton';
 
 import { setIsMobileMenuOpen } from '../../redux/actions/nav';
 
@@ -17,16 +17,22 @@ import settings from '../../data/settings';
 class Nav extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      buttonState: STATES.idle
+    };
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.layout !== nextProps.layout) {
+      if (nextProps.layout.includes(instance.names.desktopLayout)) {
+        this.props.isMobileMenuOpen && this.props.setIsMobileMenuOpen(false);
+      }
       return true;
     }
   }
 
   handleHamburgerClick = state => {
+    this.setState({ buttonState: state });
     this.props.setIsMobileMenuOpen(!this.props.isMobileMenuOpen);
 
     if (!this.props.isMobileMenuOpen) {
@@ -36,12 +42,21 @@ class Nav extends React.PureComponent {
     }
   };
 
+  handleLinkClick = e => {
+    if (instance.isDesktopLayout()) return;
+
+    this.handleHamburgerClick();
+    this.setState({ buttonState: STATES.idle });
+  };
+
   getNavList = () => {
     return (
       <ul className="nav-list">
         {this.props.routes.map((route, index) => (
           <li key={index} className="nav-item">
-            <Link to={route.path}>{route.name}</Link>
+            <Link to={route.path} onClick={this.handleLinkClick}>
+              {route.name}
+            </Link>
           </li>
         ))}
       </ul>
@@ -58,7 +73,9 @@ class Nav extends React.PureComponent {
             </Link>
           )}
           {instance.isDesktopLayout() && this.getNavList()}
-          {instance.isMobileLayout() && <HamburgerButton onClick={this.handleHamburgerClick} />}
+          {instance.isMobileLayout() && (
+            <HamburgerButton onClick={this.handleHamburgerClick} state={this.state.buttonState} />
+          )}
         </nav>
         {instance.isMobileLayout() && (
           <nav
