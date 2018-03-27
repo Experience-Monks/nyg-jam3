@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 
 import './Nav.css';
 
-import HamburgerButton, { STATES } from '../HamburgerButton/HamburgerButton';
+import HamburgerButton from '../HamburgerButton/HamburgerButton';
+
+import { setIsMobileMenuOpen } from '../../redux/actions/nav';
 
 import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
@@ -18,29 +20,18 @@ class Nav extends React.PureComponent {
     this.state = {};
   }
 
-  componentDidMount() {
-    animate.set(this.container, { autoAlpha: 0 });
-    this.animateIn();
-  }
-
   componentWillReceiveProps(nextProps) {
-    if (this.props.layout !== nextProps) {
+    if (this.props.layout !== nextProps.layout) {
       return true;
     }
   }
 
-  animateIn = () => {
-    animate.to(this.container, 0.5, { autoAlpha: 1 });
-  };
-
-  animateOut = () => {
-    animate.to(this.container, 0.5, { autoAlpha: 0 });
-  };
-
   handleHamburgerClick = state => {
-    if (state === STATES.close) {
+    this.props.setIsMobileMenuOpen(!this.props.isMobileMenuOpen);
+
+    if (!this.props.isMobileMenuOpen) {
       animate.to(this.mobileContainer, 0.3, { autoAlpha: 1, x: '0%' });
-    } else if (state === STATES.idle) {
+    } else {
       animate.to(this.mobileContainer, 0.3, { autoAlpha: 0, x: '100%' });
     }
   };
@@ -60,7 +51,7 @@ class Nav extends React.PureComponent {
   render() {
     return (
       <Fragment>
-        <nav id="top-nav" className={this.props.className} ref={r => (this.container = r)}>
+        <nav id="top-nav" className={this.props.className} aria-label="Main Navigation">
           {this.props.logoSrc && (
             <Link to="/" aria-label="jam3 home link">
               <img className="nav-logo" src={this.props.logoSrc} alt={this.props.logoAlt} />
@@ -70,7 +61,12 @@ class Nav extends React.PureComponent {
           {instance.isMobileLayout() && <HamburgerButton onClick={this.handleHamburgerClick} />}
         </nav>
         {instance.isMobileLayout() && (
-          <nav id="side-nav" className={this.props.className} ref={r => (this.mobileContainer = r)}>
+          <nav
+            id="side-nav"
+            className={this.props.className}
+            aria-label="Mobile Side Navigation"
+            ref={r => (this.mobileContainer = r)}
+          >
             {this.getNavList()}
           </nav>
         )}
@@ -84,7 +80,9 @@ Nav.propTypes = checkProps({
   logoSrc: PropTypes.string,
   logoAlt: PropTypes.string,
   links: PropTypes.array,
-  layout: PropTypes.array
+  layout: PropTypes.array,
+  isMobileMenuOpen: PropTypes.bool,
+  setIsMobileMenuOpen: PropTypes.func
 });
 
 Nav.defaultProps = {
@@ -105,12 +103,15 @@ Nav.defaultProps = {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    layout: state.layout
+    layout: state.layout,
+    isMobileMenuOpen: state.isMobileMenuOpen
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    setIsMobileMenuOpen: val => dispatch(setIsMobileMenuOpen(val))
+  };
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Nav));

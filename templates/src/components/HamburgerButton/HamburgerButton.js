@@ -8,7 +8,7 @@ import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
 import { noop } from '../../util/basic-functions';
 
-export const STATES = {
+const STATES = {
   idle: 'idle',
   close: 'close',
   back: 'back'
@@ -104,7 +104,7 @@ export default class HamburgerButton extends PureComponent {
         onClick={this.handleClick}
         ref={r => (this.container = r)}
         tabIndex={this.props.tabIndex}
-        aria-label="mobile hamburger button"
+        aria-label="mobile menu button"
       >
         <div className="bars-container">{[0, 1, 2].map(item => <span key={item} className={`bar ${item}`} />)}</div>
       </button>
