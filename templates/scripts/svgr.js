@@ -22,7 +22,7 @@ const chalk = require('chalk');
  * @property presicion (Set number of digits in the fractional part)
  * @property ref (To hook into the ref of the svg components)
  *
- * See more details at https://github.com/smooth-code/svgr
+ * @see more details at https://github.com/smooth-code/svgr
  */
 const SVGR_OPTS = {
   prettier: true,
@@ -76,6 +76,21 @@ const waitFor = (ms = 0) => new Promise(resolve => setTimeout(resolve, ms));
  */
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+/**
+ * Convert string into camel case string
+ *
+ * @param {string} string
+ * @returns {string} (camelcase string)
+ */
+function toCamelCase(string) {
+  return string.replace(/[^A-Za-z0-9]/g, ' ').replace(/^\w|[A-Z]|\b\w|\s+/g, function(match, index) {
+    if (+match === 0 || match === '-' || match === '.') {
+      return ''; // or if (/\s+/.test(match)) for white spaces
+    }
+    return index === 0 ? match.toLowerCase() : match.toUpperCase();
+  });
 }
 
 /**
@@ -160,7 +175,7 @@ function generateSvgComponents(svgs) {
   svgs.forEach(file => {
     fs.readFile(file, 'utf8', (err, content) => {
       var filename = file.replace(/^.*[\\/]/, '');
-      const outputFilename = capitalizeFirstLetter(filename.split('.')[0]);
+      const outputFilename = capitalizeFirstLetter(toCamelCase(filename.split('.')[0]));
       const filePath = path.join(COMPONENT_PATH, noSubDir ? '' : outputFilename);
 
       try {

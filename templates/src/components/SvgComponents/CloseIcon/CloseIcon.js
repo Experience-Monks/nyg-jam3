@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Close = props => (
+const CloseIcon = props => (
   <svg viewBox="0 0 88 88" {...props}>
     <title>Dismiss</title>
     <g stroke="#063855" strokeWidth={2} fill="none" fillRule="evenodd" strokeLinecap="square">
@@ -9,4 +9,4 @@ const Close = props => (
   </svg>
 );
 
-export default Close;
+export default CloseIcon;
