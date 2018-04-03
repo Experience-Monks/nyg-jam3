@@ -1,12 +1,14 @@
 /**
- * List of node script arguments
+ * Converting raw svgs into React component
  *
+ * List of the script argument
  * @argument -r (Root dirotory, SvgComponents by default)
- * @argument -noSubDir (No sub-directory, false by default)
- * @argument -index-js (Generate [svg file name].js by default.
+ * @argument --noSubDir (No sub-directory, false by default)
+ * @argument --index-js (Generate [svg file name].js by default.
  *                      If noSubDir is true, noIndexJs will be true)
+ *
+ * @example (node svg-component.js -r SvgComponents --noSubDir --index-js)
  */
-
 const fs = require('fs');
 const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
