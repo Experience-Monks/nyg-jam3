@@ -4,6 +4,8 @@ import classnames from 'classnames';
 
 import './NotFound.css';
 
+import NotFoundIcon from '../../components/SvgComponents/NotFoundIcon/NotFoundIcon';
+
 import checkProps from '../../util/check-props';
 
 const NotFound = props => {
@@ -11,7 +13,12 @@ const NotFound = props => {
     className: classnames('NotFound', props.className)
   };
 
-  return <div {...componentProps}>NotFound component</div>;
+  return (
+    <div {...componentProps}>
+      <NotFoundIcon width="200px" height="120px" />
+      <p>NotFound component</p>
+    </div>
+  );
 };
 
 NotFound.propTypes = checkProps({
