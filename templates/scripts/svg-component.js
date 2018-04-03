@@ -8,7 +8,6 @@
  *                      If noSubDir is true, noIndexJs will be true)
  *
  * @example (node svg-component.js -r SvgComponents --noSubDir --index-js)
- * @example (npm run svg-component [filename].svg [filename.svg])
  */
 const fs = require('fs');
 const path = require('path');
@@ -104,15 +103,15 @@ function toCamelCase(string) {
 function checkDirectory(directory) {
   try {
     fs.statSync(directory);
-    console.log(`${chalk.green('[info]')} path is existed : ${directory}`);
+    console.log(`[checkDirectory] path is existed : ${directory}`);
   } catch (error) {
     try {
       fs.mkdirSync(directory);
-      console.log(`${chalk.green('[info]')} new directory has been created : ${directory}`);
+      console.log(`[checkDirectory] new directory has been created : ${directory}`);
     } catch (error) {
       console.error(chalk.red(`[Error] fail to create a directory : ${directory}`));
       console.error(chalk.red(error));
-      process.exit(0);
+      process.exit(1);
     }
   }
 }
@@ -145,12 +144,13 @@ function getAllFiles(directory) {
  * @param {array} files (an array of files and directories)
  */
 async function cleanFiles(allFiles) {
+  console.log(`\n\n------------------Cleaning existing files--------------------\n`);
   await asyncForEach(allFiles, async file => {
     await waitFor();
     if (fs.statSync(file).isDirectory()) {
       try {
         fs.rmdirSync(file);
-        console.log(`${chalk.green('[info]')} directory ${file} is deleted`);
+        console.log(`[DELETE] directory ${file}`);
       } catch (error) {
         console.error(chalk.red(`[Error] fail to delete a directory : ${file}`));
         console.error(`${error}`);
@@ -158,7 +158,7 @@ async function cleanFiles(allFiles) {
     } else if (fs.statSync(file).isFile()) {
       try {
         fs.unlinkSync(file);
-        console.log(`${chalk.green('[info]')} file ${file} is deleted`);
+        console.log(`[DELETE] file ${file}`);
       } catch (error) {
         console.error(chalk.red(`[Error] fail to delete a file : ${file}`));
         console.error(`${error}`);
@@ -173,6 +173,7 @@ async function cleanFiles(allFiles) {
  * @param {array} svgs (an array of svgs in the component directory)
  */
 function generateSvgComponents(svgs) {
+  console.log(`\n\n-------------------Generate SVG COMPONENT--------------------\n`);
   svgs.forEach(file => {
     fs.readFile(file, 'utf8', (err, content) => {
       var filename = file.replace(/^.*[\\/]/, '');
@@ -188,7 +189,7 @@ function generateSvgComponents(svgs) {
           const finalFile = path.join(filePath, useIndexJs ? 'index.js' : outputFilename + '.js');
           fs.writeFile(finalFile, svgr_content, err => {
             if (err) return;
-            console.log(chalk.green(`[Svg Component] ${finalFile} Successful!`));
+            console.log(`[Svg Component] ${finalFile} Successful!`);
           });
         });
       } catch (error) {
@@ -204,54 +205,13 @@ function generateSvgComponents(svgs) {
  */
 console.log(`-------------------SCRIPT CONFIG--------------------
 parentDir   : ${parentDir}
-noSubDir    : ${noSubDir}
-useIndexJs  : ${useIndexJs}
+noSubDir  : ${noSubDir}
+useIndexJs : ${useIndexJs}
 ----------------------------------------------------\n`);
 
-async function main() {
-  checkDirectory(COMPONENT_PATH);
-  let allFiles = [];
-  let svgs = [];
+checkDirectory(COMPONENT_PATH);
+const allFiles = getAllFiles(COMPONENT_PATH);
 
-  if (argv._.length === 0) {
-    console.log(`${chalk.green('[info]')} Transforming a whole SVG(s) in : ${COMPONENT_PATH}`);
-    allFiles = getAllFiles(COMPONENT_PATH);
-    svgs = files.filter(file => path.extname(file) === '.svg');
-  } else if (argv._.length > 0) {
-    console.log(`${chalk.green('[info]')} Transforming selected SVG(s) : ${argv._}`);
-    await asyncForEach(argv._, async svgfile => {
-      try {
-        fs.statSync(path.join(COMPONENT_PATH, svgfile));
-        const outputFilename = capitalizeFirstLetter(toCamelCase(svgfile.split('.')[0]));
-        const dirPath = path.join(COMPONENT_PATH, noSubDir ? '' : outputFilename);
-        const filePath = path.join(COMPONENT_PATH, noSubDir ? '' : outputFilename, `${outputFilename}.js`);
-
-        try {
-          if (fs.statSync(dirPath).isDirectory()) {
-            directories.push(dirPath);
-          }
-
-          if (fs.statSync(filePath).isFile()) {
-            files.push(filePath);
-          }
-        } catch (error) {
-          console.log(`${chalk.green('[info]')} Path is clean`);
-        }
-
-        svgs.push(path.join(COMPONENT_PATH, svgfile));
-        await waitFor();
-      } catch (error) {
-        console.error(chalk.red(`[ERROR] svg file, ${svgfile}, is not existed.`));
-        process.exit(0);
-      }
-    });
-
-    allFiles = [...files.filter(file => path.extname(file) !== '.svg'), ...directories];
-  }
-
-  cleanFiles(allFiles).then(() => {
-    if (svgs.length > 0) generateSvgComponents(svgs);
-  });
-}
-
-main();
+cleanFiles(allFiles).then(() => {
+  generateSvgComponents(files.filter(file => path.extname(file) === '.svg'));
+});
