@@ -214,10 +214,11 @@ async function main() {
   let svgs = [];
 
   if (argv._.length === 0) {
+    console.log(`${chalk.green('[info]')} Transforming a whole SVG(s) in : ${COMPONENT_PATH}`);
     allFiles = getAllFiles(COMPONENT_PATH);
     svgs = files.filter(file => path.extname(file) === '.svg');
   } else if (argv._.length > 0) {
-    console.log('Transforming', argv._);
+    console.log(`${chalk.green('[info]')} Transforming selected SVG(s) : ${argv._}`);
     await asyncForEach(argv._, async svgfile => {
       try {
         fs.statSync(path.join(COMPONENT_PATH, svgfile));
