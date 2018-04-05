@@ -203,14 +203,20 @@ TBD
     src/components/SvgComponents/SomeIcon/SomeIcon.js
     ```
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Update svgr script handles only selected SVG(s)
     3. Transform selected SVG(s), one or more svg, by running a node script. Basic idea/setting is the same as #2.
     ```bash
     // Run command below
     $ npm run svg-component close-icon.svg more.svg
     ```
+<<<<<<< HEAD
 =======
     3. Transform a single SVG is working in progress
 >>>>>>> Update developer guide for svgs
+=======
+>>>>>>> Update svgr script handles only selected SVG(s)
 
 ## General documentation
 
