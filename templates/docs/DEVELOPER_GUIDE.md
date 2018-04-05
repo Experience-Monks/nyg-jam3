@@ -202,7 +202,11 @@ TBD
     src/components/SvgComponents/Logo/Logo.js
     src/components/SvgComponents/SomeIcon/SomeIcon.js
     ```
-    3. Transform a single SVG is working in progress
+    3. Transform selected SVG(s), one or more svg, by running a node script. Basic idea/setting is the same as #2.
+    ```bash
+    // Run command below
+    $ npm run svg-component close-icon.svg more.svg
+    ```
 
 ## General documentation
 
