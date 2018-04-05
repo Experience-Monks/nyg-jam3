@@ -182,7 +182,27 @@ TBD
 
 1. Basic use of assets, how webpack include them and add hash.
 2. Async loading of some assets - in case we don't preload them
-3. SVGs
+3. SVGs - there are two ways of using SVGs.
+    1. Importing SVGs like other modules (react + webapck as url)
+    ```
+    import logo from './assets/logo.svg';
+    ...
+    <img src={logo} className="Landing-logo" alt="logo" />
+    ```
+    2. Generate SVGs into React component by running a node script. This option is to transform a whole directory. By default, `SvgComponents` in `src/components` is where all svg must be. All SVGs will be stored in `SvgComponents` folder and Svg Components will be created under new folder. Please check out `svg-component.js` script in `scripts` folder.
+    
+          NOTE: Please double check newly generated Svg components if there is any `eslint` issues.
+    ```bash
+    // Run command below
+    $ npm run svg-component
+
+    // Example result
+    src/components/SvgComponents/logo.svg
+    src/components/SvgComponents/some-icon.svg
+    src/components/SvgComponents/Logo/Logo.js
+    src/components/SvgComponents/SomeIcon/SomeIcon.js
+    ```
+    3. Transform a single SVG is working in progress
 
 ## General documentation
 
