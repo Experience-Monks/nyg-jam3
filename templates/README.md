@@ -3,7 +3,8 @@
 [Project brief description]
 
 * [Technical Information](#technical-information)
-* [Getting Started](#getting-started)
+* [Jam3 Generator](#jam3-generator)
+* [Getting Started App](#getting-started-app)
 * [Running the tests](#running-the-tests)
 * [Environments](#environments)
 * [Accounts](#accounts)
@@ -19,6 +20,11 @@
 [Technical stack]
 
 [Important links, documentation]
+
+## Jam3 Generator App
+
+This application was created using the [Jam3 Generator](https://github.com/Jam3/generator-jam3-v2). To checkout the out
+of the box features read our [Developer guide](docs/DEVELOPER_GUIDE.md)
 
 ## Getting Started
 

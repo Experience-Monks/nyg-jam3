@@ -1,20 +1,25 @@
-
 # Jam3 Generator Developer Guide
 
-In this guide you will find the explanation behind every feature of the boilerplate and how to use it. To checkout the [base user guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md) follow the link.
+In this guide you will find the explanation behind every feature of the boilerplate and how to use it. This is a full
+new template that is using the famous `create-react-app` structure. To checkout the
+[create-react-app user guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md)
+follow the link.
 
 ## Table of Contents
-- [Folder Structure](#folder-structure)
-- [Available Scripts](#available-scripts)
-- [Code styling](#code-styling)
-- [Nodejs and npm](#nodejs-and-npm)
-- [Git and LFS](#git-and-lfs)
-- [Build scripts](#build-scripts)
-- [Storybook](#storybook)
+
+* [Folder Structure](#folder-structure)
+* [Available Scripts](#available-scripts)
+* [Code styling](#code-styling)
+* [Nodejs and npm](#nodejs-and-npm)
+* [Git and LFS](#git-and-lfs)
+* [Build scripts](#build-scripts)
+* [Storybook](#storybook)
 
 ## Folder Structure
 
-The idea of the generator is don't create magic in order to compose the final boilerplate, based on that idea everything that is inside [templates](https://github.com/Jam3/generator-jam3-v2/tree/master/templates) will be what we will generate.
+The idea of the generator is don't create magic in order to compose the final boilerplate, based on that idea everything
+that is inside [templates](https://github.com/Jam3/generator-jam3-v2/tree/master/templates) will be what we will
+generate.
 
 ## Available Scripts
 
@@ -49,7 +54,9 @@ The idea of the generator is don't create magic in order to compose the final bo
 `npm run generate-doc`: Run the documentation creation, currently just SASS
 
 ## Code styling
+
 In order to ensure the same code styling across the duration of the project we are using the next technologies:
+
 * ESLint - JS Linter, `.eslintrc`
 * StyleLint - Sass Linter, `.stylelintrc`
 * Prettier - Code Formatter, `.prettierrc`
@@ -58,56 +65,79 @@ In order to ensure the same code styling across the duration of the project we a
 More information about linters [here](https://github.com/Jam3/standards/blob/master/LINTERS_STANDARDS.md)
 
 ## Nodejs and npm
-The project has by default a file called `.nvmrc` that lock the nodejs and npm version you will use when you run the scripts, it requires to have installed `nvm`. More information [here](https://github.com/creationix/nvm#nvmrc)
 
-We included some basic information for npm in `.npmrc`, the most important is that when we install a npm package we are including a specific version. This help us to avoid weird behaviors after a package is updated and help us to track and control updates. More information [here](https://docs.npmjs.com/files/npmrc)
+The project has by default a file called `.nvmrc` that lock the nodejs and npm version you will use when you run the
+scripts, it requires to have installed `nvm`. More information [here](https://github.com/creationix/nvm#nvmrc)
+
+We included some basic information for npm in `.npmrc`, the most important is that when we install a npm package we are
+including a specific version. This help us to avoid weird behaviors after a package is updated and help us to track and
+control updates. More information [here](https://docs.npmjs.com/files/npmrc)
 
 ## Git and LFS
-To know more about the (Jam3 Git Standards)[https://github.com/Jam3/standards/blob/master/GIT_STANDARD.md] follow the link.
+
+To know more about the (Jam3 Git Standards)[https://github.com/Jam3/standards/blob/master/GIT_STANDARD.md] follow the
+link.
 
 We included a default `.gitignore` ordered by topic, please follow the addition rules to keep it consistent.
 
 You will find the Git LFS configuration in `.gitattribute`, currently we are tracking only the files inside:
+
 * src/assets/sounds
 * src/assets/videos
 
 Before add your files to Git LFS have in mind a couple options:
+
 1. Evaluate host those files outside of the repository, could be a CDN
-2. In case you want to trick the cache and add a hash for those files use them inside specific components instead of the public folder
+2. In case you want to trick the cache and add a hash for those files use them inside specific components instead of the
+   public folder
 
 ## Build scripts
-Our build scripts are based on [react-scripts](https://www.npmjs.com/package/react-scripts), and under the hood is using Webpack with different configurations for develop and production. The default configurations are stable and supported for the community.
 
-To customize the current build pipelines, refer to the file [config-overrides.js](https://github.com/Jam3/generator-jam3-v2/blob/master/templates/config-overrides.js). If you wanna read more about it, please visit the [react-app-rewired](https://github.com/timarney/react-app-rewired) repository.
+Our build scripts are based on [react-scripts](https://www.npmjs.com/package/react-scripts), and under the hood is using
+Webpack with different configurations for develop and production. The default configurations are stable and supported
+for the community.
+
+To customize the current build pipelines, refer to the file
+[config-overrides.js](https://github.com/Jam3/generator-jam3-v2/blob/master/templates/config-overrides.js). If you wanna
+read more about it, please visit the [react-app-rewired](https://github.com/timarney/react-app-rewired) repository.
 
 ### Built-in Customizations
 
 #### Visualizer
-Dependencies webpack visualizer, visit [npm](https://www.npmjs.com/package/webpack-visualizer-plugin) for more information
+
+Dependencies webpack visualizer, visit [npm](https://www.npmjs.com/package/webpack-visualizer-plugin) for more
+information
 
 #### Custom ESLint
+
 We use the same rules than react-scripts plus some customizations
 
 #### Hot Module Reload
-Don't refresh your screen all the time, save time. We are using [react-app-rewire-hot-loader](https://www.npmjs.com/package/react-app-rewire-hot-loader)
+
+Don't refresh your screen all the time, save time. We are using
+[react-app-rewire-hot-loader](https://www.npmjs.com/package/react-app-rewire-hot-loader)
 
 #### Compressing images by default
-We added imagemin into the webpack pipeline, visit [react-app-rewire-imagemin-plugin](https://www.npmjs.com/package/react-app-rewire-imagemin-plugin) for more information
+
+We added imagemin into the webpack pipeline, visit
+[react-app-rewire-imagemin-plugin](https://www.npmjs.com/package/react-app-rewire-imagemin-plugin) for more information
 
 ## Components creation
+
 TBD
 
 1. `npm run component` & `npm run stateless-component`
 2. Architecture
 3. How to customize them
 
-
 ## Storybook
+
 TBD
 
 How to use it, guidelines.
 
 ## Performance
+
 TBD
 
 1. Split bundles
@@ -119,26 +149,31 @@ TBD
 7. Debounce|throttle events
 
 ## Responsiveness
+
 TBD
 
 1. Breakpoint handler + rems using. Pros + Cons
 
 ## Unsupporting strategy
+
 TBD
 
 1. Included in the bundle, best practices
 
 ## Animations
+
 TBD
 
 1. Less by default
 
 ## React-Redux-Router
+
 TBD
 
 React v16 + React Router v4 + Redux. Don't be afraid to remove it :-)
 
 ## Assets
+
 TBD
 
 1. Basic use of assets, how webpack include them and add hash.
@@ -146,15 +181,16 @@ TBD
 3. SVGs
 
 ## General documentation
+
 TBD
 
 /docs
 
 ## Styling structure
+
 TBD
 
 1. Global files
 2. Variables - global and specific
 3. Mixins
 4. Documentation
-
