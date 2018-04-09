@@ -17,6 +17,17 @@ const defaultReducers = {
 
 // Reducers
 
+const enableBatchActions = reducers => {
+  return function(state, action) {
+    switch (action.type) {
+      case 'BATCH_ACTIONS':
+        return action.actions.reduce(reducers, state);
+      default:
+        return reducers(state, action);
+    }
+  };
+};
+
 const combine = reducers => {
   const reducerNames = Object.keys(reducers);
   Object.keys(initialState).forEach(item => {
@@ -24,7 +35,7 @@ const combine = reducers => {
       reducers[item] = (state = null) => state;
     }
   });
-  return combineReducers(reducers);
+  return enableBatchActions(combineReducers(reducers));
 };
 
 function createInitialReducer() {
@@ -38,8 +49,6 @@ reducerRegistry.setChangeListener(reducers => {
 
 // Enhancers
 
-const composedEnhancers = compose(...enhancers);
-
 if (process.env.NODE_ENV !== 'production') {
   const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
 
@@ -47,6 +56,8 @@ if (process.env.NODE_ENV !== 'production') {
     enhancers.push(devToolsExtension());
   }
 }
+
+const composedEnhancers = compose(...enhancers);
 
 // Configure Store
 
