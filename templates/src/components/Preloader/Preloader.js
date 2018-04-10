@@ -7,6 +7,7 @@ import checkProps from '../../util/check-props';
 import animate from '../../util/gsap-animate';
 import { noop } from '../../util/basic-functions';
 import { setProgress, setReady } from '../../redux/actions/preloader';
+import preloadAssets from '../../data/preload-assets';
 
 import './Preloader.css';
 
@@ -114,7 +115,7 @@ Preloader.defaultProps = checkProps({
 const mapStateToProps = (state, ownProps) => {
   return {
     progress: state.preloader.progress,
-    assets: state.preloader.assets
+    assets: preloadAssets
   };
 };
 

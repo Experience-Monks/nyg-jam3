@@ -1,14 +1,7 @@
 import keys from '../keys';
 
-const preloadList = [
-  './assets/sounds/button-click.mp3',
-  './assets/sounds/button-rollover.mp3',
-  './assets/sounds/button-sprite.mp3'
-];
-
 const defaultState = {
   preloader: {
-    assets: preloadList,
     progress: 0
   }
 };
