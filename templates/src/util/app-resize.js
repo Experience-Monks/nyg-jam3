@@ -7,7 +7,7 @@ import { wait } from './basic-functions';
 
 /**
  * Application Resize Manager
- * When the browser resizes it will update the breakpoints and update the global fontsize
+ * When the browser resizes it will update the breakpoints and update the global font size
  *
  * @param {Number} [width=window.innerWidth]
  * @param {Number} [height=window.innerHeight]
@@ -18,7 +18,6 @@ async function appResize(width = window.innerWidth, height = window.innerHeight)
   breakpointHandler.update(width, height);
   await wait();
   setGlobalFontSize(width, height);
-  return Promise.resolve();
 }
 
 export default appResize;

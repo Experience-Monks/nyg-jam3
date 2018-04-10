@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -24,4 +25,8 @@ class {{name}} extends React.PureComponent {
 
 {{name}}.defaultProps = {};
 
-export default {{name}};
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)({{name}});

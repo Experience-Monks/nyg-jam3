@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import checkProps from '../../util/check-props';
 import animate from '../../util/gsap-animate';
 
-class About extends React.PureComponent {
+class {{name}} extends React.PureComponent {
   state = {};
 
   componentDidMount() {
@@ -22,21 +22,21 @@ class About extends React.PureComponent {
 
   render() {
     return (
-      <section className={classnames('About', this.props.className)} ref={r => (this.container = r)}>
-        <h1>About</h1>
+      <section className={classnames('{{name}}', this.props.className)} ref={r => (this.container = r)}>
+        <h1>{{name}}</h1>
       </section>
     );
   }
 }
 
-About.propTypes = checkProps({
+{{name}}.propTypes = checkProps({
   className: PropTypes.string
 });
 
-About.defaultProps = {};
+{{name}}.defaultProps = {};
 
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(About);
+export default connect(mapStateToProps, mapDispatchToProps)({{name}});
