@@ -5,6 +5,7 @@ import debounce from 'lodash.debounce';
 
 import Pages from '../../components/Pages/Pages';
 import RotateScreen from '../../components/Rotate/Rotate';
+import Preloader from '../../components/Preloader/Preloader';
 
 import settings from '../../data/settings';
 import appResize from '../../util/app-resize';
@@ -35,7 +36,7 @@ class App extends React.PureComponent {
   render() {
     return (
       <Fragment>
-        <Pages />
+        {this.props.ready ? <Pages /> : <Preloader key="preloader" />}
         {detect.isMobile && <RotateScreen />}
       </Fragment>
     );
