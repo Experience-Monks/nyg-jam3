@@ -1,7 +1,7 @@
 import store from '../redux';
 import settings from '../data/settings';
 import { wait } from '../util/basic-functions';
-import { setLayout, setIsMobileLayout, setIsPhoneLayout, setIsTabletLayout } from '../redux/actions/layout';
+import { setLayout, setIsMobileLayout, setIsPhoneLayout, setIsTabletLayout } from '../redux/modules/layout';
 
 const breakpointHandler = function() {
   const names = {

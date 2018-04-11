@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { landingLoaded } from '../../redux/actions/landing';
+import { setLandingLoaded } from '../../redux/modules/landing';
 
 import logo from './assets/logo.svg';
 import './Landing.css';
 
 class Landing extends Component {
   componentDidMount() {
-    this.props.landingLoaded(true);
+    this.props.setLandingLoaded(true);
   }
 
   render() {
@@ -36,7 +36,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    landingLoaded: val => dispatch(landingLoaded(val))
+    setLandingLoaded: val => dispatch(setLandingLoaded(val))
   };
 };
 

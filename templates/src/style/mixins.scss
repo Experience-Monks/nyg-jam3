@@ -44,3 +44,12 @@
   width: $width;
   height: $height;
 }
+
+// Convert the pixels to rem for in a specific resolution, usually 1440px wide
+// @example scss Input
+//   section {
+//     height: pxToRem(200);
+//   }
+@function px-to-rem($px) {
+  @return $px * 0.1rem;
+}

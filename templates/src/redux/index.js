@@ -1,37 +1,53 @@
 import { createStore, compose, combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
-
-// Reducers
-import * as appReducers from './reducers/app';
-import * as layoutReducers from './reducers/layout';
-import * as landingReducers from './reducers/landing';
-// import * as asyncReducers from './reducers/async';
+import reducerRegistry from './reducer-registry';
+import { layoutReducer, phoneLayoutReducer, mobileLayoutReducer, tabletLayoutReducer } from './modules/layout';
 
 let store;
+const initialState = {};
+const enhancers = [];
+const defaultReducers = {
+  layout: layoutReducer,
+  phoneLayout: phoneLayoutReducer,
+  tabletLayout: tabletLayoutReducer,
+  mobileLayout: mobileLayoutReducer,
+  routing: routerReducer
+};
 
-// const rootReducer = combineReducers({
-//   ...appReducers,
-//   ...layoutReducers,
-//   ...landingReducers,
-//   ...asyncReducers,
-//   routing: routerReducer
-// });
+// Reducers
 
-function createReducer(asyncReducers) {
-  return combineReducers({
-    ...appReducers,
-    ...layoutReducers,
-    ...landingReducers,
-    routing: routerReducer,
-    ...asyncReducers
+const enableBatchActions = reducers => {
+  return function(state, action) {
+    switch (action.type) {
+      case 'BATCH_ACTIONS':
+        return action.actions.reduce(reducers, state);
+      default:
+        return reducers(state, action);
+    }
+  };
+};
+
+const combine = reducers => {
+  const reducerNames = Object.keys(reducers);
+  Object.keys(initialState).forEach(item => {
+    if (reducerNames.indexOf(item) === -1) {
+      reducers[item] = (state = null) => state;
+    }
   });
+  return enableBatchActions(combineReducers(reducers));
+};
+
+function createInitialReducer() {
+  reducerRegistry.reducers = defaultReducers;
+  return combine(defaultReducers);
 }
 
-export const history = createHistory();
+reducerRegistry.setChangeListener(reducers => {
+  store.replaceReducer(combine(reducers));
+});
 
-// const initialState = {};
-const enhancers = [];
+// Enhancers
 
 if (process.env.NODE_ENV !== 'production') {
   const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
@@ -41,32 +57,15 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
-// function enableBatchActions(reducers) {
-//   return function(state, action) {
-//     switch (action.type) {
-//       case 'BATCH_ACTIONS':
-//         return action.actions.reduce(reducers, state);
-//       default:
-//         return reducers(state, action);
-//     }
-//   };
-// }
-
 const composedEnhancers = compose(...enhancers);
 
-function configureStore(initialState) {
-  store = createStore(createReducer(), initialState, composedEnhancers);
-  store.asyncReducers = {};
+// Configure Store
+
+function configureStore() {
+  store = createStore(createInitialReducer(), initialState, composedEnhancers);
   return store;
 }
 
-export function injectAsyncReducer(name, asyncReducer) {
-  store.asyncReducers[name] = asyncReducer;
-  store.replaceReducer(createReducer(store.asyncReducers));
-}
-
-// const store = createStore(enableBatchActions(rootReducer), initialState, composedEnhancers);
-
-// export default store;
+export const history = createHistory();
 
 export default configureStore();
