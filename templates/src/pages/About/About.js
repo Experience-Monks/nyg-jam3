@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { testAsync } from '../../redux/modules/async';
 
 import './About.css';
 
 class About extends Component {
-  testAction = () => {
-    this.props.testAsync(true);
-  };
-
   render() {
-    return (
-      <div className="About">
-        About page <button onClick={this.testAction}>Dispatch action</button>
-      </div>
-    );
+    return <div className="About">About page</div>;
   }
 }
 
@@ -24,12 +15,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    testAsync: val => dispatch(testAsync(val))
-  };
-};
-
 About.defaultProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(About);
+export default connect(mapStateToProps, null)(About);
