@@ -38,16 +38,14 @@ export default class VideoTimeline extends React.PureComponent {
   };
 
   render() {
+    const progressStyle = { width: this.state.currentTime / this.props.duration * 100 + '%' };
     return (
       <div
         className={classnames('VideoTimeline', this.props.className)}
         style={this.props.style}
         ref={r => (this.container = r)}
       >
-        <div
-          className="VideoTimeline-progress"
-          style={{ width: this.state.currentTime / this.props.duration * 100 + '%' }}
-        />
+        <div className="VideoTimeline-progress" style={progressStyle} />
         <input
           type="range"
           ref={r => (this.input = r)}
