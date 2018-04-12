@@ -16,13 +16,16 @@ const captions = {
   src: './assets/captions-test.vtt'
 };
 
+const full = { width: '100vw', height: '100vh' };
+const regular = { width: '640px', height: '360px' };
+
 storiesOf('VideoPlayer', module)
   .add('Cover & Controls', () => (
     <VideoPlayer
       {...this.props}
       src={src}
       poster={poster}
-      style={{ width: '100vw', height: '100vh' }}
+      style={full}
       disableBackgroundCover={false}
       startTime={15}
       captions={captions}
@@ -37,9 +40,9 @@ storiesOf('VideoPlayer', module)
       loop={true}
       muted={true}
       hasControls={false}
-      style={{ width: '100vw', height: '100vh' }}
+      style={full}
       disableBackgroundCover={false}
       allowKeyboardControl={false}
     />
   ))
-  .add('Regular Player', () => <VideoPlayer src={src} poster={poster} style={{ width: '640px', height: '360px' }} />);
+  .add('Regular Player', () => <VideoPlayer src={src} poster={poster} style={regular} />);
