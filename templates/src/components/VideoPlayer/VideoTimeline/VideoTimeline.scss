@@ -1,0 +1,90 @@
+@import 'shared.scss';
+
+.VideoTimeline {
+  $height: 3px;
+
+  @mixin track() {
+    width: 100%;
+    height: $height;
+    background-color: rgba(red, 0.2);
+    cursor: pointer;
+    border: none;
+    color: transparent;
+  }
+
+  @mixin thumb() {
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: $height;
+  flex-grow: 1;
+
+  &-progress {
+    position: absolute;
+    height: $height;
+    background-color: red;
+  }
+
+  input {
+    margin: 0;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+
+  input[type=range]:focus {
+    border: none;
+  }
+
+  input[type=range] {
+    -webkit-appearance: none;
+    position: absolute;
+    width: 100%;
+    height: $height;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+    cursor: pointer;
+    padding: 0;
+
+    // track
+    &::-webkit-slider-runnable-track {
+      @include track;
+    }
+    &::-moz-range-track {
+      @include track;
+    }
+    &::-ms-track {
+      @include track;
+    }
+    &::-ms-tooltip {
+      display: none;
+    }
+    &::-ms-fill-lower {
+      background: transparent;
+    }
+    &::-ms-fill-upper {
+      background: transparent;
+    }
+
+    // thumb
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      @include thumb;
+    }
+    &::-moz-range-thumb {
+      @include thumb;
+    }
+    &::-ms-thumb {
+      @include thumb;
+    }
+  }
+}
