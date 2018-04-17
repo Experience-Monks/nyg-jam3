@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import './SoundButton.css';
+import Button from '../Button/Button';
 
 import checkProps from '../../util/check-props';
 import audio from '../../util/audio';
+import './SoundButton.css';
 
 export default class SoundButton extends React.PureComponent {
   constructor(props) {
@@ -30,13 +31,13 @@ export default class SoundButton extends React.PureComponent {
     return (
       <div className={classnames(`SoundButton`, this.props.className)}>
         <div style={containerStyles}>
-          <button
+          <Button
             style={buttonStyles}
             onMouseEnter={() => audio.play('button-rollover')}
             onClick={() => audio.play('button-click')}
           >
             Test single sounds
-          </button>
+          </Button>
         </div>
       </div>
     );

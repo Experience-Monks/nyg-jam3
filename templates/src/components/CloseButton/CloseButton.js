@@ -1,27 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+
+import Button from '../Button/Button';
 
 import checkProps from '../../util/check-props';
+import './CloseButton.css';
 
-export default class Button extends React.PureComponent {
+export default class CloseButton extends React.PureComponent {
   render() {
-    const { nodeRef: ref, component: Component, children, role: buttonRole, ...buttonProps } = this.props;
-    const role = Component === 'button' ? buttonRole : 'button';
+    const { className, ...buttonProps } = this.props;
 
     return (
-      <Component ref={ref} role={role} {...buttonProps}>
-        {children}
-      </Component>
+      <Button className={classnames('CloseButton', className)} {...buttonProps}>
+        <span />
+        <span />
+      </Button>
     );
   }
 }
 
-Button.propTypes = checkProps({
+CloseButton.propTypes = checkProps({
   style: PropTypes.object,
   className: PropTypes.string,
   nodeRef: PropTypes.func,
   component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-  children: PropTypes.node,
   onClick: PropTypes.func,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
@@ -41,6 +44,6 @@ Button.propTypes = checkProps({
   'aria-label': PropTypes.string
 });
 
-Button.defaultProps = {
+CloseButton.defaultProps = {
   component: 'button'
 };
