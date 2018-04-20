@@ -178,11 +178,11 @@ export default class VideoPlayer extends React.PureComponent {
     this.video.setCurrentTime(Number(currentTime));
   };
 
-  onReady = () => {
+  onReady = duration => {
     if (this.props.captions) {
       this.props.captions.src && this.setCaptions();
     }
-    this.setState({ duration: this.video.video.duration });
+    this.setState({ duration });
   };
 
   onTrackChange = () => {
