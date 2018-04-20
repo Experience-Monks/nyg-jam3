@@ -2,20 +2,26 @@
 
 .VideoTimeline {
   $height: 3px;
+  $thumb-size: px-to-rem(10);
+  $bg: red;
 
   @mixin track() {
     width: 100%;
     height: $height;
-    background-color: rgba(red, 0.2);
+    background-color: rgba($bg, 0.3);
     cursor: pointer;
     border: none;
+    outline: none;
     color: transparent;
   }
 
   @mixin thumb() {
-    width: 0;
-    height: 0;
-    background: transparent;
+    width: $thumb-size;
+    height: $thumb-size;
+    margin-top: px-to-rem(-3);
+    margin-left: px-to-rem(0.5);
+    background: $bg;
+    border-radius: 50%;
     border: none;
     outline: none;
   }
@@ -29,7 +35,7 @@
   &-progress {
     position: absolute;
     height: $height;
-    background-color: red;
+    background-color: $bg;
   }
 
   input {
@@ -38,7 +44,10 @@
 
   input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
+    -moz-appearance: none;
   }
+
+  input[type='range']::-moz-focus-outer { border: 0; }
 
   input[type=range]:focus {
     border: none;
@@ -54,6 +63,7 @@
     color: transparent;
     cursor: pointer;
     padding: 0;
+    outline: none;
 
     // track
     &::-webkit-slider-runnable-track {

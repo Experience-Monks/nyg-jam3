@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BackgroundVideo from 'react-background-video-player';
 import fullScreen from 'fullscreen-handler';
+import classnames from 'classnames';
 
 import './VideoPlayer.css';
 
@@ -49,24 +50,22 @@ export default class VideoPlayer extends React.PureComponent {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.windowWidth !== this.props.windowWidth || nextProps.windowHeight !== this.props.windowHeight) {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.windowWidth !== this.props.windowWidth || prevProps.windowHeight !== this.props.windowHeight) {
       this.onResize({
-        containerWidth: nextProps.windowWidth,
-        containerHeight: nextProps.windowHeight
+        containerWidth: this.props.windowWidth,
+        containerHeight: this.props.windowHeight
       });
     }
 
-    if (nextProps.startTime !== this.props.startTime) {
-      this.setState({ startTime: nextProps.startTime });
+    if (prevProps.startTime !== this.props.startTime) {
+      this.setState({ startTime: this.props.startTime });
     }
 
-    if (nextProps.captions && nextProps.captions.src !== this.props.captions.src) {
-      this.setCaptions(nextProps.captions);
+    if (this.props.captions && prevProps.captions.src !== this.props.captions.src) {
+      this.setCaptions(this.props.captions);
     }
-  }
 
-  componentDidUpdate(prevProps, prevState) {
     if (prevState.isPlaying !== this.state.isPlaying) {
       if (this.state.isPlaying) {
         this.props.onPlay();
@@ -183,6 +182,7 @@ export default class VideoPlayer extends React.PureComponent {
     if (this.props.captions) {
       this.props.captions.src && this.setCaptions();
     }
+    this.setState({ duration: this.video.video.duration });
   };
 
   onTrackChange = () => {
@@ -249,7 +249,7 @@ export default class VideoPlayer extends React.PureComponent {
   render() {
     return (
       <div
-        className={`VideoPlayer ${this.props.className}`}
+        className={classnames('VideoPlayer', this.props.className)}
         style={this.props.style}
         ref={r => (this.container = r)}
         onMouseMove={this.onMouseMove}
