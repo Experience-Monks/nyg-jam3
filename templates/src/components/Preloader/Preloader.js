@@ -6,7 +6,7 @@ import preloader from 'preloader';
 import checkProps from '../../util/check-props';
 import animate from '../../util/gsap-animate';
 import { noop } from '../../util/basic-functions';
-import { setProgress, setReady } from '../../redux/actions/preloader';
+import { setProgress, setReady } from '../../redux/modules/preloader';
 import preloadAssets from '../../data/preload-assets';
 
 import './Preloader.css';
