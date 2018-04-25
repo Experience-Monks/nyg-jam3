@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 
 import Pages from '../../components/Pages/Pages';
@@ -11,7 +10,8 @@ import appResize from '../../util/app-resize';
 import detect from '../../util/detect';
 import usePassiveEvent from '../../util/use-passive-event';
 
-import { setWindowSize } from '../../redux/modules/app';
+import { withProvider } from '../../contexts/app';
+import compose from '../../util/compose';
 
 class App extends React.PureComponent {
   componentDidMount() {
@@ -42,14 +42,6 @@ class App extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {};
-};
-
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-
 App.defaultProps = {};
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default compose(withRouter, withProvider)(App);
