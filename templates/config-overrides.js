@@ -3,7 +3,7 @@ const Visualizer = require('webpack-visualizer-plugin');
 const rewireEslint = require('react-app-rewire-eslint');
 const rewireReactHotLoader = require('react-app-rewire-hot-loader');
 const rewireImageminPlugin = require('react-app-rewire-imagemin-plugin');
-
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const DEBUG = false;
 
 module.exports = function override(config, env) {
@@ -25,6 +25,13 @@ module.exports = function override(config, env) {
       quality: '65-80'
     }
   });
+
+  // Preload files
+  config.plugins.push(
+    new PreloadWebpackPlugin({
+      rel: 'prefetch'
+    })
+  );
 
   DEBUG && fs.writeFile('final-cra-rewrite-config.json', JSON.stringify(config));
   return config;

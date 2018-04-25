@@ -2,7 +2,7 @@ import breakpointHandler from './breakpoint-handler';
 import setGlobalFontSize from './set-global-font-size';
 
 import store from '../redux';
-import { setWindowSize } from '../redux/actions/app';
+import { setWindowSize } from '../redux/modules/app';
 import { wait } from './basic-functions';
 
 /**
