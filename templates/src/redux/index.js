@@ -3,11 +3,13 @@ import { routerReducer } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import reducerRegistry from './reducer-registry';
 import { layoutReducer, phoneLayoutReducer, mobileLayoutReducer, tabletLayoutReducer } from './modules/layout';
+import preloaderReducer from './modules/preloader';
 
 let store;
 const initialState = {};
 const enhancers = [];
 const defaultReducers = {
+  preloader: preloaderReducer,
   layout: layoutReducer,
   phoneLayout: phoneLayoutReducer,
   tabletLayout: tabletLayoutReducer,
