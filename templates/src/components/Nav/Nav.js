@@ -7,7 +7,7 @@ import './Nav.css';
 
 import HamburgerButton, { STATES } from '../HamburgerButton/HamburgerButton';
 
-import { setIsMobileMenuOpen } from '../../redux/actions/nav';
+import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
 
 import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
