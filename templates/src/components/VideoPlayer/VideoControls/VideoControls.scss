@@ -1,0 +1,56 @@
+@import 'shared.scss';
+
+.VideoControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: px-to-rem(50);
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+
+  $margin: px-to-rem(20);
+
+  &-button {
+    width: px-to-rem(20);
+    height: px-to-rem(20);
+    margin-left: $margin;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    padding: 0;
+    text-align: inherit;
+    letter-spacing: inherit;
+    font-size: inherit;
+    text-transform: inherit;
+    color: inherit;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:first-of-type {
+      margin-right: $margin;
+    }
+
+    &:last-of-type {
+      margin-right: $margin;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-time {
+    width: px-to-rem(40);
+    color: #fff;
+    font-size: px-to-rem(15);
+    margin-left: $margin;
+  }
+}
