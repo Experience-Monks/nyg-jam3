@@ -3,6 +3,7 @@ import { routerReducer } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import reducerRegistry from './reducer-registry';
 import { layoutReducer, phoneLayoutReducer, mobileLayoutReducer, tabletLayoutReducer } from './modules/layout';
+import mainNavReducer from './modules/main-nav';
 
 let store;
 const initialState = {};
@@ -12,6 +13,7 @@ const defaultReducers = {
   phoneLayout: phoneLayoutReducer,
   tabletLayout: tabletLayoutReducer,
   mobileLayout: mobileLayoutReducer,
+  isMobileMenuOpen: mainNavReducer,
   routing: routerReducer
 };
 
