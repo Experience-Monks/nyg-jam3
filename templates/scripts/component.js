@@ -1,13 +1,23 @@
-const argv = require('minimist')(process.argv.slice(2), {
-  boolean: ['stateless']
-});
-const mkdirp = require('mkdirp');
 const path = require('path');
 const fs = require('fs');
+const mkdirp = require('mkdirp');
 const maxstache = require('maxstache');
 const chalk = require('chalk');
 
-const type = argv.stateless ? 'stateless-component' : 'component';
+const argv = require('minimist')(process.argv.slice(2), {
+  boolean: ['stateless', 'connected', 'page']
+});
+
+let type;
+if (argv.page) {
+  type = 'page';
+} else if (argv.stateless) {
+  type = 'stateless-component';
+} else if (argv.connected) {
+  type = 'connected-component';
+} else {
+  type = 'component';
+}
 
 function formatComponentName(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -21,11 +31,15 @@ if (!name) {
 
 name = formatComponentName(name);
 
-let targetfolder = argv._[1];
-targetfolder = targetfolder ? `${formatComponentName(targetfolder)}/` : '';
+let targetFolder = argv._[1];
+targetFolder = targetFolder ? `${formatComponentName(targetFolder)}/` : '';
 
 const cwd = process.cwd();
-const dir = path.resolve(__dirname, [`../src/components/`, targetfolder, name].join(''));
+const dir =
+  type === 'page'
+    ? path.resolve(__dirname, `../src/${type}s/` + name)
+    : path.resolve(__dirname, [`../src/components/`, targetFolder, name].join(''));
+
 fs.stat(dir, (err, stat) => {
   if (err) {
     write();
@@ -38,14 +52,19 @@ function write() {
   mkdirp(dir, err => {
     if (err) throw err;
 
-    const files = [
-      template(path.resolve(__dirname, 'templates/' + type + '/Component.js'), path.resolve(dir, `${name}.js`)),
-      template(path.resolve(__dirname, 'templates/' + type + '/Component.scss'), path.resolve(dir, `${name}.scss`)),
-      template(
-        path.resolve(__dirname, 'templates/' + type + '/Component-story.js'),
-        path.resolve(dir, `${name}-story.js`)
-      )
-    ];
+    const files =
+      type === 'page'
+        ? [
+            template(path.resolve(__dirname, 'templates/Page/Page.js'), path.resolve(dir, `${name}.js`)),
+            template(path.resolve(__dirname, 'templates/Page/Page.scss'), path.resolve(dir, `${name}.scss`))
+          ]
+        : [
+            template(path.resolve(__dirname, 'templates/' + type + '/Component.js'), path.resolve(dir, `${name}.js`)),
+            template(
+              path.resolve(__dirname, 'templates/' + type + '/Component.scss'),
+              path.resolve(dir, `${name}.scss`)
+            )
+          ];
 
     Promise.all(files)
       .then(() => {
@@ -58,7 +77,7 @@ function write() {
 function template(input, output) {
   const data = {
     name: name,
-    depth: targetfolder ? '../' : ''
+    depth: targetFolder ? '../' : ''
   };
   return new Promise((resolve, reject) => {
     fs.readFile(input, 'utf8', (err, str) => {

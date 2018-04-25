@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
@@ -11,10 +11,10 @@ import appResize from '../../util/app-resize';
 import detect from '../../util/detect';
 import usePassiveEvent from '../../util/use-passive-event';
 
-import { setWindowSize } from '../../redux/actions/app';
+import { setWindowSize } from '../../redux/modules/app';
 
-class App extends Component {
-  componentWillMount() {
+class App extends React.PureComponent {
+  componentDidMount() {
     // Setup performance measure tooling
     if (process.env.NODE_ENV !== 'production') {
       const { whyDidYouUpdate } = require('why-did-you-update');
@@ -42,16 +42,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    currentRoute: state.currentRoute
-  };
+const mapStateToProps = state => {
+  return {};
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setWindowSize: val => dispatch(setWindowSize(val))
-  };
+  return {};
 };
 
 App.defaultProps = {};

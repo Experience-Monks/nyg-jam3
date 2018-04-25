@@ -39,9 +39,13 @@ generate.
 
 `npm run storybook`: Run storybook
 
-`npm run component`: Script to create components with the best practices
+`npm run component`: Script to generate a pure components using best practices
 
-`npm run stateless-component`: Script to create staless component with the best practices
+`npm run stateless-component`: Script to generate a stateless component using best practices
+
+`npm run connected-component`: Script to generate a connected to the store component using best practices
+
+`npm run page`: Script to generate a connected to the store page using best practices
 
 `npm run audit-nsp`: Run NSP to check vulnerabilities
 

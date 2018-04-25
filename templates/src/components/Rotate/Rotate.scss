@@ -1,4 +1,5 @@
-/* prettier-ignore */
+@import 'shared.scss';
+
 .Rotate {
   display: flex;
   align-items: center;
@@ -14,15 +15,15 @@
   .container {
     p {
       color: #fff;
-      font-size: 15px;
+      font-size: px-to-rem(15);
       line-height: 120%;
-      margin-top: 20px;
+      margin-top: px-to-rem(20);
       text-align: center;
     }
 
     .rotate-icon {
       margin: auto;
-      width: 100px;
+      width: px-to-rem(100);
 
       svg {
         width: 100%;

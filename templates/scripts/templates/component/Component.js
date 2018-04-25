@@ -6,24 +6,15 @@ import './{{name}}.css';
 
 import checkProps from '../../{{depth}}util/check-props';
 
-export default class {{name}} extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+class {{name}} extends React.PureComponent {
+  state = {};
 
   componentDidMount() {}
 
-  componentWillReceiveProps(nextProps) {}
+  componentDidUpdate(prevProps, prevState) {}
 
   render() {
-    return (
-      <div
-        className={classnames(`{{name}}`, this.props.className)}
-      >
-        {{name}} component
-      </div>
-    );
+    return <div className={classnames(`{{name}}`, this.props.className)}>{{name}} component</div>;
   }
 }
 
@@ -31,6 +22,6 @@ export default class {{name}} extends React.PureComponent {
   className: PropTypes.string
 });
 
-{{name}}.defaultProps = {
-  className: ''
-};
+{{name}}.defaultProps = {};
+
+export default {{name}};

@@ -1,20 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-import './About.css';
+import checkProps from '../../util/check-props';
 
-class About extends Component {
+class About extends React.PureComponent {
+  state = {};
+
+  componentDidMount() {}
+
+  componentDidUpdate(prevProps, prevState) {}
+
   render() {
-    return <div className="About">About page</div>;
+    return (
+      <section className={classnames('About', this.props.className)}>
+        <h1>About</h1>
+      </section>
+    );
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    currentRoute: state.currentRoute
-  };
-};
+About.propTypes = checkProps({
+  className: PropTypes.string
+});
 
 About.defaultProps = {};
 
-export default connect(mapStateToProps, null)(About);
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(About);
