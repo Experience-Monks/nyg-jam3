@@ -42,6 +42,21 @@ $element-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.04);
 $generic-fonts: sans-serif;
 
 // ====================================================================
+// UI Bible
+//
+// Based on your designer UI Bible add those styles that applies
+// to all the site here
+// ====================================================================
+
+// Margin
+$desktop-page-margin: px-to-rem(100);
+$desktop-content-margin: px-to-rem(40);
+$tablet-page-margin: px-to-rem(80);
+$tablet-content-margin: px-to-rem(40);
+$phone-page-margin: px-to-rem(40);
+$phone-content-margin: px-to-rem(20);
+
+// ====================================================================
 // Nav bar
 // ====================================================================
 $navbar-height-mobile: 6rem;

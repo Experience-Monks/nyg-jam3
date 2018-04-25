@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node test/",
+    "linters": "npm run js-lint",
     "js-lint": "eslint './*.js' -c ./.eslintrc --quiet",
     "prepush": "echo 'Pre-push checks...' && npm run js-lint"
   },

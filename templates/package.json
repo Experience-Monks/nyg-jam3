@@ -14,11 +14,14 @@
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
+    "linters": "npm run js-lint && npm run sass-lint",
     "precommit": "echo 'Pre-commit checks...' && lint-staged",
-    "prepush": "echo 'Pre-push checks...' && npm run js-lint && npm run sass-lint",
+    "prepush": "echo 'Pre-push checks...' && npm run linters",
     "storybook": "start-storybook -p 9001 -c .storybook -s src",
     "component": "node scripts/component.js",
+    "connected-component": "node scripts/component.js --connected",
     "stateless-component": "node scripts/component.js --stateless",
+    "page": "node scripts/component.js --page",
     "audit-nsp": "nsp check",
     "audit-snyk": "snyk auth [token] && snyk test",
     "audit": "npm run audit-nsp",
@@ -38,6 +41,7 @@
   "dependencies": {
     "bowser": "1.9.2",
     "classnames": "2.2.5",
+    "fullscreen-handler": "0.0.2",
     "gsap": "1.20.4",
     "gsap-promisify": "1.0.0",
     "history": "4.7.2",
@@ -45,8 +49,8 @@
     "lodash.debounce": "4.0.8",
     "mobile-detect": "1.4.1",
     "normalize.css": "8.0.0",
-    "raf": "3.4.0",
     "react": "^16.2.0",
+    "react-background-video-player": "1.1.4",
     "react-dom": "^16.2.0",
     "react-loadable": "5.3.1",
     "react-redux": "5.0.7",
@@ -86,6 +90,7 @@
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "4.1.2",
     "nsp": "3.2.1",
+    "preload-webpack-plugin": "2.3.0",
     "prettier": "1.8.2",
     "prop-types": "15.6.1",
     "react-app-rewire-eslint": "0.2.3",
@@ -106,7 +111,7 @@
   "lint-staged": {
     "gitDir": "../",
     "linters": {
-      "private/prj-frontend/src/**/*.{js,jsx,json,css}": [
+      "private/prj-frontend/src/**/*.{js,json,scss}": [
         "prettier --write",
         "git add"
       ]

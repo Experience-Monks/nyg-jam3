@@ -1,5 +1,4 @@
 const Stats = require('stats.js');
-const raf = require('raf');
 
 module.exports = function() {
   try {
@@ -8,9 +7,9 @@ module.exports = function() {
     document.body.appendChild(stats.domElement);
     var loop = function() {
       stats.update();
-      raf(loop);
+      window.requestAnimationFrame(loop);
     };
-    raf(loop);
+    window.requestAnimationFrame(loop);
   } catch (e) {
     console.warn('Stats.js could not be loaded.');
   }

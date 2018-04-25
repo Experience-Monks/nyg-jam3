@@ -8,7 +8,6 @@
           "ignoreAtRules": ["include", "mixin", "function", "return", "if", "media"]
         }
       ],
-      "block-no-empty": true,
       "color-no-invalid-hex": true,
       "comment-no-empty": true,
       "declaration-block-no-duplicate-properties": [

@@ -18,8 +18,6 @@ const {{name}} = props => {
   className: PropTypes.string
 });
 
-{{name}}.defaultProps = {
-  className: ''
-};
+{{name}}.defaultProps = {};
 
 export default {{name}};
