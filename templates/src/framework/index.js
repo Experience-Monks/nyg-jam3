@@ -11,7 +11,7 @@ import detect from '../util/detect';
 let defaultAppComponent = <App />;
 
 if (process.env.NODE_ENV !== 'production') {
-  var AppContainer = require('react-hot-loader').AppContainer;
+  const AppContainer = require('react-hot-loader').AppContainer;
   defaultAppComponent = (
     <AppContainer>
       <App />

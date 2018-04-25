@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import { setLandingLoaded } from '../../redux/modules/landing';
@@ -7,14 +8,14 @@ import { setLandingLoaded } from '../../redux/modules/landing';
 import logo from './assets/logo.svg';
 import './Landing.css';
 
-class Landing extends Component {
+class Landing extends React.PureComponent {
   componentDidMount() {
     this.props.setLandingLoaded(true);
   }
 
   render() {
     return (
-      <div className="Landing">
+      <section className={classnames('Landing', this.props.className)}>
         <header className="Landing-header">
           <img src={logo} className="Landing-logo" alt="logo" />
           <h1 className="Landing-title">Welcome to React</h1>
@@ -23,15 +24,13 @@ class Landing extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <Link to="/about">About</Link>
-      </div>
+      </section>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {
-    currentRoute: state.currentRoute
-  };
+  return {};
 };
 
 const mapDispatchToProps = dispatch => {
