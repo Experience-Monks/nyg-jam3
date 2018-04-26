@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import checkProps from '../../util/check-props';
+import polished from '../../util/polished';
 
 class About extends React.PureComponent {
   state = {};
@@ -14,8 +15,11 @@ class About extends React.PureComponent {
 
   render() {
     return (
-      <section className={classnames('About', this.props.className)}>
-        <h1>About</h1>
+      <section
+        className={classnames('About', this.props.className)}
+        style={{ ...polished.size('100%', '100%'), ...polished.zIndex('about') }}
+      >
+        <h1 style={{ ...polished.gpu(), fontSize: polished.px(30) }}>About</h1>
       </section>
     );
   }
