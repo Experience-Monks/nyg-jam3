@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
-import store, { history } from '../redux';
+import { BrowserRouter } from 'react-router-dom';
 
 import App from '../components/App/App';
 
@@ -24,12 +22,7 @@ export default function() {
   document.body.className = [...document.body.className.split(' '), ...detect.classes].join(' ');
 
   const render = Component => {
-    ReactDOM.render(
-      <Provider store={store}>
-        <ConnectedRouter history={history}>{Component}</ConnectedRouter>
-      </Provider>,
-      target
-    );
+    ReactDOM.render(<BrowserRouter>{Component}</BrowserRouter>, target);
   };
 
   render(defaultAppComponent);

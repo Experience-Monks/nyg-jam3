@@ -1,17 +1,13 @@
 import React, { Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
-import debounce from 'lodash.debounce';
 
 import Pages from '../../components/Pages/Pages';
 import RotateScreen from '../../components/Rotate/Rotate';
 
-import settings from '../../data/settings';
-import appResize from '../../util/app-resize';
 import detect from '../../util/detect';
-import usePassiveEvent from '../../util/use-passive-event';
-
-import { withProvider } from '../../contexts/app';
 import compose from '../../util/compose';
+import { withContext as withAppContext } from '../../contexts/app';
+import { withContext as withLayoutContext } from '../../contexts/layout';
 
 class App extends React.PureComponent {
   componentDidMount() {
@@ -23,14 +19,7 @@ class App extends React.PureComponent {
         whyDidYouUpdate(React);
       }
     }
-
-    window.addEventListener('resize', debounce(this.onAppResize, settings.resizeDebounceTime), usePassiveEvent());
-    this.onAppResize();
   }
-
-  onAppResize = () => {
-    appResize();
-  };
 
   render() {
     return (
@@ -44,4 +33,4 @@ class App extends React.PureComponent {
 
 App.defaultProps = {};
 
-export default compose(withRouter, withProvider)(App);
+export default compose(withRouter, withAppContext, withLayoutContext)(App);

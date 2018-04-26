@@ -3,12 +3,11 @@ const Context = React.createContext();
 
 export class Provider extends PureComponent {
   state = {
-    windowWidth: window.innerWidth,
-    windowHeight: window.innerHeight
+    loaded: false
   };
 
-  setWindowSize = (windowWidth = this.state.windowWidth, windowHeight = this.state.windowHeight) => {
-    this.setState(() => ({ windowWidth, windowHeight }));
+  setLoaded = (loaded = this.state.loaded) => {
+    this.setState(() => ({ loaded }));
   };
 
   render() {
@@ -16,7 +15,7 @@ export class Provider extends PureComponent {
       <Context.Provider
         value={{
           ...this.state,
-          setWindowSize: this.setWindowSize
+          setLoaded: this.setLoaded
         }}
       >
         {this.props.children}
@@ -34,12 +33,9 @@ export const withProvider = Component =>
     </Provider>
   ));
 
-export const withConsumer = Component =>
-  React.forwardRef((props, ref) => <Consumer>{value => <Component {...props} {...value} ref={ref} />}</Consumer>);
+export const withConsumer = Component => props => <Consumer>{value => <Component {...props} {...value} />}</Consumer>;
 
-export const withContext = Component => {
-  return withProvider(withConsumer(Component));
-};
+export const withContext = Component => withProvider(withConsumer(Component));
 
 export default {
   Provider,

@@ -1,16 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 
-import { setLandingLoaded } from '../../redux/modules/landing';
-
+import compose from '../../util/compose';
+import forwardProps from '../../util/forward-props';
+import { withContext } from '../../contexts/landing';
+import { noop } from '../../util/basic-functions';
 import logo from './assets/logo.svg';
 import './Landing.css';
 
 class Landing extends React.PureComponent {
   componentDidMount() {
-    this.props.setLandingLoaded(true);
+    this.props.setLoaded(true);
   }
 
   render() {
@@ -29,16 +30,8 @@ class Landing extends React.PureComponent {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {};
+Landing.defaultProps = {
+  setLoaded: noop
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setLandingLoaded: val => dispatch(setLandingLoaded(val))
-  };
-};
-
-Landing.defaultProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Landing);
+export default compose(withContext, forwardProps)(Landing);
