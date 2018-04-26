@@ -28,7 +28,8 @@
     "postinstall": "npm-run-all audit build-css",
     "dependency-report": "node scripts/dependencies-report",
     "svg-component": "node scripts/svg-component.js",
-    "generate-doc": "node scripts/generate-doc"
+    "generate-doc": "node scripts/generate-doc",
+    "context-api": "node scripts/context-api.js"
   },
   "repository": {
     "type": "git",
