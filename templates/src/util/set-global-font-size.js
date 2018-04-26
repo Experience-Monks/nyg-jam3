@@ -6,19 +6,21 @@ import settings from '../data/settings';
  * @param {any} windowWidth
  * @param {any} windowHeight
  */
-function setGlobalFontSize(windowWidth, windowHeight) {
+function setGlobalFontSize(windowWidth, windowHeight, desktop = false) {
   const scale = settings.minScaleSize / settings.baseDesignWidth;
   let fontSize = settings.defaultFontSizePercent;
 
-  if (windowWidth > settings.maxScaleSize) {
-    // lock font size for max range limit
-    fontSize = settings.defaultFontSizePercent / settings.minScaleSize * settings.maxScaleSize * scale;
-  } else if (windowWidth > settings.minScaleSize) {
-    // proportionate scale font size within range
-    fontSize = settings.defaultFontSizePercent / settings.minScaleSize * windowWidth * scale;
-  } else {
-    // lock font size for min range limit
-    fontSize = settings.defaultFontSizePercent / settings.minScaleSize * settings.minScaleSize * scale;
+  if (desktop) {
+    if (windowWidth > settings.maxScaleSize) {
+      // lock font size for max range limit
+      fontSize = settings.defaultFontSizePercent / settings.minScaleSize * settings.maxScaleSize * scale;
+    } else if (windowWidth > settings.minScaleSize) {
+      // proportionate scale font size within range
+      fontSize = settings.defaultFontSizePercent / settings.minScaleSize * windowWidth * scale;
+    } else {
+      // lock font size for min range limit
+      fontSize = settings.defaultFontSizePercent / settings.minScaleSize * settings.minScaleSize * scale;
+    }
   }
 
   document.documentElement.style.fontSize = `${fontSize * settings.percentToPxMultiplier}px`;

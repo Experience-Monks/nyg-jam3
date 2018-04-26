@@ -51,7 +51,7 @@ export class Provider extends PureComponent {
 
   calculateState = (width, height) => {
     const classes = rules.filter(({ className, predicate }) => predicate(width)).map(val => val.className);
-    const isDesktop = classes.includes(names.desktopLayout);
+    const desktop = classes.includes(names.desktopLayout);
 
     rules.forEach(({ className }) => {
       if (classes.includes(className)) {
@@ -61,16 +61,14 @@ export class Provider extends PureComponent {
       }
     });
 
-    if (isDesktop) {
-      setGlobalFontSize(width, height);
-    }
+    setGlobalFontSize(width, height, desktop);
 
     return {
       layouts: classes,
       mobile: classes.includes(names.mobileLayout),
       phone: classes.includes(names.phoneLayout),
       tablet: classes.includes(names.tabletLayout),
-      desktop: isDesktop
+      desktop
     };
   };
 
