@@ -156,7 +156,7 @@ TBD
 
 TBD
 
-1. Breakpoint handler + rems using. Pros + Cons
+1. Layout context + rems using. Pros + Cons
 
 ## Unsupporting strategy
 

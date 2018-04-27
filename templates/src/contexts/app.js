@@ -2,26 +2,10 @@ import React, { PureComponent } from 'react';
 const Context = React.createContext();
 
 export class Provider extends PureComponent {
-  state = {
-    windowWidth: window.innerWidth,
-    windowHeight: window.innerHeight
-  };
-
-  setWindowSize = (windowWidth = this.state.windowWidth, windowHeight = this.state.windowHeight) => {
-    this.setState(() => ({ windowWidth, windowHeight }));
-  };
+  state = {};
 
   render() {
-    return (
-      <Context.Provider
-        value={{
-          ...this.state,
-          setWindowSize: this.setWindowSize
-        }}
-      >
-        {this.props.children}
-      </Context.Provider>
-    );
+    return <Context.Provider value={this.state}>{this.props.children}</Context.Provider>;
   }
 }
 

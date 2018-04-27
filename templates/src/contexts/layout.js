@@ -64,6 +64,8 @@ export class Provider extends PureComponent {
     setGlobalFontSize(width, height, desktop);
 
     return {
+      windowWidth: width,
+      windowHeight: height,
       layouts: classes,
       mobile: classes.includes(names.mobileLayout),
       phone: classes.includes(names.phoneLayout),
@@ -73,16 +75,7 @@ export class Provider extends PureComponent {
   };
 
   render() {
-    return (
-      <Context.Provider
-        value={{
-          ...this.state,
-          setLayout: this.setLayout
-        }}
-      >
-        {this.props.children}
-      </Context.Provider>
-    );
+    return <Context.Provider value={this.state}>{this.props.children}</Context.Provider>;
   }
 }
 

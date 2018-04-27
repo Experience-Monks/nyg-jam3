@@ -3,24 +3,14 @@ const Context = React.createContext();
 
 export class Provider extends PureComponent {
   state = {
-    loaded: false
-  };
-
-  setLoaded = (loaded = this.state.loaded) => {
-    this.setState(() => ({ loaded }));
+    loaded: false,
+    setLoaded: (loaded = this.state.loaded) => {
+      this.setState(() => ({ loaded }));
+    }
   };
 
   render() {
-    return (
-      <Context.Provider
-        value={{
-          ...this.state,
-          setLoaded: this.setLoaded
-        }}
-      >
-        {this.props.children}
-      </Context.Provider>
-    );
+    return <Context.Provider value={this.state}>{this.props.children}</Context.Provider>;
   }
 }
 
