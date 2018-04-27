@@ -28,7 +28,7 @@
     "audit": "npm run audit-nsp",
     "postinstall": "npm-run-all audit build-css",
     "dependency-report": "node scripts/dependencies-report",
-    "svg-component": "svgr",
+    "svg-component": "node scripts/svg-component.js",
     "generate-doc": "node scripts/generate-doc"
   },
   "repository": {
