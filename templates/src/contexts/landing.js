@@ -23,9 +23,13 @@ export const withProvider = Component =>
     </Provider>
   ));
 
-export const withConsumer = Component => props => <Consumer>{value => <Component {...props} {...value} />}</Consumer>;
+export const withConsumer = (Component, mapStateToProps = x => x) =>
+  React.forwardRef((props, ref) => (
+    <Consumer>{value => <Component {...props} {...mapStateToProps(value)} ref={ref} />}</Consumer>
+  ));
 
-export const withContext = Component => withProvider(withConsumer(Component));
+export const withContext = (Component, mapStateToProps = x => x) =>
+  withProvider(withConsumer(Component, mapStateToProps));
 
 export default {
   Provider,
