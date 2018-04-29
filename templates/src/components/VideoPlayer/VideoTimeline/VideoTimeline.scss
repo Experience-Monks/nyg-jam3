@@ -1,0 +1,100 @@
+@import 'shared.scss';
+
+.VideoTimeline {
+  $height: 3px;
+  $thumb-size: px-to-rem(10);
+  $bg: red;
+
+  @mixin track() {
+    width: 100%;
+    height: $height;
+    background-color: rgba($bg, 0.3);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: transparent;
+  }
+
+  @mixin thumb() {
+    width: $thumb-size;
+    height: $thumb-size;
+    margin-top: px-to-rem(-3);
+    margin-left: px-to-rem(0.5);
+    background: $bg;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+  }
+
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: $height;
+  flex-grow: 1;
+
+  &-progress {
+    position: absolute;
+    height: $height;
+    background-color: $bg;
+  }
+
+  input {
+    margin: 0;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  input[type='range']::-moz-focus-outer { border: 0; }
+
+  input[type=range]:focus {
+    border: none;
+  }
+
+  input[type=range] {
+    -webkit-appearance: none;
+    position: absolute;
+    width: 100%;
+    height: $height;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+
+    // track
+    &::-webkit-slider-runnable-track {
+      @include track;
+    }
+    &::-moz-range-track {
+      @include track;
+    }
+    &::-ms-track {
+      @include track;
+    }
+    &::-ms-tooltip {
+      display: none;
+    }
+    &::-ms-fill-lower {
+      background: transparent;
+    }
+    &::-ms-fill-upper {
+      background: transparent;
+    }
+
+    // thumb
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      @include thumb;
+    }
+    &::-moz-range-thumb {
+      @include thumb;
+    }
+    &::-ms-thumb {
+      @include thumb;
+    }
+  }
+}
