@@ -43,9 +43,9 @@ Don't forget document in the repository your new change or patch. You should use
 ## How to release a new version
 
 After a PR is merged, you should:
-1. Bump the package.json version (major, minor, patch)
-2. Create a tag (release in github)
-3. Update the CHANGELOG.md file
+1. Update the CHANGELOG.md file
+2. Bump the package.json version (major, minor, patch)
+3. Create a tag (release in github)
 
 ## Folder Structure
 
