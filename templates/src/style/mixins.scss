@@ -6,13 +6,37 @@
 
 @import 'vars.scss';
 
-/// Set Calibri Regular as font family
+/// Set Light Font as font family. This mixin's name is generic to abstract the font family name in case it changes
+/// @group Fonts
 /// @example scss Input
 ///   .landing-section {
-///     @include font-calibre-regular();
+///     @include font-light();
+///   }
+@mixin font-light() {
+  font-family: Spectral, #{$generic-fonts};
+  font-weight: 300;
+}
+
+/// Set Regular Font as font family. This mixin's name is generic to abstract the font family name in case it changes
+/// @group Fonts
+/// @example scss Input
+///   .landing-section {
+///     @include font-regular();
 ///   }
 @mixin font-regular() {
-  font-family: Calibre-Regular, #{$generic-fonts};
+  font-family: Spectral, #{$generic-fonts};
+  font-weight: 400;
+}
+
+/// Set Bold Font as font family. This mixin's name is generic to abstract the font family name in case it changes
+/// @group Fonts
+/// @example scss Input
+///   .landing-section {
+///     @include font-bold();
+///   }
+@mixin font-bold() {
+  font-family: Spectral, #{$generic-fonts};
+  font-weight: 700;
 }
 
 /// Improve animation performance for containers

@@ -46,6 +46,7 @@
     "gsap-promisify": "1.0.0",
     "history": "4.7.2",
     "howler": "2.0.9",
+    "include-media": "1.4.9",
     "lodash.debounce": "4.0.8",
     "mobile-detect": "1.4.1",
     "normalize.css": "8.0.0",
