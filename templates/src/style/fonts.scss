@@ -5,7 +5,7 @@
 // Best practices:
 // 1. Avoid load as many fonts as possible, e.x font styles, font families
 // 2. Optimize the font, remove the characters set that the site won't use: languages
-// 3. Include the unicode range in case you couldn't remove the characters
+// 3. Include the unicode range in case you couldn't remove the characters. Included just Latin by default
 // 4. Change fonts just changing the font-weight
 
 @import 'vars.scss';
