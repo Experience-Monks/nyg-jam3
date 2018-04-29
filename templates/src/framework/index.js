@@ -11,7 +11,7 @@ import detect from '../util/detect';
 let defaultAppComponent = <App />;
 
 if (process.env.NODE_ENV !== 'production') {
-  var AppContainer = require('react-hot-loader').AppContainer;
+  const AppContainer = require('react-hot-loader').AppContainer;
   defaultAppComponent = (
     <AppContainer>
       <App />
@@ -26,18 +26,18 @@ export default function() {
   const render = Component => {
     ReactDOM.render(
       <Provider store={store}>
-        <ConnectedRouter history={history}>{defaultAppComponent}</ConnectedRouter>
+        <ConnectedRouter history={history}>{Component}</ConnectedRouter>
       </Provider>,
       target
     );
   };
 
-  render(App);
+  render(defaultAppComponent);
 
   // Webpack Hot Module Replacement API
   if (module.hot) {
     module.hot.accept('../components/App/App', () => {
-      render(App);
+      render(defaultAppComponent);
     });
   }
 }

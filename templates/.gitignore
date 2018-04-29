@@ -30,3 +30,7 @@ bundle-size-analizer.html
 
 # CSS files of src
 src/**/*.css
+
+# Documentation
+public/components
+public/styleguide
