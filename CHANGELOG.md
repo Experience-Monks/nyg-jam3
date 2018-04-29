@@ -16,6 +16,9 @@ https://github.com/Jam3/generator-jam3-v2/pull/50
 * Replace licensed font for open source font
   * [PR #50](https://github.com/Jam3/generator-jam3-v2/pull/50) Feature - CSS Font and Media query
   
+### Thanks
+Thanks to @n0wak
+  
 -----------------
 
 ## [TEMPLATE] 1.0.0 (March 22, 2018)
@@ -41,3 +44,5 @@ Description
 
 * Title
   * [#commit-number](link) Commit message
+  
+### Thanks
