@@ -8,7 +8,7 @@
 
 html {
   box-sizing: border-box;
-  font-family: Spectral-Regular, sans-seif;
+  @include font-regular;
 }
 
 body {
