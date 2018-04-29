@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 
-import { setWindowSize } from '../src/redux/actions/app';
+import { setWindowSize } from '../src/redux/modules/app';
 
 import breakpointHandler from '../src/util/breakpoint-handler';
 import settings from '../src/data/settings';
@@ -29,7 +29,7 @@ class BreakpointWrap extends React.PureComponent {
     this.props.setWindowSize({ width, height });
     breakpointHandler.update(width, height);
     setGlobalFontSize(width, height);
-  };
+  }
 
   render() {
     return (
@@ -37,8 +37,7 @@ class BreakpointWrap extends React.PureComponent {
         {React.cloneElement(this.props.children, {
           windowWidth: this.props.windowWidth,
           windowHeight: this.props.windowHeight
-        })
-        }
+        })}
       </div>
     );
   }
