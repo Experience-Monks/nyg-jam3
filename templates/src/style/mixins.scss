@@ -4,31 +4,40 @@
 // http://sass-lang.com/documentation/file.SASS_REFERENCE.html#mixins
 // Add comment to every function
 
-//
-// https://github.com/eduardoboucas/include-media
-// Include-media is a sass library that helps write consistent, manageable, and size agnostic
-// media-queries.
-//
-// eg.
-// body {
-//   color : #FFF;
-//   @include media(">phone", "<=tablet") {
-//     color : #DDD;
-//   }
-// }
-//
-@import 'include-media/dist/_include-media';
-// prettier-ignore
-$breakpoints: (
-  'phone': 320px,
-  'phablet': 480px,
-  'tablet': 768px,
-  'desktop': 1024px,
-  'full': 1280px,
-  'large' : 1600px
-) !default;
-
 @import 'vars.scss';
+
+/// Set Light Font as font family. This mixin's name is generic to abstract the font family name in case it changes
+/// @group Fonts
+/// @example scss Input
+///   .landing-section {
+///     @include font-light();
+///   }
+@mixin font-light() {
+  font-family: Spectral, #{$generic-fonts};
+  font-weight: 300;
+}
+
+/// Set Regular Font as font family. This mixin's name is generic to abstract the font family name in case it changes
+/// @group Fonts
+/// @example scss Input
+///   .landing-section {
+///     @include font-regular();
+///   }
+@mixin font-regular() {
+  font-family: Spectral, #{$generic-fonts};
+  font-weight: 400;
+}
+
+/// Set Bold Font as font family. This mixin's name is generic to abstract the font family name in case it changes
+/// @group Fonts
+/// @example scss Input
+///   .landing-section {
+///     @include font-bold();
+///   }
+@mixin font-bold() {
+  font-family: Spectral, #{$generic-fonts};
+  font-weight: 700;
+}
 
 /// Improve animation performance for containers
 /// @example scss Input
