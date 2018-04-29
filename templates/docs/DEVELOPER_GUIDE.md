@@ -10,7 +10,17 @@ In this guide you will find the explanation behind every feature of the boilerpl
 - [Nodejs and npm](#nodejs-and-npm)
 - [Git and LFS](#git-and-lfs)
 - [Build scripts](#build-scripts)
+- [Built-in Customizations](#built-in-customizations)
+- [Components creation](#components-creation)
 - [Storybook](#storybook)
+- [Performance](#performance)
+- [Responsiveness](#responsiveness)
+- [Unsupporting strategy](#unsupporting-strategy)
+- [Animations](#animations)
+- [React-Redux-Router](#react-redux-router)
+- [Assets](#assets)
+- [General documentation](#general-documentation)
+- [Styling structure](#styling-structure)
 
 ## Folder Structure
 
@@ -119,7 +129,23 @@ TBD
 7. Debounce|throttle events
 
 ## Responsiveness
-TBD
+There are several ways to  tackle down this issue with the generator.
+
+### Javascript controlling the resolutions
+Javascript is listing the resolution changes and is setting classes in the HTML depending of the current resolution. Based on this approach, you should use those classes in your CSS code or Javascript (Redux) and your application will behave correctly
+
+**Pros and Cons**
+1. Pros - You have access to the same information from JS (Redux) and CSS
+2. Cons - Every time a class is set in the HTML the browser is triggering a re-render
+3. Cons - This approach is slower than using media-queries
+
+**Oportunities**
+Do the same but using media queries and move the resolution information using matchMedia
+
+### CSS controlling the resolutions
+We are using include-media to help us with the breakpoints. You can take a look to the configuration in the file `grid.scss` or read the documentation in https://github.com/eduardoboucas/include-media
+
+### Breakpoints
 
 1. Breakpoint handler + rems using. Pros + Cons
 
