@@ -4,19 +4,14 @@ const Context = createContext();
 
 export class Provider extends PureComponent {
   state = {
-    data: ''
-  };
-
-  setData = (data = this.state.data) => {
-    this.setState(() => ({ data }));
+    data: '',
+    setData: (data = this.state.data) => {
+      this.setState(() => ({ data }));
+    }
   };
 
   render() {
-    return (
-      <Context.Provider value={Object.assign(this.state, { setData: this.setData })}>
-        {this.props.children}
-      </Context.Provider>
-    );
+    return <Context.Provider value={this.state}>{this.props.children}</Context.Provider>;
   }
 }
 
