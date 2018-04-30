@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import { Link } from 'react-router-dom';
 
 import { setLandingLoaded } from '../../redux/modules/landing';
 
 import logo from './assets/logo.svg';
 import './Landing.css';
+
+import BaseLink from '../../components/BaseLink/BaseLink';
 
 class Landing extends React.PureComponent {
   componentDidMount() {
@@ -23,7 +24,7 @@ class Landing extends React.PureComponent {
         <p className="Landing-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Link to="/about">About</Link>
+        <BaseLink link="/about">About</BaseLink>
       </section>
     );
   }
