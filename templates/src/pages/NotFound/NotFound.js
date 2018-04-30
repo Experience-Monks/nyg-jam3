@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import SvgContainer from '../../components/SvgContainer/SvgContainer';
-
 import './NotFound.css';
-import notFoundSvg from '-!svg-inline-loader?classPrefix&idPrefix!./assets/404.svg';
+
+import NotFoundIcon from '../../components/SvgComponents/NotFoundIcon/NotFoundIcon';
 
 import checkProps from '../../util/check-props';
 
@@ -16,8 +15,8 @@ const NotFound = props => {
 
   return (
     <div {...componentProps}>
-      <SvgContainer svg={notFoundSvg} component="div" />
-      NotFound component
+      <NotFoundIcon width="200px" height="120px" />
+      <p>NotFound component</p>
     </div>
   );
 };

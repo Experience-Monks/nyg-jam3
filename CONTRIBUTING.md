@@ -38,6 +38,15 @@ Once you know you are the only one working on this, please assign the issue to y
 
 Please also provide a **test plan**, i.e. specify how you verified that your addition works.
 
+Don't forget document in the repository your new change or patch. You should use the README.md or DEVELOPER_GUIDE.md or FEATURES.md
+
+## How to release a new version
+
+After a PR is merged, you should:
+1. Update the CHANGELOG.md file
+2. Bump the package.json version (major, minor, patch)
+3. Create a tag (release in github)
+
 ## Folder Structure
 
 * `templates`: It has exactly the app that will be generated

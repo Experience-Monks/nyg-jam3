@@ -1,5 +1,5 @@
 ## -------- Welcome to the Jam3 Generator gitignore --------
-## 
+##
 ## Please add your generator ignores ordered by topics.
 ## See https://help.github.com/ignore-files/ for more about ignoring files.
 
@@ -10,6 +10,7 @@
 # IDEs
 .vscode
 sketch
+.idea
 
 # Node & NPM
 node_modules
