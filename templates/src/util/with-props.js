@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 /**
  * A HOC that will map props based on propTypes with
@@ -11,6 +11,5 @@ import React from 'react';
 const getPropsFromPropTypes = (propTypes, props) =>
   Object.keys(propTypes).reduce((acc, key) => ({ ...acc, [key]: props[key] }), {});
 
-export default (propTypes = {}, mapProps = x => x) => Component => props => (
-  <Component {...getPropsFromPropTypes(propTypes, props)} {...mapProps(props)} />
-);
+export default (propTypes = {}, mapProps = x => x) => Component =>
+  forwardRef((props, ref) => <Component {...getPropsFromPropTypes(propTypes, props)} {...mapProps(props)} ref={ref} />);
