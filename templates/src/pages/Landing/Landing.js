@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 
@@ -29,6 +30,10 @@ class Landing extends React.PureComponent {
     );
   }
 }
+
+Landing.propTypes = {
+  setLoaded: PropTypes.func
+};
 
 Landing.defaultProps = {
   setLoaded: noop
