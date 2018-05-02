@@ -6,11 +6,11 @@ import settings from '../data/settings';
  * @param {any} windowWidth
  * @param {any} windowHeight
  */
-function setGlobalFontSize(windowWidth, windowHeight, desktop = false) {
+function setGlobalFontSize(windowWidth, windowHeight, desktopLayout = false) {
   const scale = settings.minScaleSize / settings.baseDesignWidth;
   let fontSize = settings.defaultFontSizePercent;
 
-  if (desktop) {
+  if (desktopLayout) {
     if (windowWidth > settings.maxScaleSize) {
       // lock font size for max range limit
       fontSize = settings.defaultFontSizePercent / settings.minScaleSize * settings.maxScaleSize * scale;
