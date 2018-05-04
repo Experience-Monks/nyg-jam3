@@ -69,104 +69,104 @@
   height: $height;
 }
 
-// Convert the pixels to rem for in a specific resolution, usually 1440px wide
-// @example scss Input
-//   section {
-//     height: pxToRem(200);
-//   }
+/// Convert the pixels to rem for in a specific resolution, usually 1440px wide
+/// @example scss Input
+///   section {
+///     height: pxToRem(200);
+///   }
 @function px-to-rem($px) {
   @return $px * 0.1rem;
 }
 
-// Set top and left to 0
-// @example scss Input
-//   element {
-//     @include position-0;
-//   }
+/// Set top and left to 0
+/// @example scss Input
+///   element {
+///     @include position-0;
+///   }
 @mixin position-0 {
   top: 0;
   left: 0;
 }
 
-// Set full size of box and position
-// @parameter {string} $pos - one of relative, absolute, fixed. relative by default
-// @example scss Input
-//   element {
-//     @include position-100(absolute);
-//   }
+/// Set full size of box and position
+/// @parameter {string} $pos - one of relative, absolute, fixed. relative by default
+/// @example scss Input
+///   element {
+///     @include position-100(absolute);
+///   }
 @mixin position-100($pos: 'relative') {
   position: $pos;
   @include position-0;
   @include box(100%);
 }
 
-// Set display flex and center children horizontally and vertically
-// @example scss Input
-//   element {
-//     @include flex-center;
-//   }
+/// Set display flex and center children horizontally and vertically
+/// @example scss Input
+///   element {
+///     @include flex-center;
+///   }
 @mixin flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-// Set display flex and center children vertically
-// @example scss Input
-//   element {
-//     @include flex-center-vert;
-//   }
+/// Set display flex and center children vertically
+/// @example scss Input
+///   element {
+///     @include flex-center-vert;
+///   }
 @mixin flex-center-vert {
   display: flex;
   align-items: center;
 }
 
-// Set display flex and center children horizontally
-// @example scss Input
-//   element {
-//     @include flex-center-horiz;
-//   }
+/// Set display flex and center children horizontally
+/// @example scss Input
+///   element {
+///     @include flex-center-horiz;
+///   }
 @mixin flex-center-horiz {
   display: flex;
   justify-content: center;
 }
 
-// Center its element (horizontally and vertically) by using transform
-// @example scss Input
-//   element {
-//     @include transform-center;
-//   }
+/// Center its element (horizontally and vertically) by using transform
+/// @example scss Input
+///   element {
+///     @include transform-center;
+///   }
 @mixin transform-center {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
 
-// Set vertical center of its element
-// @example scss Input
-//   element {
-//     @include transform-center-vert;
-//   }
+/// Set vertical center of its element
+/// @example scss Input
+///   element {
+///     @include transform-center-vert;
+///   }
 @mixin transform-center-vert {
   top: 50%;
   transform: translateY(-50%);
 }
 
-// Set horizontal center of its element
-// @example scss Input
-//   element {
-//     @include transform-center-horiz;
-//   }
+/// Set horizontal center of its element
+/// @example scss Input
+///   element {
+///     @include transform-center-horiz;
+///   }
 @mixin transform-center-horiz {
   left: 50%;
   transform: translateX(-50%);
 }
 
-// Set z-index value in order of $element variable
-// @example scss Input
-//   element {
-//     @include z-index(preloader);
-//   }
+/// Set z-index value in order of $element variable
+/// @example scss Input
+///   element {
+///     @include z-index(preloader);
+///   }
 @mixin z-index($id) {
   z-index: index($elements, $id);
 }
