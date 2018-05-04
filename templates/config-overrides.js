@@ -4,6 +4,7 @@ const rewireEslint = require('react-app-rewire-eslint');
 const rewireReactHotLoader = require('react-app-rewire-hot-loader');
 const rewireImageminPlugin = require('react-app-rewire-imagemin-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const rewirePolished = require('react-app-rewire-polished');
 const DEBUG = false;
 
 module.exports = function override(config, env) {
@@ -32,6 +33,9 @@ module.exports = function override(config, env) {
       rel: 'prefetch'
     })
   );
+
+  // Babel Polished
+  config = rewirePolished(config, env);
 
   DEBUG && fs.writeFile('final-cra-rewrite-config.json', JSON.stringify(config));
   return config;
