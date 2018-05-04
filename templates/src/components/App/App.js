@@ -21,7 +21,6 @@ class App extends React.PureComponent {
         whyDidYouUpdate(React);
       }
     }
-
     window.addEventListener('resize', debounce(this.onAppResize, settings.resizeDebounceTime), usePassiveEvent());
     this.onAppResize();
   }

@@ -1,33 +1,25 @@
 import React from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { matchPath } from 'react-router';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-
-import Landing from '../../pages/Landing/Landing';
-import { AsyncNotFound, AsyncAbout } from '../../util/async-section-handler';
-
 import './Pages.css';
-
 import checkProps from '../../util/check-props';
+import routes from '../../routes';
 
 class Pages extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  matchPath = path => matchPath(window.location.pathname, path);
 
-  componentDidMount() {}
-
-  componentWillReceiveProps(nextProps) {}
+  renderRoute = () => {
+    return routes
+      .filter(({ path }) => this.matchPath(path))
+      .map(({ Component, key, props }) => <Component key={key} {...props} history={this.props.history} />);
+  };
 
   render() {
     return (
       <main className={classnames(`Pages`, this.props.className)} role="main">
-        <Switch>
-          <Route exact={true} path="/" component={Landing} />
-          <Route exact={true} path="/about" component={AsyncAbout} />
-          <Route component={AsyncNotFound} />
-        </Switch>
+        {this.renderRoute()}
       </main>
     );
   }
