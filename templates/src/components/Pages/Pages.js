@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import Landing from '../../pages/Landing/Landing';
+import Nav from '../Nav/Nav';
 import { AsyncNotFound, AsyncAbout } from '../../util/async-section-handler';
 
 import './Pages.css';
@@ -23,6 +24,7 @@ class Pages extends React.PureComponent {
   render() {
     return (
       <main className={classnames(`Pages`, this.props.className)} role="main">
+        <Nav />
         <Switch>
           <Route exact={true} path="/" component={Landing} />
           <Route exact={true} path="/about" component={AsyncAbout} />

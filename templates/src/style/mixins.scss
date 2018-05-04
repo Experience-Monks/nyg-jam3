@@ -77,3 +77,14 @@
 @function px-to-rem($px) {
   @return $px * 0.1rem;
 }
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-center-vert {
+  display: flex;
+  align-items: center;
+}
