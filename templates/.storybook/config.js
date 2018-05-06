@@ -1,12 +1,8 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import store from '../src/redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { configure, addDecorator } from '@storybook/react';
 
-import BreakpointWrap from './BreakpointWrap';
-
-import '../src/util/breakpoint-handler';
+import { Provider } from '../src/contexts/layout';
 
 const req = require.context('../src/components', true, /\-story\.js$/);
 
@@ -15,10 +11,8 @@ function loadStories() {
 }
 
 addDecorator(story => (
-  <Provider store={store}>
-    <Router>
-      <BreakpointWrap>{story()}</BreakpointWrap>
-    </Router>
+  <Provider>
+    <BrowserRouter>{story()}</BrowserRouter>
   </Provider>
 ));
 

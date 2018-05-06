@@ -11,7 +11,8 @@
     "build-css": "node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/",
     "build-js": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
     "linters": "npm run js-lint && npm run sass-lint",
@@ -54,10 +55,7 @@
     "react-background-video-player": "1.1.4",
     "react-dom": "16.3.2",
     "react-loadable": "5.3.1",
-    "react-redux": "5.0.7",
-    "react-router-dom": "4.2.2",
-    "react-router-redux": "5.0.0-alpha.9",
-    "redux": "3.7.2"
+    "react-router-dom": "4.2.2"
   },
   "devDependencies": {
     "@storybook/addon-actions": "3.3.14",
@@ -112,17 +110,8 @@
   "lint-staged": {
     "gitDir": "../",
     "linters": {
-      "private/prj-frontend/src/**/*.{js,json,scss}": [
-        "prettier --write",
-        "git add"
-      ]
+      "private/prj-frontend/src/**/*.{js,json,scss}": ["prettier --write", "git add"]
     }
   },
-  "browserslist": [
-    "Explorer >= 10",
-    "Safari >= 9",
-    "Chrome >= 30",
-    "Firefox >= 40",
-    "iOS >= 9"
-  ]
+  "browserslist": ["Explorer >= 10", "Safari >= 9", "Chrome >= 30", "Firefox >= 40", "iOS >= 9"]
 }
