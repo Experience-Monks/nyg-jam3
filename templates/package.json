@@ -60,6 +60,7 @@
     "redux": "3.7.2"
   },
   "devDependencies": {
+    "autodll-webpack-plugin": "^0.3.9",
     "@storybook/addon-actions": "3.3.14",
     "@storybook/addon-info": "3.3.15",
     "@storybook/react": "3.3.14",

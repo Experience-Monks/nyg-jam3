@@ -30,7 +30,6 @@
     "nyg"
   ],
   "devDependencies": {
-    "autodll-webpack-plugin": "^0.3.9",
     "eslint": "^4.19.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
