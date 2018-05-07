@@ -4,6 +4,7 @@ const rewireEslint = require('react-app-rewire-eslint');
 const rewireReactHotLoader = require('react-app-rewire-hot-loader');
 const rewireImageminPlugin = require('react-app-rewire-imagemin-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const AutoDllPlugin = require('autodll-webpack-plugin');
 const DEBUG = false;
 
 module.exports = function override(config, env) {
@@ -30,6 +31,18 @@ module.exports = function override(config, env) {
   config.plugins.push(
     new PreloadWebpackPlugin({
       rel: 'prefetch'
+    })
+  );
+
+  config.plugins.push(
+    new AutoDllPlugin({
+      inject: true,
+      debug: true,
+      filename: '[name]_[hash].js',
+      path: './dll',
+      entry: {
+        vendor: ['react', 'react-dom']
+      }
     })
   );
 
