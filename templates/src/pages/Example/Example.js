@@ -10,6 +10,8 @@ import BaseLink from '../../components/BaseLink/BaseLink';
 class Example extends React.PureComponent {
   state = {};
 
+  componentDidMount() {}
+
   componentDidUpdate(prevProps, prevState) {}
 
   render() {
