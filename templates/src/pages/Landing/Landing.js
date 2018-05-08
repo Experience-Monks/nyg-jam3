@@ -10,8 +10,17 @@ import './Landing.css';
 import BaseLink from '../../components/BaseLink/BaseLink';
 
 class Landing extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = { in: true };
+  }
+
   componentDidMount() {
     this.props.setLandingLoaded(true);
+  }
+
+  componentWillUnmount() {
+    this.setState({ in: false });
   }
 
   render() {
@@ -25,6 +34,8 @@ class Landing extends React.PureComponent {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <BaseLink link="/about">About</BaseLink>
+        <br />
+        <BaseLink link="/example">Example</BaseLink>
       </section>
     );
   }
