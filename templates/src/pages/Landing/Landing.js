@@ -10,17 +10,8 @@ import './Landing.css';
 import BaseLink from '../../components/BaseLink/BaseLink';
 
 class Landing extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { in: true };
-  }
-
   componentDidMount() {
     this.props.setLandingLoaded(true);
-  }
-
-  componentWillUnmount() {
-    this.setState({ in: false });
   }
 
   render() {

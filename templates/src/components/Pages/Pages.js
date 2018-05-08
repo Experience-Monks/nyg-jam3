@@ -1,10 +1,8 @@
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
-import CSSTransition from 'react-transition-group/CSSTransition';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-
 import Landing from '../../pages/Landing/Landing';
 import Example from '../../pages/Example/Example.js';
 import { AsyncNotFound, AsyncAbout } from '../../util/async-section-handler';
