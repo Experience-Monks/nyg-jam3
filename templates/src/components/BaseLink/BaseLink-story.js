@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
+import { text, boolean } from '@storybook/addon-knobs/react';
 
 import BaseLink from './BaseLink';
 
@@ -45,7 +46,7 @@ const links = [
   }
 ];
 
-storiesOf('BaseLink', module).add(
+storiesOf('BaseLink', module).addWithJSX(
   'Basic Cases',
   withInfo(`
     BaseLink follows a very similar pattern to a standard html <a> tag, but it enforces additional
@@ -75,21 +76,25 @@ storiesOf('BaseLink', module).add(
   `)(() => (
     <nav>
       <ul>
-        {links.map((link, i) => (
-          <li key={`li-${link.text}-${i}`}>
-            <BaseLink
-              title={link.title}
-              className={link.className}
-              key={`${link.text}-${i}`}
-              link={link.link}
-              target={link.target}
-              onClick={link.onClick || noop}
-              download={link.download}
-            >
-              {link.text}
-            </BaseLink>
-          </li>
-        ))}
+        {links.map((link, i) => {
+          const num = (i + 1).toString();
+
+          return (
+            <li key={`li-${link.text}-${num}`}>
+              <BaseLink
+                title={text(`${num} - Title`, link.title, num)}
+                className={link.className}
+                key={`${link.text}-${i}`}
+                link={text(`${num} - Link`, link.link, num)}
+                target={text(`${num} - Target`, link.target, num)}
+                onClick={link.onClick || noop}
+                download={text(`${num} - Download`, link.download, num)}
+              >
+                {text(`${num} - Text`, link.text, num)}
+              </BaseLink>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   ))

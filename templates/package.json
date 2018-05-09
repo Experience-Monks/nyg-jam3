@@ -60,9 +60,11 @@
     "redux": "3.7.2"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "3.3.14",
-    "@storybook/addon-info": "3.3.15",
-    "@storybook/react": "3.3.14",
+    "@storybook/addon-actions": "3.4.3",
+    "@storybook/addon-info": "3.4.3",
+    "@storybook/addon-knobs": "3.4.3",
+    "@storybook/addon-notes": "3.4.3",
+    "@storybook/react": "3.4.3",
     "babel-eslint": "8.0.2",
     "chalk": "2.3.2",
     "cross-env": "^5.1.1",
@@ -103,6 +105,7 @@
     "sassdoc": "2.5.0",
     "snyk": "1.69.10",
     "stats.js": "0.17.0",
+    "storybook-addon-jsx": "5.3.0",
     "stylelint": "8.2.0",
     "svg-inline-loader": "0.8.0",
     "svgr": "1.9.0",

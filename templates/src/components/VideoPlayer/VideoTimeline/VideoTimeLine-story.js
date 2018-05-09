@@ -1,10 +1,15 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { number, object } from '@storybook/addon-knobs/react';
 
 import VideoTimeline from './VideoTimeline';
 
 const onTimeUpdate = currentTime => console.log(currentTime);
 
-storiesOf('VideoTimeline', module).add('Default', () => (
-  <VideoTimeline duration={90} currentTime={45} onTimeUpdate={onTimeUpdate} />
+storiesOf('VideoTimeline', module).addWithJSX('Default', () => (
+  <VideoTimeline
+    duration={number('Duration', 90)}
+    currentTime={number('Current Time', 45)}
+    onTimeUpdate={onTimeUpdate}
+  />
 ));

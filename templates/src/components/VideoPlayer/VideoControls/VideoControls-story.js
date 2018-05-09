@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { number, boolean } from '@storybook/addon-knobs/react';
 
 import VideoControls from './VideoControls';
 
@@ -46,13 +47,13 @@ class VideoControlsTest extends React.PureComponent {
   render() {
     return (
       <VideoControls
-        duration={240}
+        duration={this.props.duration}
         currentTime={this.state.currentTime}
         isPlaying={this.state.isPlaying}
         isMuted={this.state.isMuted}
         isFullScreen={this.state.isFullScreen}
         isShowingCaptions={this.state.isShowingCaptions}
-        captions={true}
+        captions={this.props.captions}
         onPlayToggle={this.onPlayToggle}
         onMuteToggle={this.onMuteToggle}
         onFullscreenToggle={this.onFullscreenToggle}
@@ -63,4 +64,6 @@ class VideoControlsTest extends React.PureComponent {
   }
 }
 
-storiesOf('VideoControls', module).add('Default', () => <VideoControlsTest />);
+storiesOf('VideoControls', module).addWithJSX('Default', () => (
+  <VideoControlsTest duration={number('Timeline Duration', 240)} captions={boolean('Caption', true)} />
+));

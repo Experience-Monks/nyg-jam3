@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { text, number, boolean, object } from '@storybook/addon-knobs/react';
 
 import VideoPlayer from './VideoPlayer';
 
@@ -18,30 +19,32 @@ const full = { width: '100vw', height: '100vh' };
 const regular = { width: '640px', height: '360px' };
 
 storiesOf('VideoPlayer', module)
-  .add('Cover & Controls', () => (
+  .addWithJSX('Cover & Controls', () => (
     <VideoPlayer
       {...this.props}
-      src={src}
-      poster={poster}
-      style={full}
-      disableBackgroundCover={false}
-      startTime={15}
-      captions={captions}
+      src={text('Src', src)}
+      poster={text('Poster', poster)}
+      style={object('Styles', full)}
+      disableBackgroundCover={boolean('Disable Background Cover', false)}
+      startTime={number('Start Time', 15)}
+      captions={object('Captions', captions)}
     />
   ))
-  .add('Looping Cover', () => (
+  .addWithJSX('Looping Cover', () => (
     <VideoPlayer
       {...this.props}
-      src={src}
-      poster={poster}
-      autoPlay={true}
-      loop={true}
-      muted={true}
-      hasControls={false}
-      style={full}
-      togglePlayOnClick={false}
-      disableBackgroundCover={false}
-      allowKeyboardControl={false}
+      src={text('Src', src)}
+      poster={text('Poster', poster)}
+      autoPlay={boolean('Autoplay', true)}
+      loop={boolean('Loop', true)}
+      muted={boolean('Muted', true)}
+      hasControls={boolean('Controls', false)}
+      style={object('Styles', full)}
+      togglePlayOnClick={boolean('Toggle Play on Click', false)}
+      disableBackgroundCover={boolean('Disable Background Cover', false)}
+      allowKeyboardControl={boolean('Allow Keyboard Control', false)}
     />
   ))
-  .add('Regular Player', () => <VideoPlayer src={src} poster={poster} style={regular} />);
+  .addWithJSX('Regular Player', () => (
+    <VideoPlayer src={text('Src', src)} poster={text('Poster', poster)} style={object('Styles', regular)} />
+  ));
