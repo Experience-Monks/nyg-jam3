@@ -104,6 +104,7 @@
     "snyk": "1.69.10",
     "stats.js": "0.17.0",
     "stylelint": "8.2.0",
+    "stylelint-config-jam3": "0.1.0",
     "svg-inline-loader": "0.8.0",
     "svgr": "1.9.0",
     "webpack-visualizer-plugin": "0.1.11",
