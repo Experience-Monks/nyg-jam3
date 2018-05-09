@@ -17,7 +17,7 @@
     "linters": "npm run js-lint && npm run sass-lint",
     "precommit": "echo 'Pre-commit checks...' && lint-staged",
     "prepush": "echo 'Pre-push checks...' && npm run linters",
-    "storybook": "start-storybook -p 9001 -c .storybook -s src",
+    "storybook": "start-storybook -p 9001 -c .storybook -s ./src,./public",
     "component": "node scripts/component.js",
     "connected-component": "node scripts/component.js --connected",
     "stateless-component": "node scripts/component.js --stateless",
