@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { text, boolean } from '@storybook/addon-knobs/react';
+import { text } from '@storybook/addon-knobs/react';
 
 import BaseLink from './BaseLink';
 

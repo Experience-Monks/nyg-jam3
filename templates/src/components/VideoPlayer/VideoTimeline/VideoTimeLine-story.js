@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { number, object } from '@storybook/addon-knobs/react';
+import { number } from '@storybook/addon-knobs/react';
 
 import VideoTimeline from './VideoTimeline';
 
