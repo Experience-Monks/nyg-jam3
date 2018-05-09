@@ -1,6 +1,6 @@
 {
     "severity": "warning",
-     "extends": "jam3",
+     "extends": "stylelint-config-jam3",
     "rules": {
       "at-rule-whitelist": ["extend", "keyframes", "import", "include", "font-face", "mixin", "function", "return", "if", "media", "page"],
       "at-rule-no-unknown": [
