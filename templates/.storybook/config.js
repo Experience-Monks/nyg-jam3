@@ -8,7 +8,7 @@ import BreakpointWrap from './BreakpointWrap';
 
 import '../src/util/breakpoint-handler';
 
-const req = require.context('../src/components', true, /\-story\.js$/);
+const req = require.context('../src', true, /\-story\.js$/);
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));
