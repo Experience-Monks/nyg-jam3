@@ -7,7 +7,7 @@
     "promise/param-names": "error",
     "promise/no-return-wrap": "error",
     "import/no-webpack-loader-syntax": "off",
-    "import/no-unresolved": ["error", { "ignore": ["svg-inline-loader"] }],
+    "import/no-unresolved": ["error"],
     "import/named": "error",
     "import/default": "error",
     "import/first": "error",
