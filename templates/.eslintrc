@@ -14,7 +14,7 @@
     "import/order": ["error", { "groups": ["builtin", "external", ["parent", "sibling", "index"]] }],
     "import/no-extraneous-dependencies": [
       "warn",
-      { "devDependencies": true, "optionalDependencies": false, "peerDependencies": false }
+      { "devDependencies": true, "optionalDependencies": true, "peerDependencies": false }
     ],
     "react/sort-comp": [
       1,
