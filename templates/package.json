@@ -28,6 +28,7 @@
     "audit": "npm run audit-nsp",
     "precommit": "echo 'Pre-commit checks...' && lint-staged",
     "prepush": "echo 'Pre-push checks...' && npm run linters",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
     "linters": "npm-run-all -p js-lint sass-lint",
@@ -66,6 +67,7 @@
     "redux": "3.7.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "6.2.0",
     "@storybook/addon-actions": "3.3.14",
     "@storybook/addon-info": "3.3.15",
     "@storybook/react": "3.3.14",
