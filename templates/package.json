@@ -13,7 +13,7 @@
     "build-js": "react-app-rewired build",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
     "\n ######################  Support Development Tools  ######################": "",
-    "storybook": "start-storybook -p 9001 -c .storybook -s src",
+    "storybook": "start-storybook -p 9001 -c .storybook -s ./src,./public",
     "component": "node scripts/component.js",
     "connected-component": "node scripts/component.js --connected",
     "stateless-component": "node scripts/component.js --stateless",
