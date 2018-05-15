@@ -1,21 +1,7 @@
 {
-  "plugins": ["prettier", "promise"],
-  "extends": ["react-app", "prettier"],
+  "extends": ["react-app", "jam3"],
   "rules": {
-    "prettier/prettier": "error",
-    "jsx-a11y/href-no-hash": "off",
-    "promise/param-names": "error",
-    "promise/no-return-wrap": "error",
-    "import/no-webpack-loader-syntax": "off",
-    "import/no-unresolved": ["error"],
-    "import/named": "error",
-    "import/default": "error",
-    "import/first": "error",
-    "import/order": ["error", { "groups": ["builtin", "external", ["parent", "sibling", "index"]] }],
-    "import/no-extraneous-dependencies": [
-      "warn",
-      { "devDependencies": true, "optionalDependencies": true, "peerDependencies": false }
-    ],
+    "no-console": "off",
     "react/sort-comp": [
       1,
       {
