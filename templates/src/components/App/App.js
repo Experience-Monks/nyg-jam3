@@ -6,6 +6,8 @@ import debounce from 'lodash.debounce';
 import Pages from '../../components/Pages/Pages';
 import RotateScreen from '../../components/Rotate/Rotate';
 
+import { setPreviousRoute } from '../../redux/modules/app';
+
 import settings from '../../data/settings';
 import appResize from '../../util/app-resize';
 import detect from '../../util/detect';
@@ -24,6 +26,10 @@ class App extends React.PureComponent {
 
     window.addEventListener('resize', debounce(this.onAppResize, settings.resizeDebounceTime), usePassiveEvent());
     this.onAppResize();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    this.props.setPreviousRoute(prevProps.location.pathname);
   }
 
   onAppResize = () => {
@@ -45,7 +51,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    setPreviousRoute: val => dispatch(setPreviousRoute(val))
+  };
 };
 
 App.defaultProps = {};

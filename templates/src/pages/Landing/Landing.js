@@ -1,22 +1,62 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-
-import { setLandingLoaded } from '../../redux/modules/landing';
+import animate from '../../util/gsap-animate';
 
 import logo from './assets/logo.svg';
 import './Landing.css';
 
 import BaseLink from '../../components/BaseLink/BaseLink';
 
+import { setLandingLoaded } from '../../redux/modules/landing';
+
+import checkProps from '../../util/check-props';
+import { default as Transition } from '../PagesTransitionWrapper';
+import { wait } from '../../util/basic-functions';
+
 class Landing extends React.PureComponent {
-  componentDidMount() {
-    this.props.setLandingLoaded(true);
+  constructor(props) {
+    super(props);
+    this.state = {};
+
+    this.containerEl = React.createRef();
   }
+
+  componentDidMount() {
+    this.container = this.containerEl.current;
+    animate.set(this.container, { autoAlpha: 0 });
+
+    if (!this.props.loaded) {
+      // await for data to be loaded here e.g. via fetch
+      this.props.setLandingLoaded(true);
+    }
+  }
+
+  onAppear = () => {
+    this.animateIn();
+  };
+
+  onEnter = async prevSectionExitDuration => {
+    await wait(prevSectionExitDuration); // you need to remove this it you want to perform simultaneous transition
+    this.animateIn();
+  };
+
+  onLeave = () => {
+    this.animateOut();
+  };
+
+  animateIn = () => {
+    animate.to(this.container, 0.3, { autoAlpha: 1 });
+  };
+
+  animateOut = () => {
+    animate.to(this.container, 0.3, { autoAlpha: 0 });
+  };
 
   render() {
     return (
-      <section className={classnames('Landing', this.props.className)}>
+      <section className={classnames('Landing', this.props.className)} ref={this.containerEl}>
         <header className="Landing-header">
           <img src={logo} className="Landing-logo" alt="logo" />
           <h1 className="Landing-title">Welcome to React</h1>
@@ -30,8 +70,21 @@ class Landing extends React.PureComponent {
   }
 }
 
+Landing.propTypes = checkProps({
+  className: PropTypes.string,
+  transitionState: PropTypes.string.isRequired,
+  previousRoute: PropTypes.string,
+  loaded: PropTypes.bool,
+  setLandingLoaded: PropTypes.func
+});
+
+Landing.defaultProps = {};
+
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return {
+    previousRoute: state.previousRoute,
+    loaded: state.landing.loaded
+  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -42,4 +95,4 @@ const mapDispatchToProps = dispatch => {
 
 Landing.defaultProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Landing);
+export default connect(mapStateToProps, mapDispatchToProps)(Transition(Landing));
