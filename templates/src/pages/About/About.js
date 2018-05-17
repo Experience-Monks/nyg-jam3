@@ -28,7 +28,7 @@ class About extends React.PureComponent {
   };
 
   onEnter = async prevSectionExitDuration => {
-    await wait(prevSectionExitDuration); // you need to remove this it you want to perform simultaneous transition
+    await wait(prevSectionExitDuration); // you need to remove this if you want to perform simultaneous transition
     this.animateIn();
   };
 
