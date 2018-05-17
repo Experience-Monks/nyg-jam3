@@ -1,7 +1,7 @@
 import keys from '../keys';
 import reducerRegistry from '../reducer-registry';
 
-const reducerName = 'landing';
+const reducerName = 'landingLoaded';
 
 // Reducer
 export default function reducer(state = false, action) {
