@@ -41,6 +41,7 @@ class About extends React.PureComponent {
   };
 
   animateOut = () => {
+    // Note that the total duration should match `exit` duration for the page inside `data/pages-transitions`
     animate.to(this.container, 0.3, { autoAlpha: 0 });
   };
 

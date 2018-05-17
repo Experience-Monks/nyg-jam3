@@ -8,7 +8,7 @@ import './Pages.css';
 
 import checkProps from '../../util/check-props';
 import routeKeys from '../../routes/keys';
-import { getTransitionDuration } from '../../data/pages-transition';
+import { getTransitionDuration } from '../../data/pages-transitions';
 
 import {
   AsyncLanding as Landing,

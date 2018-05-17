@@ -1,4 +1,4 @@
-import { getExitTransitionDuration } from '../data/pages-transition';
+import { getExitTransitionDuration } from '../data/pages-transitions';
 import { noop } from '../util/basic-functions';
 
 const transitionStates = {
