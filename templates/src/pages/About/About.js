@@ -14,12 +14,9 @@ class About extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
-
-    this.containerEl = React.createRef();
   }
 
   componentDidMount() {
-    this.container = this.containerEl.current;
     animate.set(this.container, { autoAlpha: 0 });
   }
 
@@ -47,7 +44,7 @@ class About extends React.PureComponent {
 
   render() {
     return (
-      <section className={classnames('About', this.props.className)} ref={this.containerEl}>
+      <section className={classnames('About', this.props.className)} ref={el => (this.container = el)}>
         <h1>About</h1>
         <BaseLink link="/">Home</BaseLink>
       </section>

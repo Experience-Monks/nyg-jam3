@@ -19,12 +19,9 @@ class Landing extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
-
-    this.containerEl = React.createRef();
   }
 
   componentDidMount() {
-    this.container = this.containerEl.current;
     animate.set(this.container, { autoAlpha: 0 });
 
     if (!this.props.loaded) {
@@ -57,7 +54,7 @@ class Landing extends React.PureComponent {
 
   render() {
     return (
-      <section className={classnames('Landing', this.props.className)} ref={this.containerEl}>
+      <section className={classnames('Landing', this.props.className)} ref={el => (this.container = el)}>
         <header className="Landing-header">
           <img src={logo} className="Landing-logo" alt="logo" />
           <h1 className="Landing-title">Welcome to React</h1>
@@ -84,7 +81,7 @@ Landing.defaultProps = {};
 const mapStateToProps = (state, ownProps) => {
   return {
     previousRoute: state.previousRoute,
-    loaded: state.landing.loaded
+    loaded: state.landingLoaded.loaded
   };
 };
 
