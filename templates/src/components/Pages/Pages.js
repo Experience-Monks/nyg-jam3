@@ -1,9 +1,10 @@
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-
 import Landing from '../../pages/Landing/Landing';
+import Example from '../../pages/Example/Example.js';
 import { AsyncNotFound, AsyncAbout } from '../../util/async-section-handler';
 
 import './Pages.css';
@@ -23,11 +24,16 @@ class Pages extends React.PureComponent {
   render() {
     return (
       <main className={classnames(`Pages`, this.props.className)} role="main">
-        <Switch>
-          <Route exact={true} path="/" component={Landing} />
-          <Route exact={true} path="/about" component={AsyncAbout} />
-          <Route component={AsyncNotFound} />
-        </Switch>
+        <TransitionGroup>
+          <CSSTransition key={this.props.location.key} classNames="fade" timeout={300}>
+            <Switch>
+              <Route exact={true} path="/" component={Landing} />
+              <Route exact={true} path="/about" component={AsyncAbout} />
+              <Route exact={true} path="/example" component={Example} />
+              <Route component={AsyncNotFound} />
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
       </main>
     );
   }

@@ -25,6 +25,8 @@ class Landing extends React.PureComponent {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <BaseLink link="/about">About</BaseLink>
+        <br />
+        <BaseLink link="/example">Example</BaseLink>
       </section>
     );
   }

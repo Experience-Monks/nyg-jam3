@@ -7,7 +7,7 @@ import checkProps from '../../util/check-props';
 
 import BaseLink from '../../components/BaseLink/BaseLink';
 
-class About extends React.PureComponent {
+class Example extends React.PureComponent {
   state = {};
 
   componentDidMount() {}
@@ -16,22 +16,22 @@ class About extends React.PureComponent {
 
   render() {
     return (
-      <section className={classnames('About', this.props.className)}>
-        <h1>About</h1>
-        <BaseLink link="/example">Example</BaseLink>
+      <section className={classnames('Example', this.props.className)}>
+        <h1>Example</h1>
+        <BaseLink link="/about">About</BaseLink>
       </section>
     );
   }
 }
 
-About.propTypes = checkProps({
+Example.propTypes = checkProps({
   className: PropTypes.string
 });
 
-About.defaultProps = {};
+Example.defaultProps = {};
 
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(About);
+export default connect(mapStateToProps, mapDispatchToProps)(Example);
