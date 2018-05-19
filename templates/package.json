@@ -102,6 +102,7 @@
     "react-app-rewire-hot-loader": "1.0.0",
     "react-app-rewire-imagemin-plugin": "1.0.1",
     "react-app-rewired": "1.4.1",
+    "autodll-webpack-plugin": "^0.3.9",
     "react-scripts": "1.1.1",
     "stylelint": "8.2.0"
   },
