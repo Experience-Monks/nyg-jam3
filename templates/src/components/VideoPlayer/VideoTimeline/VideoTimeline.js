@@ -8,20 +8,20 @@ import checkProps from '../../../util/check-props';
 import { noop } from '../../../util/basic-functions';
 
 export default class VideoTimeline extends React.PureComponent {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.currentTime !== prevState.currentTime && !prevState.isMouseDown) {
+      return { currentTime: nextProps.currentTime };
+    }
+
+    return null;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
-      currentTime: this.props.currentTime
+      currentTime: this.props.currentTime,
+      isMouseDown: false
     };
-    this.isMouseDown = false;
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.currentTime !== this.props.currentTime) {
-      if (!this.isMouseDown) {
-        this.setState({ currentTime: this.props.currentTime });
-      }
-    }
   }
 
   onChange = () => {
@@ -30,11 +30,11 @@ export default class VideoTimeline extends React.PureComponent {
   };
 
   onMouseDown = () => {
-    this.isMouseDown = true;
+    this.setState({ isMouseDown: true });
   };
 
   onMouseUp = () => {
-    this.isMouseDown = false;
+    this.setState({ isMouseDown: false });
   };
 
   render() {

@@ -13,6 +13,21 @@ import { noop } from '../../util/basic-functions';
 import animate from '../../util/gsap-animate';
 
 export default class VideoPlayer extends React.PureComponent {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.windowWidth !== prevState.containerWidth || nextProps.windowHeight !== prevState.containerHeight) {
+      return {
+        containerWidth: nextProps.windowWidth,
+        containerHeight: nextProps.windowHeight
+      };
+    }
+
+    if (nextProps.startTime !== prevState.startTime) {
+      return { startTime: nextProps.startTime };
+    }
+
+    return null;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -51,21 +66,6 @@ export default class VideoPlayer extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.windowWidth !== this.props.windowWidth || prevProps.windowHeight !== this.props.windowHeight) {
-      this.onResize({
-        containerWidth: this.props.windowWidth,
-        containerHeight: this.props.windowHeight
-      });
-    }
-
-    if (prevProps.startTime !== this.props.startTime) {
-      this.setState({ startTime: this.props.startTime });
-    }
-
-    if (this.props.captions && prevProps.captions.src !== this.props.captions.src) {
-      this.setCaptions(this.props.captions);
-    }
-
     if (prevState.isPlaying !== this.state.isPlaying) {
       if (this.state.isPlaying) {
         this.props.onPlay();
@@ -81,6 +81,10 @@ export default class VideoPlayer extends React.PureComponent {
 
     if (prevState.isShowingCaptions !== this.state.isShowingCaptions) {
       this.captions && animate.to(this.captionsContainer, 0.1, { autoAlpha: Boolean(this.state.isShowingCaptions) });
+    }
+
+    if (this.props.captions && prevProps.captions.src !== this.props.captions.src) {
+      this.setCaptions(this.props.captions);
     }
   }
 

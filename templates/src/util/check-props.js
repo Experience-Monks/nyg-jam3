@@ -32,7 +32,7 @@ export default function(propTypes, ignoreData = []) {
     ...propTypes,
     fn: function(props, self, componentName) {
       const unspecifiedProps = Object.keys(props).filter(
-        prop => !propTypes.hasOwnProperty(prop) && !ignoreList.includes(prop)
+        prop => !propTypes.hasOwnProperty(prop) && ignoreList.indexOf(prop) === -1
       );
 
       if (unspecifiedProps.length) {

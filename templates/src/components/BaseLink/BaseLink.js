@@ -9,15 +9,15 @@ import checkProps from '../../util/check-props';
 
 const excludes = ['children', 'download', 'target', 'rel', 'link'];
 
+const externalLinkRegex = /^(https:\/\/|http:\/\/|www\.|tel:|mailto:)/;
+const externalSiteRegex = /^(https:\/\/|http:\/\/|www\.)/;
+
 const BaseLink = props => {
-  const Tag =
-    props.link.includes('://') || props.link.includes('tel:') || props.link.includes('mailto:') || props.download
-      ? 'a'
-      : Link;
+  const Tag = externalLinkRegex.test(props.link) || props.download ? 'a' : Link;
 
   // clean props
   let componentProps = Object.keys(props).reduce(
-    (acc, key) => ([...excludes].includes(key) ? acc : { ...acc, [key]: props[key] }),
+    (acc, key) => ([...excludes].indexOf(key) > -1 ? acc : { ...acc, [key]: props[key] }),
     {}
   );
 
@@ -26,7 +26,7 @@ const BaseLink = props => {
     componentProps.download = props.download;
 
     // set external link attributes
-    if (!props.link.includes('tel:') && !props.link.includes('mailto:') && !props.download) {
+    if (externalSiteRegex.test(props.link) && !props.download) {
       componentProps.target = props.target;
       if (props.target === '_blank') {
         componentProps.rel = props.rel || 'noopener';

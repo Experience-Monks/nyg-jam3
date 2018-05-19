@@ -33,7 +33,7 @@ const breakpointHandler = function() {
    * @returns {Boolean}
    */
   function isPhoneLayout() {
-    return _getReduxLayoutInfo().includes(names.phoneLayout);
+    return _getReduxLayoutInfo().indexOf(names.phoneLayout) > -1;
   }
 
   /**
@@ -42,7 +42,7 @@ const breakpointHandler = function() {
    * @returns {Boolean}
    */
   function isTabletLayout() {
-    return _getReduxLayoutInfo().includes(names.tabletLayout);
+    return _getReduxLayoutInfo().indexOf(names.tabletLayout) > -1;
   }
 
   /**
@@ -60,7 +60,7 @@ const breakpointHandler = function() {
    * @returns {Boolean}
    */
   function isDesktopLayout() {
-    return _getReduxLayoutInfo().includes(names.desktopLayout);
+    return _getReduxLayoutInfo().indexOf(names.desktopLayout) > -1;
   }
 
   /**
@@ -97,9 +97,9 @@ const breakpointHandler = function() {
       store.dispatch({
         type: 'BATCH_ACTIONS',
         actions: [
-          setIsMobileLayout(breakpointsList.includes(names.mobileLayout)),
-          setIsPhoneLayout(breakpointsList.includes(names.phoneLayout)),
-          setIsTabletLayout(breakpointsList.includes(names.tabletLayout)),
+          setIsMobileLayout(breakpointsList.indexOf(names.mobileLayout) > -1),
+          setIsPhoneLayout(breakpointsList.indexOf(names.phoneLayout) > -1),
+          setIsTabletLayout(breakpointsList.indexOf(names.tabletLayout) > -1),
           setLayout(breakpointsList)
         ]
       });
