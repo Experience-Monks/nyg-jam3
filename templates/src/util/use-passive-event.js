@@ -20,7 +20,9 @@ function isSupported() {
         }
       });
       window.addEventListener('test', null, opts);
-    } catch (e) {}
+    } catch (e) {
+      return passiveSupported;
+    }
     return passiveSupported;
   }
 }
