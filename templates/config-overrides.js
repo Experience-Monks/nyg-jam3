@@ -17,19 +17,13 @@ module.exports = {
 
     if (env !== 'production') {
       /* Webpack used in development */
-      console.log(config);
+
       // Bundle Analizer - Visualizer
       process.env.BUNDLE_ANALYZE &&
         config.plugins.push(new Visualizer({ filename: './public/bundle-size-analizer.html' }));
 
       // Enabling HMR
       config = rewireReactHotLoader(config, env);
-
-      // config.plugins.forEach(plugin => {
-      //   if (plugin instanceof html-webpack-plugin) {
-      //     plugin.minify[''] =
-      //   }
-      // })
 
       // Cache modules that we don't update frecuently
       config.plugins.push(
@@ -62,8 +56,6 @@ module.exports = {
           quality: '65-80'
         }
       });
-
-
 
       // Preload files
       config.plugins.push(
