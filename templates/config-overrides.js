@@ -9,6 +9,7 @@ const AutoDllPlugin = require('autodll-webpack-plugin');
 const rewireEslint = require('react-app-rewire-eslint');
 const rewireReactHotLoader = require('react-app-rewire-hot-loader');
 const rewireImageminPlugin = require('react-app-rewire-imagemin-plugin');
+//const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   webpack: function(config, env) {
@@ -56,6 +57,26 @@ module.exports = {
           quality: '65-80'
         }
       });
+
+      // Minify html
+      // Set your custom minification rules below
+
+      //Need to add some more adaptive selecting like an if/indexOf/instanceof
+      var plugins = config.plugins;
+      plugins[1].options.minify = {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: false,
+        removeEmptyAttributes: false,
+        removeStyleLinkTypeAttributes: false,
+        keepClosingSlash: false,
+        minifyJS: false,
+        minifyCSS: false,
+        minifyURLs: false
+      }
+
+      console.log(plugins[1].options);
 
       // Preload files
       config.plugins.push(
