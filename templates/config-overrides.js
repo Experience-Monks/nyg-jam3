@@ -58,35 +58,30 @@ module.exports = {
       });
 
       // Minify html
-      // Set your custom minification rules below
-
       // Select HtmlWebpackPlugin from all plugins
+
       var plugins = config.plugins;
-      //console.log(plugins.length);
-
       for(var i = 0; i < plugins.length; i++){
-        //console.log(plugins[i]);
-        console.log(plugins[i]);
+        var plugin = plugins[i];
 
+        if (plugin.constructor.name === 'HtmlWebpackPlugin') {
 
-        // if (plugin.indexOf('HtmlWebpackPlugin') === -1) {
-        //   console.log("No Where ");
-        // }else{
-        //   console.log("Found it");
-        // }
-      }
-
-      plugins[1].options.minify = {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: false,
-        removeEmptyAttributes: false,
-        removeStyleLinkTypeAttributes: false,
-        keepClosingSlash: false,
-        minifyJS: false,
-        minifyCSS: false,
-        minifyURLs: false
+          // Set your custom minification rules below
+          // Default values here "https://github.com/kangax/html-minifier#options-quick-reference"
+          plugin.options.minify = {
+            collapseWhitespace: false,
+            html5: true,
+            keepClosingSlash: true,
+            minifyCSS: false,
+            minifyJS: false,
+            minifyURLs: false,
+            removeComments: false,
+            removeEmptyAttributes: true,
+            removeRedundantAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            useShortDoctype: false
+          }
+        }
       }
 
       // Preload files
