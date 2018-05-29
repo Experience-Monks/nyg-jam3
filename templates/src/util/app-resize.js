@@ -11,7 +11,7 @@ import { wait } from './basic-functions';
  *
  * @param {Number} [width=window.innerWidth]
  * @param {Number} [height=window.innerHeight]
- * @returns
+ * @returns {Number}
  */
 async function appResize(width = window.innerWidth, height = window.innerHeight) {
   store.dispatch(setWindowSize({ width, height }));
