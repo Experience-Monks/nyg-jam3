@@ -24,14 +24,13 @@
     "\n ######################  Automation Tools  ######################": "",
     "test": "react-app-rewired test --env=jsdom",
     "audit-snyk": "snyk auth [token] && snyk test",
-    "audit": "npm audit",
     "precommit": "echo 'Pre-commit checks...' && lint-staged",
     "prepush": "echo 'Pre-push checks...' && npm run linters",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
     "linters": "npm-run-all -p js-lint sass-lint",
-    "postinstall": "npm-run-all audit build-css"
+    "postinstall": "npm-run-all build-css"
   },
   "scriptsComments": {
     "audit-snyk": "You need to install snyk in the repository and add their token in order to use this script, npm i snyk"
