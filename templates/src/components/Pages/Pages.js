@@ -1,44 +1,43 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import { TransitionGroup, Transition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-
-import Landing from '../../pages/Landing/Landing';
-import { AsyncNotFound, AsyncAbout } from '../../util/async-section-handler';
 
 import './Pages.css';
 
 import checkProps from '../../util/check-props';
+import routeKeys from '../../routes/keys';
+import { getTransitionDuration } from '../../data/pages-transitions';
 
-class Pages extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+import {
+  AsyncLanding as Landing,
+  AsyncAbout as About,
+  AsyncNotFound as NotFound
+} from '../../util/async-section-handler';
 
-  componentDidMount() {}
-
-  componentWillReceiveProps(nextProps) {}
-
-  render() {
-    return (
-      <main className={classnames(`Pages`, this.props.className)} role="main">
-        <Switch>
-          <Route exact={true} path="/" component={Landing} />
-          <Route exact={true} path="/about" component={AsyncAbout} />
-          <Route component={AsyncNotFound} />
-        </Switch>
-      </main>
-    );
-  }
-}
+const Pages = ({ location, ...props }) => {
+  return (
+    <main className={classnames('Pages', props.className)} role="main">
+      <TransitionGroup component={Fragment}>
+        <Transition appear key={location.pathname} timeout={getTransitionDuration(location.pathname)}>
+          {state => (
+            <Switch location={location}>
+              <Route exact path={routeKeys.Landing} render={() => <Landing transitionState={state} />} />
+              <Route exact path={routeKeys.About} render={() => <About transitionState={state} />} />
+              <Route component={NotFound} />
+            </Switch>
+          )}
+        </Transition>
+      </TransitionGroup>
+    </main>
+  );
+};
 
 Pages.propTypes = checkProps({
   className: PropTypes.string
 });
 
-Pages.defaultProps = {
-  className: ''
-};
+Pages.defaultProps = {};
 
 export default withRouter(Pages);

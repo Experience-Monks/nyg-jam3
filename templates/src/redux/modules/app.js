@@ -1,16 +1,20 @@
 import keys from '../keys';
-import reducerRegistry from '../reducer-registry';
 
-const reducerName = 'windowSize';
+const defaultState = {
+  windowSize: {
+    width: 0,
+    height: 0
+  },
+  previousRoute: null
+};
 
-// Reducer
-export default function reducer(state = { width: 0, height: 0 }, action) {
-  switch (action.type) {
-    case keys.SET_WINDOW_SIZE:
-      return action.windowSize;
-    default:
-      return state;
-  }
+// Reducers
+export function windowSizeReducer(state = defaultState.windowSize, { type, windowSize }) {
+  return type === keys.SET_WINDOW_SIZE ? windowSize : state;
+}
+
+export function previousRouteReducer(state = defaultState.previousRoute, { type, previousRoute }) {
+  return type === keys.SET_PREV_ROUTE ? previousRoute : state;
 }
 
 // Action Creator
@@ -21,5 +25,9 @@ export function setWindowSize(windowSize) {
   };
 }
 
-// Register Reducers
-reducerRegistry.register(reducerName, reducer);
+export function setPreviousRoute(previousRoute) {
+  return {
+    type: keys.SET_PREV_ROUTE,
+    previousRoute
+  };
+}
