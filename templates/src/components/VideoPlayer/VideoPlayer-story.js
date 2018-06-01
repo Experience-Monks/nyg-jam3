@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { text, number, boolean, object } from '@storybook/addon-knobs/react';
 
 import VideoPlayer from './VideoPlayer';
 import VideoTimeline from './VideoTimeline/VideoTimeline';
@@ -64,13 +65,13 @@ class VideoControlsTest extends React.PureComponent {
   render() {
     return (
       <VideoControls
-        duration={240}
+        duration={this.props.duration}
         currentTime={this.state.currentTime}
         isPlaying={this.state.isPlaying}
         isMuted={this.state.isMuted}
         isFullScreen={this.state.isFullScreen}
         isShowingCaptions={this.state.isShowingCaptions}
-        captions={true}
+        captions={this.props.captions}
         onPlayToggle={this.onPlayToggle}
         onMuteToggle={this.onMuteToggle}
         onFullscreenToggle={this.onFullscreenToggle}
@@ -82,32 +83,40 @@ class VideoControlsTest extends React.PureComponent {
 }
 
 storiesOf('VideoPlayer', module)
-  .add('Cover video with controls', () => (
+  .addWithJSX('Cover & Controls', () => (
     <VideoPlayer
       {...this.props}
-      src={src}
-      poster={poster}
-      style={full}
-      disableBackgroundCover={false}
-      startTime={15}
-      captions={captions}
+      src={text('Src', src)}
+      poster={text('Poster', poster)}
+      style={object('Styles', full)}
+      disableBackgroundCover={boolean('Disable Background Cover', false)}
+      startTime={number('Start Time', 15)}
+      captions={object('Captions', captions)}
     />
   ))
-  .add('Looping background video', () => (
+  .addWithJSX('Looping Cover', () => (
     <VideoPlayer
       {...this.props}
-      src={src}
-      poster={poster}
-      autoPlay={true}
-      loop={true}
-      muted={true}
-      hasControls={false}
-      style={full}
-      togglePlayOnClick={false}
-      disableBackgroundCover={false}
-      allowKeyboardControl={false}
+      src={text('Src', src)}
+      poster={text('Poster', poster)}
+      autoPlay={boolean('Autoplay', true)}
+      loop={boolean('Loop', true)}
+      muted={boolean('Muted', true)}
+      hasControls={boolean('Controls', false)}
+      style={object('Styles', full)}
+      togglePlayOnClick={boolean('Toggle Play on Click', false)}
+      disableBackgroundCover={boolean('Disable Background Cover', false)}
+      allowKeyboardControl={boolean('Allow Keyboard Control', false)}
     />
   ))
-  .add('Basic player', () => <VideoPlayer src={src} poster={poster} style={regular} />)
-  .add('VideoTimeline', () => <VideoTimeline duration={90} currentTime={45} onTimeUpdate={onTimeUpdate} />)
-  .add('VideoControls', () => <VideoControlsTest />);
+  .addWithJSX('Basic player', () => <VideoPlayer src={src} poster={poster} style={regular} />)
+  .addWithJSX('VideoTimeline', () => (
+    <VideoTimeline
+      duration={number('Duration', 90)}
+      currentTime={number('Current Time', 45)}
+      onTimeUpdate={onTimeUpdate}
+    />
+  ))
+  .addWithJSX('VideoControls', () => (
+    <VideoControlsTest duration={number('Timeline Duration', 240)} captions={boolean('Caption', true)} />
+  ));

@@ -24,6 +24,7 @@ CloseButton.propTypes = checkProps({
   style: PropTypes.object,
   className: PropTypes.string,
   nodeRef: PropTypes.func,
+  children: PropTypes.node,
   component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   onClick: PropTypes.func,
   onBlur: PropTypes.func,
