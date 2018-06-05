@@ -32,3 +32,36 @@ main > section {
   left: 0;
   width: 100%;
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  text-align: inherit;
+  letter-spacing: inherit;
+  font-size: inherit;
+  text-transform: inherit;
+  color: inherit;
+}
+
+ul,
+dl,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+}

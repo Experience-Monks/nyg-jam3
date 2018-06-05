@@ -78,6 +78,7 @@
   @return $px * 0.1rem;
 }
 
+<<<<<<< HEAD
 /// Set top and left to 0
 /// @example scss Input
 ///   element {
@@ -105,21 +106,28 @@
 ///   element {
 ///     @include flex-center;
 ///   }
+=======
+>>>>>>> add nav and hamburger
 @mixin flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+<<<<<<< HEAD
 /// Set display flex and center children vertically
 /// @example scss Input
 ///   element {
 ///     @include flex-center-vert;
 ///   }
+=======
+
+>>>>>>> add nav and hamburger
 @mixin flex-center-vert {
   display: flex;
   align-items: center;
 }
+<<<<<<< HEAD
 
 /// Set display flex and center children horizontally
 /// @example scss Input
@@ -170,3 +178,5 @@
 @mixin z-index($id) {
   z-index: index($elements, $id);
 }
+=======
+>>>>>>> add nav and hamburger
