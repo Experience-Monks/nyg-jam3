@@ -9,10 +9,10 @@ import HamburgerButton, { STATES } from '../HamburgerButton/HamburgerButton';
 
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
 
+import logo from '../../assets/images/jam3-logo.png';
 import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
 import instance from '../../util/breakpoint-handler';
-import settings from '../../data/settings';
 
 class Nav extends React.PureComponent {
   constructor(props) {
@@ -104,7 +104,7 @@ Nav.propTypes = checkProps({
 
 Nav.defaultProps = {
   className: '',
-  logoSrc: `${settings.imagesPath}jam3-logo.png`,
+  logoSrc: logo,
   logoAlt: 'jam3 logo',
   routes: [
     {

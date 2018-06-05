@@ -4,11 +4,10 @@ import { TransitionGroup, Transition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import './Pages.css';
-
 import checkProps from '../../util/check-props';
 import routeKeys from '../../routes/keys';
 import { getTransitionDuration } from '../../data/pages-transitions';
+import './Pages.css';
 
 import {
   AsyncLanding as Landing,

@@ -10,7 +10,7 @@ $content-padding-desktop: px-to-rem(10);
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: $navbar-height-mobile;
   padding: 0 $navbar-padding-mobile;
   border-bottom: 1px solid rgba($grey-med, 1);
@@ -33,7 +33,7 @@ $content-padding-desktop: px-to-rem(10);
 // mobile side nav
 // ====================================================================
 #side-nav {
-  position: absolute;
+  position: fixed;
   top: $navbar-height-mobile;
   right: 0;
   transform: translateX(100%);

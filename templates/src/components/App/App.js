@@ -5,6 +5,7 @@ import debounce from 'lodash.debounce';
 
 import Pages from '../../components/Pages/Pages';
 import RotateScreen from '../../components/Rotate/Rotate';
+import Nav from '../Nav/Nav';
 
 import { setPreviousRoute } from '../../redux/modules/app';
 
@@ -40,6 +41,7 @@ class App extends React.PureComponent {
     return (
       <Fragment>
         <Pages />
+        <Nav />
         {detect.isMobile && <RotateScreen />}
       </Fragment>
     );
