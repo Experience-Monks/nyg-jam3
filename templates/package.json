@@ -41,7 +41,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Jam3/generator-jam3-v2.git"
+    "url": "https://github.com/Jam3/generator-jam3-v2/issues"
   },
   "dependencies": {
     "bowser": "1.9.2",
