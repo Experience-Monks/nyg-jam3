@@ -37,11 +37,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jam3/prj-fb-messenger-redesign.git"
+    "url": "git+https://github.com/Jam3/generator-jam3-v2.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Jam3/prj-fb-messenger-redesign/issues"
+    "url": "https://github.com/Jam3/generator-jam3-v2/issues"
   },
   "dependencies": {
     "bowser": "1.9.2",
@@ -127,7 +127,7 @@
   "lint-staged": {
     "gitDir": "../",
     "linters": {
-      "private/prj-frontend/src/**/*.{js,json,scss}": [
+      "src/**/*.{js,json,scss}": [
         "prettier --write",
         "git add"
       ]
