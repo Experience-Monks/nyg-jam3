@@ -48,7 +48,7 @@
     "classnames": "2.2.5",
     "fullscreen-handler": "0.0.2",
     "gsap": "1.20.4",
-    "gsap-promisify": "1.0.1",
+    "gsap-promisify": "1.0.2",
     "history": "4.7.2",
     "howler": "2.0.9",
     "include-media": "1.4.9",
