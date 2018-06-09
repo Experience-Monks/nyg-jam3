@@ -36,6 +36,7 @@ $content-padding-desktop: px-to-rem(10);
   position: fixed;
   top: $navbar-height-mobile;
   right: 0;
+  @include z-index(sidebar);
   transform: translateX(100%);
   width: 100%;
   height: calc(100% - #{$navbar-height-mobile});

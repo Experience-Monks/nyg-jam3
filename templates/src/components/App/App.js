@@ -40,8 +40,8 @@ class App extends React.PureComponent {
   render() {
     return (
       <Fragment>
-        <Pages />
         <Nav />
+        <Pages />
         {detect.isMobile && <RotateScreen />}
       </Fragment>
     );
