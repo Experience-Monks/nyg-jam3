@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import './Nav.css';
 
+import BaseLink from '../BaseLink/BaseLink';
 import HamburgerButton, { STATES } from '../HamburgerButton/HamburgerButton';
 
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
@@ -54,9 +55,9 @@ class Nav extends React.PureComponent {
       <ul className="nav-list">
         {this.props.routes.map((route, index) => (
           <li key={index} className="nav-item">
-            <Link to={route.path} onClick={this.handleLinkClick}>
+            <BaseLink link={route.path} onClick={this.handleLinkClick}>
               {route.name}
-            </Link>
+            </BaseLink>
           </li>
         ))}
       </ul>
