@@ -6,7 +6,7 @@ $content-padding-desktop: px-to-rem(10);
 // ====================================================================
 // Global top nav bar
 // ====================================================================
-#top-main-nav {
+#main-top-nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -36,7 +36,7 @@ $content-padding-desktop: px-to-rem(10);
 // ====================================================================
 // mobile side nav
 // ====================================================================
-#side-nav {
+#main-side-nav {
   position: fixed;
   top: $navbar-height-mobile;
   right: 0;
@@ -63,7 +63,7 @@ $content-padding-desktop: px-to-rem(10);
     color: $black;
   }
 
-  #top-main-nav & {
+  #main-top-nav & {
     .desktop-layout & {
       li {
         display: inline-block;
@@ -73,7 +73,7 @@ $content-padding-desktop: px-to-rem(10);
     }
   }
 
-  #side-nav & {
+  #main-side-nav & {
     li {
       padding: $content-padding-mobile;
     }

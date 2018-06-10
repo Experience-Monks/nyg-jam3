@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import './Nav.css';
+import './MainTopNav.css';
 
 import BaseLink from '../BaseLink/BaseLink';
 import HamburgerButton, { STATES } from '../HamburgerButton/HamburgerButton';
@@ -15,7 +15,7 @@ import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
 import instance from '../../util/breakpoint-handler';
 
-class Nav extends React.PureComponent {
+class MainTopNav extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -67,7 +67,7 @@ class Nav extends React.PureComponent {
   render() {
     return (
       <Fragment>
-        <header id="top-main-nav">
+        <header id="main-top-nav">
           <nav className={this.props.className || null} aria-label="Main Navigation">
             {this.props.logoSrc && (
               <Link to="/" aria-label="jam3 home link">
@@ -82,7 +82,7 @@ class Nav extends React.PureComponent {
         </header>
         {instance.isMobileLayout() && (
           <nav
-            id="side-nav"
+            id="main-side-nav"
             className={this.props.className || null}
             aria-label="Mobile Side Navigation"
             ref={r => (this.mobileContainer = r)}
@@ -95,7 +95,7 @@ class Nav extends React.PureComponent {
   }
 }
 
-Nav.propTypes = checkProps({
+MainTopNav.propTypes = checkProps({
   className: PropTypes.string,
   logoSrc: PropTypes.string,
   logoAlt: PropTypes.string,
@@ -105,7 +105,7 @@ Nav.propTypes = checkProps({
   setIsMobileMenuOpen: PropTypes.func
 });
 
-Nav.defaultProps = {
+MainTopNav.defaultProps = {
   className: '',
   logoSrc: logo,
   logoAlt: 'jam3 logo',
@@ -134,4 +134,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Nav));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainTopNav));
