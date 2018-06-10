@@ -33,7 +33,6 @@ class MainTopNav extends React.PureComponent {
   }
 
   handleHamburgerClick = state => {
-    this.setState({ buttonState: state });
     this.props.setIsMobileMenuOpen(!this.props.isMobileMenuOpen);
 
     if (!this.props.isMobileMenuOpen) {
