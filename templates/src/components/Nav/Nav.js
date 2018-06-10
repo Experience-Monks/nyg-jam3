@@ -67,17 +67,19 @@ class Nav extends React.PureComponent {
   render() {
     return (
       <Fragment>
-        <nav id="top-nav" className={this.props.className || null} aria-label="Main Navigation">
-          {this.props.logoSrc && (
-            <Link to="/" aria-label="jam3 home link">
-              <img className="nav-logo" src={this.props.logoSrc} alt={this.props.logoAlt} />
-            </Link>
-          )}
-          {instance.isDesktopLayout() && this.getNavList()}
-          {instance.isMobileLayout() && (
-            <HamburgerButton onClick={this.handleHamburgerClick} state={this.state.buttonState} />
-          )}
-        </nav>
+        <header id="top-main-nav">
+          <nav className={this.props.className || null} aria-label="Main Navigation">
+            {this.props.logoSrc && (
+              <Link to="/" aria-label="jam3 home link">
+                <img className="nav-logo" src={this.props.logoSrc} alt={this.props.logoAlt} />
+              </Link>
+            )}
+            {instance.isDesktopLayout() && this.getNavList()}
+            {instance.isMobileLayout() && (
+              <HamburgerButton onClick={this.handleHamburgerClick} state={this.state.buttonState} />
+            )}
+          </nav>
+        </header>
         {instance.isMobileLayout() && (
           <nav
             id="side-nav"
