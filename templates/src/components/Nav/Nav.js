@@ -67,7 +67,7 @@ class Nav extends React.PureComponent {
   render() {
     return (
       <Fragment>
-        <nav id="top-nav" className={this.props.className} aria-label="Main Navigation">
+        <nav id="top-nav" className={this.props.className || null} aria-label="Main Navigation">
           {this.props.logoSrc && (
             <Link to="/" aria-label="jam3 home link">
               <img className="nav-logo" src={this.props.logoSrc} alt={this.props.logoAlt} />
@@ -81,7 +81,7 @@ class Nav extends React.PureComponent {
         {instance.isMobileLayout() && (
           <nav
             id="side-nav"
-            className={this.props.className}
+            className={this.props.className || null}
             aria-label="Mobile Side Navigation"
             ref={r => (this.mobileContainer = r)}
           >
