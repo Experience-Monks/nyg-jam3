@@ -18,8 +18,8 @@ const DURATION = 0.2;
 export default class HamburgerButton extends PureComponent {
   constructor(props) {
     super(props);
+
     this.state = {
-      buttonState: props.state,
       isMouseOver: props.isMouseOver
     };
   }
@@ -28,21 +28,11 @@ export default class HamburgerButton extends PureComponent {
     this.bars = [...this.container.querySelectorAll('.bar')];
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.state !== this.props.state) {
-      this.setState({ buttonState: nextProps.state });
-    }
-
-    if (nextProps.isMouseOver !== this.props.isMouseOver) {
-      this.setState({ isMouseOver: nextProps.isMouseOver });
-    }
-  }
-
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.buttonState !== this.state.buttonState) {
-      if (this.state.buttonState === STATES.close) {
+    if (prevProps.state !== this.props.state) {
+      if (this.props.state === STATES.close) {
         this.goToCloseState();
-      } else if (this.state.buttonState === STATES.back) {
+      } else if (this.props.state === STATES.back) {
         this.goToBackState();
       } else {
         this.goToIdleState();
@@ -51,7 +41,7 @@ export default class HamburgerButton extends PureComponent {
   }
 
   checkIsIdleState = () => {
-    return this.state.buttonState !== STATES.close && this.state.buttonState !== STATES.back;
+    return this.props.state !== STATES.close && this.props.state !== STATES.back;
   };
 
   goToCloseState = () => {
@@ -71,12 +61,6 @@ export default class HamburgerButton extends PureComponent {
   goToIdleState = () => {
     animate.killTweensOf(this.bars);
     animate.to(this.bars, DURATION, { x: 0, y: 0, rotation: 0, scaleX: 1, autoAlpha: 1 });
-  };
-
-  handleClick = e => {
-    const buttonState = this.state.buttonState === STATES.idle ? this.props.activeState : STATES.idle;
-    this.setState({ buttonState });
-    this.props.onClick(buttonState);
   };
 
   handleMouseEnter = e => {
@@ -101,7 +85,7 @@ export default class HamburgerButton extends PureComponent {
         style={Object.assign({}, this.props.style)}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
-        onClick={this.handleClick}
+        onClick={this.props.onClick}
         ref={r => (this.container = r)}
         tabIndex={this.props.tabIndex}
         aria-label="mobile menu button"

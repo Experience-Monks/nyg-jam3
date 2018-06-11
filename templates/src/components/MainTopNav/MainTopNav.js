@@ -15,24 +15,38 @@ import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
 import instance from '../../util/breakpoint-handler';
 
+const getButtonState = isMenuOpen => (isMenuOpen ? STATES.close : STATES.idle);
+
 class MainTopNav extends React.PureComponent {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    let nextState = null;
+    const nextButtonState = getButtonState(nextProps.isMobileMenuOpen);
+
+    if (nextButtonState !== prevState.buttonState) {
+      nextState = {
+        buttonState: nextButtonState
+      };
+    }
+
+    return nextState;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
-      buttonState: STATES.idle
+      buttonState: getButtonState(props.isMobileMenuOpen)
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.layout !== nextProps.layout) {
-      if (nextProps.layout.includes(instance.names.desktopLayout)) {
+  componentDidUpdate(prevProps) {
+    if (this.props.layout !== prevProps.layout) {
+      if (this.props.layout.includes(instance.names.desktopLayout)) {
         this.props.isMobileMenuOpen && this.props.setIsMobileMenuOpen(false);
       }
-      return true;
     }
   }
 
-  handleHamburgerClick = state => {
+  handleHamburgerClick = e => {
     this.props.setIsMobileMenuOpen(!this.props.isMobileMenuOpen);
 
     if (!this.props.isMobileMenuOpen) {
