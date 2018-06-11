@@ -112,17 +112,17 @@
     "stylelint-config-jam3": "0.1.1"
   },
   "optionalDependencies": {
-    "why-did-you-update": "0.1.1",
-    "webpack-visualizer-plugin": "0.1.11",
-    "svgr": "1.9.0",
-    "stats.js": "0.17.0",
-    "sassdoc": "2.5.0",
-    "react-hot-loader": "4.0.0",
-    "license-checker": "16.0.0",
     "chalk": "2.3.2",
+    "license-checker": "16.0.0",
     "maxstache": "1.0.7",
+    "minimist": "1.2.0",
     "mkdirp": "0.5.1",
-    "minimist": "1.2.0"
+    "react-hot-loader": "4.3.1",
+    "sassdoc": "2.5.0",
+    "stats.js": "0.17.0",
+    "svgr": "1.9.0",
+    "webpack-visualizer-plugin": "0.1.11",
+    "why-did-you-update": "0.1.1"
   },
   "lint-staged": {
     "gitDir": "../",
