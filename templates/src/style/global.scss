@@ -1,7 +1,6 @@
 // Globals
 //
 // Global styling, normalize overwritten
-
 @import 'fonts.scss';
 @import 'polyfills.scss';
 @import 'shared.scss';
@@ -18,10 +17,52 @@ html {
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  font-size: px-to-rem(16);
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  text-align: inherit;
+  letter-spacing: inherit;
+  font-size: inherit;
+  text-transform: inherit;
+  color: inherit;
+}
+
+ul,
+dl,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+main > section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }

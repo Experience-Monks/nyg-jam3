@@ -1,5 +1,11 @@
 @import 'shared.scss';
 
 .Pages {
+  position: relative;
   text-align: center;
+  margin-top: $navbar-height-mobile;
+
+  .desktop-layout & {
+    margin-top: $navbar-height-desktop;
+  }
 }

@@ -1,24 +1,30 @@
 import { createStore, compose, combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
+
 import reducerRegistry from './reducer-registry';
+import { windowSizeReducer, previousRouteReducer } from './modules/app';
 import { layoutReducer, phoneLayoutReducer, mobileLayoutReducer, tabletLayoutReducer } from './modules/layout';
 import preloaderReducer from './modules/preloader';
+import mainNavReducer from './modules/main-nav';
 
 let store;
 const initialState = {};
 const enhancers = [];
+
 const defaultReducers = {
   preloader: preloaderReducer,
+  windowSize: windowSizeReducer,
+  previousRoute: previousRouteReducer,
   layout: layoutReducer,
   phoneLayout: phoneLayoutReducer,
   tabletLayout: tabletLayoutReducer,
   mobileLayout: mobileLayoutReducer,
+  isMobileMenuOpen: mainNavReducer,
   routing: routerReducer
 };
 
 // Reducers
-
 const enableBatchActions = reducers => {
   return function(state, action) {
     switch (action.type) {
@@ -50,7 +56,6 @@ reducerRegistry.setChangeListener(reducers => {
 });
 
 // Enhancers
-
 if (process.env.NODE_ENV !== 'production') {
   const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
 
@@ -62,7 +67,6 @@ if (process.env.NODE_ENV !== 'production') {
 const composedEnhancers = compose(...enhancers);
 
 // Configure Store
-
 function configureStore() {
   store = createStore(createInitialReducer(), initialState, composedEnhancers);
   return store;

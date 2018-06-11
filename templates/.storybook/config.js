@@ -2,18 +2,23 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import store from '../src/redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { configure, addDecorator } from '@storybook/react';
+import { setAddon, configure, addDecorator } from '@storybook/react';
+import { withKnobs } from '@storybook/addon-knobs/react';
+import JSXAddon from 'storybook-addon-jsx';
 
 import BreakpointWrap from './BreakpointWrap';
 
 import '../src/util/breakpoint-handler';
 
-const req = require.context('../src/components', true, /\-story\.js$/);
+const req = require.context('../src', true, /\-story\.js$/);
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));
 }
 
+setAddon(JSXAddon);
+
+addDecorator(withKnobs);
 addDecorator(story => (
   <Provider store={store}>
     <Router>
@@ -21,5 +26,6 @@ addDecorator(story => (
     </Router>
   </Provider>
 ));
+
 
 configure(loadStories, module);

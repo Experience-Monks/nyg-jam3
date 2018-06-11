@@ -1,6 +1,6 @@
 import Howl from 'howler';
-import soundModel from '../data/sounds';
 
+const soundModel = {}; // manifest
 let soundMap = {};
 
 /**

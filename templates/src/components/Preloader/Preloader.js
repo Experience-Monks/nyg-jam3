@@ -15,20 +15,11 @@ import Loader from '../SvgComponents/Loader/Loader';
 
 class Preloader extends React.PureComponent {
   componentDidMount() {
-    animate.set(this.container, { autoAlpha: 0 });
-    this.animateIn(); // TODO : remove this line when implementing transition group
     Promise.all([this.setTimer(), this.setLoader()]).then(this.setDone);
   }
 
-  animateIn(onComplete) {
-    animate.to(this.container, 0.5, { autoAlpha: 1, onComplete });
-  }
-
   animateOut(onComplete) {
-    animate.to(this.container, 0.5, { autoAlpha: 0, onComplete }).then(() => {
-      // TODO : remove this line when implementing transition group
-      this.props.setReady(true);
-    });
+    return animate.to(this.container, 0.3, { autoAlpha: 0, onComplete });
   }
 
   setTimer() {
@@ -74,11 +65,9 @@ class Preloader extends React.PureComponent {
     done();
   };
 
-  setDone = () => {
-    // TODO : remove animateOut calling and comment on setReady
-    //        when implementing transition group
-    this.animateOut();
-    // this.props.setReady(true);
+  setDone = async () => {
+    await this.animateOut();
+    this.props.setReady(true);
   };
 
   render() {
@@ -90,16 +79,18 @@ class Preloader extends React.PureComponent {
   }
 }
 
-Preloader.propTypes = {
+Preloader.propTypes = checkProps({
   className: PropTypes.string,
   assets: PropTypes.array.isRequired,
   setProgress: PropTypes.func.isRequired,
   setReady: PropTypes.func.isRequired,
   minDisplayTime: PropTypes.number,
-  options: PropTypes.object
-};
+  options: PropTypes.object,
+  progress: PropTypes.number,
+  transitionState: PropTypes.string
+});
 
-Preloader.defaultProps = checkProps({
+Preloader.defaultProps = {
   className: '',
   assets: [],
   minDisplayTime: 2000, // in milliseconds
@@ -110,7 +101,7 @@ Preloader.defaultProps = checkProps({
     onProgress: noop,
     onComplete: noop
   }
-});
+};
 
 const mapStateToProps = (state, ownProps) => {
   return {

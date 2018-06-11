@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Jam3/generator-jam3-v2#readme",
   "dependencies": {
-    "nyg": "^2.7.0"
+    "nyg": "^2.8.0"
   },
   "keywords": [
     "jam3",

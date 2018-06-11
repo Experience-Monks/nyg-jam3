@@ -2,10 +2,14 @@ import React, { Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
+import { Transition } from 'react-transition-group';
 
 import Pages from '../../components/Pages/Pages';
 import RotateScreen from '../../components/Rotate/Rotate';
 import Preloader from '../../components/Preloader/Preloader';
+import MainTopNav from '../MainTopNav/MainTopNav';
+
+import { setPreviousRoute } from '../../redux/modules/app';
 
 import settings from '../../data/settings';
 import appResize from '../../util/app-resize';
@@ -27,6 +31,10 @@ class App extends React.PureComponent {
     this.onAppResize();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    this.props.setPreviousRoute(prevProps.location.pathname);
+  }
+
   onAppResize = () => {
     appResize();
   };
@@ -34,19 +42,27 @@ class App extends React.PureComponent {
   render() {
     return (
       <Fragment>
-        {this.props.ready ? <Pages /> : <Preloader key="preloader" />}
+        <MainTopNav />
+        <Pages />
         {detect.isMobile && <RotateScreen />}
+        <Transition in={!this.props.ready} timeout={0}>
+          {state => state !== 'exited' && <Preloader transitionState={state} />}
+        </Transition>
       </Fragment>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    ready: state.preloader.ready
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    setPreviousRoute: val => dispatch(setPreviousRoute(val))
+  };
 };
 
 App.defaultProps = {};

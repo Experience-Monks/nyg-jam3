@@ -1,19 +1,28 @@
 # Jam3 Generator Developer Guide
 
-In this guide you will find the explanation behind every feature of the boilerplate and how to use it. This is a full
-new template that is using the famous `create-react-app` structure. To checkout the
-[create-react-app user guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md)
+In this guide you will find the explanation behind every feature of the boilerplate and how to use it. To checkout the
+[base user guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md)
 follow the link.
 
 ## Table of Contents
 
 * [Folder Structure](#folder-structure)
-* [Available Scripts](#available-scripts)
+* [NPM Dependencies](#npm-dependencies)
 * [Code styling](#code-styling)
 * [Nodejs and npm](#nodejs-and-npm)
 * [Git and LFS](#git-and-lfs)
 * [Build scripts](#build-scripts)
+* [Built-in Customizations](#built-in-customizations)
+* [Components creation](#components-creation)
 * [Storybook](#storybook)
+* [Performance](#performance)
+* [Responsiveness](#responsiveness)
+* [Unsupporting strategy](#unsupporting-strategy)
+* [Animations](#animations)
+* [React-Redux-Router](#react-redux-router)
+* [Assets](#assets)
+* [General documentation](#general-documentation)
+* [Styling structure](#styling-structure)
 
 ## Folder Structure
 
@@ -21,7 +30,9 @@ The idea of the generator is don't create magic in order to compose the final bo
 that is inside [templates](https://github.com/Jam3/generator-jam3-v2/tree/master/templates) will be what we will
 generate.
 
-## Available Scripts
+## NPM Dependencies
+
+### Available Scripts
 
 `npm start` Run the development server
 
@@ -39,13 +50,9 @@ generate.
 
 `npm run storybook`: Run storybook
 
-`npm run component`: Script to generate a pure components using best practices
+`npm run component`: Script to create components with the best practices
 
-`npm run stateless-component`: Script to generate a stateless component using best practices
-
-`npm run connected-component`: Script to generate a connected to the store component using best practices
-
-`npm run page`: Script to generate a connected to the store page using best practices
+`npm run stateless-component`: Script to create staless component with the best practices
 
 `npm run audit-nsp`: Run NSP to check vulnerabilities
 
@@ -56,6 +63,19 @@ generate.
 `npm run svg-component`: Create components for your SVGs
 
 `npm run generate-doc`: Run the documentation creation, currently just SASS
+
+### Package Dependencies
+
+The dependendencies are structures in the following way:
+
+* dependencies: Actual packages used in the final bundle, let's keep it clear
+* devDependencies: Dependencies used to create the final bundle, including linting, security, etc
+* optionalDependencies: Dependencies used in development but not needed it to create the final bundle, also help scripts
+
+### CI
+
+Strongly recommend to run `npm i --no-optional --no-package-lock` in your CI production build, we are evaluating using
+`npm ci` in the future.
 
 ## Code styling
 
@@ -154,7 +174,28 @@ TBD
 
 ## Responsiveness
 
-TBD
+There are several ways to tackle down this issue with the generator.
+
+### Javascript controlling the resolutions
+
+Javascript is listing the resolution changes and is setting classes in the HTML depending of the current resolution.
+Based on this approach, you should use those classes in your CSS code or Javascript (Redux) and your application will
+behave correctly
+
+**Pros and Cons**
+
+1. Pros - You have access to the same information from JS (Redux) and CSS
+2. Cons - Every time a class is set in the HTML the browser is triggering a re-render
+3. Cons - This approach is slower than using media-queries
+
+**Oportunities** Do the same but using media queries and move the resolution information using matchMedia
+
+### CSS controlling the resolutions
+
+We are using include-media to help us with the breakpoints. You can take a look to the configuration in the file
+`grid.scss` or read the documentation in https://github.com/eduardoboucas/include-media
+
+### Breakpoints
 
 1. Breakpoint handler + rems using. Pros + Cons
 
@@ -183,40 +224,39 @@ TBD
 1. Basic use of assets, how webpack include them and add hash.
 2. Async loading of some assets - in case we don't preload them
 3. SVGs - there are two ways of using SVGs.
-    1. Importing SVGs like other modules (react + webapck as url)
-    ```
-    import logo from './assets/logo.svg';
-    ...
-    <img src={logo} className="Landing-logo" alt="logo" />
-    ```
-    2. Generate SVGs into React component by running a node script. This option is to transform a whole directory. By default, `SvgComponents` in `src/components` is where all svg must be. All SVGs will be stored in `SvgComponents` folder and Svg Components will be created under new folder. Please check out `svg-component.js` script in `scripts` folder.
-    
-          NOTE: Please double check newly generated Svg components if there is any `eslint` issues.
-    ```bash
-    // Run command below
-    $ npm run svg-component
 
-    // Example result
-    src/components/SvgComponents/logo.svg
-    src/components/SvgComponents/some-icon.svg
-    src/components/SvgComponents/Logo/Logo.js
-    src/components/SvgComponents/SomeIcon/SomeIcon.js
-    ```
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Update svgr script handles only selected SVG(s)
-    3. Transform selected SVG(s), one or more svg, by running a node script. Basic idea/setting is the same as #2.
-    ```bash
-    // Run command below
-    $ npm run svg-component close-icon.svg more.svg
-    ```
-<<<<<<< HEAD
-=======
-    3. Transform a single SVG is working in progress
->>>>>>> Update developer guide for svgs
-=======
->>>>>>> Update svgr script handles only selected SVG(s)
+   1. Importing SVGs like other modules (react + webapck as url)
+
+   ```
+   import logo from './assets/logo.svg';
+   ...
+   <img src={logo} className="Landing-logo" alt="logo" />
+   ```
+
+   2. Generate SVGs into React component by running a node script. This option is to transform a whole directory. By
+      default, `SvgComponents` in `src/components` is where all svg must be. All SVGs will be stored in `SvgComponents`
+      folder and Svg Components will be created under new folder. Please check out `svg-component.js` script in
+      `scripts` folder.
+
+      NOTE: Please double check newly generated Svg components if there is any `eslint` issues.
+
+   ```bash
+   // Run command below
+   $ npm run svg-component
+
+   // Example result
+   src/components/SvgComponents/logo.svg
+   src/components/SvgComponents/some-icon.svg
+   src/components/SvgComponents/Logo/Logo.js
+   src/components/SvgComponents/SomeIcon/SomeIcon.js
+   ```
+
+   3. Transform selected SVG(s), one or more svg, by running a node script. Basic idea/setting is the same as #2.
+
+   ```bash
+   // Run command below
+   $ npm run svg-component close-icon.svg more.svg
+   ```
 
 ## General documentation
 
