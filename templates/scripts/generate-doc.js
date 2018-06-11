@@ -30,3 +30,14 @@ exec('build-storybook -c .storybook -o public/components', function(err, stdout,
 
   console.log(`${chalk.green('Ok!')}, Storybook components documentation has been generated`);
 });
+
+// Generate Util Guide
+console.log(`${title} Util docs`);
+exec('jsdoc src/util/*.js --destination ./public/utilguide', function(err, stdout, stderr) {
+  if (err) {
+    console.log(`${chalk.red('Failed!')}, Util documentation failed`);
+    console.error(err);
+  }
+
+  console.log(`${chalk.green('Ok!')}, Util documentation has been generated`);
+});
