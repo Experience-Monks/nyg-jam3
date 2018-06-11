@@ -19,10 +19,10 @@ module.exports = {
     if (env !== 'production') {
       /* Webpack used in development */
 
-      // Bundle Analizer - Visualizer
+      // Bundle Analyzer - Visualizer
       process.env.BUNDLE_ANALYZE &&
         config.plugins.push(
-          new Visualizer({ filename: './public/bundle-size-analizer.html' }),
+          new Visualizer({ filename: './public/bundle-size-analyzer.html' }),
           new BundleAnalyzerPlugin({
             reportFilename: './public/bundle-analyzer-report.html'
           })
