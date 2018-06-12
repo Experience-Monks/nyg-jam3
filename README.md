@@ -28,8 +28,6 @@ You can checkout our [Developer Guides](https://github.com/Jam3/generator-jam3-v
 
 ## Main scripts
 
-[![NPM](https://nodei.co/npm/nyg-jam3.png)](https://www.npmjs.com/package/nyg-jam3)
-
 Inside the template, you can run some built-in commands:
 
 ### `npm start`
