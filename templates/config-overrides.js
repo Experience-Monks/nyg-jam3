@@ -24,6 +24,8 @@ module.exports = {
         config.plugins.push(
           new Visualizer({ filename: './public/bundle-size-analyzer.html' }),
           new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+            analyzerMode: 'static',
             reportFilename: './public/bundle-analyzer-report.html'
           })
         );
