@@ -1,11 +1,13 @@
 import keys from '../keys';
+import mediaQuery from '../../util/media-query';
 
 const defaultState = {
   windowSize: {
-    width: 0,
-    height: 0
+    width: window.innerWidth,
+    height: window.innerHeight
   },
-  previousRoute: null
+  previousRoute: null,
+  layout: mediaQuery.layout
 };
 
 // Reducers
@@ -15,6 +17,12 @@ export function windowSizeReducer(state = defaultState.windowSize, { type, windo
 
 export function previousRouteReducer(state = defaultState.previousRoute, { type, previousRoute }) {
   return type === keys.SET_PREV_ROUTE ? previousRoute : state;
+}
+
+export function layoutReducer(state = defaultState.layout, { type, layout }) {
+  return type === keys.SET_LAYOUT && Boolean(Object.keys(layout).filter(key => state[key] !== layout[key]).length)
+    ? layout
+    : state;
 }
 
 // Action Creator
@@ -29,5 +37,19 @@ export function setPreviousRoute(previousRoute) {
   return {
     type: keys.SET_PREV_ROUTE,
     previousRoute
+  };
+}
+
+export function setLayout(layout) {
+  return {
+    type: keys.SET_LAYOUT,
+    layout
+  };
+}
+
+export function batchActions(actions) {
+  return {
+    type: keys.BATCH_ACTIONS,
+    actions
   };
 }

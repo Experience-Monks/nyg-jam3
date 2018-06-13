@@ -13,7 +13,6 @@ import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
 import logo from '../../assets/images/jam3-logo.png';
 import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
-import instance from '../../util/breakpoint-handler';
 
 const getButtonState = isMenuOpen => (isMenuOpen ? STATES.close : STATES.idle);
 
@@ -40,7 +39,7 @@ class MainTopNav extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     if (this.props.layout !== prevProps.layout) {
-      if (this.props.layout.includes(instance.names.desktopLayout)) {
+      if (this.props.layout.large) {
         this.props.isMobileMenuOpen && this.props.setIsMobileMenuOpen(false);
       }
     }
@@ -57,7 +56,7 @@ class MainTopNav extends React.PureComponent {
   };
 
   handleLinkClick = e => {
-    if (instance.isDesktopLayout()) return;
+    if (this.props.layout.large) return;
 
     this.handleHamburgerClick();
     this.setState({ buttonState: STATES.idle });
@@ -78,6 +77,9 @@ class MainTopNav extends React.PureComponent {
   };
 
   render() {
+    const desktopLayout = this.props.layout.large;
+    const mobileLayout = !this.props.layout.large;
+
     return (
       <Fragment>
         <header id="main-top-nav">
@@ -87,13 +89,11 @@ class MainTopNav extends React.PureComponent {
                 <img className="nav-logo" src={this.props.logoSrc} alt={this.props.logoAlt} />
               </Link>
             )}
-            {instance.isDesktopLayout() && this.getNavList()}
-            {instance.isMobileLayout() && (
-              <HamburgerButton onClick={this.handleHamburgerClick} state={this.state.buttonState} />
-            )}
+            {desktopLayout && this.getNavList()}
+            {mobileLayout && <HamburgerButton onClick={this.handleHamburgerClick} state={this.state.buttonState} />}
           </nav>
         </header>
-        {instance.isMobileLayout() && (
+        {mobileLayout && (
           <nav
             id="main-side-nav"
             className={this.props.className || null}
@@ -113,7 +113,7 @@ MainTopNav.propTypes = checkProps({
   logoSrc: PropTypes.string,
   logoAlt: PropTypes.string,
   links: PropTypes.array,
-  layout: PropTypes.array,
+  layout: PropTypes.object,
   isMobileMenuOpen: PropTypes.bool,
   setIsMobileMenuOpen: PropTypes.func
 });

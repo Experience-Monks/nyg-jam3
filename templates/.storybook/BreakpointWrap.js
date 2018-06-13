@@ -2,41 +2,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 
-import { setWindowSize } from '../src/redux/modules/app';
+import { batchActions, setWindowSize, setLayout } from '../src/redux/modules/app';
 
-import breakpointHandler from '../src/util/breakpoint-handler';
 import settings from '../src/data/settings';
-import setGlobalFontSize from '../src/util/set-global-font-size';
 import usePassiveEvent from '../src/util/use-passive-event';
+import mediaQuery from '../src/util/media-query';
 
 class BreakpointWrap extends React.PureComponent {
-  state = {};
-  resize = debounce(this.onResize.bind(this), settings.resizeDebounceTime);
-
   componentDidMount() {
-    this.onResize();
-    window.addEventListener('resize', this.resize, usePassiveEvent());
+    window.addEventListener('resize', this.handleResize, usePassiveEvent());
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.resize);
+    window.removeEventListener('resize', this.handleResize);
   }
 
-  onResize() {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-
-    this.props.setWindowSize({ width, height });
-    breakpointHandler.update(width, height);
-    setGlobalFontSize(width, height);
-  }
+  handleResize = debounce(() => {
+    this.props.setLayout(window.innerWidth, window.innerHeight, mediaQuery.layout);
+  }, settings.resizeDebounceTime);
 
   render() {
     return (
       <div>
         {React.cloneElement(this.props.children, {
           windowWidth: this.props.windowWidth,
-          windowHeight: this.props.windowHeight
+          windowHeight: this.props.windowHeight,
+          layout: this.props.layout
         })}
       </div>
     );
@@ -47,15 +38,14 @@ const mapStateToProps = (state, ownProps) => {
   return {
     windowWidth: state.windowSize.width,
     windowHeight: state.windowSize.height,
-    mobileLayout: state.mobileLayout,
-    phoneLayout: state.phoneLayout,
-    tabletLayout: state.tabletLayout
+    layout: state.layout
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    setWindowSize: val => dispatch(setWindowSize(val))
+    setWindowSize: val => dispatch(setWindowSize(val)),
+    setLayout: (width, height, layout) => dispatch(batchActions([setWindowSize({ width, height }), setLayout(layout)]))
   };
 };
 
