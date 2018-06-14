@@ -1,5 +1,5 @@
 import keys from '../keys';
-import mediaQuery from '../../util/media-query';
+import layout from '../../util/layout';
 
 const defaultState = {
   windowSize: {
@@ -7,7 +7,7 @@ const defaultState = {
     height: window.innerHeight
   },
   previousRoute: null,
-  layout: mediaQuery.layout
+  layout: layout.all
 };
 
 // Reducers

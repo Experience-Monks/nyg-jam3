@@ -11,7 +11,7 @@ import { setPreviousRoute, setWindowSize, setLayout, batchActions } from '../../
 
 import settings from '../../data/settings';
 import detect from '../../util/detect';
-import mediaQuery from '../../util/media-query';
+import layout from '../../util/layout';
 import usePassiveEvent from '../../util/use-passive-event';
 
 class App extends React.PureComponent {
@@ -37,7 +37,7 @@ class App extends React.PureComponent {
   }
 
   handleResize = debounce(() => {
-    this.props.setLayout(window.innerWidth, window.innerHeight, mediaQuery.layout);
+    this.props.setLayout(window.innerWidth, window.innerHeight, layout.all);
   }, settings.resizeDebounceTime);
 
   render() {
