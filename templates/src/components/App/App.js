@@ -33,7 +33,7 @@ class App extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    window.removeEventListener(this.handleResize);
+    window.removeEventListener('resize', this.handleResize);
   }
 
   handleResize = debounce(() => {

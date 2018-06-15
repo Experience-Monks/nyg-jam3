@@ -127,6 +127,9 @@
     "webpack-visualizer-plugin": "0.1.11",
     "why-did-you-update": "0.1.1"
   },
+  "jest": {
+    "setupFiles": ["./test/jest-setup.js"]
+  },
   "lint-staged": {
     "gitDir": "../",
     "linters": {
