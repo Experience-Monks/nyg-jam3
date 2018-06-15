@@ -4,8 +4,10 @@
  */
 
 const Visualizer = require('webpack-visualizer-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const AutoDllPlugin = require('autodll-webpack-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 const rewireEslint = require('react-app-rewire-eslint');
 const rewireReactHotLoader = require('react-app-rewire-hot-loader');
 const rewireImageminPlugin = require('react-app-rewire-imagemin-plugin');
@@ -19,12 +21,22 @@ module.exports = {
     if (env !== 'production') {
       /* Webpack used in development */
 
-      // Bundle Analizer - Visualizer
+      // Bundle Analyzer - Visualizer
       process.env.BUNDLE_ANALYZE &&
-        config.plugins.push(new Visualizer({ filename: './public/bundle-size-analizer.html' }));
+        config.plugins.push(
+          new Visualizer({ filename: './public/bundle-size-analyzer.html' }),
+          new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+            analyzerMode: 'static',
+            reportFilename: './public/bundle-analyzer-report.html'
+          })
+        );
 
       // Enabling HMR
       config = rewireReactHotLoader(config, env);
+
+      // Nicer viewer for webpack dev server
+      config.plugins.push(new DashboardPlugin());
 
       // Cache modules that we don't update frecuently
       config.plugins.push(
