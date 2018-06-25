@@ -18,5 +18,11 @@
 ///     color : #f5f5fd;
 ///   }
 /// }
-$breakpoints: ('phone': 320px, 'phablet': 480px, 'tablet': 768px, 'desktop': 1024px, 'full': 1280px, 'large' : 1600px)
-  !default;
+$breakpoints: (
+  'phone': 320px,
+  'phablet': 480px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'full': 1280px,
+  'large' : 1600px
+);

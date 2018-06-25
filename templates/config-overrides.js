@@ -9,6 +9,7 @@ const AutoDllPlugin = require('autodll-webpack-plugin');
 const rewireEslint = require('react-app-rewire-eslint');
 const rewireReactHotLoader = require('react-app-rewire-hot-loader');
 const rewireImageminPlugin = require('react-app-rewire-imagemin-plugin');
+const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 
 module.exports = {
   webpack: function(config, env) {
@@ -48,6 +49,14 @@ module.exports = {
       );
     } else {
       /* Webpack used in production */
+
+      // Duplicate package alert
+      config.plugins.push(
+        new DuplicatePackageCheckerPlugin({
+          verbose: true,
+          emitError: true
+        })
+      );
 
       // Compress images - png, jpg, svg
       config = rewireImageminPlugin(config, env, {
