@@ -9,6 +9,7 @@ const globs = [
   { base: 'templates/', glob: 'public/**/*' },
   { base: 'templates/', glob: 'scripts/**/*' },
   { base: 'templates/', glob: 'src/**/*' },
+  { base: 'templates/', glob: 'test/**/*' },
   { base: 'templates/', glob: '*' }
 ];
 

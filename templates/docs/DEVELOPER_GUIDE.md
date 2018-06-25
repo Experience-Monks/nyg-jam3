@@ -219,7 +219,7 @@ We are using include-media to help us with the breakpoints. You can take a look 
 
 ### Breakpoints
 
-1. Breakpoint handler + rems using. Pros + Cons
+1. layout util + rems using. Pros + Cons
 
 ## Unsupporting strategy
 
