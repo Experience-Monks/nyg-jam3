@@ -20,7 +20,7 @@ module.exports = {
     if (env !== 'production') {
       /* Webpack used in development */
 
-      // Bundle Analyzer - Visualizer
+      // Bundle Analysis
       process.env.BUNDLE_ANALYZE &&
         config.plugins.push(
           new Visualizer({ filename: './public/bundle-size-analyzer.html' }),
