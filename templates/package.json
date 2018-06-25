@@ -32,7 +32,7 @@
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
     "linters": "npm-run-all -p js-lint sass-lint",
-    "postinstall": "npm-run-all build-css"
+    "postinstall": "npm-run-all build-layout build-css"
   },
   "scriptsComments": {
     "audit-snyk": "You need to install snyk in the repository and add their token in order to use this script, npm i snyk"
@@ -128,7 +128,9 @@
     "why-did-you-update": "0.1.1"
   },
   "jest": {
-    "setupFiles": ["./test/jest-setup.js"]
+    "setupFiles": [
+      "./test/jest-setup.js"
+    ]
   },
   "lint-staged": {
     "gitDir": "../",

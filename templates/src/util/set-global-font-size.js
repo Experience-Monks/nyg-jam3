@@ -3,8 +3,9 @@ import settings from '../data/settings';
 /**
  * Set fontsize to the HTML tag depending of the user resolution and the web app configuration
  *
- * @param {any} windowWidth
- * @param {any} windowHeight
+ * @param {Number} windowWidth
+ * @param {Number} windowHeight
+ * @param {Boolean} isDesktopLayout
  */
 function setGlobalFontSize(windowWidth, windowHeight, isDesktopLayout) {
   const scale = settings.minScaleSize / settings.baseDesignWidth;
