@@ -3,10 +3,11 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
+import { Transition } from 'react-transition-group';
 
 import Pages from '../../components/Pages/Pages';
 import RotateScreen from '../../components/Rotate/Rotate';
-import checkProps from '../../util/check-props';
+import Preloader from '../../components/Preloader/Preloader';
 import MainTopNav from '../MainTopNav/MainTopNav';
 
 import { setPreviousRoute, setWindowSize, setLayout, batchActions } from '../../redux/modules/app';
@@ -16,6 +17,7 @@ import detect from '../../util/detect';
 import layout from '../../util/layout';
 import usePassiveEvent from '../../util/use-passive-event';
 import setGlobalFontsSze from '../../util/set-global-font-size';
+import checkProps from '../../util/check-props';
 
 class App extends React.PureComponent {
   componentDidMount() {
@@ -50,9 +52,16 @@ class App extends React.PureComponent {
   render() {
     return (
       <Fragment>
-        <MainTopNav />
-        <Pages />
+        {this.props.ready && (
+          <Fragment>
+            <MainTopNav />
+            <Pages />
+          </Fragment>
+        )}
         {detect.isMobile && <RotateScreen />}
+        <Transition in={!this.props.ready} timeout={0}>
+          {state => state !== 'exited' && <Preloader transitionState={state} />}
+        </Transition>
       </Fragment>
     );
   }
@@ -60,6 +69,7 @@ class App extends React.PureComponent {
 
 const mapStateToProps = state => {
   return {
+    ready: state.preloader.ready,
     layout: state.layout
   };
 };
@@ -72,6 +82,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 App.propTypes = checkProps({
+  ready: PropTypes.bool.isRequired,
   layout: PropTypes.object.isRequired,
   setPreviousRoute: PropTypes.func.isRequired,
   setLayout: PropTypes.func.isRequired
