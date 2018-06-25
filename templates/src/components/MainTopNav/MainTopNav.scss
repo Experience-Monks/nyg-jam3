@@ -27,7 +27,7 @@ $content-padding-desktop: px-to-rem(10);
     height: auto;
   }
 
-  .desktop-layout & {
+  @media (min-width: $layout-large) {
     height: $navbar-height-desktop;
     padding: 0 $navbar-padding-destkop;
   }
@@ -49,7 +49,7 @@ $content-padding-desktop: px-to-rem(10);
   @include flex-center;
   opacity: 0;
 
-  .tablet-layout & {
+  @media (min-width: $layout-medium) {
     width: 35%;
   }
 }
@@ -64,7 +64,7 @@ $content-padding-desktop: px-to-rem(10);
   }
 
   #main-top-nav & {
-    .desktop-layout & {
+    @media (min-width: $layout-large) {
       li {
         display: inline-block;
         padding: $content-padding-mobile;

@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import animate from '../../util/gsap-animate';
 
 import logo from './assets/logo.svg';
 import './Landing.css';
@@ -10,7 +9,7 @@ import './Landing.css';
 import BaseLink from '../../components/BaseLink/BaseLink';
 
 import { setLandingLoaded } from '../../redux/modules/landing';
-
+import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
 import { default as Transition } from '../PagesTransitionWrapper';
 import { wait } from '../../util/basic-functions';
@@ -18,7 +17,6 @@ import { wait } from '../../util/basic-functions';
 class Landing extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   componentDidMount() {

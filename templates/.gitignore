@@ -32,6 +32,9 @@ bundle-analyzer-report.html
 # CSS files of src
 src/**/*.css
 
+# Dynamically built files
+src/style/layout.scss
+
 # Documentation
 public/components
 public/styleguide

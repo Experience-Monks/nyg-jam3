@@ -1,10 +1,10 @@
 import { createStore, compose, combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
+import keys from './keys';
 
 import reducerRegistry from './reducer-registry';
-import { windowSizeReducer, previousRouteReducer } from './modules/app';
-import { layoutReducer, phoneLayoutReducer, mobileLayoutReducer, tabletLayoutReducer } from './modules/layout';
+import { windowSizeReducer, previousRouteReducer, layoutReducer } from './modules/app';
 import mainNavReducer from './modules/main-nav';
 
 let store;
@@ -15,9 +15,6 @@ const defaultReducers = {
   windowSize: windowSizeReducer,
   previousRoute: previousRouteReducer,
   layout: layoutReducer,
-  phoneLayout: phoneLayoutReducer,
-  tabletLayout: tabletLayoutReducer,
-  mobileLayout: mobileLayoutReducer,
   isMobileMenuOpen: mainNavReducer,
   routing: routerReducer
 };
@@ -26,7 +23,7 @@ const defaultReducers = {
 const enableBatchActions = reducers => {
   return function(state, action) {
     switch (action.type) {
-      case 'BATCH_ACTIONS':
+      case keys.BATCH_ACTIONS:
         return action.actions.reduce(reducers, state);
       default:
         return reducers(state, action);
