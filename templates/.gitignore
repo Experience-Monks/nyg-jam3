@@ -26,7 +26,8 @@ stats.html
 # Create React App Dev
 default-cra-rewrite-config.json
 final-cra-rewrite-config.json
-bundle-size-analizer.html
+bundle-size-analyzer.html
+bundle-analyzer-report.html
 
 # CSS files of src
 src/**/*.css

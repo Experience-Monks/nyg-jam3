@@ -4,6 +4,7 @@
  */
 
 const Visualizer = require('webpack-visualizer-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const AutoDllPlugin = require('autodll-webpack-plugin');
 const rewireEslint = require('react-app-rewire-eslint');
@@ -19,9 +20,16 @@ module.exports = {
     if (env !== 'production') {
       /* Webpack used in development */
 
-      // Bundle Analizer - Visualizer
+      // Bundle Analysis
       process.env.BUNDLE_ANALYZE &&
-        config.plugins.push(new Visualizer({ filename: './public/bundle-size-analizer.html' }));
+        config.plugins.push(
+          new Visualizer({ filename: './public/bundle-size-analyzer.html' }),
+          new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+            analyzerMode: 'static',
+            reportFilename: './public/bundle-analyzer-report.html'
+          })
+        );
 
       // Enabling HMR
       config = rewireReactHotLoader(config, env);
