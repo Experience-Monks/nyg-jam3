@@ -8,8 +8,6 @@ import JSXAddon from 'storybook-addon-jsx';
 
 import BreakpointWrap from './BreakpointWrap';
 
-import '../src/util/breakpoint-handler';
-
 const req = require.context('../src', true, /\-story\.js$/);
 
 function loadStories() {

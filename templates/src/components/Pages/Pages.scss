@@ -5,7 +5,7 @@
   text-align: center;
   margin-top: $navbar-height-mobile;
 
-  .desktop-layout & {
+  @media (min-width: $layout-large) {
     margin-top: $navbar-height-desktop;
   }
 }
