@@ -48,6 +48,7 @@
   "dependencies": {
     "bowser": "1.9.2",
     "classnames": "2.2.5",
+    "dompurify": "1.0.5",
     "fullscreen-handler": "0.0.2",
     "gsap": "1.20.4",
     "gsap-promisify": "1.0.2",
