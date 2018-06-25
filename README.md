@@ -6,6 +6,39 @@ Jam3 Frontend App Generator with no build configuration and no prompts. The proj
 * [Developer Guide](#developer-guide) – How to develop apps bootstrapped with the generator
 * [Main scripts](#main-scripts) – Running scripts
 
+## Setting up a new project
+
+To create a new project based on the generator there are some ways: 
+1. Generate the template output
+2. Using the generator npm package.
+3. Copy and paste and update some values in the template
+
+### Generate the template output
+
+Do this if you have the source code and want to generate a version ready to be used in a project.
+
+1. Make sure you are in the root of the generator
+2. Run `npm test`
+
+### Using the npm package
+
+Note: The latest version hasn't been released yet, the current npm version is the old generator version
+
+```
+npm i nyg -g
+npm i nyg-jam3 -g
+cd your-project-directory
+nyg nyg-jam3
+```
+
+### Copy and paste
+
+If you want to do the quick and raw path, just copy `templates` folder and review the changes that the generator is doing after copying the files: https://github.com/Jam3/intern-generator-jam3/blob/master/index.js#L23
+
+Changes:
+1. Update nvm version in `.nvmrc`
+2. In the `package.json`, delete `gitDir` property inside `lint-staged`.
+
 ## Developer Contribution Guide
 
 #### Contribute with boilerplate
