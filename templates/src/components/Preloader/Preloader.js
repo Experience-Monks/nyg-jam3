@@ -5,7 +5,7 @@ import preloader from 'preloader';
 
 import checkProps from '../../util/check-props';
 import animate from '../../util/gsap-animate';
-import { noop } from '../../util/basic-functions';
+import { noop, wait } from '../../util/basic-functions';
 import { setProgress, setReady } from '../../redux/modules/preloader';
 import preloadAssets from '../../data/preload-assets';
 
@@ -14,20 +14,17 @@ import './Preloader.css';
 import Loader from '../SvgComponents/Loader/Loader';
 
 class Preloader extends React.PureComponent {
-  componentDidMount() {
-    Promise.all([this.setTimer(), this.setLoader()]).then(this.setDone);
+  async componentDidMount() {
+    await Promise.all([this.setTimer(), this.setLoader()]);
+    this.setDone();
   }
 
   animateOut(onComplete) {
     return animate.to(this.container, 0.3, { autoAlpha: 0, onComplete });
   }
 
-  setTimer() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve();
-      }, this.props.minDisplayTime);
-    });
+  async setTimer() {
+    return await wait(this.props.minDisplayTime);
   }
 
   setLoader() {
@@ -44,16 +41,8 @@ class Preloader extends React.PureComponent {
     this.loader.add(url, options);
   }
 
-  get(url) {
-    return this.loader.get(url);
-  }
-
   load() {
     this.loader.load();
-  }
-
-  stopLoad() {
-    this.loader.stopLoad();
   }
 
   onProgress = val => {
@@ -93,7 +82,7 @@ Preloader.propTypes = checkProps({
 Preloader.defaultProps = {
   className: '',
   assets: [],
-  minDisplayTime: 2000, // in milliseconds
+  minDisplayTime: 300, // in milliseconds
   options: {
     xhrImages: false,
     loadFullAudio: false,

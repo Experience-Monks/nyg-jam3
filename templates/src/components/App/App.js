@@ -42,8 +42,12 @@ class App extends React.PureComponent {
   render() {
     return (
       <Fragment>
-        <MainTopNav />
-        <Pages />
+        {this.props.ready && (
+          <Fragment>
+            <MainTopNav />
+            <Pages />
+          </Fragment>
+        )}
         {detect.isMobile && <RotateScreen />}
         <Transition in={!this.props.ready} timeout={0}>
           {state => state !== 'exited' && <Preloader transitionState={state} />}
