@@ -17,6 +17,8 @@ settings.minScaleSize = 1200; // below this size we lock the font
 settings.maxScaleSize = 1920; // above this size we lock the font
 settings.baseDesignWidth = 1440; // only at this exact screen size pixel values will match designs. it will scale up/down within the above range
 settings.percentToPxMultiplier = settings.defaultFontSizePx / settings.defaultFontSizePercent;
+
+// global paths
 settings.assetPath = `${process.env.PUBLIC_URL}/assets/`;
 settings.imagesPath = `${process.env.PUBLIC_URL}/assets/images/`;
 
