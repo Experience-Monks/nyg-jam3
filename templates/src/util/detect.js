@@ -1,8 +1,6 @@
 import bowser from 'bowser';
-import MobileDetect from 'mobile-detect';
 
 const ua = window.navigator.userAgent.toLowerCase();
-const md = new MobileDetect(ua);
 const bots = [
   'facebookexternalhit',
   'linkedinbot',
@@ -14,7 +12,6 @@ const bots = [
   'googlebot'
 ];
 
-// const checkBot = () => Boolean(bots.filter(bot => ua.includes(bot.toLowerCase())).length);
 const checkBot = () => Boolean(bots.filter(bot => ua.indexOf(bot.toLowerCase()) !== -1).length);
 const checkVendor = () => (window.navigator.vendor ? window.navigator.vendor.toLowerCase() : '');
 const checkOSVersion = () => bowser.osversion;
@@ -220,8 +217,7 @@ const detect = {
   device,
   devicePixelRatio,
   // Libraries
-  bowser,
-  md
+  bowser
 };
 
 // Named exports
@@ -280,8 +276,7 @@ export {
   device,
   devicePixelRatio,
   // Libraries
-  bowser,
-  md
+  bowser
 };
 
 // Default export
