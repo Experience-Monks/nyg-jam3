@@ -4,13 +4,13 @@ const fs = require('fs');
 
 // Generator configuration
 const globs = [
-  { base: 'templates/', glob: '.storybook/**/*' },
-  { base: 'templates/', glob: 'docs/**/*' },
-  { base: 'templates/', glob: 'public/**/*' },
-  { base: 'templates/', glob: 'scripts/**/*' },
-  { base: 'templates/', glob: 'src/**/*' },
-  { base: 'templates/', glob: 'test/**/*' },
-  { base: 'templates/', glob: '*' }
+  { base: 'templates/', glob: '.storybook/**/*', template: false },
+  { base: 'templates/', glob: 'docs/**/*', template: false },
+  { base: 'templates/', glob: 'public/**/*', template: false },
+  { base: 'templates/', glob: 'scripts/**/*', template: false },
+  { base: 'templates/', glob: 'src/**/*', template: false },
+  { base: 'templates/', glob: 'test/**/*', template: false },
+  { base: 'templates/', glob: '*', template: false }
 ];
 
 const generator = nyg(null, globs)
