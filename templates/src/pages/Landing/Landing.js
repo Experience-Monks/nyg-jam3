@@ -13,7 +13,7 @@ import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
 import { default as Transition } from '../PagesTransitionWrapper';
 import { wait } from '../../util/basic-functions';
-import sanitizer from '../../util/sanitizer';
+// import sanitizer from '../../util/sanitizer';
 
 class Landing extends React.PureComponent {
   constructor(props) {
@@ -63,7 +63,7 @@ class Landing extends React.PureComponent {
         </p>
         <p
           className="dangerous-sample"
-          dangerouslySetInnerHTML={{ __html: sanitizer('<p>Script inside <img src=x onerror=alert(1)></p>') }}
+          dangerouslySetInnerHTML={{ __html: '<p>Script inside <img src=x onerror=alert(1)></p>' }}
         />
         <BaseLink link="/about">About</BaseLink>
       </section>
