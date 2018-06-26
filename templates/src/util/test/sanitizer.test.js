@@ -21,8 +21,10 @@ describe('Sanitizer: Malicious attributes', () => {
   });
 
   test('iframe src attribute', () => {
+    /* eslint-disable */
     // prettier-ignore
     expect(sanitizer('<p>abc<iframe/\/src=jAva&Tab;script:alert(3)>def')).toBe('<p>abcdef</p>');
+    /* eslint-enable */
   });
 
   test('math xlink attribute', () => {
