@@ -2,13 +2,17 @@ import sanitizer from '../sanitizer';
 
 describe('Sanitizer: Malicious attributes', () => {
   test('data attribute', () => {
+    /* eslint-disable */
     // prettier-ignore
     expect(sanitizer('<a data-bind="style: alert(1)"></a>')).toBe('<a data-bind=\"style: alert(1)\"></a>');
+    /* eslint-enable */
   });
 
   test('img onerror attribute', () => {
+    /* eslint-disable */
     // prettier-ignore
     expect(sanitizer('<img src=x onerror=alert(1)>')).toBe('<img src=\"x\">');
+    /* eslint-enable */
   });
 
   test('svg onload attribute', () => {
@@ -17,8 +21,10 @@ describe('Sanitizer: Malicious attributes', () => {
   });
 
   test('iframe src attribute', () => {
+    /* eslint-disable */
     // prettier-ignore
     expect(sanitizer('<p>abc<iframe/\/src=jAva&Tab;script:alert(3)>def')).toBe('<p>abcdef</p>');
+    /* eslint-enable */
   });
 
   test('math xlink attribute', () => {
