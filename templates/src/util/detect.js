@@ -14,7 +14,8 @@ const bots = [
   'googlebot'
 ];
 
-const checkBot = () => Boolean(bots.filter(bot => ua.includes(bot.toLowerCase())).length);
+// const checkBot = () => Boolean(bots.filter(bot => ua.includes(bot.toLowerCase())).length);
+const checkBot = () => Boolean(bots.filter(bot => ua.indexOf(bot.toLowerCase()) !== -1).length);
 const checkVendor = () => (window.navigator.vendor ? window.navigator.vendor.toLowerCase() : '');
 const checkOSVersion = () => bowser.osversion;
 const checkOSMajorVersion = () => parseInt(bowser.osversion, 10);
