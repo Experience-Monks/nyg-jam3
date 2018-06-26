@@ -13,7 +13,7 @@ $content-padding-desktop: px-to-rem(10);
   width: 100vw;
   height: $navbar-height-mobile;
   padding: 0 $navbar-padding-mobile;
-  border-bottom: 1px solid rgba($grey-med, 1);
+  border-bottom: 1px solid rgba($gray, 1);
   background: $white;
 
   nav {
@@ -44,7 +44,7 @@ $content-padding-desktop: px-to-rem(10);
   transform: translateX(100%);
   width: 100%;
   height: calc(100% - #{$navbar-height-mobile});
-  border-left: 1px solid rgba($grey-med, 1);
+  border-left: 1px solid rgba($gray, 1);
   background: $white;
   @include flex-center;
   opacity: 0;

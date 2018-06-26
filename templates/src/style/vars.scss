@@ -12,6 +12,7 @@
 
 $layout-medium: map-get($layout, medium) + px;
 $layout-large: map-get($layout, large) + px;
+$layout-xlarge: map-get($layout, xlarge) + px;
 
 // ====================================================================
 // Animation
@@ -29,17 +30,7 @@ $landing-hero-in-ease: cubic-bezier(0.17, 0.12, 0, 1);
 
 $white: #fff;
 $black: #000;
-
-$grey: #737373;
-$grey-light: #f7f7f7;
-$grey-med: #e5e5e5;
-$grey-dark: #4a4a4a;
-
-$red: #d74e4e;
-
-$blue: #0084ff;
-$blue-light: #ddeaf8;
-$blue-dark: #004280;
+$gray: #e5e5e5;
 
 // ====================================================================
 // Generals
