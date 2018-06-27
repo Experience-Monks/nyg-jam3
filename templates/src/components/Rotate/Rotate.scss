@@ -1,20 +1,16 @@
 @import 'shared.scss';
 
 .Rotate {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  z-index: 9999;
+  @include flex-center;
+  @include position-100(fixed);
+  background-color: $rotate-screen-bg-color;
+  @include z-index(rotate);
 
   .container {
+    text-align: center;
+
     p {
-      color: #fff;
+      color: $white;
       font-size: px-to-rem(16);
       line-height: 120%;
       margin-top: px-to-rem(20);
@@ -26,8 +22,7 @@
       width: px-to-rem(100);
 
       svg {
-        width: 100%;
-        height: 100%;
+        @include box(100%);
         display: block;
       }
     }
