@@ -4,6 +4,8 @@ import classnames from 'classnames';
 
 import './HamburgerButton.css';
 
+import Button from '../Button/Button';
+
 import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
 import { noop } from '../../util/basic-functions';
@@ -13,15 +15,15 @@ export const STATES = {
   close: 'close',
   back: 'back'
 };
+
 const DURATION = 0.2;
+
+const bars = [0, 1, 2].map(item => <span key={item} className={`bar ${item}`} />);
 
 export default class HamburgerButton extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isMouseOver: props.isMouseOver
-    };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -29,10 +31,10 @@ export default class HamburgerButton extends PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.state !== this.props.state) {
-      if (this.props.state === STATES.close) {
+    if (prevProps.currentState !== this.props.currentState) {
+      if (this.props.currentState === STATES.close) {
         this.goToCloseState();
-      } else if (this.props.state === STATES.back) {
+      } else if (this.props.currentState === STATES.back) {
         this.goToBackState();
       } else {
         this.goToIdleState();
@@ -41,7 +43,7 @@ export default class HamburgerButton extends PureComponent {
   }
 
   checkIsIdleState = () => {
-    return this.props.state !== STATES.close && this.props.state !== STATES.back;
+    return this.props.currentState !== STATES.close && this.props.currentState !== STATES.back;
   };
 
   goToCloseState = () => {
@@ -68,53 +70,45 @@ export default class HamburgerButton extends PureComponent {
       animate.killTweensOf(this.bars);
       animate.to([this.bars[1], this.bars[3]], DURATION, { scaleX: 0.8 });
     }
-    this.setState({ isMouseOver: true });
     this.props.onMouseEnter();
   };
 
   handleMouseLeave = e => {
     this.checkIsIdleState() && this.goToIdleState();
-    this.setState({ isMouseOver: false });
     this.props.onMouseLeave();
   };
 
   render() {
     return (
-      <button
+      <Button
         className={classnames(`HamburgerButton`, this.props.className)}
-        style={Object.assign({}, this.props.style)}
+        nodeRef={r => (this.container = r)}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         onClick={this.props.onClick}
-        ref={r => (this.container = r)}
         tabIndex={this.props.tabIndex}
-        aria-label="mobile menu button"
+        aria-label="Mobile menu button"
       >
-        <div className="bars-container">{[0, 1, 2].map(item => <span key={item} className={`bar ${item}`} />)}</div>
-      </button>
+        <div className="bars-container">{bars}</div>
+      </Button>
     );
   }
 }
 
 HamburgerButton.propTypes = checkProps({
   className: PropTypes.string,
-  style: PropTypes.object,
   tabIndex: PropTypes.number,
-  state: PropTypes.string,
+  currentState: PropTypes.string,
   activeState: PropTypes.string,
-  isMouseOver: PropTypes.bool,
   onClick: PropTypes.func,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func
 });
 
 HamburgerButton.defaultProps = {
-  className: '',
-  style: {},
   tabIndex: 0,
-  state: STATES.idle,
+  currentState: STATES.idle,
   activeState: STATES.close,
-  isMouseOver: false,
   onClick: noop,
   onMouseEnter: noop,
   onMouseLeave: noop

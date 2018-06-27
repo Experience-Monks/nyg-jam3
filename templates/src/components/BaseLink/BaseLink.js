@@ -37,8 +37,10 @@ const BaseLink = props => {
     componentProps.to = props.link;
   }
 
+  const { nodeRef: ref } = props;
+
   return (
-    <Tag className={classnames('BaseLink', props.className)} {...componentProps}>
+    <Tag ref={ref} className={classnames('BaseLink', props.className)} {...componentProps}>
       {props.children}
     </Tag>
   );
@@ -47,6 +49,7 @@ const BaseLink = props => {
 BaseLink.propTypes = checkProps({
   className: PropTypes.string,
   rel: PropTypes.string,
+  nodeRef: PropTypes.func,
   link: PropTypes.string,
   target: PropTypes.oneOf(['_blank', '_self']),
   tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -69,7 +72,7 @@ BaseLink.propTypes = checkProps({
 });
 
 BaseLink.defaultProps = {
-  link: '#',
+  link: '',
   target: '_blank'
 };
 

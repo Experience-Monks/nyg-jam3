@@ -9,6 +9,7 @@ import Pages from '../../components/Pages/Pages';
 import RotateScreen from '../../components/Rotate/Rotate';
 import Preloader from '../../components/Preloader/Preloader';
 import MainTopNav from '../MainTopNav/MainTopNav';
+import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 
 import { setPreviousRoute, setWindowSize, setLayout, batchActions } from '../../redux/modules/app';
 
@@ -55,6 +56,7 @@ class App extends React.PureComponent {
         {this.props.ready && (
           <Fragment>
             <MainTopNav />
+            {!this.props.layout.large && <HamburgerMenu />}
             <Pages />
           </Fragment>
         )}

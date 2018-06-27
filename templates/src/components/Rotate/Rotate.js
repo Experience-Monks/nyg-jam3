@@ -7,6 +7,7 @@ import RotateIcon from './assets/rotate.svg';
 import checkProps from '../../util/check-props';
 import detect from '../../util/detect';
 import { preventEvent } from '../../util/basic-functions';
+import usePassiveEvent from '../../util/use-passive-event';
 
 export default class RotateScreen extends PureComponent {
   constructor(props) {
@@ -20,12 +21,12 @@ export default class RotateScreen extends PureComponent {
     this.setOrientationParentClass();
 
     if (detect.isAndroid) {
-      window.addEventListener('orientationchange', this.handleOrientationChange);
+      window.addEventListener('orientationchange', this.handleOrientationChange, usePassiveEvent());
     } else {
-      window.addEventListener('resize', this.handleOrientationChange);
+      window.addEventListener('resize', this.handleOrientationChange, usePassiveEvent());
     }
 
-    this.container.addEventListener('touchmove', this.preventScrolling, false);
+    this.container.addEventListener('touchmove', this.preventScrolling, usePassiveEvent());
   }
 
   componentDidUpdate(prevProps, prevState) {
