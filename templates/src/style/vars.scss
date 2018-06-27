@@ -40,6 +40,7 @@ $gray: #e5e5e5;
 // ====================================================================
 
 $page-bg-color: $white;
+$rotate-screen-bg-color: $black;
 $element-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.04);
 $generic-fonts: sans-serif;
 
@@ -69,4 +70,4 @@ $navbar-padding-destkop: 6rem;
 // ====================================================================
 // List of z-index element
 // ====================================================================
-$elements: preloader, rotate, warning, sidebar;
+$elements: sidebar, preloader, rotate;

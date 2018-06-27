@@ -1,19 +1,14 @@
 @import 'shared.scss';
 
 #Preloader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
+  @include flex-center;
+  @include position-100(fixed);
+  background-color: $black;
+  @include z-index(preloader);
 
   svg.loader-icon {
     animation: infinite-spinning 1s infinite;
-    fill: #fff;
+    fill: $white;
     width: px-to-rem(50);
     height: px-to-rem(50);
   }
