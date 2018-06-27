@@ -20,6 +20,10 @@ body {
   padding: 0;
   overflow-x: hidden;
   font-size: px-to-rem(16);
+
+  &.rotate-screen-visible {
+    background-color: $rotate-screen-bg-color !important; // trick to avoid the iPhone X notch
+  }
 }
 
 *,

@@ -6,6 +6,7 @@ import RotateIcon from './assets/rotate.svg';
 
 import checkProps from '../../util/check-props';
 import detect from '../../util/detect';
+import { preventEvent } from '../../util/basic-functions';
 
 export default class RotateScreen extends PureComponent {
   constructor(props) {
@@ -13,14 +14,23 @@ export default class RotateScreen extends PureComponent {
     this.state = {
       orientation: detect.orientation
     };
-    document.body.classList.add(detect.orientation);
   }
 
   componentDidMount() {
+    this.setOrientationParentClass();
+
     if (detect.isAndroid) {
       window.addEventListener('orientationchange', this.handleOrientationChange);
     } else {
       window.addEventListener('resize', this.handleOrientationChange);
+    }
+
+    this.container.addEventListener('touchmove', this.preventScrolling, false);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.orientation !== prevState.orientation) {
+      this.setOrientationParentClass();
     }
   }
 
@@ -30,7 +40,18 @@ export default class RotateScreen extends PureComponent {
     } else {
       window.removeEventListener('resize', this.handleOrientationChange);
     }
+    this.container.removeEventListener('touchmove', this.preventScrolling);
   }
+
+  preventScrolling = e => {
+    preventEvent(e);
+  };
+
+  setOrientationParentClass = (orientation = this.state.orientation) => {
+    orientation === 'landscape'
+      ? document.body.classList.add('rotate-screen-visible')
+      : document.body.classList.remove('rotate-screen-visible');
+  };
 
   handleOrientationChange = () => {
     if (detect.orientation !== this.state.orientation) {
@@ -39,19 +60,13 @@ export default class RotateScreen extends PureComponent {
   };
 
   render() {
-    const visible = this.state.orientation !== 'portrait';
+    const visible = this.state.orientation === 'landscape';
     const style = {
       visibility: visible ? 'visible' : 'hidden'
     };
 
-    if (visible) {
-      document.body.classList.add('rotatescreen-visible');
-    } else {
-      document.body.classList.remove('rotatescreen-visible');
-    }
-
     return (
-      <section className="Rotate" style={style}>
+      <section className="Rotate" style={style} ref={r => (this.container = r)}>
         <div className="container">
           <img src={RotateIcon} className="rotate-icon" alt="Please rotate your device" />
           <p>
