@@ -64,9 +64,9 @@ class HamburgerMenu extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    isMobileMenuOpen: state.isMobileMenuOpen
+    isMobileMenuOpen: ownProps.isMobileMenuOpen || state.isMobileMenuOpen
   };
 };
 
