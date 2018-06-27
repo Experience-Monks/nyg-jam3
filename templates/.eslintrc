@@ -5,9 +5,7 @@
     "jam3/no-sanitizer-with-danger": [
       2,
       {
-        "wrapperName": [
-          "sanitizer"
-        ]
+        "wrapperName": ["sanitizer"]
       }
     ],
     "no-console": "off",
