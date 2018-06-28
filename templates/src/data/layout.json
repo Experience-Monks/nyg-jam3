@@ -1,4 +1,5 @@
 {
   "medium": 768,
-  "large": 1200
+  "large": 1200,
+  "xlarge": 1920
 }

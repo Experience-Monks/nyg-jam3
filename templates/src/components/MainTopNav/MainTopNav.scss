@@ -19,12 +19,6 @@ $content-padding-desktop: px-to-rem(10);
     padding: 0 #{$navbar-padding-destkop - $content-padding-desktop} 0 $navbar-padding-destkop;
   }
 
-  .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    @include box(100%);
-
     .nav-logo {
       width: px-to-rem(50);
     }
