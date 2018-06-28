@@ -1,0 +1,42 @@
+@import 'shared.scss';
+
+$footer-height-mobile: 8rem;
+$footer-height-desktop: 8rem;
+
+.Footer {
+  @include flex-center-vert;
+  width: 100%;
+  height: $footer-height-mobile;
+  padding: 0 $navbar-padding-mobile;
+  color: $white;
+  background: $black;
+
+  @media (min-width: $layout-large) {
+    height: $footer-height-desktop;
+    padding: 0 $navbar-padding-destkop;
+  }
+
+  .footer-global {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .footer-nav {
+    .nav-list {
+      display: flex;
+
+      li {
+        padding: px-to-rem(5);
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+  }
+
+  .footer-copyright {
+    font-size: px-to-rem(20);
+  }
+}
