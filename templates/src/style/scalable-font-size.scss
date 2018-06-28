@@ -1,0 +1,49 @@
+@import 'shared.scss';
+
+$default-font-size-percent: 62.5;
+$default-font-size-px: 10;
+
+// we need to convert percentages so that html font size is set in px, otherwise Safari won't scale below 9px ignoring %
+$percent-to-px-multiplier: $default-font-size-px / $default-font-size-percent;
+
+// ====================================================================
+// RANGES
+// HTML font size will proportionately scale up or down within the allowed range
+// ====================================================================
+
+// below this size we lock font size at its min
+$min-scale-size: map-get($layout, large);
+
+// above this size we lock font size at its max
+$max-scale-size: map-get($layout, xlarge);
+
+// only at this exact screen resolution pixel values will match designs
+// If $base-design-width > $min-scale-size it will scale down in that range, by default they are equal
+$base-design-width: map-get($layout, large);
+
+// ====================================================================
+// CALCULATED VALUES
+// ====================================================================
+$scale: $min-scale-size / $base-design-width;
+
+@mixin scalable-font() {
+  font-size: #{$default-font-size-px}px;
+
+  @media (min-width: $layout-large) and (max-width: #{$min-scale-size}px) {
+    // lock font size for min range limit
+    $font-size: $default-font-size-percent * $scale;
+    font-size: #{$font-size * $percent-to-px-multiplier}px;
+  }
+
+  @media (min-width: #{$min-scale-size}px) {
+    // proportionately scale font size within range
+    $font-size: $default-font-size-percent / $min-scale-size * $scale * 100;
+    font-size: #{$font-size * $percent-to-px-multiplier}vw;
+  }
+
+  @media (min-width: #{$max-scale-size}px) {
+    // lock font size for max range limit
+    $font-size: $default-font-size-percent / $min-scale-size * $max-scale-size * $scale;
+    font-size: #{$font-size * $percent-to-px-multiplier}px;
+  }
+}
