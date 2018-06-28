@@ -17,9 +17,14 @@ $footer-height-desktop: 8rem;
   }
 
   .footer-global {
-    display: flex;
+    @include flex-center-vert;
     justify-content: space-between;
+    flex-direction: column;
     width: 100%;
+
+    @media (min-width: $layout-medium) {
+      flex-direction: row;
+    }
   }
 
   .footer-nav {
