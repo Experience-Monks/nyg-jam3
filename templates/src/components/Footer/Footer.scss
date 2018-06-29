@@ -4,27 +4,23 @@ $footer-height-mobile: 8rem;
 $footer-height-desktop: 8rem;
 
 .Footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   @include flex-center-vert;
+  justify-content: space-between;
+  flex-direction: column;
   width: 100%;
-  height: $footer-height-mobile;
-  padding: 0 $navbar-padding-mobile;
+  padding: 2rem $navbar-padding-mobile;
   color: $white;
   background: $black;
 
-  @media (min-width: $layout-large) {
-    height: $footer-height-desktop;
-    padding: 0 $navbar-padding-destkop;
+  @media (min-width: $layout-medium) {
+    flex-direction: row;
   }
 
-  .footer-global {
-    @include flex-center-vert;
-    justify-content: space-between;
-    flex-direction: column;
-    width: 100%;
-
-    @media (min-width: $layout-medium) {
-      flex-direction: row;
-    }
+  @media (min-width: $layout-large) {
+    padding: 2rem $navbar-padding-desktop;
   }
 
   .footer-nav {
@@ -42,6 +38,7 @@ $footer-height-desktop: 8rem;
   }
 
   .footer-copyright {
+    margin: 0;
     font-size: px-to-rem(20);
   }
 }

@@ -11,18 +11,16 @@ import checkProps from '../../util/check-props';
 
 const Footer = React.forwardRef((props, ref) => (
   <footer className={classnames('Footer', props.className)} ref={ref}>
-    <section className="footer-global">
-      <nav className="footer-nav">
-        <ul className="nav-list">
-          {props.links.map((link, index) => (
-            <li key={index} className="nav-item">
-              <BaseLink link={link.path}>{link.name}</BaseLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <div className="footer-copyright">Jam3 ©</div>
-    </section>
+    <nav className="footer-nav">
+      <ul className="nav-list">
+        {props.links.map((link, index) => (
+          <li key={index} className="nav-item">
+            <BaseLink link={link.path}>{link.name}</BaseLink>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <p className="footer-copyright">Jam3 ©</p>
   </footer>
 ));
 
@@ -32,19 +30,18 @@ Footer.propTypes = checkProps({
 });
 
 Footer.defaultProps = {
-  className: '',
   links: [
     {
       name: 'About',
       path: routeKeys.About
     },
     {
-      name: 'Privacy',
-      path: '#'
+      name: 'Contact',
+      path: 'https://www.jam3.com/contact/'
     },
     {
-      name: 'Terms',
-      path: '#'
+      name: 'Accessibility',
+      path: 'https://www.jam3.com/accessibility/'
     }
   ]
 };
