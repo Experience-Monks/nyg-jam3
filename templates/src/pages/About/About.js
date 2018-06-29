@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import checkProps from '../../util/check-props';
+import './About.css';
 
 import BaseLink from '../../components/BaseLink/BaseLink';
+
 import { default as Transition } from '../PagesTransitionWrapper';
 import { wait } from '../../util/basic-functions';
 import animate from '../../util/gsap-animate';
+import checkProps from '../../util/check-props';
 
 class About extends React.PureComponent {
   constructor(props) {

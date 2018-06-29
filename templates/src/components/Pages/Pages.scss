@@ -8,4 +8,11 @@
   @media (min-width: $layout-large) {
     margin-top: $navbar-height-desktop;
   }
+
+  & > section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
 }
