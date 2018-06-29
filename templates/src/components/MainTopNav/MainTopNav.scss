@@ -16,7 +16,7 @@ $content-padding-desktop: px-to-rem(10);
 
   @media (min-width: $layout-large) {
     height: $navbar-height-desktop;
-    padding: 0 #{$navbar-padding-destkop - $content-padding-desktop} 0 $navbar-padding-destkop;
+    padding: 0 #{$navbar-padding-desktop - $content-padding-desktop} 0 $navbar-padding-desktop;
   }
 
     .nav-logo {
