@@ -68,6 +68,7 @@ class App extends React.PureComponent {
 
 const mapStateToProps = state => {
   return {
+    layout: state.layout,
     ready: state.preloader.ready
   };
 };
@@ -80,6 +81,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 App.propTypes = checkProps({
+  layout: PropTypes.object.isRequired,
   ready: PropTypes.bool.isRequired,
   setPreviousRoute: PropTypes.func.isRequired,
   setLayout: PropTypes.func.isRequired
