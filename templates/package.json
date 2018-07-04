@@ -21,6 +21,7 @@
     "dependency-report": "node scripts/dependencies-report",
     "svg-component": "node scripts/svg-component.js",
     "generate-doc": "node scripts/generate-doc",
+    "facebook": "node scripts/facebook.js",
     "\n ######################  Automation Tools  ######################": "",
     "test": "react-app-rewired test --env=jsdom",
     "audit-snyk": "snyk auth [token] && snyk test",
