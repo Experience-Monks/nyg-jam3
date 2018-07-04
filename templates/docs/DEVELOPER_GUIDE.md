@@ -162,8 +162,6 @@ How to use it, guidelines.
 
 ## Performance
 
-TBD
-
 1. Split bundles
 2. Split redux configuration
 3. preload & precache
@@ -171,6 +169,30 @@ TBD
 5. Async
 6. Passive events
 7. Debounce|throttle events
+
+### Tools
+
+#### Profiling Components with the Chrome Performance Tab
+
+References:
+
+https://reactjs.org/docs/optimizing-performance.html#profiling-components-with-the-chrome-performance-tab
+
+https://building.calibreapp.com/debugging-react-performance-with-react-16-and-chrome-devtools-c90698a522ad
+
+#### Why did you update
+
+Integrated in the application, add `?performance` to your local app and will be enabled
+
+References:
+
+https://www.npmjs.com/package/why-did-you-update
+
+#### Highlighting Component Updates using React Developer Tools
+
+References:
+
+https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-updates-6119e45e6833
 
 ## Responsiveness
 
@@ -197,7 +219,7 @@ We are using include-media to help us with the breakpoints. You can take a look 
 
 ### Breakpoints
 
-1. Breakpoint handler + rems using. Pros + Cons
+1. layout util + rems using. Pros + Cons
 
 ## Unsupporting strategy
 

@@ -4,14 +4,16 @@
   "description": "Jam3 new app",
   "private": true,
   "scripts": {
-    "start": "npm-run-all -p watch-css start-js",
+    "start": "npm-run-all -p watch-layout watch-css start-js",
     "build": "npm run release",
     "\n ######################  NPM Secondary Pipeline  ######################": "",
-    "release": "cross-env NODE_ENV=production npm-run-all generate-doc build-css build-js",
+    "release": "cross-env NODE_ENV=production REACT_APP_SW_CACHE_BUST=$(date +%s) npm-run-all generate-doc build-layout build-css build-js",
     "start-js": "react-app-rewired start",
     "build-css": "node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/",
     "build-js": "react-app-rewired build",
+    "build-layout": "node scripts/build-layout-data.js",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "watch-layout": "npm run build-layout && node scripts/watch-layout-data.js",
     "\n ######################  Support Development Tools  ######################": "",
     "storybook": "start-storybook -p 9001 -c .storybook -s ./src,./public",
     "component": "node scripts/component.js",
@@ -31,7 +33,7 @@
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
     "linters": "npm-run-all -p js-lint sass-lint",
-    "postinstall": "npm-run-all build-css"
+    "postinstall": "npm-run-all build-layout build-css"
   },
   "scriptsComments": {
     "audit-snyk": "You need to install snyk in the repository and add their token in order to use this script, npm i snyk"
@@ -47,6 +49,7 @@
   "dependencies": {
     "bowser": "1.9.2",
     "classnames": "2.2.5",
+    "dompurify": "1.0.5",
     "fullscreen-handler": "0.0.2",
     "gsap": "1.20.4",
     "gsap-promisify": "1.0.2",
@@ -56,6 +59,7 @@
     "lodash.debounce": "4.0.8",
     "mobile-detect": "1.4.1",
     "normalize.css": "8.0.0",
+    "preloader": "4.0.2",
     "react": "16.3.2",
     "react-background-video-player": "1.1.4",
     "react-dom": "16.3.2",
@@ -77,12 +81,13 @@
     "cross-env": "5.1.6",
     "duplicate-package-checker-webpack-plugin": "2.1.0",
     "eslint": "4.11.0",
-    "eslint-config-jam3": "0.1.3",
+    "eslint-config-jam3": "0.1.4",
     "eslint-config-postcss": "^2.0.2",
     "eslint-config-prettier": "2.9.0",
     "eslint-config-react-app": "^2.0.1",
     "eslint-plugin-flowtype": "2.48.0",
     "eslint-plugin-import": "2.11.0",
+    "eslint-plugin-jam3": "0.2.1",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-prettier": "2.6.0",
     "eslint-plugin-promise": "3.7.0",
@@ -94,10 +99,10 @@
     "imagemin-jpegtran": "5.0.2",
     "imagemin-pngquant": "5.1.0",
     "imagemin-svgo": "6.0.0",
+    "json-sass-vars": "3.0.0",
     "lint-staged": "^4.3.0",
     "node-sass-chokidar": "1.3.0",
     "npm-run-all": "4.1.2",
-    "nsp": "3.2.1",
     "preload-webpack-plugin": "2.3.0",
     "prettier": "1.8.2",
     "prop-types": "15.6.1",
@@ -124,7 +129,13 @@
     "stats.js": "0.17.0",
     "svgr": "1.9.0",
     "webpack-visualizer-plugin": "0.1.11",
+    "webpack-bundle-analyzer": "2.13.1",
     "why-did-you-update": "0.1.1"
+  },
+  "jest": {
+    "setupFiles": [
+      "./test/jest-setup.js"
+    ]
   },
   "lint-staged": {
     "gitDir": "../",

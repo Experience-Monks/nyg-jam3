@@ -1,34 +1,33 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import './MainTopNav.css';
+
+import logo from '../../assets/images/jam3-logo.png';
 
 import BaseLink from '../BaseLink/BaseLink';
 import HamburgerButton, { STATES } from '../HamburgerButton/HamburgerButton';
 
-import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
-
-import logo from '../../assets/images/jam3-logo.png';
-import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
-import instance from '../../util/breakpoint-handler';
+import routeKeys from '../../routes/keys';
+import cleanPath from '../../util/clean-path';
+
+import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
 
 const getButtonState = isMenuOpen => (isMenuOpen ? STATES.close : STATES.idle);
 
 class MainTopNav extends React.PureComponent {
   static getDerivedStateFromProps(nextProps, prevState) {
-    let nextState = null;
     const nextButtonState = getButtonState(nextProps.isMobileMenuOpen);
-
     if (nextButtonState !== prevState.buttonState) {
-      nextState = {
+      return {
         buttonState: nextButtonState
       };
     }
-
-    return nextState;
+    return null;
   }
 
   constructor(props) {
@@ -38,38 +37,20 @@ class MainTopNav extends React.PureComponent {
     };
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.layout !== prevProps.layout) {
-      if (this.props.layout.includes(instance.names.desktopLayout)) {
-        this.props.isMobileMenuOpen && this.props.setIsMobileMenuOpen(false);
-      }
-    }
-  }
-
-  handleHamburgerClick = e => {
+  handleHamburgerClick = () => {
     this.props.setIsMobileMenuOpen(!this.props.isMobileMenuOpen);
-
-    if (!this.props.isMobileMenuOpen) {
-      animate.to(this.mobileContainer, 0.3, { autoAlpha: 1, x: '0%' });
-    } else {
-      animate.to(this.mobileContainer, 0.3, { autoAlpha: 0, x: '100%' });
-    }
-  };
-
-  handleLinkClick = e => {
-    if (instance.isDesktopLayout()) return;
-
-    this.handleHamburgerClick();
-    this.setState({ buttonState: STATES.idle });
   };
 
   getNavList = () => {
     return (
       <ul className="nav-list">
-        {this.props.routes.map((route, index) => (
+        {this.props.links.map((route, index) => (
           <li key={index} className="nav-item">
-            <BaseLink link={route.path} onClick={this.handleLinkClick}>
-              {route.name}
+            <BaseLink
+              link={route.path}
+              className={classnames({ active: cleanPath(this.props.location.pathname) === cleanPath(route.path) })}
+            >
+              {route.text}
             </BaseLink>
           </li>
         ))}
@@ -79,31 +60,20 @@ class MainTopNav extends React.PureComponent {
 
   render() {
     return (
-      <Fragment>
-        <header id="main-top-nav">
-          <nav className={this.props.className || null} aria-label="Main Navigation">
-            {this.props.logoSrc && (
-              <Link to="/" aria-label="jam3 home link">
-                <img className="nav-logo" src={this.props.logoSrc} alt={this.props.logoAlt} />
-              </Link>
-            )}
-            {instance.isDesktopLayout() && this.getNavList()}
-            {instance.isMobileLayout() && (
-              <HamburgerButton onClick={this.handleHamburgerClick} state={this.state.buttonState} />
-            )}
-          </nav>
-        </header>
-        {instance.isMobileLayout() && (
-          <nav
-            id="main-side-nav"
-            className={this.props.className || null}
-            aria-label="Mobile Side Navigation"
-            ref={r => (this.mobileContainer = r)}
-          >
-            {this.getNavList()}
-          </nav>
-        )}
-      </Fragment>
+      <header className={classnames('MainTopNav', this.props.className)}>
+        <nav className="nav" aria-label="Main Navigation">
+          {this.props.logoSrc && (
+            <Link to={routeKeys.Landing} aria-label="Home">
+              <img className="nav-logo" src={this.props.logoSrc} alt={this.props.logoAlt} />
+            </Link>
+          )}
+          {this.props.layout.large ? (
+            this.getNavList()
+          ) : (
+            <HamburgerButton onClick={this.handleHamburgerClick} currentState={this.state.buttonState} />
+          )}
+        </nav>
+      </header>
     );
   }
 }
@@ -113,28 +83,27 @@ MainTopNav.propTypes = checkProps({
   logoSrc: PropTypes.string,
   logoAlt: PropTypes.string,
   links: PropTypes.array,
-  layout: PropTypes.array,
-  isMobileMenuOpen: PropTypes.bool,
-  setIsMobileMenuOpen: PropTypes.func
+  layout: PropTypes.object.isRequired,
+  isMobileMenuOpen: PropTypes.bool.isRequired,
+  setIsMobileMenuOpen: PropTypes.func.isRequired
 });
 
 MainTopNav.defaultProps = {
-  className: '',
   logoSrc: logo,
-  logoAlt: 'jam3 logo',
-  routes: [
+  logoAlt: 'logo',
+  links: [
     {
-      name: 'Home',
-      path: '/'
+      text: 'Home',
+      path: routeKeys.Landing
     },
     {
-      name: 'About',
-      path: '/about'
+      text: 'About',
+      path: routeKeys.About
     }
   ]
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
     layout: state.layout,
     isMobileMenuOpen: state.isMobileMenuOpen

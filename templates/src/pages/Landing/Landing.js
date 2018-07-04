@@ -1,24 +1,24 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import animate from '../../util/gsap-animate';
 
 import logo from './assets/logo.svg';
+
 import './Landing.css';
 
 import BaseLink from '../../components/BaseLink/BaseLink';
 
 import { setLandingLoaded } from '../../redux/modules/landing';
-
+import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
 import { default as Transition } from '../PagesTransitionWrapper';
 import { wait } from '../../util/basic-functions';
+import sanitizer from '../../util/sanitizer';
 
 class Landing extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   componentDidMount() {
@@ -62,6 +62,10 @@ class Landing extends React.PureComponent {
         <p className="Landing-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <p
+          className="dangerous-sample"
+          dangerouslySetInnerHTML={{ __html: sanitizer('<p>Script inside <img src=x onerror=alert(1)></p>') }}
+        />
         <BaseLink link="/about">About</BaseLink>
       </section>
     );

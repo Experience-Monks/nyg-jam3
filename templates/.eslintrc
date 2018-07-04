@@ -1,6 +1,14 @@
 {
   "extends": ["react-app", "jam3"],
+  "plugins": ["jam3"],
   "rules": {
+    "jam3/no-sanitizer-with-danger": [
+      2,
+      {
+        "wrapperName": ["sanitizer"]
+      }
+    ],
+    "jam3/forbid-methods": 2,
     "no-console": "off",
     "react/sort-comp": [
       1,
@@ -21,10 +29,13 @@
             "state",
             "getChildContext",
             "componentWillMount",
+            "UNSAFE_componentWillMount",
             "componentDidMount",
             "componentWillReceiveProps",
+            "UNSAFE_componentWillReceiveProps",
             "shouldComponentUpdate",
             "componentWillUpdate",
+            "UNSAFE_componentWillUpdate",
             "componentDidUpdate",
             "componentWillUnmount",
             "componentWillAppear",
