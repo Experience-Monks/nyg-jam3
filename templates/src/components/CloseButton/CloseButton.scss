@@ -2,9 +2,7 @@
 
 .CloseButton {
   position: relative;
-  width: 25px;
-  height: 25px;
-  border: none;
+  @include box(25px);
 
   span {
     position: absolute;
@@ -13,7 +11,7 @@
     display: block;
     width: 3px;
     height: 100%;
-    background-color: #000;
+    background-color: $black;
 
     &:first-child {
       transform: translate(-50%, -50%) rotate(45deg);

@@ -14,6 +14,7 @@ import captionsOnIcon from './assets/captions-on.svg';
 import captionsOffIcon from './assets/captions-off.svg';
 
 import VideoTimeline from '../VideoTimeline/VideoTimeline';
+import Button from '../../Button/Button';
 
 import checkProps from '../../../util/check-props';
 import { noop } from '../../../util/basic-functions';
@@ -31,15 +32,14 @@ const VideoControls = props => {
 
   return (
     <nav className={classnames('VideoControls', props.className)} aria-label="Video Controls">
-      <button
+      <Button
         className="VideoControls-button"
         aria-label={props.isPlaying ? 'Pause Video' : 'Play Video'}
         title={props.isPlaying ? 'Pause Video' : 'Play Video'}
         onClick={props.onPlayToggle}
-        tabIndex="0"
       >
         <img src={props.isPlaying ? PauseIcon : PlayIcon} alt={props.isPlaying ? 'Pause Icon' : 'Play Icon'} />
-      </button>
+      </Button>
 
       <VideoTimeline
         duration={props.duration}
@@ -52,42 +52,39 @@ const VideoControls = props => {
       </time>
 
       {props.captions && (
-        <button
+        <Button
           className="VideoControls-button"
           aria-label={props.isShowingCaptions ? 'Hide Captions' : 'Show Captions'}
           title={props.isShowingCaptions ? 'Hide Captions' : 'Show Captions'}
           onClick={props.onCaptionsToggle}
-          tabIndex="0"
         >
           <img
             src={props.isShowingCaptions ? captionsOnIcon : captionsOffIcon}
             alt={props.isShowingCaptions ? 'Captions On Icon' : 'Captions Off Icon'}
           />
-        </button>
+        </Button>
       )}
 
-      <button
+      <Button
         className="VideoControls-button"
         aria-label={props.isMuted ? 'Unmute Video' : 'Mute Video'}
         title={props.isMuted ? 'Unmute Video' : 'Mute Video'}
         onClick={props.onMuteToggle}
-        tabIndex="0"
       >
         <img src={props.isMuted ? MutedIcon : UnmutedIcon} alt={props.isMuted ? 'Muted Icon' : 'Unmuted Icon'} />
-      </button>
+      </Button>
 
-      <button
+      <Button
         className="VideoControls-button"
         aria-label={props.isFullScreen ? 'Exit Fullscreen Mode' : 'Enter Fullscreen Mode'}
         title={props.isFullScreen ? 'Exit Fullscreen Mode' : 'Enter Fullscreen Mode'}
         onClick={props.onFullscreenToggle}
-        tabIndex="0"
       >
         <img
           src={props.isFullScreen ? ExitFullscreenIcon : EnterFullscreenIcon}
           alt={props.isFullScreen ? 'Fullscreen Mode Icon' : 'Normal Mode Icon'}
         />
-      </button>
+      </Button>
     </nav>
   );
 };

@@ -9,6 +9,7 @@ import Pages from '../../components/Pages/Pages';
 import RotateScreen from '../../components/Rotate/Rotate';
 import Preloader from '../../components/Preloader/Preloader';
 import MainTopNav from '../MainTopNav/MainTopNav';
+import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import Footer from '../Footer/Footer';
 
 import { setPreviousRoute, setWindowSize, setLayout, batchActions } from '../../redux/modules/app';
@@ -53,6 +54,7 @@ class App extends React.PureComponent {
         {this.props.ready && (
           <Fragment>
             <MainTopNav />
+            {!this.props.layout.large && <HamburgerMenu />}
             <Pages />
             <Footer />
           </Fragment>
@@ -68,6 +70,7 @@ class App extends React.PureComponent {
 
 const mapStateToProps = state => {
   return {
+    layout: state.layout,
     ready: state.preloader.ready
   };
 };
@@ -80,6 +83,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 App.propTypes = checkProps({
+  layout: PropTypes.object.isRequired,
   ready: PropTypes.bool.isRequired,
   setPreviousRoute: PropTypes.func.isRequired,
   setLayout: PropTypes.func.isRequired

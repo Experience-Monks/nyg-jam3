@@ -12,12 +12,18 @@ const transitionsData = {
     exit: 300 // this number should match total duration inside animateOut function of the About page
   }
 };
-export default transitionsData;
+
+export function getEnterTransitionDuration(path) {
+  path = '/' + path.split('/')[1];
+  return transitionsData[path] ? transitionsData[path].enter : 0;
+}
 
 export function getExitTransitionDuration(path) {
-  return transitionsData[path].exit;
+  path = '/' + path.split('/')[1];
+  return transitionsData[path] ? transitionsData[path].exit : 0;
 }
 
 export function getTransitionDuration(path) {
-  return transitionsData[path];
+  path = '/' + path.split('/')[1];
+  return transitionsData[path] || 0;
 }

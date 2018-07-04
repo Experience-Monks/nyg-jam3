@@ -3,79 +3,61 @@
 $content-padding-mobile: px-to-rem(5);
 $content-padding-desktop: px-to-rem(10);
 
-// ====================================================================
-// Global top nav bar
-// ====================================================================
-#main-top-nav {
+.MainTopNav {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
+  padding: 0 #{$navbar-padding-mobile - $content-padding-mobile} 0 $navbar-padding-mobile;
+  border-bottom: 1px solid rgba($black, 0.3);
   height: $navbar-height-mobile;
-  padding: 0 $navbar-padding-mobile;
-  border-bottom: 1px solid rgba($gray, 1);
   background: $white;
-
-  nav {
-    @include flex-center-vert;
-    justify-content: space-between;
-    @include box(100%);
-  }
-
-  .nav-logo {
-    width: px-to-rem(50);
-    height: auto;
-  }
+  @include z-index(main-nav);
 
   @media (min-width: $layout-large) {
     height: $navbar-height-desktop;
-    padding: 0 $navbar-padding-desktop;
-  }
-}
-
-// ====================================================================
-// mobile side nav
-// ====================================================================
-#main-side-nav {
-  position: fixed;
-  top: $navbar-height-mobile;
-  right: 0;
-  @include z-index(sidebar);
-  transform: translateX(100%);
-  width: 100%;
-  height: calc(100% - #{$navbar-height-mobile});
-  border-left: 1px solid rgba($gray, 1);
-  background: $white;
-  @include flex-center;
-  opacity: 0;
-
-  @media (min-width: $layout-medium) {
-    width: 35%;
-  }
-}
-
-// ====================================================================
-// global nav list
-// ====================================================================
-.nav-list {
-  a {
-    font-size: px-to-rem(20);
-    color: $black;
+    padding: 0 #{$navbar-padding-desktop - $content-padding-desktop} 0 $navbar-padding-desktop;
   }
 
-  #main-top-nav & {
-    @media (min-width: $layout-large) {
-      li {
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include box(100%);
+
+    .nav-logo {
+      width: px-to-rem(50);
+    }
+
+    .nav-list {
+      display: inline-block;
+
+      .nav-item {
         display: inline-block;
         padding: $content-padding-mobile;
         margin-left: $content-padding-mobile * 2;
-      }
-    }
-  }
 
-  #main-side-nav & {
-    li {
-      padding: $content-padding-mobile;
+        @media (min-width: $layout-large) {
+          padding: $content-padding-desktop;
+          margin-left: $content-padding-desktop * 2;
+        }
+
+        a {
+          font-size: px-to-rem(20);
+          color: rgba($black, 0.7);
+          transition: color 0.2s;
+
+          &.active {
+            color: rgba($black, 1);
+          }
+
+          .desktop & {
+            &:hover {
+              color: rgba($black, 1);
+            }
+          }
+        }
+      }
     }
   }
 }

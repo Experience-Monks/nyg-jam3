@@ -15,8 +15,8 @@ const NotFound = props => {
 
   return (
     <div {...componentProps}>
-      <NotFoundIcon width="200px" height="120px" />
-      <p>NotFound component</p>
+      <NotFoundIcon />
+      <h1>Not Found</h1>
     </div>
   );
 };

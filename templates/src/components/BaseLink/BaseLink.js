@@ -12,7 +12,7 @@ const excludes = ['children', 'download', 'target', 'rel', 'link'];
 const externalLinkRegex = /^(https:\/\/|http:\/\/|www\.|tel:|mailto:)/;
 const externalSiteRegex = /^(https:\/\/|http:\/\/|www\.)/;
 
-const BaseLink = props => {
+const BaseLink = React.forwardRef((props, ref) => {
   const Tag = externalLinkRegex.test(props.link) || props.download ? 'a' : Link;
 
   // clean props
@@ -38,11 +38,11 @@ const BaseLink = props => {
   }
 
   return (
-    <Tag className={classnames('BaseLink', props.className)} {...componentProps}>
+    <Tag ref={ref} className={classnames('BaseLink', props.className)} {...componentProps}>
       {props.children}
     </Tag>
   );
-};
+});
 
 BaseLink.propTypes = checkProps({
   className: PropTypes.string,
@@ -69,7 +69,7 @@ BaseLink.propTypes = checkProps({
 });
 
 BaseLink.defaultProps = {
-  link: '#',
+  link: '',
   target: '_blank'
 };
 

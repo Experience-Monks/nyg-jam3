@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 
 import logo from './assets/logo.svg';
+
 import './Landing.css';
 
 import BaseLink from '../../components/BaseLink/BaseLink';
