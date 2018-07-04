@@ -8,6 +8,7 @@
         "wrapperName": ["sanitizer"]
       }
     ],
+    "jam3/forbid-methods": 2,
     "no-console": "off",
     "react/sort-comp": [
       1,
