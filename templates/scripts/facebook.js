@@ -1,6 +1,7 @@
 const https = require('https');
-const argv = require('minimist')(process.argv.slice(2));
 const querystring = require('querystring');
+const argv = require('minimist')(process.argv.slice(2));
+
 function call(path, data, cb) {
   if (!cb && typeof data === 'function') {
     cb = data;
