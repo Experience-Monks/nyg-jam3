@@ -61,7 +61,9 @@ class MainTopNav extends React.PureComponent {
   render() {
     return (
       <header className={classnames('MainTopNav', this.props.className)}>
+        <h1 class="only-aria-visible">Site title</h1>
         <nav className="nav" aria-label="Main Navigation">
+          <h2 class="only-aria-visible">Navigation</h2>
           {this.props.logoSrc && (
             <Link to={routeKeys.Landing} aria-label="Home">
               <img className="nav-logo" src={this.props.logoSrc} alt={this.props.logoAlt} />
