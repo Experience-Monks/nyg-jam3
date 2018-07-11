@@ -4,9 +4,10 @@
 
 * [Technical Information](#technical-information)
 * [Jam3 Generator](#jam3-generator)
-* [Getting Started App](#getting-started-app)
+* [Getting Started](#getting-started)
 * [Running the tests](#running-the-tests)
 * [Environments](#environments)
+* [Deployment](#deployment)
 * [Accounts](#accounts)
 * [Contributing](#contributing)
 * [Versioning](#versioning)
@@ -21,7 +22,7 @@
 
 [Important links, documentation]
 
-## Jam3 Generator App
+## Jam3 Generator
 
 This application was created using the [Jam3 Generator](https://github.com/Jam3/generator-jam3-v2). To checkout the out
 of the box features read our [Developer guide](docs/DEVELOPER_GUIDE.md)
@@ -41,6 +42,10 @@ Make sure you are in the root folder of the repository and execute `$ npm instal
 
 [If you are using a backend describe how to set it up locally]
 
+### Running
+
+Make sure you are in the root folder of the repository and execute `$ npm start`.
+
 ## Running the tests
 
 The test runs automatically in the Continue Integration server, in order to execute them locally you can use:
@@ -55,6 +60,28 @@ The test runs automatically in the Continue Integration server, in order to exec
 * Release (UAT) : [https://uat-prj.jam3.net](https://uat-prj.jam3.net)
 * Initial Production : [https://prj.jam3.net](https://prj.jam3.net)
 * Production : [https://domain.com](https://domain.com)
+
+## Deployment
+
+The project has integrated a CI that is tracks the deployment branches, below are the tracked branches.
+
+#### Development environment
+
+Merge to the `develop` branch will trigger a deploy to the develop environment.
+
+Review the link in: #environments
+
+#### Staging environment
+
+Merge to the `staging` branch will trigger a deploy to the Staging/QA environment.
+
+Review the link in: #environments
+
+#### Production environment
+
+Merge to the `master` branch will trigger a deploy to the master environment.
+
+Review the link in: #environments
 
 ## Accounts
 
