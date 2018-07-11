@@ -71,17 +71,17 @@ class Landing extends React.PureComponent {
         </section>
         <section className="Landing-resources">
           <h2>Resources</h2>
-          <div class="container">
-            <BaseLink class="resource" link="https://generator.jam3.com/components">
+          <div className="container">
+            <BaseLink className="resource" link="https://generator.jam3.net/components">
               Components
             </BaseLink>
-            <BaseLink class="resource" link="https://generator.jam3.com/styleguide">
+            <BaseLink className="resource" link="https://generator.jam3.net/styleguide">
               Styleguide
             </BaseLink>
-            <BaseLink class="resource" link="https://generator.jam3.com/performance">
+            <BaseLink className="resource" link="https://generator.jam3.net/performance">
               Performance
             </BaseLink>
-            <BaseLink class="resource" link="https://generator.jam3.com/bundle">
+            <BaseLink className="resource" link="https://generator.jam3.net/bundle">
               Bundle
             </BaseLink>
           </div>

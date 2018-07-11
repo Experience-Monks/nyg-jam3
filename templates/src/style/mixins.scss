@@ -13,7 +13,7 @@
 ///     @include font-light();
 ///   }
 @mixin font-light() {
-  font-family: Spectral, #{$generic-fonts};
+  font-family: Helvetica, #{$generic-fonts};
   font-weight: 300;
 }
 
@@ -24,7 +24,7 @@
 ///     @include font-regular();
 ///   }
 @mixin font-regular() {
-  font-family: Spectral, #{$generic-fonts};
+  font-family: Helvetica, #{$generic-fonts};
   font-weight: 400;
 }
 
@@ -35,7 +35,7 @@
 ///     @include font-bold();
 ///   }
 @mixin font-bold() {
-  font-family: Spectral, #{$generic-fonts};
+  font-family: Helvetica, #{$generic-fonts};
   font-weight: 700;
 }
 
