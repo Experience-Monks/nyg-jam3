@@ -3,10 +3,9 @@
 Jam3 Frontend App Generator with no build configuration and no prompts.
 
 * [Usage](#usage)
-* [Developer Contribution Guide](https://github.com/Jam3/generator-jam3-v2/blob/master/CONTRIBUTING.md) – Read first if you are a developer
+* [Developer Contribution Guide](https://github.com/Jam3/generator-jam3/blob/master/CONTRIBUTING.md) – Read first if you are a developer
 * [Developer Guide](#developer-guide) – How to develop apps bootstrapped with the generator
 * [Main scripts](#main-scripts) – Running scripts
-* [Publishing to production](#publishing-to-production) - A couple notes about publishing
 
 ## Usage
 

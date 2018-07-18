@@ -1,7 +1,7 @@
 {
-  "name": "generator-jam3-v2",
-  "version": "0.1.0",
-  "description": "Second generation of the Jam3 Generator, many new features and breaking feature changes.",
+  "name": "generator-jam3",
+  "version": "4.0.0",
+  "description": "Jam3 project scaffold generator based on nyg",
   "main": "index.js",
   "scripts": {
     "test": "node test/",
@@ -11,14 +11,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jam3/generator-jam3-v2.git"
+    "url": "git+https://github.com/Jam3/generator-jam3.git"
   },
-  "author": "Iran Reyes <iranreyesfleitas@gmail.com> (http://www.iranreyes.com)",
+  "contributors": [
+    "Iran Reyes <iran.reyes@jam3.com>",
+    "Vadim Namniak <vadim@jam3.com>",
+    "Jacob Jang <jacob.jang@jam3.com>",
+    "Benson Wong <wongbsn@gmail.com>",
+    "Nick Poisson <nick@jam3.com>",
+    "Neo Li <neo.li@jam3.com>",
+    "Mike Nowak <mike.nowak@jam3.com>",
+    "Ragu Sivanandha <ragu@jam3.com>",
+    "Craig Hill <craig.hillwood@jam3.com>",
+    "Santiago D'Antuoni <santiago.dantuoni@jam3.com>",
+    "William To <william.to@jam3.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Jam3/generator-jam3-v2/issues"
+    "url": "https://github.com/Jam3/generator-jam3/issues"
   },
-  "homepage": "https://github.com/Jam3/generator-jam3-v2#readme",
+  "homepage": "https://github.com/Jam3/generator-jam3#readme",
   "dependencies": {
     "nyg": "^2.8.0"
   },

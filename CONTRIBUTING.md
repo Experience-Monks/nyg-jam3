@@ -12,7 +12,7 @@ We are using [react-scripts](https://github.com/facebook/create-react-app/tree/n
 
 The purpose of this tool is to generate an opinionated template with the Jam3's standards and best practices. This template doesn't have configurations or prompts.
 
-We included in the project the common used components and structure, it doesn't mean you need to use all of them and in that case our strategy is to delete it instead of having a massive configuration file with many cases, usually hardly to maintain.
+We included in the project the common used components and structure, it doesn't mean you need to use all of them and in that case our strategy is to delete it instead of having a massive configuration file with many cases, usually hardly to maintain. Probably in the future we decide to fork `react-scripts` but hasn't been decided.
 
 ### Convention
 
@@ -63,7 +63,7 @@ The entry point of the generator is `index.js`, this file is in charge of:
 
 ## Setting Up a Local Copy
 
-1.  Clone the repo with `git clone https://github.com/Jam3/generator-jam3-v2.git`
+1.  Clone the repo with `git clone https://github.com/Jam3/generator-jam3.git`
 2.  Here you can start contributing with:
     1.  The generator, modifing the `index.js`
     2.  The template that will be generated inside `templates/*`

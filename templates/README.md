@@ -24,7 +24,7 @@
 
 ## Jam3 Generator
 
-This application was created using the [Jam3 Generator](https://github.com/Jam3/generator-jam3-v2). To checkout the out
+This application was created using the [Jam3 Generator](https://github.com/Jam3/generator-jam3). To checkout the out
 of the box features read our [Developer guide](docs/DEVELOPER_GUIDE.md)
 
 ## Getting Started
@@ -77,6 +77,12 @@ Merge to the `staging` branch will trigger a deploy to the Staging/QA environmen
 
 Review the link in: #environments
 
+#### Release environment
+
+Merge to the `release` branch will trigger a deploy to the Release/UAT environment.
+
+Review the link in: #environments
+
 #### Production environment
 
 Merge to the `master` branch will trigger a deploy to the master environment.
@@ -85,8 +91,7 @@ Review the link in: #environments
 
 ## Accounts
 
-To be full engaged to this project you will need access below accounts, please feel free to ask for them to the _Lead
-Developer_, _Producer_ or _Technical Director_
+To be full engaged to this project you will need access below accounts, please feel free to ask for them to the _Lead-Developer_, _Producer_ or _Technical Director_
 
 * Google Tag Manager
 * Google Analytic
