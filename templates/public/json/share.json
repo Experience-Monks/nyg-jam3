@@ -1,0 +1,18 @@
+{
+  "default": {
+    "title": "Jam3 App",
+    "description": "Default description",
+    "keywords": "Jam3,web App,React",
+    "og:image": "https://jam3.com/static/media/share.jpg",
+    "og:url": "https://generator.jam3.net",
+    "og:site_name": "Jam3",
+    "twitter:image": "https://jam3.com/static/media/share.jpg",
+    "twitter:site": "@jam3",
+    "twitter:creator": "@jam3"
+  },
+  "route/subroute": {
+    "title": "",
+    "description": "",
+    "keywords": ""
+  }
+}

@@ -5,6 +5,7 @@ Jam3 Frontend App Generator with no build configuration and no prompts. The proj
 * [Developer Contribution Guide](https://github.com/Jam3/generator-jam3-v2/blob/master/CONTRIBUTING.md) – Read first if you are a developer
 * [Developer Guide](#developer-guide) – How to develop apps bootstrapped with the generator
 * [Main scripts](#main-scripts) – Running scripts
+* [Publishing to production](#publishing-to-production) - A couple notes about publishing
 
 ## Setting up a new project
 
@@ -87,3 +88,19 @@ Runs the test watcher in an interactive mode.<br>
 By default, runs tests related to files changed since the last commit.
 
 [Read more about testing.](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests)
+
+## Publishing to production
+
+### Remove sample code
+Before create the production build make sure removing everything you don't need. There are many samples in the generator to avoid prompting all the time.
+
+**Common places with sample code:**
+* `/components` folder
+* `/util` folder
+* `/public` folder
+* `/assets` folder
+* `/pages` folder
+
+### Run deploy scripts
+
+Running `npm run build` will do all the magic. It will create a main css bundle, a main js bundle and chunks for the asynchrounous requests.

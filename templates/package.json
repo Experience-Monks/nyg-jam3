@@ -7,11 +7,12 @@
     "start": "npm-run-all -p watch-layout watch-css start-js",
     "build": "npm run release",
     "\n ######################  NPM Secondary Pipeline  ######################": "",
-    "release": "cross-env NODE_ENV=production REACT_APP_SW_CACHE_BUST=$(date +%s) npm-run-all generate-doc build-layout build-css build-js",
+    "release": "cross-env NODE_ENV=production REACT_APP_SW_CACHE_BUST=$(date +%s) npm-run-all generate-doc build-layout build-css build-js build-php",
     "start-js": "react-app-rewired start",
     "build-css": "node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/",
     "build-js": "react-app-rewired build",
     "build-layout": "node scripts/build-layout-data.js",
+    "build-php": "node scripts/build-php.js",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
     "watch-layout": "npm run build-layout && node scripts/watch-layout-data.js",
     "\n ######################  Support Development Tools  ######################": "",
@@ -23,6 +24,7 @@
     "dependency-report": "node scripts/dependencies-report",
     "svg-component": "node scripts/svg-component.js",
     "generate-doc": "node scripts/generate-doc",
+    "facebook": "node scripts/facebook.js",
     "\n ######################  Automation Tools  ######################": "",
     "test": "react-app-rewired test --env=jsdom",
     "audit-snyk": "snyk auth [token] && snyk test",
@@ -44,6 +46,10 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Jam3/generator-jam3-v2/issues"
+  },
+  "engines": {
+    "node":">=8.11.2",
+    "npm":">=6.1.0"
   },
   "dependencies": {
     "bowser": "1.9.2",

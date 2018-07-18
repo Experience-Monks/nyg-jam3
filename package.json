@@ -22,6 +22,10 @@
   "dependencies": {
     "nyg": "^2.8.0"
   },
+  "engines": {
+    "node":">=8.11.2",
+    "npm":">=6.1.0"
+  },
   "keywords": [
     "jam3",
     "project",

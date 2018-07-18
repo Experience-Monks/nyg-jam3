@@ -53,7 +53,9 @@ function updateGeneratedPackageJson() {
   const packagePath = `${generator.cwd}/package.json`;
   const generatedPackageJson = JSON.parse(fs.readFileSync(packagePath));
 
-  return _updateLintStaged(packagePath, generatedPackageJson);
+  return _updateNodeJSRequiredVersion(packagePath, generatedPackageJson).then(() => {
+    _updateLintStaged(packagePath, generatedPackageJson);
+  });
 }
 
 /**
@@ -62,10 +64,29 @@ function updateGeneratedPackageJson() {
  *
  * @param {any} packagePath - Package JSON path
  * @param {any} packageJson - Package JSON already parsed
- * @returns {void}
+ * @returns {Promise}
  */
 function _updateLintStaged(packagePath, packageJson) {
   delete packageJson['lint-staged'].gitDir;
+
+  return new Promise((resolve, reject) => {
+    fs.writeFile(packagePath, JSON.stringify(packageJson, null, 2), function(err) {
+      if (err) return reject();
+      resolve();
+    });
+  });
+}
+
+/**
+ * Update node version in engines property inside the package.json
+ *
+ * @param {any} packagePath - Package JSON path
+ * @param {any} packageJson - Package JSON already parsed
+ * @returns {Promise}
+ */
+function _updateNodeJSRequiredVersion(packagePath, packageJson) {
+  const nodeVersion = process.version.replace('v', '');
+  packageJson['engines'].node = `>=${nodeVersion}`;
 
   return new Promise((resolve, reject) => {
     fs.writeFile(packagePath, JSON.stringify(packageJson, null, 2), function(err) {
