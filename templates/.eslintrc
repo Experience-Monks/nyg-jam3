@@ -2,6 +2,7 @@
   "extends": ["react-app", "jam3"],
   "plugins": ["jam3"],
   "rules": {
+    "prettier/prettier": "warn",
     "jam3/no-sanitizer-with-danger": [
       2,
       {

@@ -12,7 +12,7 @@
   "plugins": ["prettier"],
   "extends": ["eslint:recommended", "prettier"],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": "warn",
     "no-console": "off",
     "no-unused-vars": "warn",
     "require-jsdoc": [
