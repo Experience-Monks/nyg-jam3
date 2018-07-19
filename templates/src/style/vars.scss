@@ -10,9 +10,9 @@
 // Window breakpoints
 // ====================================================================
 
-$layout-medium: map-get($layout, medium) + px;
-$layout-large: map-get($layout, large) + px;
-$layout-xlarge: map-get($layout, xlarge) + px;
+$layout-medium: map-get($layout, medium) * 1px;
+$layout-large: map-get($layout, large) * 1px;
+$layout-xlarge: map-get($layout, xlarge) * 1px;
 
 // ====================================================================
 // Animation

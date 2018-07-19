@@ -7,14 +7,18 @@ const MEDIUM_MATCH_MEDIA = window.matchMedia(MEDIUM_MEDIA_QUERY);
 const LARGE_MATCH_MEDIA = window.matchMedia(LARGE_MEDIA_QUERY);
 
 export default {
-  get small() {
-    return !this.medium;
-  },
   get medium() {
     return MEDIUM_MATCH_MEDIA.matches;
   },
   get large() {
     return LARGE_MATCH_MEDIA.matches;
+  },
+  // The next two are kind of anti-pattern but useful helpers.
+  get small() {
+    return !this.medium;
+  },
+  get mediumOnly() {
+    return this.medium && !this.large;
   },
   get all() {
     return {
