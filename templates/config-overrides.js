@@ -5,6 +5,7 @@
 
 const Visualizer = require('webpack-visualizer-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const DashboardPlugin = require('webpack-dashboard/plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const AutoDllPlugin = require('autodll-webpack-plugin');
 const rewireEslint = require('react-app-rewire-eslint');
@@ -33,6 +34,9 @@ module.exports = {
 
       // Enabling HMR
       config = rewireReactHotLoader(config, env);
+
+      // Webpack Dashboard for nicer dev view
+      config.plugins.push(new DashboardPlugin());
 
       // Cache modules that we don't update frecuently
       config.plugins.push(

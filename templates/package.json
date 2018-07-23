@@ -4,7 +4,7 @@
   "description": "Jam3 new app",
   "private": true,
   "scripts": {
-    "start": "npm-run-all -p watch-layout watch-css start-js",
+    "start": "webpack-dashboard -- npm-run-all -p watch-layout watch-css start-js",
     "build": "npm run release",
     "\n ######################  NPM Secondary Pipeline  ######################": "",
     "release": "cross-env NODE_ENV=production REACT_APP_SW_CACHE_BUST=$(date +%s) npm-run-all generate-doc build-layout build-css build-js build-php",
@@ -48,8 +48,8 @@
     "url": "https://github.com/Jam3/generator-jam3-v2/issues"
   },
   "engines": {
-    "node":">=8.11.2",
-    "npm":">=6.1.0"
+    "node": ">=8.11.2",
+    "npm": ">=6.1.0"
   },
   "dependencies": {
     "bowser": "1.9.2",
@@ -133,8 +133,9 @@
     "sassdoc": "2.5.0",
     "stats.js": "0.17.0",
     "svgr": "1.9.0",
-    "webpack-visualizer-plugin": "0.1.11",
     "webpack-bundle-analyzer": "2.13.1",
+    "webpack-dashboard": "2.0.0",
+    "webpack-visualizer-plugin": "0.1.11",
     "why-did-you-update": "0.1.1"
   },
   "jest": {
