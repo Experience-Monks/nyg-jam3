@@ -11,7 +11,7 @@ import detect from '../util/detect';
 let defaultAppComponent = <App />;
 
 if (process.env.NODE_ENV !== 'production') {
-  // TODO: fix flow type error
+  // $FlowFixMe
   const AppContainer = require('react-hot-loader').AppContainer;
   defaultAppComponent = (
     <AppContainer>

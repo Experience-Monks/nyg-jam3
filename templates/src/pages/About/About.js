@@ -66,4 +66,5 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({});
 
+// $FlowFixMe
 export default connect(mapStateToProps, mapDispatchToProps)(Transition(About));

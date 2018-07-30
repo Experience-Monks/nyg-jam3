@@ -9,6 +9,7 @@ import preloadAssets from '../../data/preload-assets';
 
 import './Preloader.css';
 
+// $FlowFixMe
 import Loader from '../SvgComponents/Loader/Loader';
 
 type Props = {

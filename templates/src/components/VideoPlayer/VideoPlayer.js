@@ -197,7 +197,7 @@ export default class VideoPlayer extends React.PureComponent<Props, State> {
       this.captions.removeEventListener('cuechange', this.onTrackChange);
     }
 
-    const track = document.createElement('track');
+    const track: any = document.createElement('track');
     track.kind = captions.kind;
     track.label = captions.label;
     track.srclang = captions.srclang;

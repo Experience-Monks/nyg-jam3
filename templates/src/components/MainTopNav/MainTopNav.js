@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import './MainTopNav.css';
@@ -11,16 +10,32 @@ import logo from '../../assets/images/jam3-logo.png';
 import BaseLink from '../BaseLink/BaseLink';
 import HamburgerButton, { STATES } from '../HamburgerButton/HamburgerButton';
 
-import checkProps from '../../util/check-props';
 import routeKeys from '../../routes/keys';
 import cleanPath from '../../util/clean-path';
 
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
 
-const getButtonState = isMenuOpen => (isMenuOpen ? STATES.close : STATES.idle);
+type Props = {
+  className?: string,
+  logoSrc?: string,
+  logoAlt?: string,
+  links: Array<Object>,
+  layout: Object,
+  location: Location,
+  isMobileMenuOpen: boolean,
+  setIsMobileMenuOpen: Function
+};
 
-class MainTopNav extends React.PureComponent {
-  static getDerivedStateFromProps(nextProps, prevState) {
+type State = {
+  buttonState: string
+};
+
+const getButtonState = (isMenuOpen: boolean): string => (isMenuOpen ? STATES.close : STATES.idle);
+
+class MainTopNav extends React.PureComponent<Props, State> {
+  static defaultProps: Object;
+
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     const nextButtonState = getButtonState(nextProps.isMobileMenuOpen);
     if (nextButtonState !== prevState.buttonState) {
       return {
@@ -30,7 +45,7 @@ class MainTopNav extends React.PureComponent {
     return null;
   }
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       buttonState: getButtonState(props.isMobileMenuOpen)
@@ -78,16 +93,6 @@ class MainTopNav extends React.PureComponent {
   }
 }
 
-MainTopNav.propTypes = checkProps({
-  className: PropTypes.string,
-  logoSrc: PropTypes.string,
-  logoAlt: PropTypes.string,
-  links: PropTypes.array,
-  layout: PropTypes.object.isRequired,
-  isMobileMenuOpen: PropTypes.bool.isRequired,
-  setIsMobileMenuOpen: PropTypes.func.isRequired
-});
-
 MainTopNav.defaultProps = {
   logoSrc: logo,
   logoAlt: 'logo',
@@ -116,4 +121,5 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+// $FlowFixMe
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainTopNav));

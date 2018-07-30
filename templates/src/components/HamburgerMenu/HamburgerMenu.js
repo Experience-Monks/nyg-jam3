@@ -100,4 +100,5 @@ HamburgerMenu.defaultProps = {
   ]
 };
 
+// $FlowFixMe
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HamburgerMenu));

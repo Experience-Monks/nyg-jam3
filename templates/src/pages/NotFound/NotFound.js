@@ -3,6 +3,7 @@ import classnames from 'classnames';
 
 import './NotFound.css';
 
+// $FlowFixMe
 import NotFoundIcon from '../../components/SvgComponents/NotFoundIcon/NotFoundIcon';
 
 type Props = {

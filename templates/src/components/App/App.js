@@ -31,6 +31,7 @@ class App extends React.PureComponent<Props> {
   componentDidMount() {
     // Setup performance measure tooling
     if (process.env.NODE_ENV !== 'production') {
+      // $FlowFixMe
       const { whyDidYouUpdate } = require('why-did-you-update');
 
       if (document.location.search.indexOf('performance') >= 0) {
@@ -89,4 +90,5 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+// $FlowFixMe
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
