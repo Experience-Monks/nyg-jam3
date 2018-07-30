@@ -17,7 +17,7 @@ import settings from '../../data/settings';
 import detect from '../../util/detect';
 import layout from '../../util/layout';
 import usePassiveEvent from '../../util/use-passive-event';
-import type { Layout } from '../../util/layout';
+import type { Layout } from '../../data/types';
 
 type Props = {
   layout: Layout,
@@ -85,8 +85,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setPreviousRoute: val => dispatch(setPreviousRoute(val)),
-    setLayout: (width, height, layout) => dispatch(batchActions([setWindowSize({ width, height }), setLayout(layout)]))
+    setPreviousRoute: (val: string) => dispatch(setPreviousRoute(val)),
+    setLayout: (width: number, height: number, layout: Layout) =>
+      dispatch(batchActions([setWindowSize({ width, height }), setLayout(layout)]))
   };
 };
 

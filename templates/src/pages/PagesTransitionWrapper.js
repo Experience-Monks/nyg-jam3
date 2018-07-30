@@ -1,7 +1,14 @@
 import { getExitTransitionDuration } from '../data/pages-transitions';
 import { noop } from '../util/basic-functions';
 
-const transitionStates = {
+export type TransitionStates = {
+  entering: 'entering',
+  entered: 'entered',
+  exiting: 'exiting',
+  exited: 'exited'
+};
+
+const transitionStates: TransitionStates = {
   entering: 'entering',
   entered: 'entered',
   exiting: 'exiting',

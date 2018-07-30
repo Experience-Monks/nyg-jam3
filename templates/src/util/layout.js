@@ -1,7 +1,5 @@
 import { medium as MEDIUM, large as LARGE } from '../data/layout.json';
 
-export type Layout = {| small: Boolean, medium: Boolean, large: Boolean |};
-
 export const MEDIUM_MEDIA_QUERY = `(min-width: ${MEDIUM}px)`;
 export const LARGE_MEDIA_QUERY = `(min-width: ${LARGE}px)`;
 

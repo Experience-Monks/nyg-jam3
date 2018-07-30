@@ -6,10 +6,11 @@ import './Footer.css';
 import BaseLink from '../BaseLink/BaseLink';
 
 import routeKeys from '../../routes/keys';
+import type { LinkType } from '../../data/types';
 
 type Props = {
   className: string,
-  links: Array<Object>
+  links: Array<LinkType>
 };
 
 /**
@@ -22,7 +23,7 @@ const Footer = React.forwardRef((props: Props, ref) => (
       <ul className="nav-list">
         {props.links.map((link, index) => (
           <li key={index} className="nav-item">
-            <BaseLink link={link.path}>{link.name}</BaseLink>
+            <BaseLink link={link.path}>{link.text}</BaseLink>
           </li>
         ))}
       </ul>
@@ -34,15 +35,15 @@ const Footer = React.forwardRef((props: Props, ref) => (
 Footer.defaultProps = {
   links: [
     {
-      name: 'About',
+      text: 'About',
       path: routeKeys.About
     },
     {
-      name: 'Contact',
+      text: 'Contact',
       path: 'https://www.jam3.com/contact/'
     },
     {
-      name: 'Accessibility',
+      text: 'Accessibility',
       path: 'https://www.jam3.com/accessibility/'
     }
   ]

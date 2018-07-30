@@ -10,9 +10,11 @@ import { default as Transition } from '../PagesTransitionWrapper';
 import { wait } from '../../util/basic-functions';
 import animate from '../../util/gsap-animate';
 
+import type { TransitionStates } from '../PagesTransitionWrapper';
+
 type Props = {
   className?: string,
-  transitionState: string,
+  transitionState: TransitionStates,
   previousRoute: string
 };
 

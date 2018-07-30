@@ -5,7 +5,6 @@ type Props = {
   className: string,
   component: string | Function,
   children?: React$Element<*>,
-  nodeRef: Function,
   onClick: Function,
   onBlur: Function,
   onFocus: Function,

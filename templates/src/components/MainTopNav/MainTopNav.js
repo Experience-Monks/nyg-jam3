@@ -14,12 +14,13 @@ import routeKeys from '../../routes/keys';
 import cleanPath from '../../util/clean-path';
 
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
+import type { LinkType } from '../../data/types';
 
 type Props = {
   className?: string,
   logoSrc?: string,
   logoAlt?: string,
-  links: Array<Object>,
+  links: Array<LinkType>,
   layout: Object,
   location: Location,
   isMobileMenuOpen: boolean,

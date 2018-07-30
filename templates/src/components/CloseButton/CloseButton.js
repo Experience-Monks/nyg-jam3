@@ -8,7 +8,6 @@ import './CloseButton.css';
 type Props = {
   style: Object,
   className: string,
-  nodeRef: Function,
   children: React$Element<*>,
   component: string | Function,
   onClick: Function,

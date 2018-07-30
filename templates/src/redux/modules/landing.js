@@ -14,7 +14,7 @@ export default function reducer(state: boolean = false, action: Object) {
 }
 
 // Action Creators
-export function setLandingLoaded(loaded: Object) {
+export function setLandingLoaded(loaded: boolean) {
   return {
     type: keys.LANDING_LOADED,
     loaded

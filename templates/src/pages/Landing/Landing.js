@@ -14,9 +14,11 @@ import { default as Transition } from '../PagesTransitionWrapper';
 import { wait } from '../../util/basic-functions';
 import sanitizer from '../../util/sanitizer';
 
+import type { TransitionStates } from '../PagesTransitionWrapper';
+
 type Props = {
   className?: string,
-  transitionState: string,
+  transitionState: TransitionStates,
   previousRoute: string,
   loaded: boolean,
   setLandingLoaded: Function
@@ -90,7 +92,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setLandingLoaded: val => dispatch(setLandingLoaded(val))
+    setLandingLoaded: (val: boolean) => dispatch(setLandingLoaded(val))
   };
 };
 

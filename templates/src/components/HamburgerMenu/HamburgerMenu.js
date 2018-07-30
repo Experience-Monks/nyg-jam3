@@ -12,10 +12,11 @@ import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
 import cleanPath from '../../util/clean-path';
 import routeKeys from '../../routes/keys';
 import animate from '../../util/gsap-animate';
+import type { LinkType } from '../../data/types';
 
 type Props = {
   className?: string,
-  links: Array<Object>,
+  links: Array<LinkType>,
   isMobileMenuOpen: boolean,
   location: Location,
   setIsMobileMenuOpen: Function
@@ -27,13 +28,11 @@ class HamburgerMenu extends React.PureComponent<Props, State> {
   static defaultProps: Object;
   container: ?HTMLElement;
 
-  state = {};
-
   componentDidMount() {
     animate.set(this.container, { x: this.props.isMobileMenuOpen ? '0%' : '100%' });
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     if (prevProps.isMobileMenuOpen !== this.props.isMobileMenuOpen) {
       this.props.isMobileMenuOpen ? this.animateIn() : this.animateOut();
     }

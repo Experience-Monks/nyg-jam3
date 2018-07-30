@@ -41,7 +41,7 @@ export default class VideoTimeline extends React.PureComponent<Props, State> {
 
   onChange = () => {
     if (this.input) {
-      const value: number = this.input && parseFloat(this.input.value);
+      const value: number = parseFloat(this.input.value);
 
       if (value) {
         this.props.onTimeUpdate && this.props.onTimeUpdate(value, value / this.props.duration);

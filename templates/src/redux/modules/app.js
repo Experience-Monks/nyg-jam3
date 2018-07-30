@@ -1,11 +1,6 @@
 import keys from '../keys';
 import layout from '../../util/layout';
-import type { Layout } from '../../util/layout';
-
-type WindowSize = {
-  width: number,
-  height: number
-};
+import type { Layout, WindowSize } from '../../data/types';
 
 const defaultState = {
   windowSize: {
