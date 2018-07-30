@@ -11,6 +11,7 @@ import detect from '../util/detect';
 let defaultAppComponent = <App />;
 
 if (process.env.NODE_ENV !== 'production') {
+  // TODO: fix flow type error
   const AppContainer = require('react-hot-loader').AppContainer;
   defaultAppComponent = (
     <AppContainer>
@@ -20,16 +21,21 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export default function() {
-  const target = document.getElementById('root');
-  document.body.className = [...document.body.className.split(' '), ...detect.classes].join(' ');
+  const target: ?HTMLElement = document.getElementById('root');
+  detect.classes.forEach(cls => {
+    if (document.body !== null) {
+      document.body.classList.add(cls);
+    }
+  });
 
   const render = Component => {
-    ReactDOM.render(
-      <Provider store={store}>
-        <ConnectedRouter history={history}>{Component}</ConnectedRouter>
-      </Provider>,
-      target
-    );
+    target &&
+      ReactDOM.render(
+        <Provider store={store}>
+          <ConnectedRouter history={history}>{Component}</ConnectedRouter>
+        </Provider>,
+        target
+      );
   };
 
   render(defaultAppComponent);

@@ -13,7 +13,7 @@ sketch
 
 # Node & Npm
 node_modules
-flow-typed
+flow-typed/npm
 
 # Builds
 /build
