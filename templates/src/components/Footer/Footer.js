@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import './Footer.css';
@@ -7,9 +6,17 @@ import './Footer.css';
 import BaseLink from '../BaseLink/BaseLink';
 
 import routeKeys from '../../routes/keys';
-import checkProps from '../../util/check-props';
 
-const Footer = React.forwardRef((props, ref) => (
+type Props = {
+  className: string,
+  links: Array<Object>
+};
+
+/**
+ * forwardRef does not currently have a definition.
+ * $FlowFixMe
+ */
+const Footer = React.forwardRef((props: Props, ref) => (
   <footer className={classnames('Footer', props.className)} ref={ref}>
     <nav className="footer-nav">
       <ul className="nav-list">
@@ -23,11 +30,6 @@ const Footer = React.forwardRef((props, ref) => (
     <p className="footer-copyright">Jam3 ©</p>
   </footer>
 ));
-
-Footer.propTypes = checkProps({
-  className: PropTypes.string,
-  links: PropTypes.array
-});
 
 Footer.defaultProps = {
   links: [
