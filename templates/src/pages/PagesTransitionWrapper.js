@@ -8,8 +8,10 @@ const transitionStates = {
   exited: 'exited'
 };
 
+// $FlowFixMe
 const PagesTransitionWrapper = Class => {
   const handleEnterTransition = (previousRoute, onEnter = noop, onAppear = noop) => {
+    // $FlowFixMe
     previousRoute ? onEnter(getExitTransitionDuration(previousRoute) || 0) : onAppear();
   };
 

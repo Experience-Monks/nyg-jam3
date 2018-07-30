@@ -7,6 +7,8 @@
 
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
+const PUBLIC_URL: string = process.env.PUBLIC_URL != null ? process.env.PUBLIC_URL : '';
+const CACHE_BUST: string = process.env.REACT_APP_SW_CACHE_BUST != null ? process.env.REACT_APP_SW_CACHE_BUST : '';
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
@@ -16,10 +18,10 @@ const isLocalhost = Boolean(
     window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
 );
 
-export function register(config) {
+export function register(config: any) {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
-    const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
+    const publicUrl = new URL(PUBLIC_URL, window.location);
     if (publicUrl.origin !== window.location.origin) {
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
@@ -28,7 +30,7 @@ export function register(config) {
     }
 
     window.addEventListener('load', () => {
-      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js?ver=${process.env.REACT_APP_SW_CACHE_BUST}`;
+      const swUrl = `${PUBLIC_URL}/service-worker.js?ver=${CACHE_BUST}`;
 
       if (isLocalhost) {
         // This is running on localhost. Lets check if a service worker still exists or not.
@@ -36,12 +38,14 @@ export function register(config) {
 
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
-        navigator.serviceWorker.ready.then(() => {
-          console.log(
-            'This web app is being served cache-first by a service ' +
-              'worker. To learn more, visit https://goo.gl/SC7cgQ'
-          );
-        });
+        if (navigator.serviceWorker != null) {
+          navigator.serviceWorker.ready.then(() => {
+            console.log(
+              'This web app is being served cache-first by a service ' +
+                'worker. To learn more, visit https://goo.gl/SC7cgQ'
+            );
+          });
+        }
       } else {
         // Is not local host. Just register service worker
         registerValidSW(swUrl, config);
@@ -51,42 +55,44 @@ export function register(config) {
 }
 
 function registerValidSW(swUrl, config) {
-  navigator.serviceWorker
-    .register(swUrl)
-    .then(registration => {
-      registration.onupdatefound = () => {
-        const installingWorker = registration.installing;
-        installingWorker.onstatechange = () => {
-          if (installingWorker.state === 'installed') {
-            if (navigator.serviceWorker.controller) {
-              // At this point, the old content will have been purged and
-              // the fresh content will have been added to the cache.
-              // It's the perfect time to display a "New content is
-              // available; please refresh." message in your web app.
-              console.log('New content is available; please refresh.');
+  if (navigator.serviceWorker != null) {
+    navigator.serviceWorker
+      .register(swUrl)
+      .then(registration => {
+        registration.onupdatefound = () => {
+          const installingWorker = registration.installing;
+          installingWorker.onstatechange = () => {
+            if (installingWorker.state === 'installed') {
+              if (navigator.serviceWorker != null && navigator.serviceWorker.controller) {
+                // At this point, the old content will have been purged and
+                // the fresh content will have been added to the cache.
+                // It's the perfect time to display a "New content is
+                // available; please refresh." message in your web app.
+                console.log('New content is available; please refresh.');
 
-              // Execute callback
-              if (config.onUpdate) {
-                config.onUpdate(registration);
-              }
-            } else {
-              // At this point, everything has been precached.
-              // It's the perfect time to display a
-              // "Content is cached for offline use." message.
-              console.log('Content is cached for offline use.');
+                // Execute callback
+                if (config.onUpdate) {
+                  config.onUpdate(registration);
+                }
+              } else {
+                // At this point, everything has been precached.
+                // It's the perfect time to display a
+                // "Content is cached for offline use." message.
+                console.log('Content is cached for offline use.');
 
-              // Execute callback
-              if (config.onSuccess) {
-                config.onSuccess(registration);
+                // Execute callback
+                if (config.onSuccess) {
+                  config.onSuccess(registration);
+                }
               }
             }
-          }
+          };
         };
-      };
-    })
-    .catch(error => {
-      console.error('Error during service worker registration:', error);
-    });
+      })
+      .catch(error => {
+        console.error('Error during service worker registration:', error);
+      });
+  }
 }
 
 function checkValidServiceWorker(swUrl, config) {
@@ -96,11 +102,13 @@ function checkValidServiceWorker(swUrl, config) {
       // Ensure service worker exists, and that we really are getting a JS file.
       if (response.status === 404 || response.headers.get('content-type').indexOf('javascript') === -1) {
         // No service worker found. Probably a different app. Reload the page.
-        navigator.serviceWorker.ready.then(registration => {
-          registration.unregister().then(() => {
-            window.location.reload();
+        if (navigator.serviceWorker != null) {
+          navigator.serviceWorker.ready.then(registration => {
+            registration.unregister().then(() => {
+              window.location.reload();
+            });
           });
-        });
+        }
       } else {
         // Service worker found. Proceed as normal.
         registerValidSW(swUrl, config);
@@ -112,7 +120,7 @@ function checkValidServiceWorker(swUrl, config) {
 }
 
 export function unregister() {
-  if ('serviceWorker' in navigator) {
+  if ('serviceWorker' in navigator && navigator.serviceWorker != null) {
     navigator.serviceWorker.ready.then(registration => {
       registration.unregister();
     });
