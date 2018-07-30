@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 
@@ -11,15 +10,23 @@ import BaseLink from '../../components/BaseLink/BaseLink';
 
 import { setLandingLoaded } from '../../redux/modules/landing';
 import animate from '../../util/gsap-animate';
-import checkProps from '../../util/check-props';
 import { default as Transition } from '../PagesTransitionWrapper';
 import { wait } from '../../util/basic-functions';
 import sanitizer from '../../util/sanitizer';
 
-class Landing extends React.PureComponent {
-  constructor(props) {
-    super(props);
-  }
+type Props = {
+  className?: string,
+  transitionState: string,
+  previousRoute: string,
+  loaded: boolean,
+  setLandingLoaded: Function
+};
+
+type State = {};
+
+class Landing extends React.PureComponent<Props, State> {
+  static defaultProps: Object;
+  container: ?HTMLElement;
 
   componentDidMount() {
     animate.set(this.container, { autoAlpha: 0 });
@@ -72,14 +79,6 @@ class Landing extends React.PureComponent {
   }
 }
 
-Landing.propTypes = checkProps({
-  className: PropTypes.string,
-  transitionState: PropTypes.string.isRequired,
-  previousRoute: PropTypes.string,
-  loaded: PropTypes.bool,
-  setLandingLoaded: PropTypes.func
-});
-
 Landing.defaultProps = {};
 
 const mapStateToProps = (state, ownProps) => {
@@ -94,7 +93,5 @@ const mapDispatchToProps = dispatch => {
     setLandingLoaded: val => dispatch(setLandingLoaded(val))
   };
 };
-
-Landing.defaultProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Transition(Landing));

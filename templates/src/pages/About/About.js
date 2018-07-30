@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import './About.css';
@@ -10,13 +9,18 @@ import BaseLink from '../../components/BaseLink/BaseLink';
 import { default as Transition } from '../PagesTransitionWrapper';
 import { wait } from '../../util/basic-functions';
 import animate from '../../util/gsap-animate';
-import checkProps from '../../util/check-props';
 
-class About extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+type Props = {
+  className?: string,
+  transitionState: string,
+  previousRoute: string
+};
+
+type State = {};
+
+class About extends React.PureComponent<Props, State> {
+  static defaultProps: Object;
+  container: ?HTMLElement;
 
   componentDidMount() {
     animate.set(this.container, { autoAlpha: 0 });
@@ -53,12 +57,6 @@ class About extends React.PureComponent {
     );
   }
 }
-
-About.propTypes = checkProps({
-  className: PropTypes.string,
-  transitionState: PropTypes.string.isRequired,
-  previousRoute: PropTypes.string
-});
 
 About.defaultProps = {};
 
