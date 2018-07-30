@@ -13,17 +13,17 @@ const transitionsData = {
   }
 };
 
-export function getEnterTransitionDuration(path) {
+export function getEnterTransitionDuration(path: string) {
   path = '/' + path.split('/')[1];
   return transitionsData[path] ? transitionsData[path].enter : 0;
 }
 
-export function getExitTransitionDuration(path) {
+export function getExitTransitionDuration(path: string) {
   path = '/' + path.split('/')[1];
   return transitionsData[path] ? transitionsData[path].exit : 0;
 }
 
-export function getTransitionDuration(path) {
+export function getTransitionDuration(path: string) {
   path = '/' + path.split('/')[1];
   return transitionsData[path] || 0;
 }
