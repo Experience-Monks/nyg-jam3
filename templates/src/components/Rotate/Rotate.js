@@ -9,13 +9,19 @@ import detect from '../../util/detect';
 import { preventEvent } from '../../util/basic-functions';
 import usePassiveEvent from '../../util/use-passive-event';
 
-export default class RotateScreen extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      orientation: detect.orientation
-    };
-  }
+type Props = {};
+
+type State = {
+  orientation: String
+};
+
+export default class RotateScreen extends PureComponent<Props, State> {
+  static defaultProps: Object;
+  container: ?HTMLElement;
+
+  state = {
+    orientation: detect.orientation
+  };
 
   componentDidMount() {
     this.setOrientationParentClass();
@@ -25,11 +31,9 @@ export default class RotateScreen extends PureComponent {
     } else {
       window.addEventListener('resize', this.handleOrientationChange, usePassiveEvent());
     }
-
-    this.container.addEventListener('touchmove', this.preventScrolling, usePassiveEvent());
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     if (this.state.orientation !== prevState.orientation) {
       this.setOrientationParentClass();
     }
@@ -41,17 +45,18 @@ export default class RotateScreen extends PureComponent {
     } else {
       window.removeEventListener('resize', this.handleOrientationChange);
     }
-    this.container.removeEventListener('touchmove', this.preventScrolling);
   }
 
-  preventScrolling = e => {
+  preventScrolling = (e: SyntheticEvent<>) => {
     preventEvent(e);
   };
 
-  setOrientationParentClass = (orientation = this.state.orientation) => {
-    orientation === 'landscape'
-      ? document.body.classList.add('rotate-screen-visible')
-      : document.body.classList.remove('rotate-screen-visible');
+  setOrientationParentClass = (orientation: String = this.state.orientation) => {
+    if (document.body && document.body.classList) {
+      orientation === 'landscape'
+        ? document.body.classList.add('rotate-screen-visible')
+        : document.body.classList.remove('rotate-screen-visible');
+    }
   };
 
   handleOrientationChange = () => {
@@ -67,7 +72,7 @@ export default class RotateScreen extends PureComponent {
     };
 
     return (
-      <section className="Rotate" style={style} ref={r => (this.container = r)}>
+      <section className="Rotate" style={style} ref={r => (this.container = r)} onTouchMove={this.preventScrolling}>
         <div className="container">
           <img src={RotateIcon} className="rotate-icon" alt="Please rotate your device" />
           <p>
