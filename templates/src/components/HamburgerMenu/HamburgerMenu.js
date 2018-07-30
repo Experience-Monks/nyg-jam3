@@ -14,9 +14,9 @@ import routeKeys from '../../routes/keys';
 import animate from '../../util/gsap-animate';
 
 type Props = {
-  className?: String,
+  className?: string,
   links: Array<Object>,
-  isMobileMenuOpen: Boolean,
+  isMobileMenuOpen: boolean,
   location: Location,
   setIsMobileMenuOpen: Function
 };

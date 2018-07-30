@@ -14,7 +14,7 @@ import {
 } from '../../util/async-section-handler';
 
 type Props = {
-  className?: String,
+  className?: string,
   location: Location
 };
 

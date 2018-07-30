@@ -121,8 +121,8 @@ const isInAppBrowser = checkInAppBrowser();
 const inAppBrowserVersion = checkInAppBrowserVersion();
 
 // Orientation
-const PORTRAIT: String = 'portrait';
-const LANDSCAPE: String = 'landscape';
+const PORTRAIT: string = 'portrait';
+const LANDSCAPE: string = 'landscape';
 
 const checkOrientation = () => {
   if (typeof window.screen === 'object') {

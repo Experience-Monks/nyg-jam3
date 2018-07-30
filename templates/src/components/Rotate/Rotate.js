@@ -4,7 +4,6 @@ import './Rotate.css';
 
 import RotateIcon from './assets/rotate.svg';
 
-import checkProps from '../../util/check-props';
 import detect from '../../util/detect';
 import { preventEvent } from '../../util/basic-functions';
 import usePassiveEvent from '../../util/use-passive-event';
@@ -12,7 +11,7 @@ import usePassiveEvent from '../../util/use-passive-event';
 type Props = {};
 
 type State = {
-  orientation: String
+  orientation: string
 };
 
 export default class RotateScreen extends PureComponent<Props, State> {
@@ -51,7 +50,7 @@ export default class RotateScreen extends PureComponent<Props, State> {
     preventEvent(e);
   };
 
-  setOrientationParentClass = (orientation: String = this.state.orientation) => {
+  setOrientationParentClass = (orientation: string = this.state.orientation) => {
     if (document.body && document.body.classList) {
       orientation === 'landscape'
         ? document.body.classList.add('rotate-screen-visible')
@@ -84,5 +83,4 @@ export default class RotateScreen extends PureComponent<Props, State> {
   }
 }
 
-RotateScreen.propTypes = checkProps({});
 RotateScreen.defaultProps = {};

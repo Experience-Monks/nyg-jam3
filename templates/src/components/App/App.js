@@ -22,7 +22,7 @@ import type { Layout } from '../../util/layout';
 type Props = {
   layout: Layout,
   location: Location,
-  ready: Boolean,
+  ready: boolean,
   setPreviousRoute: Function,
   setLayout: Function
 };

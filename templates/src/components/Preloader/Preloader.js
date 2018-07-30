@@ -12,14 +12,14 @@ import './Preloader.css';
 import Loader from '../SvgComponents/Loader/Loader';
 
 type Props = {
-  className: ?String,
-  assets: Array<String>,
+  className: ?string,
+  assets: Array<string>,
   setProgress: Function,
   setReady: Function,
-  minDisplayTime: Number,
+  minDisplayTime: number,
   options: ?Object,
-  progress: Number,
-  transitionState: String
+  progress: number,
+  transitionState: string
 };
 
 type State = {};
@@ -30,7 +30,6 @@ class Preloader extends React.PureComponent<Props, State> {
   container: ?HTMLElement;
 
   async componentDidMount() {
-    console.log(this.props);
     await Promise.all([this.setTimer(), this.setLoader()]);
     this.setDone();
   }
