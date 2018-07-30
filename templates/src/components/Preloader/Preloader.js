@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import preloader from 'preloader';
 
-import checkProps from '../../util/check-props';
 import animate from '../../util/gsap-animate';
 import { noop, wait } from '../../util/basic-functions';
 import { setProgress, setReady } from '../../redux/modules/preloader';
@@ -13,8 +11,26 @@ import './Preloader.css';
 
 import Loader from '../SvgComponents/Loader/Loader';
 
-class Preloader extends React.PureComponent {
+type Props = {
+  className: ?String,
+  assets: Array<String>,
+  setProgress: Function,
+  setReady: Function,
+  minDisplayTime: Number,
+  options: ?Object,
+  progress: Number,
+  transitionState: String
+};
+
+type State = {};
+
+class Preloader extends React.PureComponent<Props, State> {
+  static defaultProps: Object;
+  loader: any;
+  container: ?HTMLElement;
+
   async componentDidMount() {
+    console.log(this.props);
     await Promise.all([this.setTimer(), this.setLoader()]);
     this.setDone();
   }
@@ -68,19 +84,7 @@ class Preloader extends React.PureComponent {
   }
 }
 
-Preloader.propTypes = checkProps({
-  className: PropTypes.string,
-  assets: PropTypes.array.isRequired,
-  setProgress: PropTypes.func.isRequired,
-  setReady: PropTypes.func.isRequired,
-  minDisplayTime: PropTypes.number,
-  options: PropTypes.object,
-  progress: PropTypes.number,
-  transitionState: PropTypes.string
-});
-
 Preloader.defaultProps = {
-  className: '',
   assets: [],
   minDisplayTime: 300, // in milliseconds
   options: {

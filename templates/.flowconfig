@@ -6,6 +6,7 @@
 .*/public/.*
 .*/build/.*
 .*/config-overrides.js
+.*-story.js
 
 [include]
 

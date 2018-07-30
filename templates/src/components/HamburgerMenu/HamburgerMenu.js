@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -10,12 +9,24 @@ import BaseLink from '../BaseLink/BaseLink';
 
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
 
-import checkProps from '../../util/check-props';
 import cleanPath from '../../util/clean-path';
 import routeKeys from '../../routes/keys';
 import animate from '../../util/gsap-animate';
 
-class HamburgerMenu extends React.PureComponent {
+type Props = {
+  className?: String,
+  links: Array<Object>,
+  isMobileMenuOpen: Boolean,
+  location: Location,
+  setIsMobileMenuOpen: Function
+};
+
+type State = {};
+
+class HamburgerMenu extends React.PureComponent<Props, State> {
+  static defaultProps: Object;
+  container: ?HTMLElement;
+
   state = {};
 
   componentDidMount() {
@@ -75,13 +86,6 @@ const mapDispatchToProps = dispatch => {
     setIsMobileMenuOpen: val => dispatch(setIsMobileMenuOpen(val))
   };
 };
-
-HamburgerMenu.propTypes = checkProps({
-  className: PropTypes.string,
-  links: PropTypes.array,
-  isMobileMenuOpen: PropTypes.bool.isRequired,
-  setIsMobileMenuOpen: PropTypes.func.isRequired
-});
 
 HamburgerMenu.defaultProps = {
   links: [
