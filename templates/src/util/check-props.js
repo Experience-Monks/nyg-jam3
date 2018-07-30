@@ -6,7 +6,7 @@
  * @param {any} [ignoreData=[]]
  * @returns {Boolean}
  */
-export default function(propTypes, ignoreData = []) {
+export default function(propTypes: Object, ignoreData: Array<*> = []) {
   const ignoreList = [
     'children',
     'history',

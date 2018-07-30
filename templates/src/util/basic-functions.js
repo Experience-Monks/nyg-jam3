@@ -6,7 +6,7 @@
  * @param {number} [ms=0]
  * @returns {Promise}
  */
-export function wait(ms = 0) {
+export function wait(ms: number = 0) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
@@ -25,7 +25,7 @@ export function noop() {}
  * @param {boolean} [preventDefault=true]
  * @param {boolean} [stopPropagation=true]
  */
-export function preventEvent(e, preventDefault = true, stopPropagation = true) {
+export function preventEvent(e: SyntheticEvent<*>, preventDefault: boolean = true, stopPropagation: boolean = true) {
   preventDefault && e.preventDefault();
   stopPropagation && e.stopPropagation();
 }

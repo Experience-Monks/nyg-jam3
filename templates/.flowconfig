@@ -8,6 +8,7 @@
 .*/build/.*
 .*/config-overrides.js
 .*-story.js
+.*.test.js
 
 [include]
 

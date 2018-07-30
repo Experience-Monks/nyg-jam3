@@ -5,7 +5,7 @@ import dompurify from 'dompurify';
  *
  * @param {string} [dirtyInput=''] - Input to sanitize
  */
-function sanitizer(dirtyInput, ...options) {
+function sanitizer(dirtyInput: string, options: Object) {
   return dompurify.sanitize(dirtyInput, options);
 }
 

@@ -9,7 +9,7 @@ let soundMap = {};
  * @param {any} val
  * @returns {Boolean}
  */
-function isObject(val) {
+function isObject(val): boolean {
   return typeof val === 'object' && !Array.isArray(val) && val !== null;
 }
 
@@ -60,11 +60,11 @@ function getSprite(val) {
  */
 function setMap(model) {
   Object.keys(model).forEach(item => {
-    let data = model[item];
+    let data: Object = isObject(model[item]) ? model[item] : {};
     const defaults = {
       preload: false
     };
-    const opts = Object.assign(defaults, isObject(data) ? data : {}, { src: parseData(data) });
+    const opts = Object.assign(defaults, data, { src: parseData(data) });
     soundMap[item] = new Howl.Howl(opts);
   });
 }
@@ -79,7 +79,7 @@ class AudioStore {
     setMap(soundModel);
   }
 
-  play = id => {
+  play = (id: string) => {
     if (Object.keys(soundMap).length === 0) {
       console.error('Can\'t play any sounds as "soundMap" is empty', soundMap);
       return;
@@ -101,7 +101,7 @@ class AudioStore {
     }
   };
 
-  set extraData(data) {
+  set extraData(data: Object) {
     setMap(data);
   }
 
