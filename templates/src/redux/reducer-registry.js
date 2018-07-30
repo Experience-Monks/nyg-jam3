@@ -7,13 +7,13 @@ export default {
   set reducers(reducers) {
     this._reducers = reducers;
   },
-  register(name, reducer) {
+  register(name: string, reducer: Function) {
     this._reducers = { ...this._reducers, [name]: reducer };
     if (this._emitChange) {
       this._emitChange(this.reducers);
     }
   },
-  setChangeListener(listener) {
+  setChangeListener(listener: Function) {
     this._emitChange = listener;
   }
 };

@@ -4,7 +4,7 @@ import reducerRegistry from '../reducer-registry';
 const reducerName = 'mainNav';
 
 // Reducer
-export default function reducer(state = false, action) {
+export default function reducer(state: boolean = false, action: Object) {
   switch (action.type) {
     case keys.SET_IS_MOBILE_MENU_OPEN:
       return action.isOpen;
@@ -14,7 +14,7 @@ export default function reducer(state = false, action) {
 }
 
 // Action Creator
-export function setIsMobileMenuOpen(isOpen) {
+export function setIsMobileMenuOpen(isOpen: Object) {
   return {
     type: keys.SET_IS_MOBILE_MENU_OPEN,
     isOpen
