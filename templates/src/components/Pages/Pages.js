@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { TransitionGroup, Transition } from 'react-transition-group';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import checkProps from '../../util/check-props';
 import routeKeys from '../../routes/keys';
 import { getTransitionDuration } from '../../data/pages-transitions';
 import './Pages.css';
@@ -15,7 +13,12 @@ import {
   AsyncNotFound as NotFound
 } from '../../util/async-section-handler';
 
-const Pages = ({ location, ...props }) => {
+type Props = {
+  className?: String,
+  location: Location
+};
+
+const Pages = ({ location, ...props }: Props) => {
   return (
     <main className={classnames('Pages', props.className)} role="main">
       <TransitionGroup component={Fragment}>
@@ -32,11 +35,5 @@ const Pages = ({ location, ...props }) => {
     </main>
   );
 };
-
-Pages.propTypes = checkProps({
-  className: PropTypes.string
-});
-
-Pages.defaultProps = {};
 
 export default withRouter(Pages);

@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { Transition } from 'react-transition-group';
@@ -18,9 +17,17 @@ import settings from '../../data/settings';
 import detect from '../../util/detect';
 import layout from '../../util/layout';
 import usePassiveEvent from '../../util/use-passive-event';
-import checkProps from '../../util/check-props';
+import type { Layout } from '../../util/layout';
 
-class App extends React.PureComponent {
+type Props = {
+  layout: Layout,
+  location: Location,
+  ready: Boolean,
+  setPreviousRoute: Function,
+  setLayout: Function
+};
+
+class App extends React.PureComponent<Props> {
   componentDidMount() {
     // Setup performance measure tooling
     if (process.env.NODE_ENV !== 'production') {
@@ -81,14 +88,5 @@ const mapDispatchToProps = dispatch => {
     setLayout: (width, height, layout) => dispatch(batchActions([setWindowSize({ width, height }), setLayout(layout)]))
   };
 };
-
-App.propTypes = checkProps({
-  layout: PropTypes.object.isRequired,
-  ready: PropTypes.bool.isRequired,
-  setPreviousRoute: PropTypes.func.isRequired,
-  setLayout: PropTypes.func.isRequired
-});
-
-App.defaultProps = {};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
