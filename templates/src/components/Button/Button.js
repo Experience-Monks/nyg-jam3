@@ -1,46 +1,49 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import checkProps from '../../util/check-props';
+type Props = {
+  style: Object,
+  className: string,
+  component: string | Function,
+  children?: React$Element<*>,
+  nodeRef: Function,
+  onClick: Function,
+  onBlur: Function,
+  onFocus: Function,
+  onKeyDown: Function,
+  onKeyUp: Function,
+  onMouseMove: Function,
+  onMouseEnter: Function,
+  onMouseLeave: Function,
+  onMouseUp: Function,
+  onMouseDown: Function,
+  onTouchEnd: Function,
+  onTouchMove: Function,
+  onTouchStart: Function,
+  role: string,
+  tabIndex: number | string,
+  disabled: boolean,
+  'aria-label': string
+};
 
-export default class Button extends React.PureComponent {
-  render() {
-    const { nodeRef: ref, component: Component, children, role: buttonRole, ...buttonProps } = this.props;
-    const role = Component === 'button' ? buttonRole : 'button';
+/**
+ * forwardRef does not currently have a definition.
+ * $FlowFixMe
+ */
+const Button = React.forwardRef((props: Props, ref) => {
+  const Component = props.component;
+  const buttonRole = props.role;
+  const role = Component === 'button' ? buttonRole : 'button';
+  const { ...buttonProps } = props;
 
-    return (
-      <Component ref={ref} role={role} {...buttonProps}>
-        {children}
-      </Component>
-    );
-  }
-}
-
-Button.propTypes = checkProps({
-  style: PropTypes.object,
-  className: PropTypes.string,
-  nodeRef: PropTypes.func,
-  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-  children: PropTypes.node,
-  onClick: PropTypes.func,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyUp: PropTypes.func,
-  onMouseMove: PropTypes.func,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
-  onMouseUp: PropTypes.func,
-  onMouseDown: PropTypes.func,
-  onTouchEnd: PropTypes.func,
-  onTouchMove: PropTypes.func,
-  onTouchStart: PropTypes.func,
-  role: PropTypes.string,
-  tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  disabled: PropTypes.bool,
-  'aria-label': PropTypes.string
+  return (
+    <Component ref={ref} role={role} {...buttonProps}>
+      {props.children}
+    </Component>
+  );
 });
 
 Button.defaultProps = {
   component: 'button'
 };
+
+export default Button;

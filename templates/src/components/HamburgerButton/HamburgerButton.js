@@ -21,13 +21,14 @@ const DURATION = 0.2;
 const bars = [0, 1, 2].map(item => <span key={item} className={`bar ${item}`} />);
 
 export default class HamburgerButton extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  static defaultProps: Object;
+  container: ?HTMLElement;
+  state = {};
 
   componentDidMount() {
-    this.bars = [...this.container.querySelectorAll('.bar')];
+    if (this.container) {
+      this.bars = [...this.container.querySelectorAll('.bar')];
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -82,7 +83,7 @@ export default class HamburgerButton extends PureComponent {
     return (
       <Button
         className={classnames(`HamburgerButton`, this.props.className)}
-        nodeRef={r => (this.container = r)}
+        ref={r => (this.container = r)}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         onClick={this.props.onClick}

@@ -1,13 +1,38 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import Button from '../Button/Button';
 
-import checkProps from '../../util/check-props';
 import './CloseButton.css';
 
-export default class CloseButton extends React.PureComponent {
+type Props = {
+  style: Object,
+  className: string,
+  nodeRef: Function,
+  children: React$Element<*>,
+  component: string | Function,
+  onClick: Function,
+  onBlur: Function,
+  onFocus: Function,
+  onKeyDown: Function,
+  onKeyUp: Function,
+  onMouseMove: Function,
+  onMouseEnter: Function,
+  onMouseLeave: Function,
+  onMouseUp: Function,
+  onMouseDown: Function,
+  onTouchEnd: Function,
+  onTouchMove: Function,
+  onTouchStart: Function,
+  role: string,
+  tabIndex: number | string,
+  disabled: boolean,
+  'aria-label': string
+};
+
+export default class CloseButton extends React.PureComponent<Props> {
+  static defaultProps: Object;
+
   render() {
     const { className, ...buttonProps } = this.props;
 
@@ -19,31 +44,6 @@ export default class CloseButton extends React.PureComponent {
     );
   }
 }
-
-CloseButton.propTypes = checkProps({
-  style: PropTypes.object,
-  className: PropTypes.string,
-  nodeRef: PropTypes.func,
-  children: PropTypes.node,
-  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-  onClick: PropTypes.func,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyUp: PropTypes.func,
-  onMouseMove: PropTypes.func,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
-  onMouseUp: PropTypes.func,
-  onMouseDown: PropTypes.func,
-  onTouchEnd: PropTypes.func,
-  onTouchMove: PropTypes.func,
-  onTouchStart: PropTypes.func,
-  role: PropTypes.string,
-  tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  disabled: PropTypes.bool,
-  'aria-label': PropTypes.string
-});
 
 CloseButton.defaultProps = {
   component: 'button'
