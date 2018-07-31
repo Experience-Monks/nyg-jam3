@@ -9,6 +9,8 @@ import './Landing.css';
 
 import BaseLink from '../../components/BaseLink/BaseLink';
 
+import Image from '../../components/Image/Image';
+
 import { setLandingLoaded } from '../../redux/modules/landing';
 import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
@@ -67,6 +69,13 @@ class Landing extends React.PureComponent {
           dangerouslySetInnerHTML={{ __html: sanitizer('<p>Script inside <img src=x onerror=alert(1)></p>') }}
         />
         <BaseLink link="/about">About</BaseLink>
+        <Image
+          mediumSrc="https://via.placeholder.com/768x432"
+          largeSrc="https://via.placeholder.com/1200x675"
+          xLargeSrc="https://via.placeholder.com/1920x1080"
+          width="500"
+          alt="alt-test"
+        />
       </section>
     );
   }

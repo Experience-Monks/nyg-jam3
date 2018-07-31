@@ -48,8 +48,8 @@
     "url": "https://github.com/Jam3/generator-jam3-v2/issues"
   },
   "engines": {
-    "node":">=8.11.2",
-    "npm":">=6.1.0"
+    "node": ">=8.11.2",
+    "npm": ">=6.1.0"
   },
   "dependencies": {
     "bowser": "1.9.2",
@@ -68,6 +68,7 @@
     "react": "16.3.2",
     "react-background-video-player": "1.1.4",
     "react-dom": "16.3.2",
+    "react-lazy-images": "1.0.1",
     "react-loadable": "5.3.1",
     "react-redux": "5.0.7",
     "react-router-dom": "4.2.2",
