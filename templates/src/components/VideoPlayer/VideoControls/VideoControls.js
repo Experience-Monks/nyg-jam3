@@ -17,7 +17,7 @@ import Button from '../../Button/Button';
 
 import { noop } from '../../../util/basic-functions';
 
-type Props = {
+type Props = {|
   className?: string,
   captions?: boolean,
   isFullScreen?: boolean,
@@ -26,14 +26,18 @@ type Props = {
   isShowingCaptions?: boolean,
   duration?: number,
   currentTime?: number,
-  onPlayToggle?: Function,
-  onMuteToggle?: Function,
-  onFullscreenToggle?: Function,
-  onCaptionsToggle?: Function,
-  onTimeUpdate?: Function
-};
+  onPlayToggle(event: SyntheticEvent<>): ?void,
+  onMuteToggle(event: SyntheticEvent<>): ?void,
+  onFullscreenToggle(event: SyntheticEvent<>): ?void,
+  onCaptionsToggle(event: SyntheticEvent<>): ?void,
+  onTimeUpdate(currentTime: number, progress: number): ?void
+|};
 
-const VideoControls = (props: Props) => {
+/**
+ * forwardRef does not currently have a definition.
+ * $FlowFixMe
+ */
+const VideoControls = React.forwardRef((props: Props, ref) => {
   function formatTime(totalSeconds) {
     const totalSecondsFloat = totalSeconds;
     let minutes = Math.floor(totalSecondsFloat / 60);
@@ -45,7 +49,7 @@ const VideoControls = (props: Props) => {
   }
 
   return (
-    <nav className={classnames('VideoControls', props.className)} aria-label="Video Controls">
+    <nav className={classnames('VideoControls', props.className)} aria-label="Video Controls" ref={ref}>
       <Button
         className="VideoControls-button"
         aria-label={props.isPlaying ? 'Pause Video' : 'Play Video'}
@@ -101,7 +105,7 @@ const VideoControls = (props: Props) => {
       </Button>
     </nav>
   );
-};
+});
 
 VideoControls.defaultProps = {
   onPlayToggle: noop,

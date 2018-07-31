@@ -32,14 +32,14 @@ export default function preloaderReducer(
 }
 
 // Action Creators
-export function setReady(ready: Object) {
+export function setReady(ready: boolean) {
   return {
     type: keys.SET_READY,
     ready
   };
 }
 
-export function setProgress(progress: Object) {
+export function setProgress(progress: number) {
   return {
     type: keys.SET_PROGRESS,
     progress

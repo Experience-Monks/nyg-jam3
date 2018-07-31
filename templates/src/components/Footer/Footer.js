@@ -8,10 +8,10 @@ import BaseLink from '../BaseLink/BaseLink';
 import routeKeys from '../../routes/keys';
 import type { LinkType } from '../../data/types';
 
-type Props = {
-  className: string,
+type Props = {|
+  className?: string,
   links: Array<LinkType>
-};
+|};
 
 /**
  * forwardRef does not currently have a definition.

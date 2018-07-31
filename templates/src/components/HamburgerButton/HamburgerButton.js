@@ -8,15 +8,15 @@ import Button from '../Button/Button';
 import animate from '../../util/gsap-animate';
 import { noop } from '../../util/basic-functions';
 
-type Props = {
-  className: string,
-  tabIndex: number,
+type Props = {|
+  className?: string,
   currentState: string,
   activeState: string,
-  onClick: Function,
-  onMouseEnter: Function,
-  onMouseLeave: Function
-};
+  tabIndex: number,
+  onClick(event: SyntheticEvent<>): ?void,
+  onMouseEnter(event: SyntheticMouseEvent<>): ?void,
+  onMouseLeave(event: SyntheticMouseEvent<>): ?void
+|};
 
 type State = {};
 
@@ -76,17 +76,17 @@ export default class HamburgerButton extends PureComponent<Props, State> {
     animate.to(this.bars, DURATION, { x: 0, y: 0, rotation: 0, scaleX: 1, autoAlpha: 1 });
   };
 
-  handleMouseEnter = (e: SyntheticEvent<>) => {
+  handleMouseEnter = (e: SyntheticMouseEvent<>) => {
     if (this.checkIsIdleState()) {
       animate.killTweensOf(this.bars);
       if (this.bars) animate.to([this.bars[1], this.bars[3]], DURATION, { scaleX: 0.8 });
     }
-    this.props.onMouseEnter();
+    this.props.onMouseEnter(e);
   };
 
-  handleMouseLeave = (e: SyntheticEvent<>) => {
+  handleMouseLeave = (e: SyntheticMouseEvent<>) => {
     this.checkIsIdleState() && this.goToIdleState();
-    this.props.onMouseLeave();
+    this.props.onMouseLeave(e);
   };
 
   render() {

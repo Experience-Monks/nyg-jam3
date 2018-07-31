@@ -14,13 +14,21 @@ import routeKeys from '../../routes/keys';
 import animate from '../../util/gsap-animate';
 import type { LinkType } from '../../data/types';
 
-type Props = {
+type Props = {|
+  ...mapStateToPropsType,
+  ...mapDispatchToPropsType,
   className?: string,
   links: Array<LinkType>,
-  isMobileMenuOpen: boolean,
-  location: Location,
-  setIsMobileMenuOpen: Function
-};
+  location: Location
+|};
+
+type mapStateToPropsType = {|
+  isMobileMenuOpen: boolean
+|};
+
+type mapDispatchToPropsType = {|
+  setIsMobileMenuOpen(isOpen: boolean): ?void
+|};
 
 type State = {};
 
@@ -74,13 +82,13 @@ class HamburgerMenu extends React.PureComponent<Props, State> {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state, ownProps): mapStateToPropsType => {
   return {
     isMobileMenuOpen: ownProps.isMobileMenuOpen || state.isMobileMenuOpen
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch<*>): mapDispatchToPropsType => {
   return {
     setIsMobileMenuOpen: val => dispatch(setIsMobileMenuOpen(val))
   };
@@ -99,5 +107,4 @@ HamburgerMenu.defaultProps = {
   ]
 };
 
-// $FlowFixMe
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HamburgerMenu));

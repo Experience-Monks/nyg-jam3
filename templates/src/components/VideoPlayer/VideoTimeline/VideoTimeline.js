@@ -5,13 +5,13 @@ import './VideoTimeline.css';
 
 import { noop } from '../../../util/basic-functions';
 
-type Props = {
+type Props = {|
   className?: string,
   style?: Object,
   duration: number,
   currentTime?: number,
-  onTimeUpdate?: Function
-};
+  onTimeUpdate(currentTime: number, progress: number): ?void
+|};
 
 type State = {
   currentTime: ?number,
@@ -44,7 +44,7 @@ export default class VideoTimeline extends React.PureComponent<Props, State> {
       const value: number = parseFloat(this.input.value);
 
       if (value) {
-        this.props.onTimeUpdate && this.props.onTimeUpdate(value, value / this.props.duration);
+        this.props.onTimeUpdate(value, value / this.props.duration);
         this.setState({ currentTime: value });
       }
     }

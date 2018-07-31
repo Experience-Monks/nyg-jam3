@@ -4,29 +4,29 @@ import classnames from 'classnames';
 
 import './BaseLink.css';
 
-type Props = {
-  className: string,
-  rel: string,
+type Props = {|
+  className?: string,
   link: string,
-  target: '_blank' | '_self',
-  tabIndex: number | string,
-  download: string,
-  title: string,
+  download?: string,
+  title?: string,
+  rel?: string,
+  target?: '_blank' | '_self',
+  tabIndex?: number | string,
   children?: React$Element<*>,
-  onBlur: Function,
-  onFocus: Function,
-  onKeyDown: Function,
-  onKeyUp: Function,
-  onMouseMove: Function,
-  onMouseEnter: Function,
-  onMouseLeave: Function,
-  onMouseUp: Function,
-  onMouseDown: Function,
-  onTouchEnd: Function,
-  onTouchMove: Function,
-  onTouchStart: Function,
-  onClick: Function
-};
+  onBlur(event: SyntheticEvent<>): ?void,
+  onFocus(event: SyntheticEvent<>): ?void,
+  onClick(event: SyntheticEvent<>): ?void,
+  onKeyDown(event: SyntheticKeyboardEvent<>): ?void,
+  onKeyUp(event: SyntheticKeyboardEvent<>): ?void,
+  onMouseMove(event: SyntheticMouseEvent<>): ?void,
+  onMouseEnter(event: SyntheticMouseEvent<>): ?void,
+  onMouseLeave(event: SyntheticMouseEvent<>): ?void,
+  onMouseUp(event: SyntheticMouseEvent<>): ?void,
+  onMouseDown(event: SyntheticMouseEvent<>): ?void,
+  onTouchEnd(event: SyntheticTouchEvent<>): ?void,
+  onTouchMove(event: SyntheticTouchEvent<>): ?void,
+  onTouchStart(event: SyntheticTouchEvent<>): ?void
+|};
 
 const excludes = ['children', 'download', 'target', 'rel', 'link'];
 

@@ -17,12 +17,20 @@ import sanitizer from '../../util/sanitizer';
 import type { TransitionStates } from '../PagesTransitionWrapper';
 
 type Props = {
+  ...mapStateToPropsType,
+  ...mapDispatchToPropsType,
   className?: string,
-  transitionState: TransitionStates,
-  previousRoute: string,
-  loaded: boolean,
-  setLandingLoaded: Function
+  transitionState: TransitionStates
 };
+
+type mapStateToPropsType = {|
+  previousRoute: string,
+  loaded: boolean
+|};
+
+type mapDispatchToPropsType = {|
+  setLandingLoaded(loaded: boolean): ?void
+|};
 
 type State = {};
 
@@ -83,18 +91,17 @@ class Landing extends React.PureComponent<Props, State> {
 
 Landing.defaultProps = {};
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state, ownProps): mapStateToPropsType => {
   return {
     previousRoute: state.previousRoute,
     loaded: state.landingLoaded.loaded
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch<*>): mapDispatchToPropsType => {
   return {
     setLandingLoaded: (val: boolean) => dispatch(setLandingLoaded(val))
   };
 };
 
-// $FlowFixMe
 export default connect(mapStateToProps, mapDispatchToProps)(Transition(Landing));

@@ -8,6 +8,7 @@ import App from '../components/App/App';
 
 import detect from '../util/detect';
 
+// $FlowFixMe
 let defaultAppComponent = <App />;
 
 if (process.env.NODE_ENV !== 'production') {
@@ -15,6 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
   const AppContainer = require('react-hot-loader').AppContainer;
   defaultAppComponent = (
     <AppContainer>
+      {/* $FlowFixMe*/}
       <App />
     </AppContainer>
   );

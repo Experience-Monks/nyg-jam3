@@ -1,28 +1,28 @@
 import React from 'react';
 
-type Props = {
-  style: Object,
-  className: string,
+type Props = {|
+  style?: Object,
+  className?: string,
   component: string | Function,
   children?: React$Element<*>,
-  onClick: Function,
-  onBlur: Function,
-  onFocus: Function,
-  onKeyDown: Function,
-  onKeyUp: Function,
-  onMouseMove: Function,
-  onMouseEnter: Function,
-  onMouseLeave: Function,
-  onMouseUp: Function,
-  onMouseDown: Function,
-  onTouchEnd: Function,
-  onTouchMove: Function,
-  onTouchStart: Function,
   role: string,
-  tabIndex: number | string,
-  disabled: boolean,
-  'aria-label': string
-};
+  'aria-label': string,
+  disabled?: boolean,
+  tabIndex?: number | string,
+  onClick(event: SyntheticEvent<>): ?void,
+  onBlur(event: SyntheticEvent<>): ?void,
+  onFocus(event: SyntheticEvent<>): ?void,
+  onKeyDown(event: SyntheticKeyboardEvent<>): ?void,
+  onKeyUp(event: SyntheticKeyboardEvent<>): ?void,
+  onMouseMove(event: SyntheticMouseEvent<>): ?void,
+  onMouseEnter(event: SyntheticMouseEvent<>): ?void,
+  onMouseLeave(event: SyntheticMouseEvent<>): ?void,
+  onMouseUp(event: SyntheticMouseEvent<>): ?void,
+  onMouseDown(event: SyntheticMouseEvent<>): ?void,
+  onTouchEnd(event: SyntheticTouchEvent<>): ?void,
+  onTouchMove(event: SyntheticTouchEvent<>): ?void,
+  onTouchStart(event: SyntheticTouchEvent<>): ?void
+|};
 
 /**
  * forwardRef does not currently have a definition.

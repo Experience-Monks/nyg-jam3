@@ -14,7 +14,7 @@ export default function reducer(state: boolean = false, action: Object) {
 }
 
 // Action Creator
-export function setIsMobileMenuOpen(isOpen: Object) {
+export function setIsMobileMenuOpen(isOpen: boolean) {
   return {
     type: keys.SET_IS_MOBILE_MENU_OPEN,
     isOpen

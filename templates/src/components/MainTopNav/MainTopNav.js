@@ -14,18 +14,26 @@ import routeKeys from '../../routes/keys';
 import cleanPath from '../../util/clean-path';
 
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
-import type { LinkType } from '../../data/types';
+import type { Layout, LinkType } from '../../data/types';
 
-type Props = {
+type Props = {|
+  ...mapStateToPropsType,
+  ...mapDispatchToPropsType,
   className?: string,
   logoSrc?: string,
   logoAlt?: string,
   links: Array<LinkType>,
-  layout: Object,
-  location: Location,
-  isMobileMenuOpen: boolean,
-  setIsMobileMenuOpen: Function
-};
+  location: Location
+|};
+
+type mapStateToPropsType = {|
+  layout: Layout,
+  isMobileMenuOpen: boolean
+|};
+
+type mapDispatchToPropsType = {|
+  setIsMobileMenuOpen(isOpen: boolean): ?void
+|};
 
 type State = {
   buttonState: string
@@ -109,18 +117,17 @@ MainTopNav.defaultProps = {
   ]
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state): mapStateToPropsType => {
   return {
     layout: state.layout,
     isMobileMenuOpen: state.isMobileMenuOpen
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch<*>): mapDispatchToPropsType => {
   return {
     setIsMobileMenuOpen: val => dispatch(setIsMobileMenuOpen(val))
   };
 };
 
-// $FlowFixMe
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainTopNav));

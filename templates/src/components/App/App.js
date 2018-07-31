@@ -19,15 +19,25 @@ import layout from '../../util/layout';
 import usePassiveEvent from '../../util/use-passive-event';
 import type { Layout } from '../../data/types';
 
-type Props = {
-  layout: Layout,
-  location: Location,
-  ready: boolean,
-  setPreviousRoute: Function,
-  setLayout: Function
-};
+type Props = {|
+  ...mapStateToPropsType,
+  ...mapDispatchToPropsType,
+  location: Location
+|};
 
-class App extends React.PureComponent<Props> {
+type mapStateToPropsType = {|
+  layout: Layout,
+  ready: boolean
+|};
+
+type mapDispatchToPropsType = {|
+  setPreviousRoute(path: string): void,
+  setLayout(w: number, h: number, layout: Layout): void
+|};
+
+type State = {};
+
+class App extends React.PureComponent<Props, State> {
   componentDidMount() {
     // Setup performance measure tooling
     if (process.env.NODE_ENV !== 'production') {
@@ -42,7 +52,7 @@ class App extends React.PureComponent<Props> {
     window.addEventListener('resize', this.handleResize, usePassiveEvent());
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     if (prevProps.location.pathname !== this.props.location.pathname) {
       this.props.setPreviousRoute(prevProps.location.pathname);
     }
@@ -76,14 +86,14 @@ class App extends React.PureComponent<Props> {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state): mapStateToPropsType => {
   return {
     layout: state.layout,
     ready: state.preloader.ready
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch<*>): mapDispatchToPropsType => {
   return {
     setPreviousRoute: (val: string) => dispatch(setPreviousRoute(val)),
     setLayout: (width: number, height: number, layout: Layout) =>
@@ -91,5 +101,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-// $FlowFixMe
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

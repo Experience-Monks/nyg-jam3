@@ -12,11 +12,9 @@ import animate from '../../util/gsap-animate';
 
 type Props = {
   className: string,
-  style: Object,
   src: string,
   poster: string,
   preload: string,
-  captions: Object,
   disableBackgroundCover: boolean,
   allowKeyboardControl: boolean,
   autoPlay: boolean,
@@ -32,14 +30,14 @@ type Props = {
   windowHeight: number,
   volume: number,
   startTime: number,
-  onPlay: Function,
-  onPause: Function,
-  onEnd: Function
+  captions: Object,
+  style: Object,
+  onPlay(): ?void,
+  onPause(): ?void,
+  onEnd(): ?void
 };
 
 type State = {
-  containerWidth: number,
-  containerHeight: number,
   isShowingCaptions: boolean,
   isPlaying: boolean,
   isMuted: boolean,
@@ -48,7 +46,9 @@ type State = {
   currentTime: number,
   progress: number,
   duration: number,
-  startTime: number
+  startTime: number,
+  containerWidth: number,
+  containerHeight: number
 };
 
 export default class VideoPlayer extends React.PureComponent<Props, State> {
@@ -97,7 +97,6 @@ export default class VideoPlayer extends React.PureComponent<Props, State> {
 
   componentDidMount() {
     this.fullScreen = fullScreen(this.container, this.onEnterFullScreen, this.onExitFullScreen);
-    this.controls = this.container && this.container.querySelector('.VideoControls');
 
     if (this.props.hasControls) {
       this.props.showControlsOnLoad ? this.setHideControlsTimeout() : this.hideControls(0);
@@ -129,8 +128,8 @@ export default class VideoPlayer extends React.PureComponent<Props, State> {
       }
     }
 
-    if (prevState.isShowingCaptions !== this.state.isShowingCaptions) {
-      this.captions && animate.to(this.captionsContainer, 0.1, { autoAlpha: Boolean(this.state.isShowingCaptions) });
+    if (this.captions && prevState.isShowingCaptions !== this.state.isShowingCaptions) {
+      animate.to(this.captionsContainer, 0.1, { autoAlpha: Boolean(this.state.isShowingCaptions) });
     }
 
     if (this.props.captions && prevProps.captions.src !== this.props.captions.src) {
@@ -197,6 +196,7 @@ export default class VideoPlayer extends React.PureComponent<Props, State> {
       this.captions.removeEventListener('cuechange', this.onTrackChange);
     }
 
+    // NOTE: track type any is because of 'mode'. need to verify why need 'mode'
     const track: any = document.createElement('track');
     track.kind = captions.kind;
     track.label = captions.label;
@@ -285,7 +285,7 @@ export default class VideoPlayer extends React.PureComponent<Props, State> {
     this.fullScreen.isFullScreen() && this.fullScreen.exit();
   };
 
-  onMouseMove = () => {
+  onMouseMove = (e: SyntheticMouseEvent<>) => {
     if (this.state.isPlaying && this.props.hasControls) {
       this.showControls();
       this.setHideControlsTimeout();
@@ -342,6 +342,7 @@ export default class VideoPlayer extends React.PureComponent<Props, State> {
 
         {this.props.hasControls && (
           <VideoControls
+            ref={r => (this.controls = r)}
             captions={Boolean(this.props.captions)}
             currentTime={Number(this.state.currentTime)}
             isPlaying={this.state.isPlaying}

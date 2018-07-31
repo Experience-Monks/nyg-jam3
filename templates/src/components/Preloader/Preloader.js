@@ -12,16 +12,24 @@ import './Preloader.css';
 // $FlowFixMe
 import Loader from '../SvgComponents/Loader/Loader';
 
-type Props = {
-  className: ?string,
-  assets: Array<string>,
-  setProgress: Function,
-  setReady: Function,
-  minDisplayTime: number,
-  options: ?Object,
+type Props = {|
+  ...mapStateToPropsType,
+  ...mapDispatchToPropsType,
+  className?: string,
+  transitionState?: string,
+  minDisplayTime?: number,
+  options?: Object
+|};
+
+type mapStateToPropsType = {|
   progress: number,
-  transitionState: string
-};
+  assets: Array<string>
+|};
+
+type mapDispatchToPropsType = {|
+  setProgress(val: number): ?void,
+  setReady(isReady: boolean): ?void
+|};
 
 type State = {};
 
@@ -96,14 +104,14 @@ Preloader.defaultProps = {
   }
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state, ownProps): mapStateToPropsType => {
   return {
     progress: state.preloader.progress,
     assets: preloadAssets
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch<*>): mapDispatchToPropsType => {
   return {
     setProgress: val => dispatch(setProgress(val)),
     setReady: val => dispatch(setReady(val))

@@ -12,11 +12,15 @@ import animate from '../../util/gsap-animate';
 
 import type { TransitionStates } from '../PagesTransitionWrapper';
 
-type Props = {
+type Props = {|
+  ...mapStateToPropsType,
   className?: string,
-  transitionState: TransitionStates,
+  transitionState: TransitionStates
+|};
+
+type mapStateToPropsType = {|
   previousRoute: string
-};
+|};
 
 type State = {};
 
@@ -62,11 +66,10 @@ class About extends React.PureComponent<Props, State> {
 
 About.defaultProps = {};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state): mapStateToPropsType => ({
   previousRoute: state.previousRoute
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = (dispatch: Dispatch<*>) => ({});
 
-// $FlowFixMe
 export default connect(mapStateToProps, mapDispatchToProps)(Transition(About));
