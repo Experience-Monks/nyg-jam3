@@ -8,11 +8,16 @@ class Image extends React.PureComponent {
   }
 
   render() {
+    const srcSetConcat = [];
+    if (this.props.mediumSrc) srcSetConcat.push(this.props.mediumSrc + ' 768w');
+    if (this.props.mediumSrc) srcSetConcat.push(this.props.largeSrc + ' 1200w');
+    if (this.props.mediumSrc) srcSetConcat.push(this.props.xLargeSrc + ' 1920w');
+
     return (
       <div className="Image">
         <LazyImage
           src={this.props.src ? this.props.src : this.props.xLargeSrc}
-          srcSet={`${this.props.xLargeSrc} 1920w, ${this.props.largeSrc} 1200w, ${this.props.mediumSrc} 768w`}
+          srcSet={srcSetConcat ? srcSetConcat.join() : null}
           alt={this.props.alt}
           observerProps={{ threshold: 0.01, rootMargin: '50px 0px' }}
           placeholder={({ imageProps, ref }) => (
