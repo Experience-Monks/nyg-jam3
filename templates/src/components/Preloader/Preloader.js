@@ -62,7 +62,7 @@ class Preloader extends React.PureComponent {
   render() {
     return (
       <section id="Preloader" ref={r => (this.container = r)}>
-        <Loader className="loader-icon" />
+        <Loader />
       </section>
     );
   }

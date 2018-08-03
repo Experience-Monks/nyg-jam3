@@ -1,0 +1,18 @@
+@import 'shared.scss';
+
+svg.loader-icon {
+  animation: infinite-spinning 1s infinite;
+  width: px-to-rem(50);
+  height: px-to-rem(50);
+  display: block;
+  margin: auto;
+}
+
+@keyframes infinite-spinning {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
