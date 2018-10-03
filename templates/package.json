@@ -41,11 +41,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jam3/generator-jam3-v2.git"
+    "url": "git+https://github.com/Jam3/generator-jam3.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Jam3/generator-jam3-v2/issues"
+    "url": "https://github.com/Jam3/generator-jam3/issues"
   },
   "engines": {
     "node":">=8.11.2",
