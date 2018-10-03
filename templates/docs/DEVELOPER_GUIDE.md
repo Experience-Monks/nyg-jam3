@@ -66,9 +66,9 @@ generate.
 
 ### Package Dependencies
 
-The dependendencies are structures in the following way:
+The dependendencies are structured in the following way:
 
-* dependencies: Actual packages used in the final bundle, let's keep it clear
+* dependencies: Actual packages used in the final bundle, let's keep it clean
 * devDependencies: Dependencies used to create the final bundle, including linting, security, etc
 * optionalDependencies: Dependencies used in development but not needed it to create the final bundle, also help scripts
 
@@ -86,15 +86,15 @@ In order to ensure the same code styling across the duration of the project we a
 * Prettier - Code Formatter, `.prettierrc`
 * EditorConfig - IDE|Editor configuration, `.editorconfig`
 
-More information about linters [here](https://github.com/Jam3/standards/blob/master/LINTERS_STANDARDS.md)
+More information about the linters [here](https://github.com/Jam3/standards/blob/master/LINTERS_STANDARDS.md)
 
 ## Nodejs and npm
 
-The project has by default a file called `.nvmrc` that lock the nodejs and npm version you will use when you run the
-scripts, it requires to have installed `nvm`. More information [here](https://github.com/creationix/nvm#nvmrc)
+The project has by default a file called `.nvmrc` that locks the nodejs and npm version you will use when you run the
+scripts. It requires `nvm` to be installed. More information [here](https://github.com/creationix/nvm#nvmrc)
 
-We included some basic information for npm in `.npmrc`, the most important is that when we install a npm package we are
-including a specific version. This help us to avoid weird behaviors after a package is updated and help us to track and
+We include some basic settings for npm in `.npmrc`. It is important that when we install an npm package we
+include a specific version number. This will help us to avoid any unexpected behaviors after a package has been updated and will help us track and
 control updates. More information [here](https://docs.npmjs.com/files/npmrc)
 
 ## Git and LFS
@@ -102,18 +102,18 @@ control updates. More information [here](https://docs.npmjs.com/files/npmrc)
 To know more about the (Jam3 Git Standards)[https://github.com/Jam3/standards/blob/master/GIT_STANDARD.md] follow the
 link.
 
-We included a default `.gitignore` ordered by topic, please follow the addition rules to keep it consistent.
+We have included a default `.gitignore` ordered by topic, please follow this format to keep it consistent.
 
-You will find the Git LFS configuration in `.gitattribute`, currently we are tracking only the files inside:
+You will find the Git LFS configuration in `.gitattribute`, currently we are tracking the files inside:
 
 * src/assets/sounds
 * src/assets/videos
 
-Before add your files to Git LFS have in mind a couple options:
+Before you add your files to Git LFS have in mind a couple options:
 
-1. Evaluate host those files outside of the repository, could be a CDN
-2. In case you want to trick the cache and add a hash for those files use them inside specific components instead of the
-   public folder
+1.  Evaluate hosting those files outside of the repository, could be a CDN
+2.  In case you want to trick the cache and add a hash for those files use them inside specific components instead of the
+    public folder
 
 ## Build scripts
 
@@ -121,7 +121,7 @@ Our build scripts are based on [react-scripts](https://www.npmjs.com/package/rea
 Webpack with different configurations for develop and production. The default configurations are stable and supported
 for the community.
 
-To customize the current build pipelines, refer to the file
+To customize the current build pipelines, refer to the file 
 [config-overrides.js](https://github.com/Jam3/generator-jam3/blob/master/templates/config-overrides.js). If you wanna
 read more about it, please visit the [react-app-rewired](https://github.com/timarney/react-app-rewired) repository.
 
@@ -129,12 +129,12 @@ read more about it, please visit the [react-app-rewired](https://github.com/tima
 
 #### Visualizer
 
-Dependencies webpack visualizer, visit [npm](https://www.npmjs.com/package/webpack-visualizer-plugin) for more
-information
+We include a webpack visualizer for your dependencies, visit [npm](https://www.npmjs.com/package/webpack-visualizer-plugin) for more
+information.
 
 #### Custom ESLint
 
-We use the same rules than react-scripts plus some customizations
+We use the same linting rules as react-scripts plus some customizations.
 
 #### Hot Module Reload
 
@@ -150,9 +150,9 @@ We added imagemin into the webpack pipeline, visit
 
 TBD
 
-1. `npm run component` & `npm run stateless-component`
-2. Architecture
-3. How to customize them
+1.  `npm run component` & `npm run stateless-component`
+2.  Architecture
+3.  How to customize them
 
 ## Storybook
 
@@ -162,13 +162,13 @@ How to use it, guidelines.
 
 ## Performance
 
-1. Split bundles
-2. Split redux configuration
-3. preload & precache
-4. Bundle sizes
-5. Async
-6. Passive events
-7. Debounce|throttle events
+1.  Split bundles
+2.  Split redux configuration
+3.  preload & precache
+4.  Bundle sizes
+5.  Async
+6.  Passive events
+7.  Debounce|throttle events
 
 ### Tools
 
@@ -198,40 +198,42 @@ https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-u
 
 There are several ways to tackle down this issue with the generator.
 
-### Javascript controlling the resolutions
+### Controling breakpoints with JS
 
-Javascript is listing the resolution changes and is setting classes in the HTML depending of the current resolution.
+Javascript is listening for the resolution changes and is setting classes in the HTML depending of the current resolution.
 Based on this approach, you should use those classes in your CSS code or Javascript (Redux) and your application will
 behave correctly
 
 **Pros and Cons**
 
-1. Pros - You have access to the same information from JS (Redux) and CSS
-2. Cons - Every time a class is set in the HTML the browser is triggering a re-render
-3. Cons - This approach is slower than using media-queries
+1.  Pros - You have access to the same information from JS (Redux) and CSS
+2.  Cons - Every time a class is set in the HTML the browser is triggering a re-render
+3.  Cons - This approach is slower than using media-queries
 
-**Oportunities** Do the same but using media queries and move the resolution information using matchMedia
+**Other options** Do the same but use media queries and detect the resolution using matchMedia
 
-### CSS controlling the resolutions
+### Controlling breakpoints with CSS
 
 We are using include-media to help us with the breakpoints. You can take a look to the configuration in the file
 `grid.scss` or read the documentation in https://github.com/eduardoboucas/include-media
 
 ### Breakpoints
 
-1. layout util + rems using. Pros + Cons
+TBD
+
+1.  layout util + rems using. Pros + Cons
 
 ## Unsupporting strategy
 
 TBD
 
-1. Included in the bundle, best practices
+1.  Included in the bundle, best practices
 
 ## Animations
 
 TBD
 
-1. Less by default
+1.  Less by default
 
 ## React-Redux-Router
 
@@ -243,42 +245,42 @@ React v16 + React Router v4 + Redux. Don't be afraid to remove it :-)
 
 TBD
 
-1. Basic use of assets, how webpack include them and add hash.
-2. Async loading of some assets - in case we don't preload them
-3. SVGs - there are two ways of using SVGs.
+1.  Basic use of assets, how webpack include them and add hash.
+2.  Async loading of some assets - in case we don't preload them
+3.  SVGs - there are two ways of using SVGs.
 
-   1. Importing SVGs like other modules (react + webapck as url)
+    1.  Importing SVGs like other modules (react + webapck as url)
 
-   ```
-   import logo from './assets/logo.svg';
-   ...
-   <img src={logo} className="Landing-logo" alt="logo" />
-   ```
+    ```
+    import logo from './assets/logo.svg';
+    ...
+    <img src={logo} className="Landing-logo" alt="logo" />
+    ```
 
-   2. Generate SVGs into React component by running a node script. This option is to transform a whole directory. By
-      default, `SvgComponents` in `src/components` is where all svg must be. All SVGs will be stored in `SvgComponents`
-      folder and Svg Components will be created under new folder. Please check out `svg-component.js` script in
-      `scripts` folder.
+    2.  Generate SVGs into React component by running a node script. This option is to transform a whole directory. By
+        default, `SvgComponents` in `src/components` is where all svg must be. All SVGs will be stored in `SvgComponents`
+        folder and Svg Components will be created under new folder. Please check out `svg-component.js` script in
+        `scripts` folder.
 
-      NOTE: Please double check newly generated Svg components if there is any `eslint` issues.
+        NOTE: Please double check newly generated Svg components if there is any `eslint` issues.
 
-   ```bash
-   // Run command below
-   $ npm run svg-component
+    ```bash
+    // Run command below
+    $ npm run svg-component
 
-   // Example result
-   src/components/SvgComponents/logo.svg
-   src/components/SvgComponents/some-icon.svg
-   src/components/SvgComponents/Logo/Logo.js
-   src/components/SvgComponents/SomeIcon/SomeIcon.js
-   ```
+    // Example result
+    src/components/SvgComponents/logo.svg
+    src/components/SvgComponents/some-icon.svg
+    src/components/SvgComponents/Logo/Logo.js
+    src/components/SvgComponents/SomeIcon/SomeIcon.js
+    ```
 
-   3. Transform selected SVG(s), one or more svg, by running a node script. Basic idea/setting is the same as #2.
+    3.  Transform selected SVG(s), one or more svg, by running a node script. Basic idea/setting is the same as #2.
 
-   ```bash
-   // Run command below
-   $ npm run svg-component close-icon.svg more.svg
-   ```
+    ```bash
+    // Run command below
+    $ npm run svg-component close-icon.svg more.svg
+    ```
 
 ## General documentation
 
@@ -290,7 +292,7 @@ TBD
 
 TBD
 
-1. Global files
-2. Variables - global and specific
-3. Mixins
-4. Documentation
+1.  Global files
+2.  Variables - global and specific
+3.  Mixins
+4.  Documentation
