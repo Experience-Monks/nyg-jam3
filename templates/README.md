@@ -24,7 +24,7 @@
 
 ## Jam3 Generator
 
-This application was created using the [Jam3 Generator](https://github.com/Jam3/generator-jam3-v2). To checkout the out
+This application was created using the [Jam3 Generator](https://github.com/Jam3/generator-jam3). To checkout the out
 of the box features read our [Developer guide](docs/DEVELOPER_GUIDE.md)
 
 ## Getting Started
@@ -55,11 +55,11 @@ The test runs automatically in the Continue Integration server, in order to exec
 
 ## Environments
 
-* Development : [https://dev-prj.jam3.net](https://dev-prj.jam3.net)
-* Staging : [https://staging-prj.jam3.net](https://staging-prj.jam3.net)
-* Release (UAT) : [https://uat-prj.jam3.net](https://uat-prj.jam3.net)
-* Initial Production : [https://prj.jam3.net](https://prj.jam3.net)
-* Production : [https://domain.com](https://domain.com)
+* Development : [Link]
+* Staging : [Link]
+* Release (UAT) : [Link]
+* Initial Production : [Link]
+* Production : [Link]
 
 ## Deployment
 
@@ -77,6 +77,12 @@ Merging in to the `staging` branch will trigger a deploy to the Staging/QA envir
 
 Review the link in: #environments
 
+#### Release environment
+
+Merge to the `release` branch will trigger a deploy to the Release/UAT environment.
+
+Review the link in: #environments
+
 #### Production environment
 
 Merging in to the `master` branch will trigger a deploy to the Production environment.
@@ -88,18 +94,11 @@ Review the link in: #environments
 To be fully engaged in this project you will need access to the accounts and information below, please feel free to ask for access from the _Lead
 Developer_, _Producer_ or _Technical Director_
 
-* Google Tag Manager
-* Google Analytics
-* Dev Password
-* Staging Password
-* Release Password
-* Production Password
-* Codeship
-* Jira
-* Slack Channel #prj-[prj-name]
-* Slack Channel for development topics #prj-[prj-name]-dev
-* Slack Channel for notifications #prj-[prj-name]-i
-* Github access for the project
+* Analytic Tools Access
+* Environment Access
+* CI Access
+* Task Management Access
+* Team Collaboration Tool Access
 
 ## Contributing
 
@@ -117,4 +116,4 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## License
 
-This project is privately owned by Jam3
+
