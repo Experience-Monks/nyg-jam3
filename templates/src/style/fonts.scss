@@ -17,8 +17,7 @@ $base-path: '../assets/fonts/';
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local('Roboto Light'), local('Roboto-Light'),
-    url('#{$base-path}Roboto/Roboto-Light.woff2') format('woff2'),
+  src: local('Roboto Light'), local('Roboto-Light'), url('#{$base-path}Roboto/Roboto-Light.woff2') format('woff2'),
     url('#{$base-path}Roboto/Roboto-Light.woff') format('woff'),
     url('#{$base-path}Roboto/Roboto-Light.ttf') format('truetype');
   unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02bb-02bc, U+02c6, U+02da, U+02dc, U+2000-206f, U+2074, U+20ac,
@@ -30,8 +29,7 @@ $base-path: '../assets/fonts/';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Roboto Regular'), local('Roboto-Regular'),
-    url('#{$base-path}Roboto/Roboto-Regular.woff2') format('woff2'),
+  src: local('Roboto Regular'), local('Roboto-Regular'), url('#{$base-path}Roboto/Roboto-Regular.woff2') format('woff2'),
     url('#{$base-path}Roboto/Roboto-Regular.woff') format('woff'),
     url('#{$base-path}Roboto/Roboto-Regular.ttf') format('truetype');
   unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02bb-02bc, U+02c6, U+02da, U+02dc, U+2000-206f, U+2074, U+20ac,
@@ -43,8 +41,7 @@ $base-path: '../assets/fonts/';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('Roboto Bold'), local('Roboto-Bold'),
-    url('#{$base-path}Roboto/Roboto-Bold.woff2') format('woff2'),
+  src: local('Roboto Bold'), local('Roboto-Bold'), url('#{$base-path}Roboto/Roboto-Bold.woff2') format('woff2'),
     url('#{$base-path}Roboto/Roboto-Bold.woff') format('woff'),
     url('#{$base-path}Roboto/Roboto-Bold.ttf') format('truetype');
   unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02bb-02bc, U+02c6, U+02da, U+02dc, U+2000-206f, U+2074, U+20ac,
