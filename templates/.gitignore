@@ -35,6 +35,10 @@ src/**/*.css
 # Dynamically built files
 src/style/layout.scss
 
+# Local env variables
+.env.local
+.env.*.local
+
 # Documentation
 public/components
 public/styleguide
