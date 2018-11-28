@@ -1,0 +1,9 @@
+{
+    "severity": "warning",
+    "extends": "stylelint-config-jam3",
+    "rules": {
+      "block-no-empty": null,
+      "declaration-bang-space-before": null,
+      "value-list-comma-newline-after": null
+    }
+  }

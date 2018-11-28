@@ -1,0 +1,73 @@
+@import 'layout.scss';
+
+// Variables
+//
+// Add global variables here, color palette, those variables shared by components all applied to global styling
+
+// ====================================================================
+// Breakpoints
+//
+// Window breakpoints
+// ====================================================================
+
+$layout-medium: map-get($layout, medium) + px;
+$layout-large: map-get($layout, large) + px;
+$layout-xlarge: map-get($layout, xlarge) + px;
+
+// ====================================================================
+// Animation
+//
+// Easings and animation configuration variables
+// ====================================================================
+$landing-hero-out-ease: cubic-bezier(0.17, -0.12, 0, 1);
+$landing-hero-in-ease: cubic-bezier(0.17, 0.12, 0, 1);
+
+// ====================================================================
+// Base palette
+//
+// Grayscale and brand colors for use across the site.
+// ====================================================================
+
+$white: #fff;
+$black: #000;
+$gray: #e5e5e5;
+
+// ====================================================================
+// Generals
+//
+// Global color variables, used usually in sections
+// Global variables used across the web app
+// ====================================================================
+
+$page-bg-color: $white;
+$rotate-screen-bg-color: $black;
+$element-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.04);
+$generic-fonts: Helvetica, Arial, sans-serif;
+
+// ====================================================================
+// UI Bible
+//
+// Based on your designer UI Bible add those styles that applies
+// to all the site here
+// ====================================================================
+
+// Margin
+$desktop-page-margin: px-to-rem(100);
+$desktop-content-margin: px-to-rem(40);
+$tablet-page-margin: px-to-rem(80);
+$tablet-content-margin: px-to-rem(40);
+$phone-page-margin: px-to-rem(40);
+$phone-content-margin: px-to-rem(20);
+
+// ====================================================================
+// Nav bar
+// ====================================================================
+$navbar-height-mobile: 6rem;
+$navbar-height-desktop: 6rem;
+$navbar-padding-mobile: 4rem;
+$navbar-padding-desktop: 6rem;
+
+// ====================================================================
+// List of z-index element
+// ====================================================================
+$elements: main-nav, sidebar, preloader, rotate;

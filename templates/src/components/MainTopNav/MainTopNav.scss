@@ -1,0 +1,63 @@
+@import 'shared.scss';
+
+$content-padding-mobile: px-to-rem(5);
+$content-padding-desktop: px-to-rem(10);
+
+.MainTopNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 #{$navbar-padding-mobile - $content-padding-mobile} 0 $navbar-padding-mobile;
+  border-bottom: 1px solid rgba($black, 0.3);
+  height: $navbar-height-mobile;
+  background: $white;
+  @include z-index(main-nav);
+
+  @media (min-width: $layout-large) {
+    height: $navbar-height-desktop;
+    padding: 0 #{$navbar-padding-desktop - $content-padding-desktop} 0 $navbar-padding-desktop;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include box(100%);
+
+    .nav-logo {
+      width: px-to-rem(50);
+    }
+
+    .nav-list {
+      display: inline-block;
+
+      .nav-item {
+        display: inline-block;
+        padding: $content-padding-mobile;
+        margin-left: $content-padding-mobile * 2;
+
+        @media (min-width: $layout-large) {
+          padding: $content-padding-desktop;
+          margin-left: $content-padding-desktop * 2;
+        }
+
+        a {
+          font-size: px-to-rem(20);
+          color: rgba($black, 0.7);
+          transition: color 0.2s;
+
+          &.active {
+            color: rgba($black, 1);
+          }
+
+          .desktop & {
+            &:hover {
+              color: rgba($black, 1);
+            }
+          }
+        }
+      }
+    }
+  }
+}

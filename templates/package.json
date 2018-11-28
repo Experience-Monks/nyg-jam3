@@ -1,0 +1,161 @@
+{
+  "name": "jam3-new-app",
+  "version": "0.0.1",
+  "description": "Jam3 new app",
+  "private": true,
+  "scripts": {
+    "start": "npm-run-all -p watch-layout watch-css start-js",
+    "build": "npm run release",
+    "\n ######################  NPM Secondary Pipeline  ######################": "",
+    "release": "cross-env NODE_ENV=production REACT_APP_SW_CACHE_BUST=$(date +%s) npm-run-all generate-doc build-layout build-css build-js build-php",
+    "start-js": "react-app-rewired start",
+    "build-css": "node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/",
+    "build-js": "react-app-rewired build",
+    "build-layout": "node scripts/build-layout-data.js",
+    "build-php": "node scripts/build-php.js",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "watch-layout": "npm run build-layout && node scripts/watch-layout-data.js",
+    "\n ######################  Support Development Tools  ######################": "",
+    "storybook": "start-storybook -p 9001 -c .storybook -s ./src,./public",
+    "component": "node scripts/component.js",
+    "connected-component": "node scripts/component.js --connected",
+    "stateless-component": "node scripts/component.js --stateless",
+    "page": "node scripts/component.js --page",
+    "dependency-report": "node scripts/dependencies-report",
+    "svg-component": "node scripts/svg-component.js",
+    "generate-doc": "node scripts/generate-doc",
+    "facebook": "node scripts/facebook.js",
+    "\n ######################  Automation Tools  ######################": "",
+    "test": "react-app-rewired test --env=jsdom",
+    "audit-snyk": "snyk auth [token] && snyk test",
+    "precommit": "echo 'Pre-commit checks...' && lint-staged",
+    "prepush": "echo 'Pre-push checks...' && npm run linters",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "js-lint": "eslint \"./src/**/*.js\" -c ./.eslintrc --quiet --ignore-pattern .gitignore",
+    "sass-lint": "stylelint \"./src/**/*.scss\"",
+    "linters": "npm-run-all -p js-lint sass-lint",
+    "postinstall": "npm-run-all build-layout build-css"
+  },
+  "scriptsComments": {
+    "audit-snyk": "You need to install snyk in the repository and add their token in order to use this script, npm i snyk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jam3/generator-jam3.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jam3/generator-jam3/issues"
+  },
+  "engines": {
+    "node": ">=8.11.2",
+    "npm": ">=6.1.0"
+  },
+  "dependencies": {
+    "bowser": "1.9.2",
+    "classnames": "2.2.5",
+    "dompurify": "1.0.5",
+    "fullscreen-handler": "0.0.2",
+    "gsap": "1.20.4",
+    "gsap-promisify": "1.0.2",
+    "history": "4.7.2",
+    "howler": "2.0.9",
+    "include-media": "1.4.9",
+    "lodash.debounce": "4.0.8",
+    "mobile-detect": "1.4.1",
+    "normalize.css": "8.0.0",
+    "preloader": "4.0.2",
+    "react": "16.3.2",
+    "react-background-video-player": "1.1.4",
+    "react-dom": "16.3.2",
+    "react-loadable": "5.3.1",
+    "react-redux": "5.0.7",
+    "react-router-dom": "4.2.2",
+    "react-router-redux": "5.0.0-alpha.9",
+    "react-transition-group": "2.3.1",
+    "redux": "3.7.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "6.2.0",
+    "@storybook/addon-actions": "3.4.3",
+    "@storybook/addon-info": "3.4.3",
+    "@storybook/addon-knobs": "3.4.3",
+    "@storybook/react": "3.4.3",
+    "autodll-webpack-plugin": "^0.3.9",
+    "babel-eslint": "8.0.2",
+    "cross-env": "5.1.6",
+    "duplicate-package-checker-webpack-plugin": "2.1.0",
+    "eslint": "4.11.0",
+    "eslint-config-jam3": "0.1.4",
+    "eslint-config-postcss": "^2.0.2",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-config-react-app": "^2.0.1",
+    "eslint-plugin-flowtype": "2.48.0",
+    "eslint-plugin-import": "2.11.0",
+    "eslint-plugin-jam3": "0.2.1",
+    "eslint-plugin-jsx-a11y": "6.0.3",
+    "eslint-plugin-prettier": "2.6.0",
+    "eslint-plugin-promise": "3.7.0",
+    "eslint-plugin-react": "7.5.1",
+    "eslint-plugin-standard": "3.0.1",
+    "husky": "^0.14.3",
+    "imagemin": "5.3.1",
+    "imagemin-gifsicle": "5.2.0",
+    "imagemin-jpegtran": "5.0.2",
+    "imagemin-pngquant": "5.1.0",
+    "imagemin-svgo": "6.0.0",
+    "json-sass-vars": "3.0.0",
+    "lint-staged": "^4.3.0",
+    "node-sass-chokidar": "1.3.0",
+    "npm-run-all": "4.1.2",
+    "preload-webpack-plugin": "2.3.0",
+    "prettier": "1.8.2",
+    "prop-types": "15.6.1",
+    "react-app-rewire-eslint": "0.2.3",
+    "react-app-rewire-hot-loader": "1.0.0",
+    "react-app-rewire-imagemin-plugin": "1.0.1",
+    "react-app-rewired": "1.4.1",
+    "react-scripts": "1.1.4",
+    "sassdoc": "2.5.0",
+    "snyk": "1.82.0",
+    "stats.js": "0.17.0",
+    "storybook-addon-jsx": "5.3.0",
+    "stylelint": "8.2.0",
+    "stylelint-config-jam3": "0.1.1"
+  },
+  "optionalDependencies": {
+    "chalk": "2.3.2",
+    "license-checker": "16.0.0",
+    "maxstache": "1.0.7",
+    "minimist": "1.2.0",
+    "mkdirp": "0.5.1",
+    "react-hot-loader": "4.3.1",
+    "sassdoc": "2.5.0",
+    "stats.js": "0.17.0",
+    "svgr": "1.9.0",
+    "webpack-visualizer-plugin": "0.1.11",
+    "webpack-bundle-analyzer": "2.13.1",
+    "why-did-you-update": "0.1.1"
+  },
+  "jest": {
+    "setupFiles": [
+      "./test/jest-setup.js"
+    ]
+  },
+  "lint-staged": {
+    "gitDir": "../",
+    "linters": {
+      "src/**/*.{js,json,scss}": [
+        "prettier --write",
+        "git add"
+      ]
+    }
+  },
+  "browserslist": [
+    "Explorer >= 10",
+    "Safari >= 9",
+    "Chrome >= 30",
+    "Firefox >= 40",
+    "iOS >= 9"
+  ]
+}

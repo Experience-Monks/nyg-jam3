@@ -1,0 +1,33 @@
+@import 'shared.scss';
+
+.Landing {
+  text-align: center;
+
+  &-header {
+    background-color: #222;
+    height: px-to-rem(150);
+    padding: px-to-rem(20);
+    color: $white;
+  }
+
+  &-title {
+    font-size: 1.5em;
+  }
+
+  &-intro {
+    font-size: large;
+  }
+
+  &-resources {
+    .container {
+      display: flex;
+      justify-content: center;
+
+      .resource {
+        margin: 5px;
+        border: 1px solid #a7a7a7;
+        padding: 10px;
+      }
+    }
+  }
+}

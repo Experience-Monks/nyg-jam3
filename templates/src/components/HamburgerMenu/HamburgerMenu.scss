@@ -1,0 +1,54 @@
+@import 'shared.scss';
+
+.HamburgerMenu {
+  position: fixed;
+  top: $navbar-height-mobile;
+  right: 0;
+  @include z-index(sidebar);
+  width: 100%;
+  height: calc(100% - #{$navbar-height-mobile});
+  border-left: 1px solid rgba($black, 0.3);
+  background: $white;
+
+  @media (min-width: $layout-medium) {
+    max-width: px-to-rem(300);
+  }
+
+  .nav-list {
+    width: 100%;
+    padding: px-to-rem(15) px-to-rem(15) px-to-rem(20) px-to-rem(15);
+    text-align: center;
+
+    .nav-item {
+      width: 100%;
+      margin: px-to-rem(10) 0;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      a {
+        font-size: px-to-rem(20);
+        color: rgba($black, 0.7);
+        transition: color 0.2s;
+        padding: px-to-rem(5);
+        display: inline-block;
+        width: 100%;
+
+        &.active {
+          color: rgba($black, 1);
+        }
+
+        .desktop & {
+          &:hover {
+            color: rgba($black, 1);
+          }
+        }
+      }
+    }
+  }
+}

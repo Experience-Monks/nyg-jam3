@@ -1,0 +1,30 @@
+@import 'shared.scss';
+
+.Rotate {
+  @include flex-center;
+  @include position-100(fixed);
+  background-color: $rotate-screen-bg-color;
+  @include z-index(rotate);
+
+  .container {
+    text-align: center;
+
+    p {
+      color: $white;
+      font-size: px-to-rem(16);
+      line-height: 120%;
+      margin-top: px-to-rem(20);
+      text-align: center;
+    }
+
+    .rotate-icon {
+      margin: auto;
+      width: px-to-rem(100);
+
+      svg {
+        @include box(100%);
+        display: block;
+      }
+    }
+  }
+}

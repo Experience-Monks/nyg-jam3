@@ -1,0 +1,24 @@
+@import 'shared.scss';
+
+#Preloader {
+  @include flex-center;
+  @include position-100(fixed);
+  background-color: $black;
+  @include z-index(preloader);
+
+  svg.loader-icon {
+    animation: infinite-spinning 1s infinite;
+    fill: $white;
+    width: px-to-rem(50);
+    height: px-to-rem(50);
+  }
+
+  @keyframes infinite-spinning {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

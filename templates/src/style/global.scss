@@ -1,0 +1,78 @@
+// Globals
+//
+// Global styling, normalize overwritten
+@import 'fonts.scss';
+@import 'polyfills.scss';
+@import 'shared.scss';
+@import 'scalable-font-size.scss';
+
+html {
+  box-sizing: border-box;
+  @include font-regular;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-overflow-scrolling: touch;
+  @include scalable-font();
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-size: px-to-rem(16);
+
+  &.rotate-screen-visible {
+    background-color: $rotate-screen-bg-color !important; // trick to avoid the iPhone X notch
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.only-aria-visible {
+  clip-path: inset(100%);
+  clip: rect(1px 1px 1px 1px); /* IE 6/7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; /* added line */
+  width: 1px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  text-align: inherit;
+  letter-spacing: inherit;
+  font-size: inherit;
+  text-transform: inherit;
+  color: inherit;
+}
+
+ul,
+dl,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+}

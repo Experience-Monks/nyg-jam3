@@ -1,0 +1,9 @@
+@import 'shared.scss';
+
+.NotFound {
+  text-align: center;
+
+  svg {
+    width: px-to-rem(200);
+  }
+}

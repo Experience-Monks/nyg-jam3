@@ -1,0 +1,24 @@
+@import 'shared.scss';
+
+.CloseButton {
+  position: relative;
+  @include box(25px);
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 3px;
+    height: 100%;
+    background-color: $black;
+
+    &:first-child {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:last-child {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+}
