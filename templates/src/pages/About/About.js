@@ -19,7 +19,7 @@ class About extends React.PureComponent {
   }
 
   componentDidMount() {
-    animate.set(this.container, { autoAlpha: 0 });
+    animate.set(this.container, { autoAlpha: 0, display: 'none' });
   }
 
   onAppear = () => {
@@ -36,7 +36,7 @@ class About extends React.PureComponent {
   };
 
   animateIn = () => {
-    animate.to(this.container, 0.3, { autoAlpha: 1 });
+    animate.to(this.container, 0.3, { autoAlpha: 1, display: 'block' });
   };
 
   animateOut = () => {

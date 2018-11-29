@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 export default function() {
   const target = document.getElementById('root');
-  document.body.className = [...document.body.className.split(' '), ...detect.classes].filter(Boolean).join(' ');
+  document.body.className = [...document.body.className.split(' '), ...detect.classes].join(' ');
 
   const render = Component => {
     ReactDOM.render(

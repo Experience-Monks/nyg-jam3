@@ -20,6 +20,7 @@ const PagesTransitionWrapper = Class => {
   const componentDidMount = Class.prototype.componentDidMount;
   Class.prototype.componentDidMount = function() {
     componentDidMount && componentDidMount.call(this);
+
     if (
       this.props.transitionState === transitionStates.entered ||
       this.props.transitionState === transitionStates.entering
@@ -36,6 +37,15 @@ const PagesTransitionWrapper = Class => {
     } else if (this.props.transitionState === transitionStates.exiting) {
       handleLeaveTransition(this.onLeave);
     }
+  };
+
+  const componentWillUnmount = Class.prototype.componentWillUnmount;
+  Class.prototype.componentWillUnmount = function() {
+    componentWillUnmount && componentWillUnmount.apply(this, arguments);
+
+    // Scroll to the top of document on page unmount
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   };
 
   return Class;

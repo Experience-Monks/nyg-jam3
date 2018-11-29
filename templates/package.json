@@ -31,8 +31,8 @@
     "precommit": "echo 'Pre-commit checks...' && lint-staged",
     "prepush": "echo 'Pre-push checks...' && npm run linters",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "js-lint": "eslint \"./src/**/*.js\" -c ./.eslintrc --quiet --ignore-pattern .gitignore",
-    "sass-lint": "stylelint \"./src/**/*.scss\"",
+    "js-lint": "eslint './src/**/*.js' -c ./.eslintrc --quiet --ignore-pattern .gitignore",
+    "sass-lint": "stylelint './src/**/*.scss'",
     "linters": "npm-run-all -p js-lint sass-lint",
     "postinstall": "npm-run-all build-layout build-css"
   },
@@ -41,15 +41,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jam3/generator-jam3.git"
+    "url": "git+https://github.com/Jam3/generator-jam3-v2.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Jam3/generator-jam3/issues"
+    "url": "https://github.com/Jam3/generator-jam3-v2/issues"
   },
   "engines": {
-    "node": ">=8.11.2",
-    "npm": ">=6.1.0"
+    "node":">=8.11.2",
+    "npm":">=6.1.0"
   },
   "dependencies": {
     "bowser": "1.9.2",
