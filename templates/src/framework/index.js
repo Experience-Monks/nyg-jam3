@@ -8,28 +8,36 @@ import App from '../components/App/App';
 
 import detect from '../util/detect';
 
+// $FlowFixMe
 let defaultAppComponent = <App />;
 
 if (process.env.NODE_ENV !== 'production') {
+  // $FlowFixMe
   const AppContainer = require('react-hot-loader').AppContainer;
   defaultAppComponent = (
     <AppContainer>
+      {/* $FlowFixMe*/}
       <App />
     </AppContainer>
   );
 }
 
 export default function() {
-  const target = document.getElementById('root');
-  document.body.className = [...document.body.className.split(' '), ...detect.classes].filter(Boolean).join(' ');
+  const target: ?HTMLElement = document.getElementById('root');
+  detect.classes.forEach(cls => {
+    if (document.body !== null) {
+      document.body.classList.add(cls);
+    }
+  });
 
   const render = Component => {
-    ReactDOM.render(
-      <Provider store={store}>
-        <ConnectedRouter history={history}>{Component}</ConnectedRouter>
-      </Provider>,
-      target
-    );
+    target &&
+      ReactDOM.render(
+        <Provider store={store}>
+          <ConnectedRouter history={history}>{Component}</ConnectedRouter>
+        </Provider>,
+        target
+      );
   };
 
   render(defaultAppComponent);

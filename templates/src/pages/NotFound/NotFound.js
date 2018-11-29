@@ -1,14 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import './NotFound.css';
 
+// $FlowFixMe
 import NotFoundIcon from '../../components/SvgComponents/NotFoundIcon/NotFoundIcon';
 
-import checkProps from '../../util/check-props';
+type Props = {
+  className?: string
+};
 
-const NotFound = props => {
+const NotFound = (props: Props) => {
   const componentProps = {
     className: classnames('NotFound', props.className)
   };
@@ -21,12 +23,6 @@ const NotFound = props => {
   );
 };
 
-NotFound.propTypes = checkProps({
-  className: PropTypes.string
-});
-
-NotFound.defaultProps = {
-  className: ''
-};
+NotFound.defaultProps = {};
 
 export default NotFound;

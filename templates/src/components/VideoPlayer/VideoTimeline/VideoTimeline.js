@@ -1,14 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import './VideoTimeline.css';
 
-import checkProps from '../../../util/check-props';
 import { noop } from '../../../util/basic-functions';
 
-export default class VideoTimeline extends React.PureComponent {
-  static getDerivedStateFromProps(nextProps, prevState) {
+type Props = {|
+  className?: string,
+  style?: Object,
+  duration: number,
+  currentTime?: number,
+  onTimeUpdate(currentTime: number, progress: number): ?void
+|};
+
+type State = {
+  currentTime: ?number,
+  isMouseDown: boolean
+};
+
+export default class VideoTimeline extends React.PureComponent<Props, State> {
+  static defaultProps: Object;
+  input: ?HTMLInputElement;
+  container: ?HTMLElement;
+
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     if (nextProps.currentTime !== prevState.currentTime && !prevState.isMouseDown) {
       return { currentTime: nextProps.currentTime };
     }
@@ -16,7 +31,7 @@ export default class VideoTimeline extends React.PureComponent {
     return null;
   }
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       currentTime: this.props.currentTime,
@@ -25,8 +40,14 @@ export default class VideoTimeline extends React.PureComponent {
   }
 
   onChange = () => {
-    this.props.onTimeUpdate(this.input.value, this.input.value / this.props.duration);
-    this.setState({ currentTime: parseFloat(this.input.value) });
+    if (this.input) {
+      const value: number = parseFloat(this.input.value);
+
+      if (value) {
+        this.props.onTimeUpdate(value, value / this.props.duration);
+        this.setState({ currentTime: value });
+      }
+    }
   };
 
   onMouseDown = () => {
@@ -38,7 +59,7 @@ export default class VideoTimeline extends React.PureComponent {
   };
 
   render() {
-    const progressStyle = { width: this.state.currentTime / this.props.duration * 100 + '%' };
+    const progressStyle = { width: Number(this.state.currentTime) / this.props.duration * 100 + '%' };
     return (
       <div
         className={classnames('VideoTimeline', this.props.className)}
@@ -62,14 +83,6 @@ export default class VideoTimeline extends React.PureComponent {
     );
   }
 }
-
-VideoTimeline.propTypes = checkProps({
-  className: PropTypes.string,
-  style: PropTypes.object,
-  duration: PropTypes.number.isRequired,
-  currentTime: PropTypes.number,
-  onTimeUpdate: PropTypes.func
-});
 
 VideoTimeline.defaultProps = {
   style: {},

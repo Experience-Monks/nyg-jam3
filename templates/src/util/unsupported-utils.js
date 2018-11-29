@@ -12,7 +12,7 @@ global.detect = detect;
 function isSupported() {
   const userBrowser = detect.browser.toLowerCase();
   const userBrowserVersion = parseFloat(detect.browserVersion);
-  const userOS = detect.os ? detect.os.toLowerCase() : 'unknown';
+  const userOS: string = detect.os ? detect.os.toLowerCase() : 'unknown';
   const userOSVersion = detect.osVersion === 'Unknown' ? Number.MAX_SAFE_INTEGER : parseFloat(detect.osVersion);
 
   if (detect.isBot) {

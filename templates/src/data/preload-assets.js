@@ -1,7 +1,7 @@
 import detect from '../util/detect';
-
+import { PUBLIC_URL } from './settings';
 // TODO: replace this constant when adding global constants
-const ASSETS_PATH = process.env.PUBLIC_URL + '/assets/';
+const ASSETS_PATH = PUBLIC_URL + '/assets/';
 
 /**
  * Manipulate preload assets list here

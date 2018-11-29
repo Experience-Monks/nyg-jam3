@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { Transition } from 'react-transition-group';
@@ -18,12 +17,31 @@ import settings from '../../data/settings';
 import detect from '../../util/detect';
 import layout from '../../util/layout';
 import usePassiveEvent from '../../util/use-passive-event';
-import checkProps from '../../util/check-props';
+import type { Layout } from '../../data/types';
 
-class App extends React.PureComponent {
+type Props = {|
+  ...mapStateToPropsType,
+  ...mapDispatchToPropsType,
+  location: Location
+|};
+
+type mapStateToPropsType = {|
+  layout: Layout,
+  ready: boolean
+|};
+
+type mapDispatchToPropsType = {|
+  setPreviousRoute(path: string): void,
+  setLayout(w: number, h: number, layout: Layout): void
+|};
+
+type State = {};
+
+class App extends React.PureComponent<Props, State> {
   componentDidMount() {
     // Setup performance measure tooling
     if (process.env.NODE_ENV !== 'production') {
+      // $FlowFixMe
       const { whyDidYouUpdate } = require('why-did-you-update');
 
       if (document.location.search.indexOf('performance') >= 0) {
@@ -34,7 +52,7 @@ class App extends React.PureComponent {
     window.addEventListener('resize', this.handleResize, usePassiveEvent());
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     if (prevProps.location.pathname !== this.props.location.pathname) {
       this.props.setPreviousRoute(prevProps.location.pathname);
     }
@@ -68,27 +86,19 @@ class App extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state): mapStateToPropsType => {
   return {
     layout: state.layout,
     ready: state.preloader.ready
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch<*>): mapDispatchToPropsType => {
   return {
-    setPreviousRoute: val => dispatch(setPreviousRoute(val)),
-    setLayout: (width, height, layout) => dispatch(batchActions([setWindowSize({ width, height }), setLayout(layout)]))
+    setPreviousRoute: (val: string) => dispatch(setPreviousRoute(val)),
+    setLayout: (width: number, height: number, layout: Layout) =>
+      dispatch(batchActions([setWindowSize({ width, height }), setLayout(layout)]))
   };
 };
-
-App.propTypes = checkProps({
-  layout: PropTypes.object.isRequired,
-  ready: PropTypes.bool.isRequired,
-  setPreviousRoute: PropTypes.func.isRequired,
-  setLayout: PropTypes.func.isRequired
-});
-
-App.defaultProps = {};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

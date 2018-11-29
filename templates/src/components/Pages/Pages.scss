@@ -10,14 +10,9 @@
   }
 
   & > section {
-    padding-bottom: 110px;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-
-    @media (min-width: $layout-medium) {
-      padding-bottom: 80px;
-    }
   }
 }

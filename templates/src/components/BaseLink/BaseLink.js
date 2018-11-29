@@ -1,22 +1,47 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import './BaseLink.css';
 
-import checkProps from '../../util/check-props';
+type Props = {|
+  className?: string,
+  link: string,
+  download?: string,
+  title?: string,
+  rel?: string,
+  target?: '_blank' | '_self',
+  tabIndex?: number | string,
+  children?: React$Element<*>,
+  onBlur(event: SyntheticEvent<>): ?void,
+  onFocus(event: SyntheticEvent<>): ?void,
+  onClick(event: SyntheticEvent<>): ?void,
+  onKeyDown(event: SyntheticKeyboardEvent<>): ?void,
+  onKeyUp(event: SyntheticKeyboardEvent<>): ?void,
+  onMouseMove(event: SyntheticMouseEvent<>): ?void,
+  onMouseEnter(event: SyntheticMouseEvent<>): ?void,
+  onMouseLeave(event: SyntheticMouseEvent<>): ?void,
+  onMouseUp(event: SyntheticMouseEvent<>): ?void,
+  onMouseDown(event: SyntheticMouseEvent<>): ?void,
+  onTouchEnd(event: SyntheticTouchEvent<>): ?void,
+  onTouchMove(event: SyntheticTouchEvent<>): ?void,
+  onTouchStart(event: SyntheticTouchEvent<>): ?void
+|};
 
 const excludes = ['children', 'download', 'target', 'rel', 'link'];
 
 const externalLinkRegex = /^(https:\/\/|http:\/\/|www\.|tel:|mailto:)/;
 const externalSiteRegex = /^(https:\/\/|http:\/\/|www\.)/;
 
-const BaseLink = React.forwardRef((props, ref) => {
+/**
+ * forwardRef does not currently have a definition.
+ * $FlowFixMe
+ */
+const BaseLink = React.forwardRef((props: Props, ref) => {
   const Tag = externalLinkRegex.test(props.link) || props.download ? 'a' : Link;
 
   // clean props
-  let componentProps = Object.keys(props).reduce(
+  let componentProps: any = Object.keys(props).reduce(
     (acc, key) => ([...excludes].indexOf(key) > -1 ? acc : { ...acc, [key]: props[key] }),
     {}
   );
@@ -42,30 +67,6 @@ const BaseLink = React.forwardRef((props, ref) => {
       {props.children}
     </Tag>
   );
-});
-
-BaseLink.propTypes = checkProps({
-  className: PropTypes.string,
-  rel: PropTypes.string,
-  link: PropTypes.string,
-  target: PropTypes.oneOf(['_blank', '_self']),
-  tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  download: PropTypes.string,
-  title: PropTypes.string,
-  children: PropTypes.node,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyUp: PropTypes.func,
-  onMouseMove: PropTypes.func,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
-  onMouseUp: PropTypes.func,
-  onMouseDown: PropTypes.func,
-  onTouchEnd: PropTypes.func,
-  onTouchMove: PropTypes.func,
-  onTouchStart: PropTypes.func,
-  onClick: PropTypes.func
 });
 
 BaseLink.defaultProps = {

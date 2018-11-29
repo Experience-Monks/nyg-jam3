@@ -121,8 +121,8 @@ const isInAppBrowser = checkInAppBrowser();
 const inAppBrowserVersion = checkInAppBrowserVersion();
 
 // Orientation
-const PORTRAIT = 'portrait';
-const LANDSCAPE = 'landscape';
+const PORTRAIT: string = 'portrait';
+const LANDSCAPE: string = 'landscape';
 
 const checkOrientation = () => {
   if (typeof window.screen === 'object') {
@@ -138,8 +138,8 @@ const checkOrientation = () => {
     return window.matchMedia('(orientation: portrait)').matches === true ? PORTRAIT : LANDSCAPE;
   }
 
-  const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  const w = document.documentElement ? Math.max(document.documentElement.clientWidth, window.innerWidth || 0) : 0;
+  const h = document.documentElement ? Math.max(document.documentElement.clientHeight, window.innerHeight || 0) : 0;
   return w < h ? PORTRAIT : LANDSCAPE;
 };
 
@@ -150,7 +150,8 @@ const checkLandscape = () => checkOrientation() === LANDSCAPE;
 const vendor = checkVendor();
 const device = checkDevice();
 
-const getClasses = () => [isMobile ? 'mobile' : '', device, os, browser].filter(className => Boolean(className));
+const getClasses = (): Array<string> =>
+  [isMobile ? 'mobile' : '', device, os, browser].filter(className => Boolean(className));
 
 const classes = getClasses();
 const devicePixelRatio = checkDevicePixelRatio();

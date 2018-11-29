@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import './VideoControls.css';
@@ -16,10 +15,29 @@ import captionsOffIcon from './assets/captions-off.svg';
 import VideoTimeline from '../VideoTimeline/VideoTimeline';
 import Button from '../../Button/Button';
 
-import checkProps from '../../../util/check-props';
 import { noop } from '../../../util/basic-functions';
 
-const VideoControls = props => {
+type Props = {|
+  className?: string,
+  captions?: boolean,
+  isFullScreen?: boolean,
+  isPlaying?: boolean,
+  isMuted?: boolean,
+  isShowingCaptions?: boolean,
+  duration?: number,
+  currentTime?: number,
+  onPlayToggle(event: SyntheticEvent<>): ?void,
+  onMuteToggle(event: SyntheticEvent<>): ?void,
+  onFullscreenToggle(event: SyntheticEvent<>): ?void,
+  onCaptionsToggle(event: SyntheticEvent<>): ?void,
+  onTimeUpdate(currentTime: number, progress: number): ?void
+|};
+
+/**
+ * forwardRef does not currently have a definition.
+ * $FlowFixMe
+ */
+const VideoControls = React.forwardRef((props: Props, ref) => {
   function formatTime(totalSeconds) {
     const totalSecondsFloat = totalSeconds;
     let minutes = Math.floor(totalSecondsFloat / 60);
@@ -31,7 +49,7 @@ const VideoControls = props => {
   }
 
   return (
-    <nav className={classnames('VideoControls', props.className)} aria-label="Video Controls">
+    <nav className={classnames('VideoControls', props.className)} aria-label="Video Controls" ref={ref}>
       <Button
         className="VideoControls-button"
         aria-label={props.isPlaying ? 'Pause Video' : 'Play Video'}
@@ -87,22 +105,6 @@ const VideoControls = props => {
       </Button>
     </nav>
   );
-};
-
-VideoControls.propTypes = checkProps({
-  className: PropTypes.string,
-  captions: PropTypes.bool,
-  isFullScreen: PropTypes.bool,
-  isPlaying: PropTypes.bool,
-  isMuted: PropTypes.bool,
-  isShowingCaptions: PropTypes.bool,
-  duration: PropTypes.number.isRequired,
-  currentTime: PropTypes.number,
-  onPlayToggle: PropTypes.func,
-  onMuteToggle: PropTypes.func,
-  onFullscreenToggle: PropTypes.func,
-  onCaptionsToggle: PropTypes.func,
-  onTimeUpdate: PropTypes.func
 });
 
 VideoControls.defaultProps = {

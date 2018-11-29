@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import './Footer.css';
@@ -7,15 +6,24 @@ import './Footer.css';
 import BaseLink from '../BaseLink/BaseLink';
 
 import routeKeys from '../../routes/keys';
-import checkProps from '../../util/check-props';
+import type { LinkType } from '../../data/types';
 
-const Footer = React.forwardRef((props, ref) => (
+type Props = {|
+  className?: string,
+  links: Array<LinkType>
+|};
+
+/**
+ * forwardRef does not currently have a definition.
+ * $FlowFixMe
+ */
+const Footer = React.forwardRef((props: Props, ref) => (
   <footer className={classnames('Footer', props.className)} ref={ref}>
     <nav className="footer-nav">
       <ul className="nav-list">
         {props.links.map((link, index) => (
           <li key={index} className="nav-item">
-            <BaseLink link={link.path}>{link.name}</BaseLink>
+            <BaseLink link={link.path}>{link.text}</BaseLink>
           </li>
         ))}
       </ul>
@@ -24,23 +32,18 @@ const Footer = React.forwardRef((props, ref) => (
   </footer>
 ));
 
-Footer.propTypes = checkProps({
-  className: PropTypes.string,
-  links: PropTypes.array
-});
-
 Footer.defaultProps = {
   links: [
     {
-      name: 'About',
+      text: 'About',
       path: routeKeys.About
     },
     {
-      name: 'Contact',
+      text: 'Contact',
       path: 'https://www.jam3.com/contact/'
     },
     {
-      name: 'Accessibility',
+      text: 'Accessibility',
       path: 'https://www.jam3.com/accessibility/'
     }
   ]

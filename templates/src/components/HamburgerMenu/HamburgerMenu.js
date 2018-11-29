@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -10,19 +9,38 @@ import BaseLink from '../BaseLink/BaseLink';
 
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
 
-import checkProps from '../../util/check-props';
 import cleanPath from '../../util/clean-path';
 import routeKeys from '../../routes/keys';
 import animate from '../../util/gsap-animate';
+import type { LinkType } from '../../data/types';
 
-class HamburgerMenu extends React.PureComponent {
-  state = {};
+type Props = {|
+  ...mapStateToPropsType,
+  ...mapDispatchToPropsType,
+  className?: string,
+  links: Array<LinkType>,
+  location: Location
+|};
+
+type mapStateToPropsType = {|
+  isMobileMenuOpen: boolean
+|};
+
+type mapDispatchToPropsType = {|
+  setIsMobileMenuOpen(isOpen: boolean): ?void
+|};
+
+type State = {};
+
+class HamburgerMenu extends React.PureComponent<Props, State> {
+  static defaultProps: Object;
+  container: ?HTMLElement;
 
   componentDidMount() {
     animate.set(this.container, { x: this.props.isMobileMenuOpen ? '0%' : '100%' });
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     if (prevProps.isMobileMenuOpen !== this.props.isMobileMenuOpen) {
       this.props.isMobileMenuOpen ? this.animateIn() : this.animateOut();
     }
@@ -64,24 +82,17 @@ class HamburgerMenu extends React.PureComponent {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state, ownProps): mapStateToPropsType => {
   return {
     isMobileMenuOpen: ownProps.isMobileMenuOpen || state.isMobileMenuOpen
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch<*>): mapDispatchToPropsType => {
   return {
     setIsMobileMenuOpen: val => dispatch(setIsMobileMenuOpen(val))
   };
 };
-
-HamburgerMenu.propTypes = checkProps({
-  className: PropTypes.string,
-  links: PropTypes.array,
-  isMobileMenuOpen: PropTypes.bool.isRequired,
-  setIsMobileMenuOpen: PropTypes.func.isRequired
-});
 
 HamburgerMenu.defaultProps = {
   links: [

@@ -11,7 +11,9 @@ if (window.location.href.indexOf('unsupported') >= 0) {
         /* This information helps in the devices where is hard to see the console logs */
         const information = document.createElement('div');
         information.innerText = getBrowserInformation();
-        document.body.appendChild(information);
+        if (document.body) {
+          document.body.appendChild(information);
+        }
       };
     }
   }

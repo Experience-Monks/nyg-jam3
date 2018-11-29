@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import preloader from 'preloader';
 
-import checkProps from '../../util/check-props';
 import animate from '../../util/gsap-animate';
 import { noop, wait } from '../../util/basic-functions';
 import { setProgress, setReady } from '../../redux/modules/preloader';
@@ -11,9 +9,35 @@ import preloadAssets from '../../data/preload-assets';
 
 import './Preloader.css';
 
+// $FlowFixMe
 import Loader from '../SvgComponents/Loader/Loader';
 
-class Preloader extends React.PureComponent {
+type Props = {|
+  ...mapStateToPropsType,
+  ...mapDispatchToPropsType,
+  className?: string,
+  transitionState?: string,
+  minDisplayTime?: number,
+  options?: Object
+|};
+
+type mapStateToPropsType = {|
+  progress: number,
+  assets: Array<string>
+|};
+
+type mapDispatchToPropsType = {|
+  setProgress(val: number): ?void,
+  setReady(isReady: boolean): ?void
+|};
+
+type State = {};
+
+class Preloader extends React.PureComponent<Props, State> {
+  static defaultProps: Object;
+  loader: any;
+  container: ?HTMLElement;
+
   async componentDidMount() {
     await Promise.all([this.setTimer(), this.setLoader()]);
     this.setDone();
@@ -68,19 +92,7 @@ class Preloader extends React.PureComponent {
   }
 }
 
-Preloader.propTypes = checkProps({
-  className: PropTypes.string,
-  assets: PropTypes.array.isRequired,
-  setProgress: PropTypes.func.isRequired,
-  setReady: PropTypes.func.isRequired,
-  minDisplayTime: PropTypes.number,
-  options: PropTypes.object,
-  progress: PropTypes.number,
-  transitionState: PropTypes.string
-});
-
 Preloader.defaultProps = {
-  className: '',
   assets: [],
   minDisplayTime: 300, // in milliseconds
   options: {
@@ -92,14 +104,14 @@ Preloader.defaultProps = {
   }
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state, ownProps): mapStateToPropsType => {
   return {
     progress: state.preloader.progress,
     assets: preloadAssets
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch<*>): mapDispatchToPropsType => {
   return {
     setProgress: val => dispatch(setProgress(val)),
     setReady: val => dispatch(setReady(val))

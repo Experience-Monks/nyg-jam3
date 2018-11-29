@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import './MainTopNav.css';
@@ -11,16 +10,41 @@ import logo from '../../assets/images/jam3-logo.png';
 import BaseLink from '../BaseLink/BaseLink';
 import HamburgerButton, { STATES } from '../HamburgerButton/HamburgerButton';
 
-import checkProps from '../../util/check-props';
 import routeKeys from '../../routes/keys';
 import cleanPath from '../../util/clean-path';
 
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
+import type { Layout, LinkType } from '../../data/types';
 
-const getButtonState = isMenuOpen => (isMenuOpen ? STATES.close : STATES.idle);
+type Props = {|
+  ...mapStateToPropsType,
+  ...mapDispatchToPropsType,
+  className?: string,
+  logoSrc?: string,
+  logoAlt?: string,
+  links: Array<LinkType>,
+  location: Location
+|};
 
-class MainTopNav extends React.PureComponent {
-  static getDerivedStateFromProps(nextProps, prevState) {
+type mapStateToPropsType = {|
+  layout: Layout,
+  isMobileMenuOpen: boolean
+|};
+
+type mapDispatchToPropsType = {|
+  setIsMobileMenuOpen(isOpen: boolean): ?void
+|};
+
+type State = {
+  buttonState: string
+};
+
+const getButtonState = (isMenuOpen: boolean): string => (isMenuOpen ? STATES.close : STATES.idle);
+
+class MainTopNav extends React.PureComponent<Props, State> {
+  static defaultProps: Object;
+
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     const nextButtonState = getButtonState(nextProps.isMobileMenuOpen);
     if (nextButtonState !== prevState.buttonState) {
       return {
@@ -30,7 +54,7 @@ class MainTopNav extends React.PureComponent {
     return null;
   }
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       buttonState: getButtonState(props.isMobileMenuOpen)
@@ -61,9 +85,7 @@ class MainTopNav extends React.PureComponent {
   render() {
     return (
       <header className={classnames('MainTopNav', this.props.className)}>
-        <h1 className="only-aria-visible">Site title</h1>
         <nav className="nav" aria-label="Main Navigation">
-          <h2 className="only-aria-visible">Navigation</h2>
           {this.props.logoSrc && (
             <Link to={routeKeys.Landing} aria-label="Home">
               <img className="nav-logo" src={this.props.logoSrc} alt={this.props.logoAlt} />
@@ -80,16 +102,6 @@ class MainTopNav extends React.PureComponent {
   }
 }
 
-MainTopNav.propTypes = checkProps({
-  className: PropTypes.string,
-  logoSrc: PropTypes.string,
-  logoAlt: PropTypes.string,
-  links: PropTypes.array,
-  layout: PropTypes.object.isRequired,
-  isMobileMenuOpen: PropTypes.bool.isRequired,
-  setIsMobileMenuOpen: PropTypes.func.isRequired
-});
-
 MainTopNav.defaultProps = {
   logoSrc: logo,
   logoAlt: 'logo',
@@ -105,14 +117,14 @@ MainTopNav.defaultProps = {
   ]
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state): mapStateToPropsType => {
   return {
     layout: state.layout,
     isMobileMenuOpen: state.isMobileMenuOpen
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch<*>): mapDispatchToPropsType => {
   return {
     setIsMobileMenuOpen: val => dispatch(setIsMobileMenuOpen(val))
   };

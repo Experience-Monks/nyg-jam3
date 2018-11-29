@@ -27,7 +27,7 @@ follow the link.
 ## Folder Structure
 
 The idea of the generator is don't create magic in order to compose the final boilerplate, based on that idea everything
-that is inside [templates](https://github.com/Jam3/generator-jam3/tree/master/templates) will be what we will
+that is inside [templates](https://github.com/Jam3/generator-jam3-v2/tree/master/templates) will be what we will
 generate.
 
 ## NPM Dependencies
@@ -121,8 +121,8 @@ Our build scripts are based on [react-scripts](https://www.npmjs.com/package/rea
 Webpack with different configurations for develop and production. The default configurations are stable and supported
 for the community.
 
-To customize the current build pipelines, refer to the file 
-[config-overrides.js](https://github.com/Jam3/generator-jam3/blob/master/templates/config-overrides.js). If you wanna
+To customize the current build pipelines, refer to the file
+[config-overrides.js](https://github.com/Jam3/generator-jam3-v2/blob/master/templates/config-overrides.js). If you want to
 read more about it, please visit the [react-app-rewired](https://github.com/timarney/react-app-rewired) repository.
 
 ### Built-in Customizations

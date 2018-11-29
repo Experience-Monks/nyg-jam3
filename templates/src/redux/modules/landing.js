@@ -4,7 +4,7 @@ import reducerRegistry from '../reducer-registry';
 const reducerName = 'landingLoaded';
 
 // Reducer
-export default function reducer(state = false, action) {
+export default function reducer(state: boolean = false, action: Object) {
   switch (action.type) {
     case keys.LANDING_LOADED:
       return action.loaded;
@@ -14,7 +14,7 @@ export default function reducer(state = false, action) {
 }
 
 // Action Creators
-export function setLandingLoaded(loaded) {
+export function setLandingLoaded(loaded: boolean) {
   return {
     type: keys.LANDING_LOADED,
     loaded
