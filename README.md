@@ -3,7 +3,7 @@
 Jam3 Frontend App Generator with no build configuration and no prompts.
 
 * [Usage](#usage)
-* [Developer Contribution Guide](https://github.com/Jam3/generator-jam3/blob/master/CONTRIBUTING.md) – Read first if you are a developer
+* [Developer Contribution Guide](https://github.com/Jam3/nyg-jam3/blob/master/CONTRIBUTING.md) – Read first if you are a developer
 * [Developer Guide](#developer-guide) – How to develop apps bootstrapped with the generator
 * [Main scripts](#main-scripts) – Running scripts
 
@@ -38,7 +38,7 @@ Do this if you have the source code and want to generate a version ready to be u
 
 ### Copy and paste
 
-If you want to do the quick and raw path, just copy `templates` folder and review the post install that the generator is doing after copying the files: https://github.com/Jam3/intern-generator-jam3/blob/master/index.js#L23
+If you want to do the quick and raw path, just copy `templates` folder and review the post install that the generator is doing after copying the files: https://github.com/Jam3/nyg-jam3/blob/master/index.js#L23
 
 Changes:
 
@@ -57,13 +57,13 @@ Changes:
 
 1.  Review `/index.js`, everything is there
 
-If you are looking to contribute with the generator is important to read the [Developer Contribution Guide](https://github.com/Jam3/generator-jam3/blob/master/CONTRIBUTING.md)
+If you are looking to contribute with the generator is important to read the [Developer Contribution Guide](https://github.com/Jam3/nyg-jam3/blob/master/CONTRIBUTING.md)
 
 ## Developer Guide
 
 We are using `react-scripts` as a base; you can checkout their [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md). Everything here applies the generator.
 
-You can checkout our [Developer Guides](https://github.com/Jam3/generator-jam3/blob/master/templates/docs/DEVELOPER_GUIDE.md) to know more about the features and customizations.
+You can checkout our [Developer Guides](https://github.com/Jam3/nyg-jam3/blob/master/templates/docs/DEVELOPER_GUIDE.md) to know more about the features and customizations.
 
 ## Main scripts
 

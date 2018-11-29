@@ -66,7 +66,7 @@ class Landing extends React.PureComponent {
           <h2>Source code</h2>
           <div>
             The source code of the generator is open source, you can check it out on{' '}
-            <BaseLink link="https://github.com/Jam3/generator-jam3">https://github.com/Jam3/generator-jam3</BaseLink>
+            <BaseLink link="https://github.com/Jam3/nyg-jam3">https://github.com/Jam3/nyg-jam3</BaseLink>
           </div>
         </section>
         <section className="Landing-resources">

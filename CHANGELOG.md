@@ -9,12 +9,12 @@ Replaced font-family Calibri for Spectral. The new font is open source and was s
 
 #### :nail_care: Enhancement
 
-https://github.com/Jam3/generator-jam3/pull/50
+https://github.com/Jam3/nyg-jam3/pull/50
 
 * Add include-media
-  * [PR #50](https://github.com/Jam3/generator-jam3/pull/50) Feature - CSS Font and Media query
+  * [PR #50](https://github.com/Jam3/nyg-jam3/pull/50) Feature - CSS Font and Media query
 * Replace licensed font for open source font
-  * [PR #50](https://github.com/Jam3/generator-jam3/pull/50) Feature - CSS Font and Media query
+  * [PR #50](https://github.com/Jam3/nyg-jam3/pull/50) Feature - CSS Font and Media query
   
 ### Thanks
 Thanks to @n0wak
