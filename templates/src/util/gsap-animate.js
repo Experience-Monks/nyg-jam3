@@ -16,7 +16,7 @@ animate.staggerTo = function(els, duration, props, delay) {
     els.map((el, i) =>
       animate.to(el, duration, {
         ...props,
-        delay: props.delay + delay * i
+        delay: (props.delay || 0) + delay * i
       })
     )
   );
