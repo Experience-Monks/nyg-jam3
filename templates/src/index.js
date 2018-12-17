@@ -5,7 +5,7 @@ import './util/polyfills';
 import framework from './framework';
 import * as serviceWorker from './serviceWorker';
 
-import './style/global.css';
+import './style/global.scss';
 
 if (process.env.NODE_ENV !== 'production' && window.location.href.indexOf('?nostat') === -1) require('./util/stats')();
 

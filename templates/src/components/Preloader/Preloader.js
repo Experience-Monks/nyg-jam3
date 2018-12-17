@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import preloader from 'preloader';
 
+import './Preloader.scss';
+
+import { ReactComponent as LoaderIcon } from '../../assets/svg/loader.svg';
+
 import checkProps from '../../util/check-props';
 import animate from '../../util/gsap-animate';
 import { noop, wait } from '../../util/basic-functions';
 import { setProgress, setReady } from '../../redux/modules/preloader';
 import preloadAssets from '../../data/preload-assets';
-
-import './Preloader.css';
-
-import Loader from '../SvgComponents/Loader/Loader';
 
 class Preloader extends React.PureComponent {
   async componentDidMount() {
@@ -62,7 +62,7 @@ class Preloader extends React.PureComponent {
   render() {
     return (
       <section id="Preloader" ref={r => (this.container = r)}>
-        <Loader className="loader-icon" />
+        <LoaderIcon className="loader-icon" />
       </section>
     );
   }
@@ -106,4 +106,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps, undefined, { withRef: true })(Preloader);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  undefined,
+  { withRef: true }
+)(Preloader);

@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import './HamburgerMenu.css';
+import './HamburgerMenu.scss';
 
 import BaseLink from '../BaseLink/BaseLink';
 
@@ -96,4 +96,9 @@ HamburgerMenu.defaultProps = {
   ]
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HamburgerMenu));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(HamburgerMenu)
+);

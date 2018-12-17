@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import Button from '../Button/Button';
 
 import checkProps from '../../util/check-props';
-import './CloseButton.css';
+import './CloseButton.scss';
 
 export default class CloseButton extends React.PureComponent {
   render() {

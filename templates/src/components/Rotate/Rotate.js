@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 
-import './Rotate.css';
+import './Rotate.scss';
 
-import RotateIcon from './assets/rotate.svg';
+import { ReactComponent as RotateIcon } from '../../assets/svg/rotate.svg';
 
 import checkProps from '../../util/check-props';
 import detect from '../../util/detect';
@@ -63,15 +63,17 @@ export default class RotateScreen extends PureComponent {
   render() {
     const visible = this.state.orientation === 'landscape';
     const style = {
-      visibility: visible ? 'visible' : 'hidden'
+      visibility: visible ? 'visible' : 'hidden' //
     };
 
     return (
       <section className="Rotate" style={style} ref={r => (this.container = r)}>
         <div className="container">
-          <img src={RotateIcon} className="rotate-icon" alt="Please rotate your device" />
+          <RotateIcon className="rotate-icon" />
           <p>
-            Please rotate your device<br />into portrait mode.
+            Please rotate your device
+            <br />
+            into portrait mode.
           </p>
         </div>
       </section>

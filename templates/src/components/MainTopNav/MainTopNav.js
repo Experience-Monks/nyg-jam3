@@ -4,17 +4,16 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import './MainTopNav.css';
+import './MainTopNav.scss';
 
-import logo from '../../assets/images/jam3-logo.png';
+import { ReactComponent as Jam3Logo } from '../../assets/svg/jam3-logo.svg';
 
 import BaseLink from '../BaseLink/BaseLink';
 import HamburgerButton, { STATES } from '../HamburgerButton/HamburgerButton';
 
 import checkProps from '../../util/check-props';
-import routeKeys from '../../routes/keys';
 import cleanPath from '../../util/clean-path';
-
+import routeKeys from '../../routes/keys';
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
 
 const getButtonState = isMenuOpen => (isMenuOpen ? STATES.close : STATES.idle);
@@ -64,11 +63,9 @@ class MainTopNav extends React.PureComponent {
         <h1 className="only-aria-visible">Site title</h1>
         <nav className="nav" aria-label="Main Navigation">
           <h2 className="only-aria-visible">Navigation</h2>
-          {this.props.logoSrc && (
-            <Link to={routeKeys.Landing} aria-label="Home">
-              <img className="nav-logo" src={this.props.logoSrc} alt={this.props.logoAlt} />
-            </Link>
-          )}
+          <Link to={routeKeys.Landing} aria-label="Home">
+            <Jam3Logo className="nav-logo" />
+          </Link>
           {this.props.layout.large ? (
             this.getNavList()
           ) : (
@@ -82,8 +79,6 @@ class MainTopNav extends React.PureComponent {
 
 MainTopNav.propTypes = checkProps({
   className: PropTypes.string,
-  logoSrc: PropTypes.string,
-  logoAlt: PropTypes.string,
   links: PropTypes.array,
   layout: PropTypes.object.isRequired,
   isMobileMenuOpen: PropTypes.bool.isRequired,
@@ -91,8 +86,6 @@ MainTopNav.propTypes = checkProps({
 });
 
 MainTopNav.defaultProps = {
-  logoSrc: logo,
-  logoAlt: 'logo',
   links: [
     {
       text: 'Home',
@@ -118,4 +111,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainTopNav));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(MainTopNav)
+);

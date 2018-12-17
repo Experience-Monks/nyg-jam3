@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import './About.css';
+import './About.scss';
 
 import BaseLink from '../../components/BaseLink/BaseLink';
 
@@ -68,4 +68,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Transition(About));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Transition(About));

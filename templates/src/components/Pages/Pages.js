@@ -7,7 +7,7 @@ import classnames from 'classnames';
 import checkProps from '../../util/check-props';
 import routeKeys from '../../routes/keys';
 import { getTransitionDuration } from '../../data/pages-transitions';
-import './Pages.css';
+import './Pages.scss';
 
 import {
   AsyncLanding as Landing,

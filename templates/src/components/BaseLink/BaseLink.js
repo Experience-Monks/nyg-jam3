@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import './BaseLink.css';
+import './BaseLink.scss';
 
 import checkProps from '../../util/check-props';
 

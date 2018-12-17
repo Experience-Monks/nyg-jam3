@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import './NotFound.css';
+import './NotFound.scss';
 
-import NotFoundIcon from '../../components/SvgComponents/NotFoundIcon/NotFoundIcon';
+import { ReactComponent as NotFoundIcon } from '../../assets/svg/not-found-icon.svg';
 
 import checkProps from '../../util/check-props';
 

@@ -1,4 +1,4 @@
-@import 'shared.scss';
+@import '../../style/shared.scss';
 
 .VideoTimeline {
   $height: 3px;
@@ -42,18 +42,20 @@
     margin: 0;
   }
 
-  input[type=range]::-webkit-slider-thumb {
+  input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
     -moz-appearance: none;
   }
 
-  input[type='range']::-moz-focus-outer { border: 0; }
+  input[type='range']::-moz-focus-outer {
+    border: 0;
+  }
 
-  input[type=range]:focus {
+  input[type='range']:focus {
     border: none;
   }
 
-  input[type=range] {
+  input[type='range'] {
     -webkit-appearance: none;
     position: absolute;
     width: 100%;

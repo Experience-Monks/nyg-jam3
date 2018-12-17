@@ -91,4 +91,9 @@ App.propTypes = checkProps({
 
 App.defaultProps = {};
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);
