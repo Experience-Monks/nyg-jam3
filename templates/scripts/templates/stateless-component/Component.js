@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import './{{name}}.css';
+import './{{name}}.scss';
 
 import checkProps from '../../{{depth}}util/check-props';
 
-const {{name}} = props => {
+const {{name}} = React.forwardRef((props, ref) => {
   const componentProps = {
     className: classnames('{{name}}', props.className)
   };
 
-  return <div {...componentProps}>{{name}} component</div>;
+  return <div {...componentProps} ref={ref}>{{name}} component</div>;
 };
 
 {{name}}.propTypes = checkProps({
