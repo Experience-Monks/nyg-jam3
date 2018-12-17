@@ -7,13 +7,12 @@ import classnames from 'classnames';
 import './Pages.scss';
 
 import checkProps from '../../util/check-props';
-import { noop } from '../../util/basic-functions';
 import routeKeys from '../../routes/keys';
 import { getTransitionDuration } from '../../data/pages-transitions';
 
 const Landing = lazy(() => import('../../pages/Landing/Landing'));
 const About = lazy(() => import('../../pages/About/About'));
-const NotFound = lazy(() => import('../../pages/NotFound/NotFound'));
+const NotFound = lazy(() => import('../../pages/NotFound/NotFound')).default;
 
 const Pages = ({ location, ...props }) => {
   return (
@@ -21,27 +20,13 @@ const Pages = ({ location, ...props }) => {
       <TransitionGroup component={Fragment}>
         <Transition appear key={location.pathname} timeout={getTransitionDuration(location.pathname)}>
           {state => (
-            <Switch location={location}>
-              <Route
-                exact
-                path={routeKeys.Landing}
-                component={
-                  <Suspense fallback={noop}>
-                    <Landing transitionState={state} />
-                  </Suspense>
-                }
-              />
-              <Route
-                exact
-                path={routeKeys.About}
-                component={
-                  <Suspense fallback={noop}>
-                    <About transitionState={state} />
-                  </Suspense>
-                }
-              />
-              <Route component={NotFound} />
-            </Switch>
+            <Suspense fallback={<div className="loading" />}>
+              <Switch location={location}>
+                <Route exact path={routeKeys.Landing} render={() => <Landing transitionState={state} />} />
+                <Route exact path={routeKeys.About} render={() => <About transitionState={state} />} />
+                <Route component={NotFound} />
+              </Switch>
+            </Suspense>
           )}
         </Transition>
       </TransitionGroup>
