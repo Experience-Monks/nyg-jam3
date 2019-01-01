@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
 const mkdirp = require('mkdirp');
 const maxstache = require('maxstache');
@@ -70,7 +69,6 @@ function write() {
 
     Promise.all(files)
       .then(() => {
-        execSync('npm run build-css');
         console.log(`Created new ${name} ${type} at ${dir}`);
       })
       .catch(err => console.error(err));
