@@ -7,7 +7,7 @@ import './Landing.scss';
 
 import BaseLink from '../../components/BaseLink/BaseLink';
 
-import { default as Transition } from '../PagesTransitionWrapper';
+import Transition from '../PagesTransitionWrapper';
 import { setLandingLoaded } from '../../redux/modules/landing';
 import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';

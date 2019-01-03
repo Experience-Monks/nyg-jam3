@@ -47,8 +47,8 @@
     "url": "https://github.com/Jam3/generator-jam3/issues"
   },
   "engines": {
-    "node": ">=8.11.3",
-    "npm": ">=6.1.0"
+    "node": ">=10.15.0",
+    "npm": ">=6.5.0"
   },
   "dependencies": {
     "bowser": "1.9.2",

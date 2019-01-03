@@ -7,7 +7,7 @@ import './About.scss';
 
 import BaseLink from '../../components/BaseLink/BaseLink';
 
-import { default as Transition } from '../PagesTransitionWrapper';
+import Transition from '../PagesTransitionWrapper';
 import { wait } from '../../util/basic-functions';
 import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
