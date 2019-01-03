@@ -62,6 +62,10 @@ function write() {
         : [
             template(path.resolve(__dirname, 'templates/' + type + '/Component.js'), path.resolve(dir, `${name}.js`)),
             template(
+              path.resolve(__dirname, 'templates/' + type + '/Component-story.js'),
+              path.resolve(dir, `${name}-story.js`)
+            ),
+            template(
               path.resolve(__dirname, 'templates/' + type + '/Component.scss'),
               path.resolve(dir, `${name}.scss`)
             )

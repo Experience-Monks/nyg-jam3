@@ -24,7 +24,7 @@
 
 ## Jam3 Generator
 
-This application was created using the [Jam3 Generator](https://github.com/Jam3/generator-jam3). To checkout the out
+This application was created using the [Jam3 Generator](https://github.com/Jam3/nyg-jam3). To checkout the out
 of the box features read our [Developer guide](docs/DEVELOPER_GUIDE.md)
 
 ## Getting Started

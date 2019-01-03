@@ -1,22 +1,39 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+## -------- Welcome to the Jam3 Generator gitignore --------
+##
+## Please add your generator ignores ordered by topics.
+## See https://help.github.com/ignore-files/ for more about ignoring files.
 
-# dependencies
-/node_modules
-/dist
+# Global
+.DS_Store
+*.log*
 
-# testing
-/coverage
+# IDEs
+.vscode
+sketch
 
-# production
+# Node & Npm
+node_modules
+
+# Builds
 /build
 
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Stats
+stats.html
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Testing
+/coverage
+
+# Create React App Dev
+bundle-size-analyzer.html
+bundle-analyzer-report.html
+
+# Dynamically built files
+src/style/layout.scss
+
+# Local env variables
+.env.local
+.env.*.local
+
+# Documentation
+public/components
+public/styleguide

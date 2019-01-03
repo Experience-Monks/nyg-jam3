@@ -4,7 +4,6 @@
     "rules": {
       "block-no-empty": null,
       "declaration-bang-space-before": null,
-      "declaration-block-trailing-semicolon": "always",
       "value-list-comma-newline-after": null
     }
   }
