@@ -130,7 +130,7 @@
     "gitDir": "../",
     "linters": {
       "src/**/*.{js,json,scss}": [
-        "prettier --single-quote --write",
+        "prettier --write",
         "git add"
       ]
     }
