@@ -1,4 +1,4 @@
-import '../src/util/polyfills';
+import './util/polyfills';
 
 window.matchMedia =
   window.matchMedia ||
