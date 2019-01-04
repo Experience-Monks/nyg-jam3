@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Fragment, lazy, Suspense } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -19,7 +19,7 @@ import layout from '../../util/layout';
 import usePassiveEvent from '../../util/use-passive-event';
 import checkProps from '../../util/check-props';
 
-const RotateScreen = detect.isMobile ? lazy(() => import('../../components/Rotate/Rotate')) : null;
+const RotateScreen = detect.isMobile && lazy(() => import('../../components/Rotate/Rotate'));
 
 class App extends React.PureComponent {
   componentDidMount() {
@@ -51,14 +51,14 @@ class App extends React.PureComponent {
 
   render() {
     return (
-      <>
+      <Fragment>
         {this.props.ready && (
-          <>
+          <Fragment>
             <MainTopNav />
             {!this.props.layout.large && <HamburgerMenu />}
             <Pages />
             <Footer />
-          </>
+          </Fragment>
         )}
         {detect.isMobile && (
           <Suspense fallback={<div className="loading" />}>
@@ -68,7 +68,7 @@ class App extends React.PureComponent {
         <Transition in={!this.props.ready} timeout={0}>
           {state => state !== 'exited' && <Preloader transitionState={state} />}
         </Transition>
-      </>
+      </Fragment>
     );
   }
 }
