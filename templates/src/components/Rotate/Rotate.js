@@ -63,7 +63,7 @@ export default class RotateScreen extends PureComponent {
   render() {
     const visible = this.state.orientation === 'landscape';
     const style = {
-      visibility: visible ? 'visible' : 'hidden' //
+      visibility: visible ? 'visible' : 'hidden'
     };
 
     return (

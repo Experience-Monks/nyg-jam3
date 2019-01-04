@@ -39,7 +39,7 @@ export default class VideoTimeline extends React.PureComponent {
 
   render() {
     const progressStyle = {
-      width: (this.state.currentTime / this.props.duration) * 100 + '%' //
+      width: (this.state.currentTime / this.props.duration) * 100 + '%'
     };
 
     return (
