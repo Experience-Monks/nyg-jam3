@@ -76,3 +76,54 @@ dd {
   margin: 0;
   padding: 0;
 }
+
+.MainTopNav {
+  @include z-index(main-nav);
+  background-color: $white;
+  border-bottom: 1px solid rgba($black, 0.3);
+  padding: 2rem $navbar-padding-mobile;
+
+  @media (min-width: $layout-large) {
+    padding: 2rem $navbar-padding-desktop;
+  }
+
+  .nav .nav-logo {
+    width: px-to-rem(60);
+  }
+}
+
+.HamburgerMenu {
+  top: $navbar-height-mobile;
+  @include z-index(sidebar);
+  height: calc(100% - #{$navbar-height-mobile});
+  border-left: 1px solid rgba($black, 0.3);
+  background-color: $white;
+
+  @media (min-width: $layout-medium) {
+    max-width: px-to-rem(300);
+  }
+}
+
+.Footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  @include z-index(foter);
+  padding: 2rem $navbar-padding-mobile;
+
+  @media (max-width: $layout-medium) {
+    text-align: center;
+  }
+
+  @media (min-width: $layout-large) {
+    padding: 2rem $navbar-padding-desktop;
+  }
+
+  .footer-copyright {
+    margin: 2rem 0 0;
+  }
+}
+
+.RotateScreen {
+  @include z-index(rotate);
+}

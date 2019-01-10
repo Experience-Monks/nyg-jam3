@@ -4,20 +4,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { Transition } from 'react-transition-group';
+import { Footer, HamburgerMenu, MainTopNav, RotateScreen } from 'public-react-ui';
+import 'default-passive-events';
 
 import Pages from '../../components/Pages/Pages';
-import RotateScreen from '../../components/Rotate/Rotate';
 import Preloader from '../../components/Preloader/Preloader';
-import MainTopNav from '../MainTopNav/MainTopNav';
-import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
-import Footer from '../Footer/Footer';
 
 import { setPreviousRoute, setWindowSize, setLayout, batchActions } from '../../redux/modules/app';
+import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
 
 import settings from '../../data/settings';
+import mainNavData from '../../data/main-nav';
+import hamburgerNavData from '../../data/hamburger-menu';
+import footerData from '../../data/footer';
+import rotateScreenData from '../../data/rotate-screen';
 import detect from '../../util/detect';
 import layout from '../../util/layout';
-import usePassiveEvent from '../../util/use-passive-event';
 import checkProps from '../../util/check-props';
 
 class App extends React.PureComponent {
@@ -31,7 +33,7 @@ class App extends React.PureComponent {
       }
     }
 
-    window.addEventListener('resize', this.handleResize, usePassiveEvent());
+    window.addEventListener('resize', this.handleResize);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -53,13 +55,24 @@ class App extends React.PureComponent {
       <Fragment>
         {this.props.ready && (
           <Fragment>
-            <MainTopNav />
-            {!this.props.layout.large && <HamburgerMenu />}
+            <MainTopNav
+              {...mainNavData}
+              showHamburger={!this.props.layout.large}
+              isMobileMenuOpen={this.props.isMobileMenuOpen}
+              setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
+            />
+            {!this.props.layout.large && (
+              <HamburgerMenu
+                {...hamburgerNavData}
+                isMobileMenuOpen={this.props.isMobileMenuOpen}
+                setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
+              />
+            )}
             <Pages />
-            <Footer />
+            <Footer {...footerData} />
           </Fragment>
         )}
-        {detect.isMobile && <RotateScreen />}
+        {detect.isMobile && <RotateScreen {...rotateScreenData} />}
         <Transition in={!this.props.ready} timeout={0}>
           {state => state !== 'exited' && <Preloader transitionState={state} />}
         </Transition>
@@ -71,14 +84,16 @@ class App extends React.PureComponent {
 const mapStateToProps = state => {
   return {
     layout: state.layout,
-    ready: state.preloader.ready
+    ready: state.preloader.ready,
+    isMobileMenuOpen: state.isMobileMenuOpen
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setPreviousRoute: val => dispatch(setPreviousRoute(val)),
-    setLayout: (width, height, layout) => dispatch(batchActions([setWindowSize({ width, height }), setLayout(layout)]))
+    setLayout: (width, height, layout) => dispatch(batchActions([setWindowSize({ width, height }), setLayout(layout)])),
+    setIsMobileMenuOpen: val => dispatch(setIsMobileMenuOpen(val))
   };
 };
 
@@ -86,6 +101,8 @@ App.propTypes = checkProps({
   layout: PropTypes.object.isRequired,
   ready: PropTypes.bool.isRequired,
   setPreviousRoute: PropTypes.func.isRequired,
+  isMobileMenuOpen: PropTypes.bool.isRequired,
+  setIsMobileMenuOpen: PropTypes.func.isRequired,
   setLayout: PropTypes.func.isRequired
 });
 

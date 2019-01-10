@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
+import { BaseLink } from 'public-react-ui';
 
 import './Landing.css';
-
-import BaseLink from '../../components/BaseLink/BaseLink';
 
 import { setLandingLoaded } from '../../redux/modules/landing';
 import animate from '../../util/gsap-animate';

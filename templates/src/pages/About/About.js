@@ -2,10 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { BaseLink } from 'public-react-ui';
 
 import './About.css';
-
-import BaseLink from '../../components/BaseLink/BaseLink';
 
 import { default as Transition } from '../PagesTransitionWrapper';
 import { wait } from '../../util/basic-functions';
