@@ -3,7 +3,6 @@
 // More information about mixins in:
 // http://sass-lang.com/documentation/file.SASS_REFERENCE.html#mixins
 // Add comment to every function
-
 @import 'vars.scss';
 
 /// Set Light Font as font family. This mixin's name is generic to abstract the font family name in case it changes
@@ -169,4 +168,22 @@
 ///   }
 @mixin z-index($id) {
   z-index: index($elements, $id);
+}
+
+/// Reset button's look
+/// @example scss Input
+///   button {
+///     @include reset-button;
+///   }
+@mixin reset-button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  text-align: inherit;
+  letter-spacing: inherit;
+  font-size: inherit;
+  text-transform: inherit;
+  color: inherit;
 }
