@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
-import Button from '../../components/Button/Button';
+import { BaseButton } from 'public-react-ui';
 
 import audio from '../audio';
 
@@ -25,12 +24,12 @@ const playSound = sound => audio.play(sound);
 // Entries
 storiesOf('Util', module)
   .add('Audio Single Sounds', () => (
-    <Button onMouseEnter={() => playSound('button-rollover')} onClick={() => playSound('button-click')}>
+    <BaseButton onMouseEnter={() => playSound('button-rollover')} onClick={() => playSound('button-click')}>
       Single Sounds Test
-    </Button>
+    </BaseButton>
   ))
   .add('Audio Sprite', () => (
-    <Button onMouseEnter={() => playSound('sprite-rollover')} onClick={() => playSound('sprite-click')}>
+    <BaseButton onMouseEnter={() => playSound('sprite-rollover')} onClick={() => playSound('sprite-click')}>
       Sprite Sound Test
-    </Button>
+    </BaseButton>
   ));
