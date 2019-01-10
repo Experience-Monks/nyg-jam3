@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import preloader from 'preloader';
+import noop from 'no-op';
 
 import checkProps from '../../util/check-props';
 import animate from '../../util/gsap-animate';
-import { noop, wait } from '../../util/basic-functions';
+import { wait } from '../../util/basic-functions';
 import { setProgress, setReady } from '../../redux/modules/preloader';
 import preloadAssets from '../../data/preload-assets';
 

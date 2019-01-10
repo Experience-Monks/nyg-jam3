@@ -1,5 +1,6 @@
+import noop from 'no-op';
+
 import { getExitTransitionDuration } from '../data/pages-transitions';
-import { noop } from '../util/basic-functions';
 
 const transitionStates = {
   entering: 'entering',

@@ -9,23 +9,3 @@
 export function wait(ms = 0) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-/**
- * Noop function to reuse in function definitions
- *
- * @export
- */
-export function noop() {}
-
-/**
- * Prevent event, includes preventDefault and stopPropagation
- *
- * @export
- * @param {any} e
- * @param {boolean} [preventDefault=true]
- * @param {boolean} [stopPropagation=true]
- */
-export function preventEvent(e, preventDefault = true, stopPropagation = true) {
-  preventDefault && e.preventDefault();
-  stopPropagation && e.stopPropagation();
-}
