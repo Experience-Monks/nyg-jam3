@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { Transition } from 'react-transition-group';
-import { Footer, HamburgerMenu, MainTopNav, RotateScreen } from 'public-react-ui';
+import { Footer, HamburgerMenu, MainTopNav, RotateScreen, PageOverlay } from 'public-react-ui';
 import 'default-passive-events';
 
 import Pages from '../../components/Pages/Pages';
@@ -62,11 +62,17 @@ class App extends React.PureComponent {
               setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
             />
             {!this.props.layout.large && (
-              <HamburgerMenu
-                {...hamburgerNavData}
-                isMobileMenuOpen={this.props.isMobileMenuOpen}
-                setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
-              />
+              <Fragment>
+                <PageOverlay
+                  isShowing={this.props.isMobileMenuOpen}
+                  onClick={() => this.props.setIsMobileMenuOpen(false)}
+                />
+                <HamburgerMenu
+                  {...hamburgerNavData}
+                  isMobileMenuOpen={this.props.isMobileMenuOpen}
+                  setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
+                />
+              </Fragment>
             )}
             <Pages />
             <Footer {...footerData} />

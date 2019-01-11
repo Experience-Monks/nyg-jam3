@@ -1,5 +1,9 @@
 @import 'shared.scss';
 
+.PageOverlay {
+  @include z-index(page-overlay);
+}
+
 .MainTopNav {
   @include z-index(main-nav);
   background-color: $white;
