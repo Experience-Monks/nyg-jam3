@@ -63,7 +63,6 @@
     "mobile-detect": "1.4.1",
     "no-op": "1.0.3",
     "public-react-ui": "git+https://github.com/Jam3/public-react-ui.git#feature/init",
-    "react-loadable": "5.3.1",
     "normalize.css": "8.0.1",
     "preloader": "4.0.2",
     "react": "16.7.0",
