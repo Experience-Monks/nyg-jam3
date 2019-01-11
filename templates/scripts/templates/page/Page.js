@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+import './{{name}}.scss';
+
 import checkProps from '../../util/check-props';
 
 class {{name}} extends React.PureComponent {

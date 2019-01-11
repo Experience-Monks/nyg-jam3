@@ -17,6 +17,7 @@ function isSupported() {
       const opts = Object.defineProperty({}, 'passive', {
         get: function() {
           passiveSupported = true;
+          return passiveSupported;
         }
       });
       window.addEventListener('test', null, opts);

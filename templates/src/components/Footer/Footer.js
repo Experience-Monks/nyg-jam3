@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import './Footer.css';
+import './Footer.scss';
 
 import BaseLink from '../BaseLink/BaseLink';
 

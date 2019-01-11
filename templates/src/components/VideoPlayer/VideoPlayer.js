@@ -4,7 +4,7 @@ import BackgroundVideo from 'react-background-video-player';
 import fullScreen from 'fullscreen-handler';
 import classnames from 'classnames';
 
-import './VideoPlayer.css';
+import './VideoPlayer.scss';
 
 import VideoControls from './VideoControls/VideoControls';
 

@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
 const mkdirp = require('mkdirp');
 const maxstache = require('maxstache');
@@ -62,7 +61,10 @@ function write() {
           ]
         : [
             template(path.resolve(__dirname, 'templates/' + type + '/Component.js'), path.resolve(dir, `${name}.js`)),
-            template(path.resolve(__dirname, 'templates/' + type + '/Component-story.js'), path.resolve(dir, `${name}-story.js`)),
+            template(
+              path.resolve(__dirname, 'templates/' + type + '/Component-story.js'),
+              path.resolve(dir, `${name}-story.js`)
+            ),
             template(
               path.resolve(__dirname, 'templates/' + type + '/Component.scss'),
               path.resolve(dir, `${name}.scss`)
@@ -71,7 +73,6 @@ function write() {
 
     Promise.all(files)
       .then(() => {
-        execSync('npm run build-css');
         console.log(`Created new ${name} ${type} at ${dir}`);
       })
       .catch(err => console.error(err));

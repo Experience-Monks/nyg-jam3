@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import './HamburgerButton.css';
+import './HamburgerButton.scss';
 
 import Button from '../Button/Button';
 

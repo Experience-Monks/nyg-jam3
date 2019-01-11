@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import './VideoTimeline.css';
+import './VideoTimeline.scss';
 
 import checkProps from '../../../util/check-props';
 import { noop } from '../../../util/basic-functions';
@@ -38,7 +38,10 @@ export default class VideoTimeline extends React.PureComponent {
   };
 
   render() {
-    const progressStyle = { width: this.state.currentTime / this.props.duration * 100 + '%' };
+    const progressStyle = {
+      width: (this.state.currentTime / this.props.duration) * 100 + '%'
+    };
+
     return (
       <div
         className={classnames('VideoTimeline', this.props.className)}
