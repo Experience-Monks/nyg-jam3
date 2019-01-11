@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, lazy, Suspense } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { Transition } from 'react-transition-group';
-import { Footer, HamburgerMenu, MainTopNav, RotateScreen, PageOverlay } from 'public-react-ui';
+import { Footer, HamburgerMenu, MainTopNav, PageOverlay, RotateScreen } from 'public-react-ui';
 import 'default-passive-events';
 
 import Pages from '../../components/Pages/Pages';
@@ -21,6 +21,14 @@ import rotateScreenData from '../../data/rotate-screen';
 import detect from '../../util/detect';
 import layout from '../../util/layout';
 import checkProps from '../../util/check-props';
+
+const LazyRotateScreen =
+  detect.isMobile &&
+  lazy(() =>
+    import('public-react-ui').then(module => {
+      return { ...module, default: module.RotateScreen };
+    })
+  );
 
 class App extends React.PureComponent {
   componentDidMount() {
@@ -78,7 +86,11 @@ class App extends React.PureComponent {
             <Footer {...footerData} />
           </Fragment>
         )}
-        {detect.isMobile && <RotateScreen {...rotateScreenData} />}
+        {detect.isMobile && (
+          <Suspense fallback={<div className="loading" />}>
+            <LazyRotateScreen {...rotateScreenData} />
+          </Suspense>
+        )}
         <Transition in={!this.props.ready} timeout={0}>
           {state => state !== 'exited' && <Preloader transitionState={state} />}
         </Transition>
@@ -114,4 +126,9 @@ App.propTypes = checkProps({
 
 App.defaultProps = {};
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);

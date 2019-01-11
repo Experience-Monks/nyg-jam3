@@ -22,7 +22,7 @@ const generator = nyg(null, globs)
  */
 function onPostInstall() {
   var done = generator.async();
-  Promise.all([updateNvmVersion(), updateGeneratedPackageJson()])
+  Promise.all([updateNvmVersion(), updateGeneratedPackageJson(), renameGitIgnore()])
     .then(() => {
       console.log('App generated');
       done();
@@ -55,6 +55,22 @@ function updateGeneratedPackageJson() {
 
   return _updateNodeJSRequiredVersion(packagePath, generatedPackageJson).then(() => {
     _updateLintStaged(packagePath, generatedPackageJson);
+  });
+}
+
+/**
+ * Rename gitignore to .gitignore
+ *
+ */
+function renameGitIgnore() {
+  const gitIgnorePath = `${generator.cwd}/gitignore`;
+  const generatedGitIgnore = `${generator.cwd}/.gitignore`;
+
+  return new Promise((resolve, reject) => {
+    fs.rename(gitIgnorePath, generatedGitIgnore, function(err) {
+      if (err) return reject();
+      resolve();
+    });
   });
 }
 

@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { BaseLink } from 'public-react-ui';
 
-import './About.css';
+import './About.scss';
 
-import { default as Transition } from '../PagesTransitionWrapper';
+import Transition from '../PagesTransitionWrapper';
 import { wait } from '../../util/basic-functions';
 import animate from '../../util/gsap-animate';
 import checkProps from '../../util/check-props';
@@ -67,4 +67,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Transition(About));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Transition(About));
