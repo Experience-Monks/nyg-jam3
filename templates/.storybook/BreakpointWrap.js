@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
+import 'default-passive-events';
 
 import { batchActions, setWindowSize, setLayout } from '../src/redux/modules/app';
 
 import settings from '../src/data/settings';
-import usePassiveEvent from '../src/util/use-passive-event';
 import layout from '../src/util/layout';
 
 class BreakpointWrap extends React.PureComponent {
   componentDidMount() {
-    window.addEventListener('resize', this.handleResize, usePassiveEvent());
+    window.addEventListener('resize', this.handleResize);
   }
 
   componentWillUnmount() {

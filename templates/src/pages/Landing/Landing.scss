@@ -2,10 +2,14 @@
 
 .Landing {
   text-align: center;
+  padding: px-to-rem(20) $navbar-padding-mobile;
+
+  @media (min-width: $layout-large) {
+    padding: px-to-rem(20) $navbar-padding-desktop;
+  }
 
   &-header {
-    background-color: #222;
-    height: px-to-rem(150);
+    background-color: $black;
     padding: px-to-rem(20);
     color: $white;
   }
@@ -22,11 +26,13 @@
     .container {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
 
       .resource {
-        margin: 5px;
-        border: 1px solid #a7a7a7;
-        padding: 10px;
+        margin: px-to-rem(5);
+        border: 1px solid $black;
+        padding: px-to-rem(10);
+        text-decoration: none;
       }
     }
   }

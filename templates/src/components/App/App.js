@@ -4,22 +4,31 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { Transition } from 'react-transition-group';
+import { Footer, HamburgerMenu, MainTopNav, PageOverlay } from 'public-react-ui';
+import 'default-passive-events';
 
 import Pages from '../../components/Pages/Pages';
 import Preloader from '../../components/Preloader/Preloader';
-import MainTopNav from '../MainTopNav/MainTopNav';
-import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
-import Footer from '../Footer/Footer';
 
 import { setPreviousRoute, setWindowSize, setLayout, batchActions } from '../../redux/modules/app';
+import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
 
 import settings from '../../data/settings';
+import mainNavData from '../../data/main-nav';
+import hamburgerNavData from '../../data/hamburger-menu';
+import footerData from '../../data/footer';
+import rotateScreenData from '../../data/rotate-screen';
 import detect from '../../util/detect';
 import layout from '../../util/layout';
-import usePassiveEvent from '../../util/use-passive-event';
 import checkProps from '../../util/check-props';
 
-const RotateScreen = detect.isMobile && lazy(() => import('../../components/Rotate/Rotate'));
+const LazyRotateScreen =
+  detect.isMobile &&
+  lazy(() =>
+    import('public-react-ui').then(module => {
+      return { ...module, default: module.RotateScreen };
+    })
+  );
 
 class App extends React.PureComponent {
   componentDidMount() {
@@ -32,7 +41,7 @@ class App extends React.PureComponent {
       }
     }
 
-    window.addEventListener('resize', this.handleResize, usePassiveEvent());
+    window.addEventListener('resize', this.handleResize);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -54,15 +63,32 @@ class App extends React.PureComponent {
       <Fragment>
         {this.props.ready && (
           <Fragment>
-            <MainTopNav />
-            {!this.props.layout.large && <HamburgerMenu />}
+            <MainTopNav
+              {...mainNavData}
+              showHamburger={!this.props.layout.large}
+              isMobileMenuOpen={this.props.isMobileMenuOpen}
+              setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
+            />
+            {!this.props.layout.large && (
+              <Fragment>
+                <PageOverlay
+                  isShowing={this.props.isMobileMenuOpen}
+                  onClick={() => this.props.setIsMobileMenuOpen(false)}
+                />
+                <HamburgerMenu
+                  {...hamburgerNavData}
+                  isMobileMenuOpen={this.props.isMobileMenuOpen}
+                  setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
+                />
+              </Fragment>
+            )}
             <Pages />
-            <Footer />
+            <Footer {...footerData} />
           </Fragment>
         )}
         {detect.isMobile && (
           <Suspense fallback={<div className="loading" />}>
-            <RotateScreen />
+            <LazyRotateScreen {...rotateScreenData} />
           </Suspense>
         )}
         <Transition in={!this.props.ready} timeout={0}>
@@ -76,14 +102,16 @@ class App extends React.PureComponent {
 const mapStateToProps = state => {
   return {
     layout: state.layout,
-    ready: state.preloader.ready
+    ready: state.preloader.ready,
+    isMobileMenuOpen: state.isMobileMenuOpen
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setPreviousRoute: val => dispatch(setPreviousRoute(val)),
-    setLayout: (width, height, layout) => dispatch(batchActions([setWindowSize({ width, height }), setLayout(layout)]))
+    setLayout: (width, height, layout) => dispatch(batchActions([setWindowSize({ width, height }), setLayout(layout)])),
+    setIsMobileMenuOpen: val => dispatch(setIsMobileMenuOpen(val))
   };
 };
 
@@ -91,6 +119,8 @@ App.propTypes = checkProps({
   layout: PropTypes.object.isRequired,
   ready: PropTypes.bool.isRequired,
   setPreviousRoute: PropTypes.func.isRequired,
+  isMobileMenuOpen: PropTypes.bool.isRequired,
+  setIsMobileMenuOpen: PropTypes.func.isRequired,
   setLayout: PropTypes.func.isRequired
 });
 

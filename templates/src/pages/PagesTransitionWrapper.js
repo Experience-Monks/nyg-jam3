@@ -1,5 +1,8 @@
+import noop from 'no-op';
+import { findDOMNode } from 'react-dom';
+
+import { wait } from '../util/basic-functions';
 import { getExitTransitionDuration } from '../data/pages-transitions';
-import { noop } from '../util/basic-functions';
 
 const transitionStates = {
   entering: 'entering',
@@ -9,8 +12,17 @@ const transitionStates = {
 };
 
 const PagesTransitionWrapper = Class => {
-  const handleEnterTransition = (previousRoute, onEnter = noop, onAppear = noop) => {
-    previousRoute ? onEnter(getExitTransitionDuration(previousRoute) || 0) : onAppear();
+  let container;
+  const handleEnterTransition = async (previousRoute, onEnter = noop, onAppear = noop) => {
+    if (previousRoute) {
+      const transitionDuration = getExitTransitionDuration(previousRoute) || 0;
+      onEnter(transitionDuration);
+      await wait(transitionDuration);
+      container.style.display = '';
+    } else {
+      container.style.display = '';
+      onAppear();
+    }
   };
 
   const handleLeaveTransition = (onLeave = noop) => {
@@ -20,6 +32,10 @@ const PagesTransitionWrapper = Class => {
   const componentDidMount = Class.prototype.componentDidMount;
   Class.prototype.componentDidMount = function() {
     componentDidMount && componentDidMount.call(this);
+
+    container = findDOMNode(this);
+    container.style.display = 'none';
+
     if (
       this.props.transitionState === transitionStates.entered ||
       this.props.transitionState === transitionStates.entering

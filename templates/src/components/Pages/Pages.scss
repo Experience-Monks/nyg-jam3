@@ -4,20 +4,14 @@
   position: relative;
   text-align: center;
   margin-top: $navbar-height-mobile;
+  flex: 1;
 
   @media (min-width: $layout-large) {
     margin-top: $navbar-height-desktop;
   }
 
   & > section {
-    padding-bottom: 110px;
-    position: absolute;
-    top: 0;
-    left: 0;
+    padding-bottom: px-to-rem(40);
     width: 100%;
-
-    @media (min-width: $layout-medium) {
-      padding-bottom: 80px;
-    }
   }
 }

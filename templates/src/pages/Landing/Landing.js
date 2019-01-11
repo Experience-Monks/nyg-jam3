@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
+import { BaseLink } from 'public-react-ui';
 
 import './Landing.scss';
-
-import BaseLink from '../../components/BaseLink/BaseLink';
 
 import Transition from '../PagesTransitionWrapper';
 import { setLandingLoaded } from '../../redux/modules/landing';
