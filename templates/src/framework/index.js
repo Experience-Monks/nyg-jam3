@@ -26,7 +26,9 @@ export default function() {
   const render = Component => {
     ReactDOM.render(
       <Provider store={store}>
-        <ConnectedRouter history={history}>{Component}</ConnectedRouter>
+        <ConnectedRouter history={history} store={store}>
+          {Component}
+        </ConnectedRouter>
       </Provider>,
       target
     );
