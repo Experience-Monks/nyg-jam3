@@ -110,6 +110,5 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  undefined,
-  { withRef: true }
+  undefined
 )(Preloader);
