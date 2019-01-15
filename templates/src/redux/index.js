@@ -5,6 +5,9 @@ import keys from './keys';
 
 import reducerRegistry from './reducer-registry';
 
+import preloaderReducer from './modules/preloader';
+import mainNavReducer from './modules/main-nav';
+
 import { windowSizeReducer, previousRouteReducer, layoutReducer } from './modules/app';
 
 let store;
@@ -12,9 +15,11 @@ const initialState = {};
 const enhancers = [];
 
 const defaultReducers = {
+  preloader: preloaderReducer,
   windowSize: windowSizeReducer,
   previousRoute: previousRouteReducer,
   layout: layoutReducer,
+  isMobileMenuOpen: mainNavReducer,
   routing: routerReducer
 };
 

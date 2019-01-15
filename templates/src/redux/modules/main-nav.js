@@ -1,7 +1,4 @@
 import keys from '../keys';
-import reducerRegistry from '../reducer-registry';
-
-const reducerName = 'isMobileMenuOpen';
 
 // Reducer
 export default function reducer(state = false, action) {
@@ -20,6 +17,3 @@ export function setIsMobileMenuOpen(isOpen) {
     isOpen
   };
 }
-
-// Register Reducers
-reducerRegistry.register(reducerName, reducer);
