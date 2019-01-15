@@ -6,13 +6,13 @@ import './{{name}}.scss';
 
 import checkProps from '../../{{depth}}util/check-props';
 
-const {{name}} = React.forwardRef((props, ref) => {
+const {{name}} = React.memo(React.forwardRef((props, ref) => {
   const componentProps = {
     className: classnames('{{name}}', props.className)
   };
 
   return <div {...componentProps} ref={ref}>{{name}} component</div>;
-};
+}));
 
 {{name}}.propTypes = checkProps({
   className: PropTypes.string
