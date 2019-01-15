@@ -54,7 +54,7 @@
     "bowser": "1.9.2",
     "classnames": "2.2.6",
     "dompurify": "1.0.8",
-    "gsap": "1.20.4",
+    "gsap": "2.0.2",
     "gsap-promisify": "1.0.2",
     "history": "4.7.2",
     "howler": "2.0.9",

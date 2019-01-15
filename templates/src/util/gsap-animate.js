@@ -5,11 +5,9 @@
  * import animate from '../../util/gsap-animate';
  * animate.to(this.container, 0.3, { autoAlpha: 1, delay: 0.2 }).then(()=>{});
  */
+import { TweenLite, CSSPlugin } from 'gsap';
 
-require('gsap/src/uncompressed/plugins/CSSPlugin.js');
-require('gsap/src/uncompressed/TweenLite.js');
-
-const animate = require('gsap-promisify')(Promise, window.TweenLite);
+const animate = require('gsap-promisify')(Promise, TweenLite);
 
 animate.staggerTo = function(els, duration, props, delay) {
   return Promise.all(
@@ -22,5 +20,5 @@ animate.staggerTo = function(els, duration, props, delay) {
   );
 };
 
-export const TweenLite = window.TweenLite;
+export const GSAP_PLUGINS = { CSSPlugin };
 export default animate;
