@@ -1,7 +1,7 @@
 import keys from '../keys';
 import reducerRegistry from '../reducer-registry';
 
-const reducerName = 'mainNav';
+const reducerName = 'isMobileMenuOpen';
 
 // Reducer
 export default function reducer(state = false, action) {
