@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/Jam3/nyg-jam3#readme",
   "dependencies": {
-    "nyg": "^2.8.0"
+    "nyg": "^2.8.1"
   },
   "engines": {
     "node": ">=10.15.0",
