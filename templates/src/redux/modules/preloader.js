@@ -1,7 +1,4 @@
 import keys from '../keys';
-import reducerRegistry from '../reducer-registry';
-
-const reducerName = 'preloader';
 
 const defaultState = {
   preloader: {
@@ -42,6 +39,3 @@ export function setProgress(progress) {
     progress
   };
 }
-
-// Register Reducers
-reducerRegistry.register(reducerName, preloaderReducer);
