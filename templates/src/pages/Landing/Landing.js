@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import { BaseLink } from 'public-react-ui';
+import { BaseLink } from '@jam3/react-ui';
 
 import './Landing.scss';
 

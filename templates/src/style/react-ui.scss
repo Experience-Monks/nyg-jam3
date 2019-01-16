@@ -1,55 +1,57 @@
 @import 'shared.scss';
 
-.PageOverlay {
-  @include z-index(page-overlay);
-}
-
-.MainTopNav {
-  @include z-index(main-nav);
-  background-color: $white;
-  border-bottom: 1px solid rgba($black, 0.3);
-  padding: 2rem $navbar-padding-mobile;
-
-  @media (min-width: $layout-large) {
-    padding: 2rem $navbar-padding-desktop;
+#root {
+  .PageOverlay {
+    @include z-index(page-overlay);
   }
 
-  .nav .nav-logo {
-    width: px-to-rem(60);
-  }
-}
+  .MainTopNav {
+    @include z-index(main-nav);
+    background-color: $white;
+    border-bottom: 1px solid rgba($black, 0.3);
+    padding: 2rem $navbar-padding-mobile;
 
-.HamburgerMenu {
-  top: $navbar-height-mobile;
-  @include z-index(sidebar);
-  height: calc(100% - #{$navbar-height-mobile});
-  border-left: none;
-  background-color: $white;
+    @media (min-width: $layout-large) {
+      padding: 2rem $navbar-padding-desktop;
+    }
 
-  @media (min-width: $layout-medium) {
-    max-width: px-to-rem(300);
-    border-left: 1px solid rgba($black, 0.3);
-  }
-}
-
-.Footer {
-  @include z-index(foter);
-  padding: 2rem $navbar-padding-mobile;
-  text-align: center;
-
-  @media (min-width: $layout-medium) {
-    text-align: left;
+    .nav .nav-logo {
+      width: px-to-rem(60);
+    }
   }
 
-  @media (min-width: $layout-large) {
-    padding: 2rem $navbar-padding-desktop;
+  .HamburgerMenu {
+    top: $navbar-height-mobile;
+    @include z-index(sidebar);
+    height: calc(100% - #{$navbar-height-mobile});
+    border-left: none;
+    background-color: $white;
+
+    @media (min-width: $layout-medium) {
+      max-width: px-to-rem(300);
+      border-left: 1px solid rgba($black, 0.3);
+    }
   }
 
-  .footer-copyright {
-    margin: 2rem 0 0;
-  }
-}
+  .Footer {
+    @include z-index(foter);
+    padding: 2rem $navbar-padding-mobile;
+    text-align: center;
 
-.RotateScreen {
-  @include z-index(rotate);
+    @media (min-width: $layout-medium) {
+      text-align: left;
+    }
+
+    @media (min-width: $layout-large) {
+      padding: 2rem $navbar-padding-desktop;
+    }
+
+    .footer-copyright {
+      margin: 2rem 0 0;
+    }
+  }
+
+  .RotateScreen {
+    @include z-index(rotate);
+  }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { BaseButton } from 'public-react-ui';
+import { BaseButton } from '@jam3/react-ui';
 
 import audio from '../audio';
 
