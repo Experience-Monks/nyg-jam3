@@ -121,30 +121,12 @@ Our build scripts are based on [react-scripts](https://www.npmjs.com/package/rea
 Webpack with different configurations for develop and production. The default configurations are stable and supported
 for the community.
 
-To customize the current build pipelines, refer to the file 
-[config-overrides.js](https://github.com/Jam3/nyg-jam3/blob/master/templates/config-overrides.js). If you wanna
-read more about it, please visit the [react-app-rewired](https://github.com/timarney/react-app-rewired) repository.
-
 ### Built-in Customizations
 
 #### Visualizer
 
 We include a webpack visualizer for your dependencies, visit [npm](https://www.npmjs.com/package/webpack-visualizer-plugin) for more
 information.
-
-#### Custom ESLint
-
-We use the same linting rules as react-scripts plus some customizations.
-
-#### Hot Module Reload
-
-Don't refresh your screen all the time, save time. We are using
-[react-app-rewire-hot-loader](https://www.npmjs.com/package/react-app-rewire-hot-loader)
-
-#### Compressing images by default
-
-We added imagemin into the webpack pipeline, visit
-[react-app-rewire-imagemin-plugin](https://www.npmjs.com/package/react-app-rewire-imagemin-plugin) for more information
 
 ## Components creation
 

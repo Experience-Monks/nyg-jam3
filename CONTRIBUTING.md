@@ -8,7 +8,7 @@ Following these guidelines helps to communicate the core ideas and the purpose o
 
 The generator structure is based on the same idea as [Create React App](https://github.com/facebook/create-react-app). We created a full boilerplate and we are using `react-scripts` to run our development server and create the build.
 
-We are using [react-scripts](https://github.com/facebook/create-react-app/tree/next/packages/react-scripts) because it is fully supported by the community and includes the best and most up to date react standards. In order to customize it we decided **not** to [eject](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject)) and we are using [react-app-rewired](https://github.com/timarney/react-app-rewired).
+We are using [react-scripts](https://github.com/facebook/create-react-app/tree/next/packages/react-scripts) because it is fully supported by the community and includes the best and most up to date react standards.
 
 The purpose of this tool is to generate an opinionated template with the Jam3's standards and best practices. This template doesn't have configurations or prompts like [yeoman](http://yeoman.io/) or [nyg](https://www.npmjs.com/package/nyg)
 
