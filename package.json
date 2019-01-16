@@ -10,7 +10,7 @@
   },
   "husky": {
     "hooks": {
-      "prepush": "echo 'Pre-push checks...' && npm run js-lint"
+      "pre-push": "echo 'Pre-push checks...' && npm run js-lint"
     }
   },
   "repository": {
