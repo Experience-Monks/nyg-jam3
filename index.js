@@ -53,9 +53,7 @@ function updateGeneratedPackageJson() {
   const packagePath = `${generator.cwd}/package.json`;
   const generatedPackageJson = JSON.parse(fs.readFileSync(packagePath));
 
-  return _updateNodeJSRequiredVersion(packagePath, generatedPackageJson).then(() => {
-    _updateLintStaged(packagePath, generatedPackageJson);
-  });
+  return _updateNodeJSRequiredVersion(packagePath, generatedPackageJson);
 }
 
 /**
@@ -68,25 +66,6 @@ function renameGitIgnore() {
 
   return new Promise((resolve, reject) => {
     fs.rename(gitIgnorePath, generatedGitIgnore, function(err) {
-      if (err) return reject();
-      resolve();
-    });
-  });
-}
-
-/**
- * Remove the property gitDir from LintStaged
- * This property allows lint-staged to run inside a not subfolder, once generated is wrong
- *
- * @param {any} packagePath - Package JSON path
- * @param {any} packageJson - Package JSON already parsed
- * @returns {Promise}
- */
-function _updateLintStaged(packagePath, packageJson) {
-  delete packageJson['lint-staged'].gitDir;
-
-  return new Promise((resolve, reject) => {
-    fs.writeFile(packagePath, JSON.stringify(packageJson, null, 2), function(err) {
       if (err) return reject();
       resolve();
     });

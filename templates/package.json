@@ -127,7 +127,6 @@
     "extends": "react-app"
   },
   "lint-staged": {
-    "gitDir": "../",
     "linters": {
       "src/**/*.{js,json,scss}": [
         "prettier --write",
