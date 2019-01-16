@@ -49,8 +49,10 @@
     "npm": ">=6.5.0"
   },
   "dependencies": {
+    "@jam3/react-ui": "1.0.0",
     "bowser": "1.9.2",
     "classnames": "2.2.6",
+    "default-passive-events": "1.0.10",
     "dompurify": "1.0.8",
     "gsap": "2.0.2",
     "gsap-promisify": "1.0.2",
@@ -60,7 +62,6 @@
     "lodash.debounce": "4.0.8",
     "mobile-detect": "1.4.1",
     "no-op": "1.0.3",
-    "public-react-ui": "git+https://github.com/Jam3/public-react-ui.git#feature/init",
     "normalize.css": "8.0.1",
     "preloader": "4.0.2",
     "react": "16.7.0",
