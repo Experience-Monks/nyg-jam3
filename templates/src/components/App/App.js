@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { Transition } from 'react-transition-group';
 import { Footer, HamburgerMenu, MainTopNav, PageOverlay } from '@jam3/react-ui';
+import checkProps from '@jam3/react-check-extra-props';
 import 'default-passive-events';
 
 import Pages from '../../components/Pages/Pages';
@@ -20,7 +21,6 @@ import footerData from '../../data/footer';
 import rotateScreenData from '../../data/rotate-screen';
 import detect from '../../util/detect';
 import layout from '../../util/layout';
-import checkProps from '../../util/check-props';
 
 const LazyRotateScreen =
   detect.isMobile &&
