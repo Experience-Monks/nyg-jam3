@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@jam3/react-ui": "1.0.0",
-    "@jam3/detect": "1.0.0",
+    "@jam3/detect": "1.0.1",
     "classnames": "2.2.6",
     "default-passive-events": "1.0.10",
     "dompurify": "1.0.8",
