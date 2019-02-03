@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@jam3/react-ui": "1.0.0",
-    "bowser": "1.9.2",
+    "@jam3/detect": "1.0.0",
     "classnames": "2.2.6",
     "default-passive-events": "1.0.10",
     "dompurify": "1.0.8",
@@ -60,7 +60,6 @@
     "howler": "2.0.9",
     "include-media": "1.4.9",
     "lodash.debounce": "4.0.8",
-    "mobile-detect": "1.4.1",
     "no-op": "1.0.3",
     "normalize.css": "8.0.1",
     "preloader": "4.0.2",
