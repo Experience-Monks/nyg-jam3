@@ -27,7 +27,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "audit-snyk": "snyk auth [token] && snyk test",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc.json --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
     "linters": "npm-run-all -p js-lint sass-lint",
@@ -137,7 +136,8 @@
   "husky": {
     "hooks": {
       "pre-commit": "echo 'Pre-commit checks...' && lint-staged",
-      "pre-push": "echo 'Pre-push checks...' && npm run linters"
+      "pre-push": "echo 'Pre-push checks...' && npm run linters",
+      "commitmsg": "commitlint -e $GIT_PARAMS"
     }
   },
   "browserslist": [
