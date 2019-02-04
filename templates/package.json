@@ -120,7 +120,7 @@
     "mkdirp": "0.5.1",
     "react-hot-loader": "4.3.1",
     "sassdoc": "2.5.0",
-    "stats.js": "0.17.0",
+    "@jam3/stats": "1.0.0",
     "why-did-you-update": "0.1.1"
   },
   "eslintConfig": {
