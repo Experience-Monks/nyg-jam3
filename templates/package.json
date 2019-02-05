@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "@jam3/react-ui": "1.0.0",
+    "@jam3/wait": "1.0.0",
     "bowser": "1.9.2",
     "classnames": "2.2.6",
     "default-passive-events": "1.0.10",
