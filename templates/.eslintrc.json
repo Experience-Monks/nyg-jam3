@@ -1,5 +1,5 @@
 {
-  "extends": ["react-app", "jam3"],
+  "extends": ["react-app", "react-jam3"],
   "plugins": ["jam3"],
   "settings": {
     "react": {
