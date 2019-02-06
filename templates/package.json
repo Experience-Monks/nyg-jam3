@@ -49,7 +49,8 @@
     "npm": ">=6.5.0"
   },
   "dependencies": {
-    "@jam3/react-ui": "1.0.0",
+    "@jam3/react-check-extra-props": "1.0.0",
+    "@jam3/react-ui": "1.0.4",
     "bowser": "1.9.2",
     "classnames": "2.2.6",
     "default-passive-events": "1.0.10",
@@ -60,12 +61,10 @@
     "howler": "2.0.9",
     "include-media": "1.4.9",
     "lodash.debounce": "4.0.8",
-    "mobile-detect": "1.4.1",
     "no-op": "1.0.3",
     "normalize.css": "8.0.1",
     "preloader": "4.0.2",
     "react": "16.7.0",
-    "react-background-video-player": "1.1.4",
     "react-dom": "16.7.0",
     "react-redux": "5.0.7",
     "react-router-dom": "4.3.1",
