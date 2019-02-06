@@ -5,6 +5,23 @@
 
 * Remove hard-coded utilities and replacing it with npm modules
   * [PR #217](https://github.com/Jam3/nyg-jam3/pull/217)
+  * [PR #222](https://github.com/Jam3/nyg-jam3/pull/222)
+  * [PR #225](https://github.com/Jam3/nyg-jam3/pull/225)
+  * [PR #226](https://github.com/Jam3/nyg-jam3/pull/226)
+
+* Update internal tools
+  * [PR #224](https://github.com/Jam3/nyg-jam3/pull/224)
+  * [PR #223](https://github.com/Jam3/nyg-jam3/pull/223)
+  
+#### :bug: Bug Fix
+
+* Fix stylelint error
+
+  * [PR #219](https://github.com/Jam3/nyg-jam3/pull/219)
+  
+* Fix hot loader issue
+
+  * [PR #221](https://github.com/Jam3/nyg-jam3/pull/221)
 
 ## Update nyg core v5.0.0 (January 16, 2019)
 
