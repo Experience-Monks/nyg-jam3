@@ -1,5 +1,11 @@
 # Changelog
 
+## Update nyg core v5.0.1 (January 17, 2019)
+#### :nail_care: Enhancement
+
+* Remove hard-coded utilities and replacing it with npm modules
+  * [PR #217](https://github.com/Jam3/nyg-jam3/pull/217)
+
 ## Update nyg core v5.0.0 (January 16, 2019)
 
 The majority of the changes are related to the core of nyg-jam3
