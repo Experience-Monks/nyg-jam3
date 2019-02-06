@@ -1,7 +1,5 @@
+import { browser, os, bots } from '@jam3/detect';
 import deviceMatrix from './device-matrix.json';
-import detect from './detect';
-
-global.detect = detect;
 
 /**
  * Returns if the current browser is supported by the web app
@@ -10,12 +8,12 @@ global.detect = detect;
  * @returns {Boolean} supported
  */
 function isSupported() {
-  const userBrowser = detect.browser.toLowerCase();
-  const userBrowserVersion = parseFloat(detect.browserVersion);
-  const userOS = detect.os ? detect.os.toLowerCase() : 'unknown';
-  const userOSVersion = detect.osVersion === 'Unknown' ? Number.MAX_SAFE_INTEGER : parseFloat(detect.osVersion);
+  const userBrowser = browser.getName().toLowerCase();
+  const userBrowserVersion = parseFloat(browser.getVersion());
+  const userOS = os ? os.getName().toLowerCase() : 'unknown';
+  const userOSVersion = os.getVersion() === 'Unknown' ? Number.MAX_SAFE_INTEGER : parseFloat(os.getVersion());
 
-  if (detect.isBot) {
+  if (bots.isBot()) {
     return true;
   }
 
@@ -50,10 +48,10 @@ function isSupported() {
  */
 function getBrowserInformation() {
   return `
-    browser: ${detect.browser},
-    browser version: ${detect.browserVersion},
-    os: ${detect.os},
-    os version: ${detect.osVersion},
+    browser: ${browser.getName()},
+    browser version: ${browser.getVersion()},
+    os: ${os.getName()},
+    os version: ${os.getVersion()},
     ua: ${navigator.userAgent}
   `;
 }

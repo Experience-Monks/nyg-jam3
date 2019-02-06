@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { Transition } from 'react-transition-group';
 import { Footer, HamburgerMenu, MainTopNav, PageOverlay } from '@jam3/react-ui';
+import { device } from '@jam3/detect';
 import checkProps from '@jam3/react-check-extra-props';
 import 'default-passive-events';
 
@@ -19,11 +20,10 @@ import mainNavData from '../../data/main-nav';
 import hamburgerNavData from '../../data/hamburger-menu';
 import footerData from '../../data/footer';
 import rotateScreenData from '../../data/rotate-screen';
-import detect from '../../util/detect';
 import layout from '../../util/layout';
 
 const LazyRotateScreen =
-  detect.isMobile &&
+  device.isMobile &&
   lazy(() =>
     import('@jam3/react-ui').then(module => {
       return { ...module, default: module.RotateScreen };
@@ -86,7 +86,7 @@ class App extends React.PureComponent {
             <Footer {...footerData} />
           </Fragment>
         )}
-        {detect.isMobile && (
+        {device.isMobile && (
           <Suspense fallback={<div className="loading" />}>
             <LazyRotateScreen {...rotateScreenData} />
           </Suspense>
