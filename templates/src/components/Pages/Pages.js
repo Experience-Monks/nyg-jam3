@@ -3,10 +3,10 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { TransitionGroup, Transition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import checkProps from '@jam3/react-check-extra-props';
 
 import './Pages.scss';
 
-import checkProps from '../../util/check-props';
 import routeKeys from '../../routes/keys';
 import { getTransitionDuration } from '../../data/pages-transitions';
 

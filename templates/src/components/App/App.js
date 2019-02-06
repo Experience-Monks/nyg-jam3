@@ -6,6 +6,7 @@ import debounce from 'lodash.debounce';
 import { Transition } from 'react-transition-group';
 import { Footer, HamburgerMenu, MainTopNav, PageOverlay } from '@jam3/react-ui';
 import { device } from '@jam3/detect';
+import checkProps from '@jam3/react-check-extra-props';
 import 'default-passive-events';
 
 import Pages from '../../components/Pages/Pages';
@@ -20,7 +21,6 @@ import hamburgerNavData from '../../data/hamburger-menu';
 import footerData from '../../data/footer';
 import rotateScreenData from '../../data/rotate-screen';
 import layout from '../../util/layout';
-import checkProps from '../../util/check-props';
 
 const LazyRotateScreen =
   device.isMobile &&

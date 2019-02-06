@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import preloader from 'preloader';
 import noop from 'no-op';
+import checkProps from '@jam3/react-check-extra-props';
 
 import './Preloader.scss';
 
 import { ReactComponent as LoaderIcon } from '../../assets/svg/loader.svg';
 
-import checkProps from '../../util/check-props';
 import animate from '../../util/gsap-animate';
 import { wait } from '../../util/basic-functions';
 import { setProgress, setReady } from '../../redux/modules/preloader';

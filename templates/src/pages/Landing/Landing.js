@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { BaseLink } from '@jam3/react-ui';
+import checkProps from '@jam3/react-check-extra-props';
 
 import './Landing.scss';
 
 import Transition from '../PagesTransitionWrapper';
 import { setLandingLoaded } from '../../redux/modules/landing';
 import animate from '../../util/gsap-animate';
-import checkProps from '../../util/check-props';
 import { wait } from '../../util/basic-functions';
 
 class Landing extends React.PureComponent {
