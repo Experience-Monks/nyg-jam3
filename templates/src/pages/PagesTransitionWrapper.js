@@ -1,7 +1,7 @@
 import noop from 'no-op';
 import { findDOMNode } from 'react-dom';
+import wait from '@jam3/wait';
 
-import { wait } from '../util/basic-functions';
 import { getExitTransitionDuration } from '../data/pages-transitions';
 
 const transitionStates = {

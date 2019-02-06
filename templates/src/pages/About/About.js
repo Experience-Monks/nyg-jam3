@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { BaseLink } from '@jam3/react-ui';
+import wait from '@jam3/wait';
 import checkProps from '@jam3/react-check-extra-props';
 
 import './About.scss';
 
 import Transition from '../PagesTransitionWrapper';
-import { wait } from '../../util/basic-functions';
 import animate from '../../util/gsap-animate';
 
 class About extends React.PureComponent {

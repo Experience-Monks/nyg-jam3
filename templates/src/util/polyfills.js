@@ -1,6 +1,4 @@
-/*
-* Polyfills index
-*/
+// Polyfills index
 
 // IE 10
 // import 'core-js/es6/map';

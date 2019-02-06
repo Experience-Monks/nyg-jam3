@@ -48,6 +48,7 @@
     "npm": ">=6.5.0"
   },
   "dependencies": {
+    "@jam3/wait": "1.0.0",
     "@jam3/detect": "1.0.1",
     "@jam3/react-check-extra-props": "1.0.0",
     "@jam3/react-ui": "1.0.5",
