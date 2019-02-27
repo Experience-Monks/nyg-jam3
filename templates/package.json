@@ -48,14 +48,15 @@
     "npm": ">=6.5.0"
   },
   "dependencies": {
-    "@jam3/wait": "1.0.0",
     "@jam3/detect": "1.0.1",
     "@jam3/react-check-extra-props": "1.0.0",
     "@jam3/react-ui": "1.0.5",
+    "@jam3/wait": "1.0.0",
     "bowser": "1.9.2",
     "classnames": "2.2.6",
     "default-passive-events": "1.0.10",
     "dompurify": "1.0.8",
+    "get-scroll": "2.0.0",
     "gsap": "2.0.2",
     "gsap-promisify": "1.0.2",
     "history": "4.7.2",
