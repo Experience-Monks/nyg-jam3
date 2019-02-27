@@ -5,7 +5,7 @@
  * import animate from '../../util/gsap-animate';
  * animate.to(this.container, 0.3, { autoAlpha: 1, delay: 0.2 }).then(()=>{});
  */
-import { TweenLite, CSSPlugin, ScrollToPlugin } from 'gsap/all';
+import { TweenLite, CSSPlugin, ScrollToPlugin, EaselPlugin } from 'gsap/all';
 
 const animate = require('gsap-promisify')(Promise, TweenLite);
 
@@ -20,5 +20,5 @@ animate.staggerTo = function(els, duration, props, delay) {
   );
 };
 
-export const GSAP_PLUGINS = { CSSPlugin, ScrollToPlugin };
+export const GSAP_PLUGINS = { CSSPlugin, EaselPlugin, ScrollToPlugin };
 export default animate;
