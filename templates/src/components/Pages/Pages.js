@@ -12,7 +12,7 @@ import { getTransitionDuration } from '../../data/pages-transitions';
 
 const Landing = lazy(() => import('../../pages/Landing/Landing'));
 const About = lazy(() => import('../../pages/About/About'));
-const NotFound = lazy(() => import('../../pages/NotFound/NotFound')).default;
+const NotFound = lazy(() => import('../../pages/NotFound/NotFound'));
 
 const Pages = ({ location, ...props }) => {
   return (
