@@ -1,19 +1,22 @@
-/*
- * Preload only required polyfills for features that aren't supported by the browser
- */
 import { polyfillLoader } from 'polyfill-io-feature-detection';
+import noop from 'no-op';
+
 import settings from '../data/settings';
 
-// add comma separated features to the list\
-let polyfillsList = '';
+const polyfillsList = [];
 
 if (settings.preloadLinks) {
-  polyfillsList = 'IntersectionObserver';
+  polyfillsList.push('IntersectionObserver');
 }
 
-export default function(onLoaded) {
+/**
+ * Preload only required polyfills for features that aren't supported by the browser
+ *
+ * @param {function} [onLoaded=noop] - on load callback
+ */
+export default function(onLoaded = noop) {
   polyfillLoader({
-    features: polyfillsList,
+    features: polyfillsList.join(),
     onCompleted: onLoaded
   });
 }
