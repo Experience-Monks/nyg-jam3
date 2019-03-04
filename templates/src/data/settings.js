@@ -3,6 +3,7 @@ const settings = {};
 // global
 settings.resizeDebounceTime = 10; // in ms
 settings.isDevelopment = process.env.NODE_ENV !== 'production';
+settings.preloadLinks = true;
 
 // global paths
 settings.assetPath = `${process.env.PUBLIC_URL}/assets/`;
