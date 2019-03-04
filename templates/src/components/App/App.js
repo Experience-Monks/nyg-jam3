@@ -10,7 +10,6 @@ import checkProps from '@jam3/react-check-extra-props';
 import 'default-passive-events';
 
 import Pages from '../../components/Pages/Pages';
-import Preloader from '../../components/Preloader/Preloader';
 
 import { setPreviousRoute, setWindowSize, setLayout, batchActions } from '../../redux/modules/app';
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
@@ -21,6 +20,7 @@ import hamburgerNavData from '../../data/hamburger-menu';
 import footerData from '../../data/footer';
 import rotateScreenData from '../../data/rotate-screen';
 import layout from '../../util/layout';
+import preloadAssets from '../../data/preload-assets';
 
 const LazyRotateScreen =
   device.isMobile &&
@@ -29,6 +29,8 @@ const LazyRotateScreen =
       return { ...module, default: module.RotateScreen };
     })
   );
+
+const LazyPreloader = lazy(() => import('../../components/Preloader/Preloader'));
 
 class App extends React.PureComponent {
   componentDidMount() {
@@ -91,9 +93,13 @@ class App extends React.PureComponent {
             <LazyRotateScreen {...rotateScreenData} />
           </Suspense>
         )}
-        <Transition in={!this.props.ready} timeout={0}>
-          {state => state !== 'exited' && <Preloader transitionState={state} />}
-        </Transition>
+        {Boolean(preloadAssets.length) && (
+          <Suspense fallback={<div className="loading" />}>
+            <Transition in={!this.props.ready} timeout={0}>
+              {state => state !== 'exited' && <LazyPreloader transitionState={state} />}
+            </Transition>
+          </Suspense>
+        )}
       </Fragment>
     );
   }
@@ -102,7 +108,7 @@ class App extends React.PureComponent {
 const mapStateToProps = state => {
   return {
     layout: state.layout,
-    ready: state.preloader.ready,
+    ready: preloadAssets.length ? state.preloader.ready : true,
     isMobileMenuOpen: state.isMobileMenuOpen
   };
 };
