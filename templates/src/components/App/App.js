@@ -88,18 +88,14 @@ class App extends React.PureComponent {
             <Footer {...footerData} />
           </Fragment>
         )}
-        {device.isMobile && (
-          <Suspense fallback={<div className="loading" />}>
-            <LazyRotateScreen {...rotateScreenData} />
-          </Suspense>
-        )}
-        {Boolean(preloadAssets.length) && (
-          <Suspense fallback={<div className="loading" />}>
+        <Suspense fallback={<div className="loading" />}>
+          {device.isMobile && <LazyRotateScreen {...rotateScreenData} />}
+          {Boolean(preloadAssets.length) && (
             <Transition in={!this.props.ready} timeout={0}>
               {state => state !== 'exited' && <LazyPreloader transitionState={state} />}
             </Transition>
-          </Suspense>
-        )}
+          )}
+        </Suspense>
       </Fragment>
     );
   }
