@@ -25,5 +25,4 @@ addDecorator(story => (
   </Provider>
 ));
 
-
 configure(loadStories, module);
