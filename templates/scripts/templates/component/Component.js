@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import checkProps from '@jam3/react-check-extra-props';
 
 import './{{name}}.scss';
-
-import checkProps from '../../{{depth}}util/check-props';
 
 class {{name}} extends React.PureComponent {
   state = {};

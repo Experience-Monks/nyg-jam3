@@ -11,6 +11,7 @@ import 'default-passive-events';
 
 import Pages from '../../components/Pages/Pages';
 import Preloader from '../../components/Preloader/Preloader';
+import PrefetchLink from '../../components/PrefetchLink/PrefetchLink';
 
 import { setPreviousRoute, setWindowSize, setLayout, batchActions } from '../../redux/modules/app';
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
@@ -68,6 +69,7 @@ class App extends React.PureComponent {
               showHamburger={!this.props.layout.large}
               isMobileMenuOpen={this.props.isMobileMenuOpen}
               setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
+              linkComponent={PrefetchLink}
             />
             {!this.props.layout.large && (
               <Fragment>
@@ -79,11 +81,12 @@ class App extends React.PureComponent {
                   {...hamburgerNavData}
                   isMobileMenuOpen={this.props.isMobileMenuOpen}
                   setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
+                  linkComponent={PrefetchLink}
                 />
               </Fragment>
             )}
             <Pages />
-            <Footer {...footerData} />
+            <Footer {...footerData} linkComponent={PrefetchLink} />
           </Fragment>
         )}
         {device.isMobile && (

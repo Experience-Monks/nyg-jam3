@@ -10,8 +10,8 @@ import './Pages.scss';
 import routeKeys from '../../routes/keys';
 import { getTransitionDuration } from '../../data/pages-transitions';
 
-const Landing = lazy(() => import('../../pages/Landing/Landing'));
-const About = lazy(() => import('../../pages/About/About'));
+const Landing = lazy(() => import(/* webpackChunkName: "Landing" */ '../../pages/Landing/Landing'));
+const About = lazy(() => import(/* webpackChunkName: "About" */ '../../pages/About/About'));
 const NotFound = lazy(() => import('../../pages/NotFound/NotFound'));
 
 const Pages = ({ location, ...props }) => {
@@ -24,7 +24,7 @@ const Pages = ({ location, ...props }) => {
               <Switch location={location}>
                 <Route exact path={routeKeys.Landing} render={() => <Landing transitionState={state} />} />
                 <Route exact path={routeKeys.About} render={() => <About transitionState={state} />} />
-                <Route component={NotFound} />
+                <Route render={() => <NotFound />} />
               </Switch>
             </Suspense>
           )}
