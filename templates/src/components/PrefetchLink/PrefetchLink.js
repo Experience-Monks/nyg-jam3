@@ -12,27 +12,32 @@ import './PrefetchLink.scss';
 
 const PrefetchLink = React.memo(
   React.forwardRef((props, ref) => {
-    function onMouseEnter(e) {
-      if (fileExtension(e.target)) {
-        // prefetch a resource
-        prefetch(e.target);
-      } else {
-        // prefetch route's js chunk
-        const pageKey = Object.keys(routeKeys).find(key => routeKeys[key] === props.link);
-        if (pageKey) {
-          const chunkUrl = `${window.location.origin}${process.env.REACT_APP_STATIC_URL}${pageKey}.chunk.js`;
-          prefetch(chunkUrl);
+    function onMouseEnter() {
+      props.onMouseEnter && props.onMouseEnter();
+
+      if (!props.download) {
+        if (fileExtension(props.link)) {
+          // prefetch a resource
+          prefetch(props.link);
+        } else {
+          // prefetch route's js chunk
+          const pageKey = Object.keys(routeKeys).find(key => routeKeys[key] === props.link);
+          if (pageKey) {
+            const chunkUrl = `${window.location.origin}${process.env.REACT_APP_STATIC_URL}${pageKey}.chunk.js`;
+            prefetch(chunkUrl);
+          }
         }
       }
-      props.onMouseEnter && props.onMouseEnter();
     }
 
     const componentProps = {
+      ...props,
       className: classnames('PrefetchLink', props.className),
-      ...props
+      ref,
+      onMouseEnter
     };
 
-    return <BaseLink {...componentProps} ref={ref} onMouseEnter={onMouseEnter} />;
+    return <BaseLink {...componentProps} />;
   })
 );
 
