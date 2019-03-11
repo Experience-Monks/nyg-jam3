@@ -17,3 +17,25 @@ node_modules
 
 # Build
 test/output
+/templates/build
+
+# Stats
+/templates/stats.html
+
+# Testing
+coverage
+
+# Create React App Dev
+bundle-size-analyzer.html
+bundle-analyzer-report.html
+
+# Dynamically built files
+/templates/src/style/layout.scss
+
+# Local env variables
+.env.local
+.env.*.local
+
+# Documentation
+/templates/public/components
+/templates/public/styleguide
