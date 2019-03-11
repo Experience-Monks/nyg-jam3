@@ -10,6 +10,7 @@ import checkProps from '@jam3/react-check-extra-props';
 import 'default-passive-events';
 
 import Pages from '../../components/Pages/Pages';
+import PrefetchLink from '../../components/PrefetchLink/PrefetchLink';
 
 import { setPreviousRoute, setWindowSize, setLayout, batchActions } from '../../redux/modules/app';
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
@@ -75,6 +76,7 @@ class App extends React.PureComponent {
               showHamburger={!this.props.layout.large}
               isMobileMenuOpen={this.props.isMobileMenuOpen}
               setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
+              linkComponent={PrefetchLink}
             />
             {!this.props.layout.large && (
               <Fragment>
@@ -86,11 +88,12 @@ class App extends React.PureComponent {
                   {...hamburgerNavData}
                   isMobileMenuOpen={this.props.isMobileMenuOpen}
                   setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
+                  linkComponent={PrefetchLink}
                 />
               </Fragment>
             )}
             <Pages />
-            <Footer {...footerData} />
+            <Footer {...footerData} linkComponent={PrefetchLink} />
           </Fragment>
         )}
         <Suspense fallback={<div className="loading" />}>
@@ -133,4 +136,9 @@ App.propTypes = checkProps({
 
 App.defaultProps = {};
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);
