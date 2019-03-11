@@ -21,6 +21,7 @@ import hamburgerNavData from '../../data/hamburger-menu';
 import footerData from '../../data/footer';
 import rotateScreenData from '../../data/rotate-screen';
 import layout from '../../util/layout';
+import lockBodyScroll from '../../util/lock-body-scroll';
 
 const LazyRotateScreen =
   device.isMobile &&
@@ -45,6 +46,10 @@ class App extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (prevProps.isMobileMenuOpen !== this.props.isMobileMenuOpen) {
+      this.props.isMobileMenuOpen ? lockBodyScroll.lock() : lockBodyScroll.unlock();
+    }
+
     if (prevProps.location.pathname !== this.props.location.pathname) {
       this.props.setPreviousRoute(prevProps.location.pathname);
     }
@@ -126,9 +131,4 @@ App.propTypes = checkProps({
 
 App.defaultProps = {};
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
