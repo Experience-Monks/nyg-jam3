@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { BaseLink } from '@jam3/react-ui';
 import wait from '@jam3/wait';
 import checkProps from '@jam3/react-check-extra-props';
 import { withNamespaces } from 'react-i18next';
@@ -10,6 +9,7 @@ import { withNamespaces } from 'react-i18next';
 import './About.scss';
 
 import Transition from '../PagesTransitionWrapper';
+import PrefetchLink from '../../components/PrefetchLink/PrefetchLink';
 import animate from '../../util/gsap-animate';
 
 class About extends React.PureComponent {
@@ -49,7 +49,7 @@ class About extends React.PureComponent {
     return (
       <section className={classnames('About', this.props.className)} ref={el => (this.container = el)}>
         <h1>{t('pages.about.header')}</h1>
-        <BaseLink link="/">{t('pages.about.homeLink.text')}</BaseLink>
+        <PrefetchLink link="/">{t('pages.about.homeLink.text')}</PrefetchLink>
       </section>
     );
   }

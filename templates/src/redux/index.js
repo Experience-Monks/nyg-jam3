@@ -1,7 +1,8 @@
-import { createStore, compose, combineReducers } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import { i18nextReducer } from 'i18next-redux-languagedetector';
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 import keys from './keys';
 
@@ -16,6 +17,7 @@ let store;
 const initialState = {};
 const enhancers = [];
 
+// Reducers
 const defaultReducers = {
   i18next: i18nextReducer,
   preloader: preloaderReducer,
@@ -26,7 +28,6 @@ const defaultReducers = {
   routing: routerReducer
 };
 
-// Reducers
 const enableBatchActions = reducers => {
   return function(state, action) {
     switch (action.type) {
@@ -58,15 +59,7 @@ reducerRegistry.setChangeListener(reducers => {
 });
 
 // Enhancers
-if (process.env.NODE_ENV !== 'production') {
-  const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
-
-  if (typeof devToolsExtension === 'function') {
-    enhancers.push(devToolsExtension());
-  }
-}
-
-const composedEnhancers = compose(...enhancers);
+const composedEnhancers = composeWithDevTools(...enhancers);
 
 // Configure Store
 export const history = createHistory();
