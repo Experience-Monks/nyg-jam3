@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import { BaseLink } from '@jam3/react-ui';
 import wait from '@jam3/wait';
 import checkProps from '@jam3/react-check-extra-props';
+import { withNamespaces } from 'react-i18next';
 
 import './Landing.scss';
 
@@ -45,54 +45,35 @@ class Landing extends React.PureComponent {
   };
 
   render() {
+    const { t } = this.props;
     return (
       <section className={classnames('Landing', this.props.className)} ref={el => (this.container = el)}>
         <header className="Landing-header">
-          <h1 className="Landing-title">Jam3 Frontend Scaffolding</h1>
+          <h1 className="Landing-title">{t('pages.landing.header')}</h1>
         </header>
         <section className="Landing-intro">
-          <h2>What is it?</h2>
-          <div>
-            It's an scaffolding result of the Jam3 Generator. This generator includes many of the modern stack we use
-            internally on Jam3 and implement many of the best practices are in our projects
-          </div>
+          <h2>{t('pages.landing.intro.title')}</h2>
+          <div>{t('pages.landing.intro.description')}</div>
         </section>
         <section className="Landing-source">
-          <h2>Source code</h2>
-          <div>
-            The source code of the generator is open source, you can check it out on{' '}
-            <BaseLink link="https://github.com/Jam3/nyg-jam3">https://github.com/Jam3/nyg-jam3</BaseLink>
-          </div>
-        </section>
-        <section className="Landing-resources">
-          <h2>Resources</h2>
-          <div className="container">
-            <BaseLink className="resource" link="https://generator.jam3.net/components">
-              Components
-            </BaseLink>
-            <BaseLink className="resource" link="https://generator.jam3.net/styleguide">
-              Styleguide
-            </BaseLink>
-            <BaseLink className="resource" link="https://generator.jam3.net/performance">
-              Performance
-            </BaseLink>
-            <BaseLink className="resource" link="https://generator.jam3.net/bundle">
-              Bundle
-            </BaseLink>
-          </div>
+          <h2>{t('pages.landing.source.title')}</h2>
+          <div dangerouslySetInnerHTML={{ __html: t('pages.landing.source.description') }} />
         </section>
       </section>
     );
   }
 }
 
-Landing.propTypes = checkProps({
-  className: PropTypes.string,
-  transitionState: PropTypes.string.isRequired,
-  previousRoute: PropTypes.string,
-  loaded: PropTypes.bool,
-  setLandingLoaded: PropTypes.func
-});
+Landing.propTypes = checkProps(
+  {
+    className: PropTypes.string,
+    transitionState: PropTypes.string.isRequired,
+    previousRoute: PropTypes.string,
+    loaded: PropTypes.bool,
+    setLandingLoaded: PropTypes.func
+  },
+  ['tReady', 'i18n', 't', 'lng', 'i18nOptions', 'defaultNS', 'reportNS']
+);
 
 Landing.defaultProps = {};
 
@@ -111,7 +92,9 @@ const mapDispatchToProps = dispatch => {
 
 Landing.defaultProps = {};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Transition(Landing));
+export default withNamespaces('default')(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Transition(Landing))
+);

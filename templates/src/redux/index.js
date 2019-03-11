@@ -1,6 +1,8 @@
 import { createStore, compose, combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
+import { i18nextReducer } from 'i18next-redux-languagedetector';
+
 import keys from './keys';
 
 import reducerRegistry from './reducer-registry';
@@ -15,6 +17,7 @@ const initialState = {};
 const enhancers = [];
 
 const defaultReducers = {
+  i18next: i18nextReducer,
   preloader: preloaderReducer,
   windowSize: windowSizeReducer,
   previousRoute: previousRouteReducer,
@@ -66,11 +69,9 @@ if (process.env.NODE_ENV !== 'production') {
 const composedEnhancers = compose(...enhancers);
 
 // Configure Store
-function configureStore() {
+export const history = createHistory();
+
+export default function configureStore(initialState) {
   store = createStore(createInitialReducer(), initialState, composedEnhancers);
   return store;
 }
-
-export const history = createHistory();
-
-export default configureStore();

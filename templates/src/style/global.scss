@@ -69,3 +69,12 @@ dd {
   margin: 0;
   padding: 0;
 }
+
+.Footer {
+  display: flex;
+  justify-content: space-between;
+
+  .footer-nav {
+    display: inline-block;
+  }
+}

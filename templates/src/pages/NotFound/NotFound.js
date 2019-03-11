@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import checkProps from '@jam3/react-check-extra-props';
+import { withNamespaces } from 'react-i18next';
 
 import './NotFound.scss';
 
@@ -12,20 +13,25 @@ const NotFound = props => {
     className: classnames('NotFound', props.className)
   };
 
+  const { t } = props;
+
   return (
     <div {...componentProps}>
       <NotFoundIcon />
-      <h1>Not Found</h1>
+      <h1>{t('pages.notFound.header')}</h1>
     </div>
   );
 };
 
-NotFound.propTypes = checkProps({
-  className: PropTypes.string
-});
+NotFound.propTypes = checkProps(
+  {
+    className: PropTypes.string
+  },
+  ['tReady', 'i18n', 't', 'lng', 'i18nOptions', 'defaultNS', 'reportNS']
+);
 
 NotFound.defaultProps = {
   className: ''
 };
 
-export default NotFound;
+export default withNamespaces('default')(NotFound);

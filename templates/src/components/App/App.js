@@ -8,17 +8,16 @@ import { Footer, HamburgerMenu, MainTopNav, PageOverlay } from '@jam3/react-ui';
 import { device } from '@jam3/detect';
 import checkProps from '@jam3/react-check-extra-props';
 import 'default-passive-events';
+import { withNamespaces } from 'react-i18next';
 
 import Pages from '../../components/Pages/Pages';
 import Preloader from '../../components/Preloader/Preloader';
+import LanguageSwitcher from '../../components/LanguageSwitcher/LanguageSwitcher';
 
 import { setPreviousRoute, setWindowSize, setLayout, batchActions } from '../../redux/modules/app';
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
 
 import settings from '../../data/settings';
-import mainNavData from '../../data/main-nav';
-import hamburgerNavData from '../../data/hamburger-menu';
-import footerData from '../../data/footer';
 import rotateScreenData from '../../data/rotate-screen';
 import layout from '../../util/layout';
 
@@ -64,7 +63,7 @@ class App extends React.PureComponent {
         {this.props.ready && (
           <Fragment>
             <MainTopNav
-              {...mainNavData}
+              {...this.props.copy.menus.mainNav}
               showHamburger={!this.props.layout.large}
               isMobileMenuOpen={this.props.isMobileMenuOpen}
               setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
@@ -76,14 +75,16 @@ class App extends React.PureComponent {
                   onClick={() => this.props.setIsMobileMenuOpen(false)}
                 />
                 <HamburgerMenu
-                  {...hamburgerNavData}
+                  {...this.props.copy.menus.hamburgerMenu}
                   isMobileMenuOpen={this.props.isMobileMenuOpen}
                   setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
                 />
               </Fragment>
             )}
             <Pages />
-            <Footer {...footerData} />
+            <Footer {...this.props.copy.menus.footer}>
+              <LanguageSwitcher lang={this.props.lang} />
+            </Footer>
           </Fragment>
         )}
         {device.isMobile && (
@@ -99,11 +100,14 @@ class App extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
+  const copy = props.i18n.store.data[state.i18next.language];
   return {
     layout: state.layout,
     ready: state.preloader.ready,
-    isMobileMenuOpen: state.isMobileMenuOpen
+    isMobileMenuOpen: state.isMobileMenuOpen,
+    copy: copy ? copy[state.i18next.defaultNS] : {},
+    lang: state.i18next.language
   };
 };
 
@@ -115,20 +119,27 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-App.propTypes = checkProps({
-  layout: PropTypes.object.isRequired,
-  ready: PropTypes.bool.isRequired,
-  setPreviousRoute: PropTypes.func.isRequired,
-  isMobileMenuOpen: PropTypes.bool.isRequired,
-  setIsMobileMenuOpen: PropTypes.func.isRequired,
-  setLayout: PropTypes.func.isRequired
-});
+App.propTypes = checkProps(
+  {
+    layout: PropTypes.object.isRequired,
+    ready: PropTypes.bool.isRequired,
+    setPreviousRoute: PropTypes.func.isRequired,
+    isMobileMenuOpen: PropTypes.bool.isRequired,
+    setIsMobileMenuOpen: PropTypes.func.isRequired,
+    setLayout: PropTypes.func.isRequired,
+    copy: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    lang: PropTypes.string
+  },
+  ['tReady', 'i18n', 't', 'lng', 'i18nOptions', 'defaultNS', 'reportNS']
+);
 
 App.defaultProps = {};
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
+  withNamespaces('default')(
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(App)
+  )
 );

@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import { BaseLink } from '@jam3/react-ui';
 import wait from '@jam3/wait';
 import checkProps from '@jam3/react-check-extra-props';
+import { withNamespaces } from 'react-i18next';
 
 import './About.scss';
 
@@ -44,20 +45,24 @@ class About extends React.PureComponent {
   };
 
   render() {
+    const { t } = this.props;
     return (
       <section className={classnames('About', this.props.className)} ref={el => (this.container = el)}>
-        <h1>About</h1>
-        <BaseLink link="/">Home</BaseLink>
+        <h1>{t('pages.about.header')}</h1>
+        <BaseLink link="/">{t('pages.about.homeLink.text')}</BaseLink>
       </section>
     );
   }
 }
 
-About.propTypes = checkProps({
-  className: PropTypes.string,
-  transitionState: PropTypes.string.isRequired,
-  previousRoute: PropTypes.string
-});
+About.propTypes = checkProps(
+  {
+    className: PropTypes.string,
+    transitionState: PropTypes.string.isRequired,
+    previousRoute: PropTypes.string
+  },
+  ['tReady', 'i18n', 't', 'lng', 'i18nOptions', 'defaultNS', 'reportNS']
+);
 
 About.defaultProps = {};
 
@@ -67,7 +72,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Transition(About));
+export default withNamespaces('default')(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Transition(About))
+);

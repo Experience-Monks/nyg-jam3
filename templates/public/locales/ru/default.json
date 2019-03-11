@@ -1,0 +1,68 @@
+{
+  "pages": {
+    "landing": {
+      "header": "Jam3 фронтенд кодогенератор",
+      "intro": {
+        "title": "Что это?",
+        "description": "Этот генератор включает в себя многие из современных стеков, которые мы используем в Jam3, и реализует многие из лучших практик в наших проектах."
+      },
+      "source": {
+        "title": "Исходный код",
+        "description": "Открытый исходный код вы можете проверить на <a href='https://github.com/Jam3/nyg-jam3' target='_blank'>https://github.com/Jam3/nyg-jam3</a>."
+      }
+    },
+    "about": {
+      "header": "О нас",
+      "homeLink": {
+        "text": "Главная страница"
+      }
+    },
+    "notFound": {
+      "header": "Страница не найдена"
+    }
+  },
+  "menus": {
+    "footer": {
+      "copyright": "",
+      "links": [
+        {
+          "text": "Главная страница",
+          "path": "/"
+        },
+        {
+          "text": "Контакты",
+          "path": "https://www.jam3.com/contact/"
+        },
+        {
+          "text": "Cпециальные возможности",
+          "path": "https://www.jam3.com/accessibility/"
+        }
+      ]
+    },
+    "hamburgerMenu": {
+      "links": [
+        {
+          "text": "Главная страница",
+          "path": "/"
+        },
+        {
+          "text": "О нас",
+          "path": "/about"
+        }
+      ]
+    },
+    "mainNav": {
+      "logoSrc": "static/media/jam3-logo.png",
+      "links": [
+        {
+          "text": "Главная страница",
+          "path": "/"
+        },
+        {
+          "text": "О нас",
+          "path": "/about"
+        }
+      ]
+    }
+  }
+}

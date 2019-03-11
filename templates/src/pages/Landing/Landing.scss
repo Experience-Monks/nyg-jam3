@@ -21,19 +21,4 @@
   &-intro {
     font-size: large;
   }
-
-  &-resources {
-    .container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-
-      .resource {
-        margin: px-to-rem(5);
-        border: 1px solid $black;
-        padding: px-to-rem(10);
-        text-decoration: none;
-      }
-    }
-  }
 }

@@ -1,0 +1,68 @@
+{
+  "pages": {
+    "landing": {
+      "header": "Jam3 Frontend Scaffolding",
+      "intro": {
+        "title": "What is it?",
+        "description": "This generator includes many of the modern stack we use internally at Jam3 and implements many of the best practices are in our projects."
+      },
+      "source": {
+        "title": "Source code",
+        "description": "The source code of the generator is open source, you can check it out on <a href='https://github.com/Jam3/nyg-jam3' target='_blank'>https://github.com/Jam3/nyg-jam3</a>."
+      }
+    },
+    "about": {
+      "header": "About",
+      "homeLink": {
+        "text": "Home"
+      }
+    },
+    "notFound": {
+      "header": "Not Found"
+    }
+  },
+  "menus": {
+    "footer": {
+      "copyright": "",
+      "links": [
+        {
+          "text": "Home",
+          "path": "/"
+        },
+        {
+          "text": "Contact",
+          "path": "https://www.jam3.com/contact/"
+        },
+        {
+          "text": "Accessibility",
+          "path": "https://www.jam3.com/accessibility/"
+        }
+      ]
+    },
+    "hamburgerMenu": {
+      "links": [
+        {
+          "text": "Home",
+          "path": "/"
+        },
+        {
+          "text": "About",
+          "path": "/about"
+        }
+      ]
+    },
+    "mainNav": {
+      "logoSrc": "../assets/images/jam3-logo.png",
+      "links": [
+        {
+          "text": "Home",
+          "path": "/"
+        },
+        {
+          "text": "About",
+          "path": "/about"
+        }
+      ]
+    }
+  }
+}
