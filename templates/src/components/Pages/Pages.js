@@ -24,7 +24,7 @@ const Pages = ({ location, ...props }) => {
               <Switch location={location}>
                 <Route exact path={routeKeys.Landing} render={() => <Landing transitionState={state} />} />
                 <Route exact path={routeKeys.About} render={() => <About transitionState={state} />} />
-                <Route component={NotFound} />
+                <Route render={() => <NotFound />} />
               </Switch>
             </Suspense>
           )}
