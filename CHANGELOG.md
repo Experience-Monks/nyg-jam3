@@ -1,5 +1,11 @@
 # Changelog
 
+## Update nyg core v5.0.2 (February 27, 2019)
+#### :nail_care: Enhancement
+* Addeed body lock scroll and page scroll utilities
+  * [PR #230](https://github.com/Jam3/nyg-jam3/pull/230)
+
+
 ## Update nyg core v5.0.1 (January 17, 2019)
 #### :nail_care: Enhancement
 

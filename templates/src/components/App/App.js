@@ -10,7 +10,6 @@ import checkProps from '@jam3/react-check-extra-props';
 import 'default-passive-events';
 
 import Pages from '../../components/Pages/Pages';
-import Preloader from '../../components/Preloader/Preloader';
 import PrefetchLink from '../../components/PrefetchLink/PrefetchLink';
 
 import { setPreviousRoute, setWindowSize, setLayout, batchActions } from '../../redux/modules/app';
@@ -22,6 +21,8 @@ import hamburgerNavData from '../../data/hamburger-menu';
 import footerData from '../../data/footer';
 import rotateScreenData from '../../data/rotate-screen';
 import layout from '../../util/layout';
+import lockBodyScroll from '../../util/lock-body-scroll';
+import preloadAssets from '../../data/preload-assets';
 
 const LazyRotateScreen =
   device.isMobile &&
@@ -30,6 +31,8 @@ const LazyRotateScreen =
       return { ...module, default: module.RotateScreen };
     })
   );
+
+const LazyPreloader = lazy(() => import('../../components/Preloader/Preloader'));
 
 class App extends React.PureComponent {
   componentDidMount() {
@@ -46,6 +49,10 @@ class App extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (prevProps.isMobileMenuOpen !== this.props.isMobileMenuOpen) {
+      this.props.isMobileMenuOpen ? lockBodyScroll.lock() : lockBodyScroll.unlock();
+    }
+
     if (prevProps.location.pathname !== this.props.location.pathname) {
       this.props.setPreviousRoute(prevProps.location.pathname);
     }
@@ -89,14 +96,14 @@ class App extends React.PureComponent {
             <Footer {...footerData} linkComponent={PrefetchLink} />
           </Fragment>
         )}
-        {device.isMobile && (
-          <Suspense fallback={<div className="loading" />}>
-            <LazyRotateScreen {...rotateScreenData} />
-          </Suspense>
-        )}
-        <Transition in={!this.props.ready} timeout={0}>
-          {state => state !== 'exited' && <Preloader transitionState={state} />}
-        </Transition>
+        <Suspense fallback={<div className="loading" />}>
+          {device.isMobile && <LazyRotateScreen {...rotateScreenData} />}
+          {Boolean(preloadAssets.length) && (
+            <Transition in={!this.props.ready} timeout={0}>
+              {state => state !== 'exited' && <LazyPreloader transitionState={state} />}
+            </Transition>
+          )}
+        </Suspense>
       </Fragment>
     );
   }
@@ -105,7 +112,7 @@ class App extends React.PureComponent {
 const mapStateToProps = state => {
   return {
     layout: state.layout,
-    ready: state.preloader.ready,
+    ready: preloadAssets.length ? state.preloader.ready : true,
     isMobileMenuOpen: state.isMobileMenuOpen
   };
 };
