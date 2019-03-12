@@ -11,6 +11,8 @@ import './Landing.scss';
 import Transition from '../PagesTransitionWrapper';
 import { setLandingLoaded } from '../../redux/modules/landing';
 import animate from '../../util/gsap-animate';
+import sanitize from '../../util/sanitizer';
+import i18PropsList from '../../data/i18n-props-list';
 
 class Landing extends React.PureComponent {
   componentDidMount() {
@@ -57,7 +59,7 @@ class Landing extends React.PureComponent {
         </section>
         <section className="Landing-source">
           <h2>{t('pages.landing.source.title')}</h2>
-          <div dangerouslySetInnerHTML={{ __html: t('pages.landing.source.description') }} />
+          <div dangerouslySetInnerHTML={{ __html: sanitize(t('pages.landing.source.description')) }} />
         </section>
       </section>
     );
@@ -72,7 +74,7 @@ Landing.propTypes = checkProps(
     loaded: PropTypes.bool,
     setLandingLoaded: PropTypes.func
   },
-  ['tReady', 'i18n', 't', 'lng', 'i18nOptions', 'defaultNS', 'reportNS']
+  [...i18PropsList]
 );
 
 Landing.defaultProps = {};

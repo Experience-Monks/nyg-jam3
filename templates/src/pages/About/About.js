@@ -11,6 +11,7 @@ import './About.scss';
 import Transition from '../PagesTransitionWrapper';
 import PrefetchLink from '../../components/PrefetchLink/PrefetchLink';
 import animate from '../../util/gsap-animate';
+import i18PropsList from '../../data/i18n-props-list';
 
 class About extends React.PureComponent {
   constructor(props) {
@@ -61,7 +62,7 @@ About.propTypes = checkProps(
     transitionState: PropTypes.string.isRequired,
     previousRoute: PropTypes.string
   },
-  ['tReady', 'i18n', 't', 'lng', 'i18nOptions', 'defaultNS', 'reportNS']
+  [...i18PropsList]
 );
 
 About.defaultProps = {};

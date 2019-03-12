@@ -7,6 +7,7 @@ import { withNamespaces } from 'react-i18next';
 import './NotFound.scss';
 
 import { ReactComponent as NotFoundIcon } from '../../assets/svg/not-found-icon.svg';
+import i18PropsList from '../../data/i18n-props-list';
 
 const NotFound = props => {
   const componentProps = {
@@ -27,7 +28,7 @@ NotFound.propTypes = checkProps(
   {
     className: PropTypes.string
   },
-  ['tReady', 'i18n', 't', 'lng', 'i18nOptions', 'defaultNS', 'reportNS']
+  [...i18PropsList]
 );
 
 NotFound.defaultProps = {

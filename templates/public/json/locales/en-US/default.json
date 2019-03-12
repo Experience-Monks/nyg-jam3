@@ -52,7 +52,7 @@
       ]
     },
     "mainNav": {
-      "logoSrc": "../assets/images/jam3-logo.png",
+      "logoSrc": "https://www.jam3.com/wp-content/themes/jam3/assets/img/jam3-logo.png",
       "links": [
         {
           "text": "Home",

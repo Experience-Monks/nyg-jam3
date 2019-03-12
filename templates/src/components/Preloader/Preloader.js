@@ -5,6 +5,7 @@ import preloader from 'preloader';
 import noop from 'no-op';
 import wait from '@jam3/wait';
 import checkProps from '@jam3/react-check-extra-props';
+import { withNamespaces } from 'react-i18next';
 
 import './Preloader.scss';
 
@@ -13,15 +14,23 @@ import { ReactComponent as LoaderIcon } from '../../assets/svg/loader.svg';
 import animate from '../../util/gsap-animate';
 import { setProgress, setReady } from '../../redux/modules/preloader';
 import preloadAssets from '../../data/preload-assets';
+import i18PropsList from '../../data/i18n-props-list';
 
 class Preloader extends React.PureComponent {
   async componentDidMount() {
-    await Promise.all([this.setTimer(), this.setLoader()]);
+    this.copyPromise = new Promise(resolve => (this.copyPromiseResolve = resolve));
+    await Promise.all([this.setTimer(), this.setLoader(), this.copyPromise]);
     this.setDone();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevProps.copy && this.props.copy) {
+      this.copyPromiseResolve();
+    }
+  }
+
   animateOut(onComplete) {
-    return animate.to(this.container, 0.3, { autoAlpha: 0, onComplete });
+    return animate.to(this.container, 0, { autoAlpha: 0, onComplete });
   }
 
   async setTimer() {
@@ -29,13 +38,15 @@ class Preloader extends React.PureComponent {
   }
 
   setLoader() {
-    return new Promise((resolve, reject) => {
-      this.loader = preloader(this.props.options);
-      this.props.assets.forEach(file => this.add(file));
-      this.loader.on('progress', this.onProgress);
-      this.loader.on('complete', () => this.onComplete(resolve));
-      this.load();
-    });
+    return this.props.assets.length
+      ? new Promise((resolve, reject) => {
+          this.loader = preloader(this.props.options);
+          this.props.assets.forEach(file => this.add(file));
+          this.loader.on('progress', this.onProgress);
+          this.loader.on('complete', () => this.onComplete(resolve));
+          this.load();
+        })
+      : Promise.resolve();
   }
 
   add(url, options = {}) {
@@ -69,16 +80,20 @@ class Preloader extends React.PureComponent {
   }
 }
 
-Preloader.propTypes = checkProps({
-  className: PropTypes.string,
-  assets: PropTypes.array.isRequired,
-  setProgress: PropTypes.func.isRequired,
-  setReady: PropTypes.func.isRequired,
-  minDisplayTime: PropTypes.number,
-  options: PropTypes.object,
-  progress: PropTypes.number,
-  transitionState: PropTypes.string
-});
+Preloader.propTypes = checkProps(
+  {
+    className: PropTypes.string,
+    assets: PropTypes.array.isRequired,
+    setProgress: PropTypes.func.isRequired,
+    setReady: PropTypes.func.isRequired,
+    minDisplayTime: PropTypes.number,
+    options: PropTypes.object,
+    progress: PropTypes.number,
+    transitionState: PropTypes.string,
+    copy: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+  },
+  [...i18PropsList]
+);
 
 Preloader.defaultProps = {
   className: '',
@@ -94,9 +109,11 @@ Preloader.defaultProps = {
 };
 
 const mapStateToProps = (state, ownProps) => {
+  const copy = ownProps.i18n.store.data[state.i18next.language];
   return {
     progress: state.preloader.progress,
-    assets: preloadAssets
+    assets: preloadAssets || [],
+    copy: copy ? copy[state.i18next.defaultNS] : null
   };
 };
 
@@ -107,9 +124,11 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  undefined,
-  { withRef: true }
-)(Preloader);
+export default withNamespaces('default')(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    undefined,
+    { withRef: true }
+  )(Preloader)
+);

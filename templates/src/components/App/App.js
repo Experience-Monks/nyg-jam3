@@ -21,7 +21,7 @@ import settings from '../../data/settings';
 import rotateScreenData from '../../data/rotate-screen';
 import layout from '../../util/layout';
 import lockBodyScroll from '../../util/lock-body-scroll';
-import preloadAssets from '../../data/preload-assets';
+import i18PropsList from '../../data/i18n-props-list';
 
 const LazyRotateScreen =
   device.isMobile &&
@@ -33,7 +33,7 @@ const LazyRotateScreen =
 
 const LazyPreloader = lazy(() => import('../../components/Preloader/Preloader'));
 
-class App extends React.PureComponent {
+class App extends React.Component {
   componentDidMount() {
     // Setup performance measure tooling
     if (process.env.NODE_ENV !== 'production') {
@@ -59,6 +59,10 @@ class App extends React.PureComponent {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize);
+  }
+
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    return nextProps.copy;
   }
 
   handleResize = debounce(() => {
@@ -99,7 +103,7 @@ class App extends React.PureComponent {
         )}
         <Suspense fallback={<div className="loading" />}>
           {device.isMobile && <LazyRotateScreen {...rotateScreenData} />}
-          {Boolean(preloadAssets.length) && (
+          {!this.props.ready && (
             <Transition in={!this.props.ready} timeout={0}>
               {state => state !== 'exited' && <LazyPreloader transitionState={state} />}
             </Transition>
@@ -114,9 +118,9 @@ const mapStateToProps = (state, props) => {
   const copy = props.i18n.store.data[state.i18next.language];
   return {
     layout: state.layout,
-    ready: preloadAssets.length ? state.preloader.ready : true,
+    ready: state.preloader.ready,
     isMobileMenuOpen: state.isMobileMenuOpen,
-    copy: copy ? copy[state.i18next.defaultNS] : {},
+    copy: copy ? copy[state.i18next.defaultNS] : null,
     lang: state.i18next.language
   };
 };
@@ -140,7 +144,7 @@ App.propTypes = checkProps(
     copy: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     lang: PropTypes.string
   },
-  ['tReady', 'i18n', 't', 'lng', 'i18nOptions', 'defaultNS', 'reportNS']
+  [...i18PropsList]
 );
 
 App.defaultProps = {};
