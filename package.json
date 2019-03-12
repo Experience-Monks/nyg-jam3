@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node test/",
     "linters": "npm run js-lint",
-    "js-lint": "eslint './*.js' -c ./.eslintrc --quiet"
+    "js-lint": "eslint './*.js' -c ./.eslintrc --quiet",
+    "release": "standard-version"
   },
   "husky": {
     "hooks": {
@@ -36,7 +37,8 @@
   },
   "homepage": "https://github.com/Jam3/nyg-jam3#readme",
   "dependencies": {
-    "nyg": "^2.8.1"
+    "nyg": "^2.8.1",
+    "standard-version": "^5.0.1"
   },
   "engines": {
     "node": ">=10.15.0",
