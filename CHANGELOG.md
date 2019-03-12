@@ -1,6 +1,4 @@
-# Changelog
-
-## Update nyg core v5.0.2 (February 27, 2019)
+## v5.0.2 (February 27, 2019)
 #### :nail_care: Enhancement
 
 * Updated redux dev tools
