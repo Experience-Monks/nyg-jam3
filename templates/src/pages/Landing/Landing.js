@@ -11,7 +11,7 @@ import './Landing.scss';
 import Transition from '../PagesTransitionWrapper';
 import { setLandingLoaded } from '../../redux/modules/landing';
 import animate from '../../util/gsap-animate';
-import sanitize from '../../util/sanitizer';
+import sanitizer from '../../util/sanitizer';
 import i18PropsList from '../../data/i18n-props-list';
 
 class Landing extends React.PureComponent {
@@ -59,7 +59,7 @@ class Landing extends React.PureComponent {
         </section>
         <section className="Landing-source">
           <h2>{t('pages.landing.source.title')}</h2>
-          <div dangerouslySetInnerHTML={{ __html: sanitize(t('pages.landing.source.description')) }} />
+          <div dangerouslySetInnerHTML={{ __html: sanitizer(t('pages.landing.source.description')) }} />
         </section>
       </section>
     );
