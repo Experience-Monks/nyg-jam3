@@ -5,8 +5,13 @@ import dompurify from 'dompurify';
  *
  * @param {string} [dirtyInput=''] - Input to sanitize
  */
+
+const config = {
+  ADD_ATTR: ['target']
+};
+
 function sanitizer(dirtyInput, ...options) {
-  return dompurify.sanitize(dirtyInput, options);
+  return dompurify.sanitize(dirtyInput, { ...config, ...options });
 }
 
 export default sanitizer;
