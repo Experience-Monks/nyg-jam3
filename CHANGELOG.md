@@ -1,10 +1,21 @@
-# Changelog
-
-## Update nyg core v5.0.2 (February 27, 2019)
+## v5.0.2 (February 27, 2019)
 #### :nail_care: Enhancement
-* Addeed body lock scroll and page scroll utilities
-  * [PR #230](https://github.com/Jam3/nyg-jam3/pull/230)
 
+* Updated redux dev tools
+  * [PR #239](https://github.com/Jam3/nyg-jam3/pull/239)
+* Added Prefetch link (prefetches section chunk on hover)
+  * [PR #237](https://github.com/Jam3/nyg-jam3/pull/237)
+* Lazy loaded Preloader
+  * [PR #236](https://github.com/Jam3/nyg-jam3/pull/236)
+* Added body lock scroll and page scroll utilities
+  * [PR #230](https://github.com/Jam3/nyg-jam3/pull/230)
+  
+#### :bug: Bug Fix
+
+* Fix for Not Found page
+  * [PR #233](https://github.com/Jam3/nyg-jam3/pull/231)
+* Fix for updated Storybook
+  * [PR #233](https://github.com/Jam3/nyg-jam3/pull/233)
 
 ## Update nyg core v5.0.1 (January 17, 2019)
 #### :nail_care: Enhancement
