@@ -30,7 +30,7 @@ class Preloader extends React.PureComponent {
   }
 
   animateOut(onComplete) {
-    return animate.to(this.container, 0, { autoAlpha: 0, onComplete });
+    return animate.to(this.container, 0.3, { autoAlpha: 0, onComplete });
   }
 
   async setTimer() {
