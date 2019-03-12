@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import { BaseLink } from '@jam3/react-ui';
 import prefetch from 'inject-prefetch';
 import checkProps from '@jam3/react-check-extra-props';
-import fileExtension from 'file-extension';
 
 import routeKeys from '../../routes/keys';
 
@@ -12,11 +11,15 @@ import './PrefetchLink.scss';
 
 const PrefetchLink = React.memo(
   React.forwardRef((props, ref) => {
+    function getFileExtension2(filename) {
+      return /[.]/.exec(filename) ? /[^.]+$/.exec(filename)[0] : undefined;
+    }
+
     function onMouseEnter() {
       props.onMouseEnter && props.onMouseEnter();
 
       if (!props.download) {
-        if (fileExtension(props.link)) {
+        if (getFileExtension2(props.link)) {
           // prefetch a resource
           prefetch(props.link);
         } else {
