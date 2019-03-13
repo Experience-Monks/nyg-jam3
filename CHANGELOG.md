@@ -1,4 +1,5 @@
 ## v5.0.2 (February 27, 2019)
+
 #### :nail_care: Enhancement
 
 * Updated redux dev tools
@@ -7,7 +8,7 @@
   * [PR #237](https://github.com/Jam3/nyg-jam3/pull/237)
 * Lazy loaded Preloader
   * [PR #236](https://github.com/Jam3/nyg-jam3/pull/236)
-* Added body lock scroll and page scroll utilities
+* Addeed body lock scroll and page scroll utilities
   * [PR #230](https://github.com/Jam3/nyg-jam3/pull/230)
   
 #### :bug: Bug Fix
@@ -17,30 +18,33 @@
 * Fix for updated Storybook
   * [PR #233](https://github.com/Jam3/nyg-jam3/pull/233)
 
-## Update nyg core v5.0.1 (January 17, 2019)
+## v5.0.1 (January 17, 2019)
+
 #### :nail_care: Enhancement
 
 * Remove hard-coded utilities and replacing it with npm modules
+
   * [PR #217](https://github.com/Jam3/nyg-jam3/pull/217)
   * [PR #222](https://github.com/Jam3/nyg-jam3/pull/222)
   * [PR #225](https://github.com/Jam3/nyg-jam3/pull/225)
   * [PR #226](https://github.com/Jam3/nyg-jam3/pull/226)
 
 * Update internal tools
+
   * [PR #224](https://github.com/Jam3/nyg-jam3/pull/224)
   * [PR #223](https://github.com/Jam3/nyg-jam3/pull/223)
-  
+
 #### :bug: Bug Fix
 
 * Fix stylelint error
 
   * [PR #219](https://github.com/Jam3/nyg-jam3/pull/219)
-  
+
 * Fix hot loader issue
 
   * [PR #221](https://github.com/Jam3/nyg-jam3/pull/221)
 
-## Update nyg core v5.0.0 (January 16, 2019)
+## v5.0.0 (January 16, 2019)
 
 The majority of the changes are related to the core of nyg-jam3
 
@@ -100,7 +104,7 @@ Thanks to @DonghyukJacobJang, @namniak, @alemesa, @iranreyes
 
 ---
 
-## Breakpoints and CSS fonts 1.0.0 (March 22, 2018)
+## v1.0.0 (March 22, 2018)
 
 Better way to handle breakpoints. Now you will configure the breakpoints that you want for the app and start using those breakpoints with a better semantic.
 Read more in https://github.com/eduardoboucas/include-media
@@ -120,32 +124,3 @@ https://github.com/Jam3/nyg-jam3/pull/50
 ### Thanks
 
 Thanks to @n0wak
-
----
-
-## [TEMPLATE] 1.0.0 (March 22, 2018)
-
-Description
-
-#### :bug: Bug Fix
-
-* Title
-  * [#commit-number](link)
-
-#### :nail_care: Enhancement
-
-* Title
-  * [#commit-number](link)
-
-#### :memo: Documentation
-
-* Title
-  * [#commit-number](link)
-
-#### :house: Internal
-
-* Title
-
-  * [#commit-number](link)
-
-### Thanks

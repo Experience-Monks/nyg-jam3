@@ -1,6 +1,6 @@
-const nyg = require('nyg');
-const exec = require('child_process').exec;
 const fs = require('fs');
+const exec = require('child_process').exec;
+const nyg = require('nyg');
 
 // Generator configuration
 const globs = [
@@ -39,7 +39,7 @@ function onPostInstall() {
 function updateNvmVersion() {
   return new Promise((resolve, reject) => {
     exec(`node -v > ${generator.cwd}/.nvmrc`, function(err) {
-      if (err) return reject();
+      if (err) return reject(new Error());
       resolve();
     });
   });
@@ -66,7 +66,7 @@ function renameGitIgnore() {
 
   return new Promise((resolve, reject) => {
     fs.rename(gitIgnorePath, generatedGitIgnore, function(err) {
-      if (err) return reject();
+      if (err) return reject(new Error());
       resolve();
     });
   });
@@ -85,7 +85,7 @@ function _updateNodeJSRequiredVersion(packagePath, packageJson) {
 
   return new Promise((resolve, reject) => {
     fs.writeFile(packagePath, JSON.stringify(packageJson, null, 2), function(err) {
-      if (err) return reject();
+      if (err) return reject(new Error());
       resolve();
     });
   });

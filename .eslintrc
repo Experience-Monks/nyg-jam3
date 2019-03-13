@@ -1,16 +1,5 @@
 {
-  "env": {
-    "browser": true,
-    "commonjs": true,
-    "es6": true,
-    "node": true
-  },
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module"
-  },
-  "plugins": ["prettier"],
-  "extends": ["eslint:recommended", "prettier"],
+  "extends": ["jam3"],
   "rules": {
     "prettier/prettier": "warn",
     "no-console": "off",
