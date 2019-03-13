@@ -24,7 +24,7 @@ export default function configureI18n({ i18nextConfig, redux }) {
       },
       detection: {
         // order and from where user language should be detected
-        //order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
+        // order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
 
         lookupRedux: redux.lookupRedux,
         cacheUserLanguageRedux: redux.cacheUserLanguageRedux,

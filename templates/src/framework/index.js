@@ -23,6 +23,8 @@ export default function() {
   const i18nextConfig = {
     language: null,
     whitelist: ['en-US', 'ru'],
+    nonExplicitWhitelist: true,
+    lowerCaseLng: true,
     ns: ['default'],
     defaultNS: 'default'
   };
