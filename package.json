@@ -6,12 +6,13 @@
   "scripts": {
     "test": "node test/",
     "linters": "npm run js-lint",
-    "js-lint": "eslint './*.js' -c ./.eslintrc --quiet"
+    "js-lint": "eslint './*.js' -c ./.eslintrc --quiet",
+    "audit": "audit-ci --high"
   },
   "husky": {
     "hooks": {
-      "pre-push": "echo 'Pre-push checks...' && npm run js-lint",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "pre-commit": "echo 'Pre-commit checks...' && lint-staged",
+      "pre-push": "echo 'Pre-push checks...' && npm run linters && npm run audit"
     }
   },
   "repository": {
@@ -37,7 +38,7 @@
   },
   "homepage": "https://github.com/Jam3/nyg-jam3#readme",
   "dependencies": {
-    "node-emoji": "^1.10.0",
+    "audit-ci": "1.3.1",
     "nyg": "^2.8.1"
   },
   "engines": {
@@ -52,12 +53,25 @@
     "nyg"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^7.5.2",
-    "@commitlint/config-conventional": "^7.5.0",
-    "eslint": "^4.19.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.1",
+    "eslint-config-jam3": "^2.0.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
     "husky": "^1.3.1",
-    "prettier": "^1.11.1"
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   }
 }
