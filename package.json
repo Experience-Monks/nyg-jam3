@@ -10,7 +10,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "echo 'Pre-push checks...' && npm run js-lint"
+      "pre-push": "echo 'Pre-push checks...' && npm run js-lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "repository": {
@@ -51,6 +52,8 @@
     "nyg"
   ],
   "devDependencies": {
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
     "eslint": "^4.19.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
