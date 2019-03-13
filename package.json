@@ -37,6 +37,7 @@
   },
   "homepage": "https://github.com/Jam3/nyg-jam3#readme",
   "dependencies": {
+    "node-emoji": "^1.10.0",
     "nyg": "^2.8.1"
   },
   "engines": {
