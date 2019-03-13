@@ -1,9 +1,0 @@
-diff a/templates/src/components/App/App.js b/templates/src/components/App/App.js	(rejected hunks)
-@@ -129 +129,6 @@ App.defaultProps = {};
--export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
-+export default withRouter(
-+  connect(
-+    mapStateToProps,
-+    mapDispatchToProps
-+  )(App)
-+);

@@ -64,7 +64,7 @@ const composedEnhancers = composeWithDevTools(...enhancers);
 // Configure Store
 export const history = createHistory();
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState = initialState) {
   store = createStore(createInitialReducer(), initialState, composedEnhancers);
   return store;
 }
