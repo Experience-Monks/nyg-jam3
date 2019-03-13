@@ -30,7 +30,7 @@ nyg nyg-jam3
 
 1.  Review `/index.js`, everything is there
 
-If you are looking to contribute with the generator is important to read the [Developer Contribution Guide](https://github.com/Jam3/nyg-jam3/blob/master/CONTRIBUTING.md)
+If you are looking to contribute to the generator it is important to read the [Developer Contribution Guide](https://github.com/Jam3/nyg-jam3/blob/master/CONTRIBUTING.md)
 
 ## Main scripts
 
@@ -52,7 +52,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the random hash strings in order to avoid server-side caching. (example: main.df8fsdfs.js)<br>
 By default, it also [includes a service worker](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#making-a-progressive-web-app) so that your app loads from local cache on future visits.
 
-Before create the production build make sure removing everything you don't need. There are many samples in the generator to avoid prompting at the beginning of the project.
+Before creating the production build, make sure removing everything you don't need. There are many samples in the generator to avoid prompting at the beginning of the project.
 
 Your app is ready to be deployed.
 
@@ -65,7 +65,7 @@ By default, it runs tests on the files that have changed since the last commit.
 
 ### `npm run release`
 
-To releasing new versions we are using [standard-version](https://github.com/conventional-changelog/standard-version).
+To release new versions we are using [standard-version](https://github.com/conventional-changelog/standard-version).
 
 Steps:
 
@@ -77,6 +77,6 @@ Steps:
 
 ## Developer Guide
 
-We are using `react-scripts` as a base; you can checkout their [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md). Everything here applies the generator.
+We are using `react-scripts` as a base. You can checkout their [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md). Everything here applies to the generator.
 
-You can checkout our [Developer Guides](https://github.com/Jam3/nyg-jam3/blob/master/templates/docs/DEVELOPER_GUIDE.md) to know more about the features and customizations.
+You can check out our [Developer Guides](https://github.com/Jam3/nyg-jam3/blob/master/templates/docs/DEVELOPER_GUIDE.md) to know more about the features and customizations.
