@@ -64,6 +64,7 @@
     "lodash.debounce": "4.0.8",
     "no-op": "1.0.3",
     "normalize.css": "8.0.1",
+    "polyfill-io-feature-detection": "1.1.15",
     "preloader": "4.0.2",
     "react": "16.7.0",
     "react-dom": "16.7.0",

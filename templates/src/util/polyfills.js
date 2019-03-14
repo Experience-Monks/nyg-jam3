@@ -1,9 +1,16 @@
-// Polyfills index
+import { polyfillLoader } from 'polyfill-io-feature-detection';
+import noop from 'no-op';
 
-// IE 10
-// import 'core-js/es6/map';
-// import 'core-js/es6/set';
+const polyfillsList = [];
 
-// IE 9
-// import 'raf/polyfill';
-// import 'classlist.js';
+/**
+ * Preload only required polyfills for features that aren't supported by the browser
+ *
+ * @param {function} [onCompleted=noop] - on load callback
+ */
+export default function(onCompleted = noop) {
+  polyfillLoader({
+    features: polyfillsList.join(),
+    onCompleted
+  });
+}
