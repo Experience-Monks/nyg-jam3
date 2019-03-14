@@ -54,7 +54,6 @@ export default function configureI18n({ i18nextConfig, redux }) {
         wait: false
       },
       nonExplicitWhitelist: true,
-      lowerCaseLng: true,
       load: 'currentOnly'
     });
 
