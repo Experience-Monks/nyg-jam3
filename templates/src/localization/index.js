@@ -52,7 +52,10 @@ export default function configureI18n({ i18nextConfig, redux }) {
       },
       react: {
         wait: false
-      }
+      },
+      nonExplicitWhitelist: true,
+      lowerCaseLng: true,
+      load: 'currentOnly'
     });
 
   return i18n;

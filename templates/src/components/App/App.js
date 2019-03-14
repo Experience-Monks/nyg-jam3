@@ -33,7 +33,14 @@ const LazyRotateScreen =
 
 const LazyPreloader = lazy(() => import('../../components/Preloader/Preloader'));
 
-class App extends React.Component {
+class App extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      copy: props.copy
+    };
+  }
+
   componentDidMount() {
     // Setup performance measure tooling
     if (process.env.NODE_ENV !== 'production') {
@@ -48,6 +55,10 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (prevProps.copy !== this.props.copy && this.props.copy) {
+      this.setState({ copy: this.props.copy });
+    }
+
     if (prevProps.isMobileMenuOpen !== this.props.isMobileMenuOpen) {
       this.props.isMobileMenuOpen ? lockBodyScroll.lock() : lockBodyScroll.unlock();
     }
@@ -61,10 +72,6 @@ class App extends React.Component {
     window.removeEventListener('resize', this.handleResize);
   }
 
-  shouldComponentUpdate(nextProps, nextState, nextContext) {
-    return nextProps.copy;
-  }
-
   handleResize = debounce(() => {
     this.props.setLayout(window.innerWidth, window.innerHeight, layout.all);
   }, settings.resizeDebounceTime);
@@ -75,7 +82,7 @@ class App extends React.Component {
         {this.props.ready && (
           <Fragment>
             <MainTopNav
-              {...this.props.copy.menus.mainNav}
+              {...this.state.copy.menus.mainNav}
               showHamburger={!this.props.layout.large}
               isMobileMenuOpen={this.props.isMobileMenuOpen}
               setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
@@ -88,7 +95,7 @@ class App extends React.Component {
                   onClick={() => this.props.setIsMobileMenuOpen(false)}
                 />
                 <HamburgerMenu
-                  {...this.props.copy.menus.hamburgerMenu}
+                  {...this.state.copy.menus.hamburgerMenu}
                   isMobileMenuOpen={this.props.isMobileMenuOpen}
                   setIsMobileMenuOpen={this.props.setIsMobileMenuOpen}
                   linkComponent={PrefetchLink}
@@ -96,7 +103,7 @@ class App extends React.Component {
               </Fragment>
             )}
             <Pages />
-            <Footer {...this.props.copy.menus.footer} linkComponent={PrefetchLink}>
+            <Footer {...this.state.copy.menus.footer} linkComponent={PrefetchLink}>
               <LanguageSwitcher lang={this.props.lang} />
             </Footer>
           </Fragment>
@@ -114,14 +121,14 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  const copy = props.i18n.store.data[state.i18next.language];
+const mapStateToProps = (state, ownProps) => {
+  const copy = ownProps.i18n.getDataByLanguage(ownProps.i18n.language);
   return {
     layout: state.layout,
     ready: state.preloader.ready,
     isMobileMenuOpen: state.isMobileMenuOpen,
-    copy: copy ? copy[state.i18next.defaultNS] : null,
-    lang: state.i18next.language
+    copy: copy ? copy['default'] : null,
+    lang: ownProps.i18n.language
   };
 };
 

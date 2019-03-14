@@ -109,7 +109,7 @@ Preloader.defaultProps = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const copy = ownProps.i18n.store.data[state.i18next.language];
+  const copy = ownProps.i18n.getDataByLanguage(ownProps.i18n.language);
   return {
     progress: state.preloader.progress,
     assets: preloadAssets || [],

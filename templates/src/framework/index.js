@@ -22,9 +22,7 @@ export default function() {
   // configure localization
   const i18nextConfig = {
     language: null,
-    whitelist: ['en-US', 'ru'],
-    nonExplicitWhitelist: true,
-    lowerCaseLng: true,
+    whitelist: ['en', 'ru'],
     ns: ['default'],
     defaultNS: 'default'
   };
