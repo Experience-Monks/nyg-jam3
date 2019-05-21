@@ -2,8 +2,21 @@
 
 #### :nail_care: Enhancement
 
+* Updated redux dev tools
+  * [PR #239](https://github.com/Jam3/nyg-jam3/pull/239)
+* Added Prefetch link (prefetches section chunk on hover)
+  * [PR #237](https://github.com/Jam3/nyg-jam3/pull/237)
+* Lazy loaded Preloader
+  * [PR #236](https://github.com/Jam3/nyg-jam3/pull/236)
 * Addeed body lock scroll and page scroll utilities
   * [PR #230](https://github.com/Jam3/nyg-jam3/pull/230)
+  
+#### :bug: Bug Fix
+
+* Fix for Not Found page
+  * [PR #233](https://github.com/Jam3/nyg-jam3/pull/231)
+* Fix for updated Storybook
+  * [PR #233](https://github.com/Jam3/nyg-jam3/pull/233)
 
 ## v5.0.1 (January 17, 2019)
 
@@ -31,7 +44,7 @@
 
   * [PR #221](https://github.com/Jam3/nyg-jam3/pull/221)
 
-# v5.0.0 (January 16, 2019)
+## v5.0.0 (January 16, 2019)
 
 The majority of the changes are related to the core of nyg-jam3
 
@@ -91,7 +104,7 @@ Thanks to @DonghyukJacobJang, @namniak, @alemesa, @iranreyes
 
 ---
 
-# v1.0.0 (March 22, 2018)
+## v1.0.0 (March 22, 2018)
 
 Better way to handle breakpoints. Now you will configure the breakpoints that you want for the app and start using those breakpoints with a better semantic.
 Read more in https://github.com/eduardoboucas/include-media
