@@ -56,8 +56,8 @@ function write() {
     const files =
       type === 'page'
         ? [
-            template(path.resolve(__dirname, 'templates/Page/Page.js'), path.resolve(dir, `${name}.js`)),
-            template(path.resolve(__dirname, 'templates/Page/Page.scss'), path.resolve(dir, `${name}.scss`))
+            template(path.resolve(__dirname, 'templates/page/Page.js'), path.resolve(dir, `${name}.js`)),
+            template(path.resolve(__dirname, 'templates/page/Page.scss'), path.resolve(dir, `${name}.scss`))
           ]
         : [
             template(path.resolve(__dirname, 'templates/' + type + '/Component.js'), path.resolve(dir, `${name}.js`)),
