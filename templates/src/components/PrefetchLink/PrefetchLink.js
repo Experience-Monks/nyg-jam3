@@ -19,7 +19,7 @@ const PrefetchLink = React.memo(
       props.onMouseEnter && props.onMouseEnter();
 
       if (!props.download) {
-        if (getFileExtension2(props.link)) {
+        if (getFileExtension(props.link)) {
           // prefetch a resource
           prefetch(props.link);
         } else {
