@@ -11,7 +11,7 @@ import './PrefetchLink.scss';
 
 const PrefetchLink = React.memo(
   React.forwardRef((props, ref) => {
-    function getFileExtension2(filename) {
+    function getFileExtension(filename) {
       return /[.]/.exec(filename) ? /[^.]+$/.exec(filename)[0] : undefined;
     }
 
