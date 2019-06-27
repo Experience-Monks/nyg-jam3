@@ -1,5 +1,3 @@
-module.exports = (baseConfig, env, defaultConfig) => {
-  const config = Object.assign({}, defaultConfig);
-  // Extend it as you need.
+module.exports = ({ config, mode }) => {
   return config;
-};
+}
