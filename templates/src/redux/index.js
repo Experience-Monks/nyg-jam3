@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { connectRouter } from 'connected-react-router';
 import createHistory from 'history/createBrowserHistory';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
@@ -17,14 +17,14 @@ const initialState = {};
 const enhancers = [];
 
 // Reducers
-const defaultReducers = {
+const defaultReducers = history => ({
+  router: connectRouter(history),
   preloader: preloaderReducer,
   windowSize: windowSizeReducer,
   previousRoute: previousRouteReducer,
   layout: layoutReducer,
-  isMobileMenuOpen: mainNavReducer,
-  routing: routerReducer
-};
+  isMobileMenuOpen: mainNavReducer
+});
 
 const enableBatchActions = reducers => {
   return function(state, action) {
@@ -47,9 +47,12 @@ const combine = reducers => {
   return enableBatchActions(combineReducers(reducers));
 };
 
+// Create history
+export const history = createHistory();
+
 function createInitialReducer() {
-  reducerRegistry.reducers = defaultReducers;
-  return combine(defaultReducers);
+  reducerRegistry.reducers = defaultReducers(history);
+  return combine(defaultReducers(history));
 }
 
 reducerRegistry.setChangeListener(reducers => {
@@ -64,7 +67,5 @@ function configureStore() {
   store = createStore(createInitialReducer(), initialState, composedEnhancers);
   return store;
 }
-
-export const history = createHistory();
 
 export default configureStore();
