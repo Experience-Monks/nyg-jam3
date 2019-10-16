@@ -5,8 +5,7 @@
  * import animate from '../../util/gsap-animate';
  * animate.to(this.container, 0.3, { autoAlpha: 1, delay: 0.2 }).then(()=>{});
  */
-import { TweenLite, CSSPlugin } from 'gsap';
-import { ScrollToPlugin } from 'gsap/src/uncompressed/plugins/ScrollToPlugin';
+import { TweenLite, CSSPlugin, ScrollToPlugin } from 'gsap/all';
 
 const animate = require('gsap-promisify')(Promise, TweenLite);
 
