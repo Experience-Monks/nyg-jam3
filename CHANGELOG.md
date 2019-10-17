@@ -1,7 +1,12 @@
-## v5.0.2 (February 27, 2019)
+## v5.1.0 (October 17, 2019)
 
 #### :nail_care: Enhancement
+* Fix broken storybook
+* Fix vulnerabilities
+* React + React Redux & other packages upgraded
+  * [PR #249](https://github.com/Jam3/nyg-jam3/pull/249/files)
 
+## v5.0.2 (February 27, 2019)
 * Updated redux dev tools
   * [PR #239](https://github.com/Jam3/nyg-jam3/pull/239)
 * Added Prefetch link (prefetches section chunk on hover)
