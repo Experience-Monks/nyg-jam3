@@ -5,6 +5,11 @@
       "block-no-empty": null,
       "declaration-bang-space-before": null,
       "declaration-block-trailing-semicolon": "always",
-      "value-list-comma-newline-after": null
+      "value-list-comma-newline-after": null,
+      "block-closing-brace-newline-after": null,
+      "at-rule-no-unknown":[true, {
+        "ignoreAtRules": ["function", "if", "else", "each", "include", "mixin", "while", "return", "import", "media", "font-face", "keyframes"]
+      }],
+      "at-rule-whitelist": ["function", "if", "else", "each", "include", "mixin", "while", "return", "import", "media", "font-face", "keyframes"]
     }
-  }
+}

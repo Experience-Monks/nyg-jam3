@@ -5,7 +5,7 @@ import 'default-passive-events';
 
 import { batchActions, setWindowSize, setLayout } from '../src/redux/modules/app';
 
-import settings from '../src/data/settings';
+import { resizeDebounceTime } from '../src/data/settings';
 import layout from '../src/util/layout';
 
 class BreakpointWrap extends React.PureComponent {
@@ -19,7 +19,7 @@ class BreakpointWrap extends React.PureComponent {
 
   handleResize = debounce(() => {
     this.props.setLayout(window.innerWidth, window.innerHeight, layout.all);
-  }, settings.resizeDebounceTime);
+  }, resizeDebounceTime);
 
   render() {
     return (

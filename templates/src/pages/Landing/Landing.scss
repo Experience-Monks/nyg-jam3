@@ -4,7 +4,7 @@
   text-align: center;
   padding: px-to-rem(20) $navbar-padding-mobile;
 
-  @media (min-width: $layout-large) {
+  @include breakpoint(large) {
     padding: px-to-rem(20) $navbar-padding-desktop;
   }
 
