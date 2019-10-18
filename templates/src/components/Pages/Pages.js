@@ -14,9 +14,9 @@ const Landing = lazy(() => import(/* webpackChunkName: "Landing" */ '../../pages
 const About = lazy(() => import(/* webpackChunkName: "About" */ '../../pages/About/About'));
 const NotFound = lazy(() => import('../../pages/NotFound/NotFound'));
 
-const Pages = ({ location, ...props }) => {
+const Pages = React.forwardRef(({ className, location }, ref) => {
   return (
-    <main className={classnames('Pages', props.className)} role="main">
+    <main className={classnames('Pages', className)} role="main" ref={ref}>
       <TransitionGroup component={Fragment}>
         <Transition appear key={location.pathname} timeout={getTransitionDuration(location.pathname)}>
           {state => (
@@ -32,7 +32,7 @@ const Pages = ({ location, ...props }) => {
       </TransitionGroup>
     </main>
   );
-};
+});
 
 Pages.propTypes = checkProps({
   className: PropTypes.string
@@ -40,4 +40,4 @@ Pages.propTypes = checkProps({
 
 Pages.defaultProps = {};
 
-export default withRouter(Pages);
+export default withRouter(React.memo(Pages));
