@@ -1,4 +1,5 @@
 @import 'layout.scss';
+@import 'grid.scss';
 
 // Variables
 //
@@ -12,6 +13,33 @@
 $layout-medium: map-get($layout, medium) + px;
 $layout-large: map-get($layout, large) + px;
 $layout-xlarge: map-get($layout, xlarge) + px;
+
+// ====================================================================
+// Grid layout
+// ====================================================================
+$grid-small-max-columns: map-get($grid, small-max-columns);
+$grid-small-column: map-get($grid, small-column);
+$grid-small-column-units: map-get($grid, small-column-units);
+$grid-small-gutter: map-get($grid, small-gutter);
+$grid-small-gutter-units: map-get($grid, small-gutter-units);
+
+$grid-medium-max-columns: map-get($grid, medium-max-columns);
+$grid-medium-column: map-get($grid, medium-column);
+$grid-medium-column-units: map-get($grid, medium-column-units);
+$grid-medium-gutter: map-get($grid, medium-gutter);
+$grid-medium-gutter-units: map-get($grid, medium-gutter-units);
+
+$grid-large-max-columns: map-get($grid, large-max-columns);
+$grid-large-column: map-get($grid, large-column);
+$grid-large-column-units: map-get($grid, large-column-units);
+$grid-large-gutter: map-get($grid, large-gutter);
+$grid-large-gutter-units: map-get($grid, large-gutter-units);
+
+$grid-xlarge-max-columns: map-get($grid, xlarge-max-columns);
+$grid-xlarge-column: map-get($grid, xlarge-column);
+$grid-xlarge-column-units: map-get($grid, xlarge-column-units);
+$grid-xlarge-gutter: map-get($grid, xlarge-gutter);
+$grid-xlarge-gutter-units: map-get($grid, xlarge-gutter-units);
 
 // ====================================================================
 // Base palette
@@ -43,4 +71,4 @@ $navbar-padding-desktop: 4rem;
 // ====================================================================
 // List of z-index element
 // ====================================================================
-$elements: pages, page-overlay, main-nav, sidebar, preloader, rotate;
+$elements: pages, page-overlay, main-nav, sidebar, preloader, rotate, debug-grid;

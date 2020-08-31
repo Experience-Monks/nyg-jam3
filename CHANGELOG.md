@@ -1,10 +1,15 @@
-## v5.1.0 (October 17, 2019)
-
+## v5.2.0 (October 18, 2019)
 #### :nail_care: Enhancement
-* Fix broken storybook
-* Fix vulnerabilities
-* React + React Redux & other packages upgraded
-  * [PR #249](https://github.com/Jam3/nyg-jam3/pull/249/files)
+* Added grid mixins
+* Added DebugGrid component
+  * [PR #250](https://github.com/Jam3/nyg-jam3/pull/250)
+  
+## v5.1.0 (October 17, 2019)
+#### :nail_care: Enhancement
+* Fixed broken storybook
+* Fixed vulnerabilities
+* Upgraded React, React Redux & other packages
+  * [PR #249](https://github.com/Jam3/nyg-jam3/pull/249)
 
 ## v5.0.2 (February 27, 2019)
 * Updated redux dev tools

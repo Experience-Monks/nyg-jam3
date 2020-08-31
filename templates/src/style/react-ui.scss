@@ -11,7 +11,7 @@
     border-bottom: 1px solid rgba($black, 0.3);
     padding: 2rem $navbar-padding-mobile;
 
-    @media (min-width: $layout-large) {
+    @include breakpoint(large) {
       padding: 2rem $navbar-padding-desktop;
     }
 
@@ -27,7 +27,7 @@
     border-left: none;
     background-color: $white;
 
-    @media (min-width: $layout-medium) {
+    @include breakpoint(medium) {
       max-width: px-to-rem(300);
       border-left: 1px solid rgba($black, 0.3);
     }
@@ -38,11 +38,11 @@
     padding: 2rem $navbar-padding-mobile;
     text-align: center;
 
-    @media (min-width: $layout-medium) {
+    @include breakpoint(medium) {
       text-align: left;
     }
 
-    @media (min-width: $layout-large) {
+    @include breakpoint(large) {
       padding: 2rem $navbar-padding-desktop;
     }
 

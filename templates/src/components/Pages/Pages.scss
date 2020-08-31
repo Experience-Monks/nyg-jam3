@@ -6,7 +6,7 @@
   margin-top: $navbar-height-mobile;
   flex: 1;
 
-  @media (min-width: $layout-large) {
+  @include breakpoint(large) {
     margin-top: $navbar-height-desktop;
   }
 

@@ -187,3 +187,96 @@
   text-transform: inherit;
   color: inherit;
 }
+
+/// Set breakpoint via media queries
+/// @example scss Input
+///   element {
+///     [..."small breakpoint" styles....]
+///     @include breakpoint(medium) {
+///        [..."medium breakpoint" styles....]
+///     }
+///   }
+@mixin breakpoint($size) {
+  @media (min-width: map-get($layout, $size) + px) {
+    @content;
+  }
+}
+
+/// Set element size based on columns for phone
+/// Layout takes into account gutters as well (number of columns - 1) which can be controlled by passing extra gutters
+/// @example scss Input
+///   div {
+///     width: small-columns(4);
+///   }
+@function small-columns($numCols: 1, $extraGutters: 0) {
+  @return calc-columns(
+    $grid-small-column,
+    $grid-small-column-units,
+    $grid-small-gutter,
+    $grid-small-gutter-units,
+    $numCols,
+    $extraGutters
+  );
+}
+
+/// Set element size based on columns for tablet
+/// Layout takes into account gutters as well (number of columns - 1) which can be controlled by passing extra gutters
+/// @example scss Input
+///   div {
+///    width: medium-columns(8);
+///   }
+@function medium-columns($numCols: 1, $extraGutters: 0) {
+  @return calc-columns(
+    $grid-medium-column,
+    $grid-medium-column-units,
+    $grid-medium-gutter,
+    $grid-medium-gutter-units,
+    $numCols,
+    $extraGutters
+  );
+}
+
+/// Set desktop columns
+/// Layout takes into account gutters as well (number of columns - 1) which can be controlled by passing extra gutters
+/// @example scss Input
+///   element {
+///     width: large-columns(10, 1);
+///   }
+@function large-columns($numCols: 1, $extraGutters: 0) {
+  @return calc-columns(
+    $grid-large-column,
+    $grid-large-column-units,
+    $grid-large-gutter,
+    $grid-large-gutter-units,
+    $numCols,
+    $extraGutters
+  );
+}
+
+/// Set desktop columns
+/// Layout takes into account gutters as well (number of columns - 1) which can be controlled by passing extra gutters
+/// @example scss Input
+///   element {
+///     width: xlarge-columns(12, 1);
+///   }
+@function xlarge-columns($numCols: 1, $extraGutters: 0) {
+  @return calc-columns(
+    $grid-xlarge-column,
+    $grid-xlarge-column-units,
+    $grid-xlarge-gutter,
+    $grid-xlarge-gutter-units,
+    $numCols,
+    $extraGutters
+  );
+}
+
+/// Calculate columns (internal use only)
+@function calc-columns($column, $column-units, $gutter, $gutter-units, $numCols, $extraGutters) {
+  $columns: $column * $numCols;
+  $gutters: $gutter * (($numCols - 1) + $extraGutters);
+  @if ($gutters != 0) {
+    @return calc(#{$columns}#{$column-units} + #{$gutters}#{$gutter-units});
+  } @else {
+    @return #{$columns}#{$column-units};
+  }
+}

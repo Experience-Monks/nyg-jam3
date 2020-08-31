@@ -1,0 +1,48 @@
+@import 'src/style/shared.scss';
+
+.DebugGrid {
+  $border: 1px solid rgba(red, 0.5);
+
+  @include position-100(fixed);
+  @include z-index(debug-grid);
+  @include flex-center-horiz;
+  pointer-events: none;
+  visibility: hidden;
+
+  &.visible {
+    visibility: visible;
+  }
+
+  > .container {
+    display: grid;
+    grid-template-columns: repeat($grid-small-max-columns, #{$grid-small-column}#{$grid-small-column-units});
+    grid-column-gap: #{$grid-small-gutter}#{$grid-small-gutter-units};
+
+    @include breakpoint(medium) {
+      grid-template-columns: repeat($grid-medium-max-columns, #{$grid-medium-column}#{$grid-medium-column-units});
+      grid-column-gap: #{$grid-medium-gutter}#{$grid-medium-gutter-units};
+    }
+
+    @include breakpoint(large) {
+      grid-template-columns: repeat($grid-large-max-columns, #{$grid-large-column}#{$grid-large-column-units});
+      grid-column-gap: #{$grid-large-gutter}#{$grid-large-gutter-units};
+    }
+
+    @include breakpoint(xlarge) {
+      grid-template-columns: repeat($grid-xlarge-max-columns, #{$grid-xlarge-column}#{$grid-xlarge-column-units});
+      grid-column-gap: #{$grid-xlarge-gutter}#{$grid-xlarge-gutter-units};
+    }
+
+    > .column {
+      border-left: $border;
+
+      &.gutter {
+        border-right: $border;
+      }
+
+      &:last-of-type {
+        border-right: $border;
+      }
+    }
+  }
+}

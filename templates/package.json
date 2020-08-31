@@ -3,15 +3,17 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "npm-run-all -p watch-layout start-js",
+    "start": "npm-run-all -p watch-layout watch-grid start-js",
     "build": "npm run release",
     "\n ######################  NPM Secondary Pipeline  ######################": "",
-    "release": "cross-env NODE_ENV=production REACT_APP_SW_CACHE_BUST=$(date +%s) npm-run-all generate-doc build-layout build-js build-php image-compress",
+    "release": "cross-env NODE_ENV=production REACT_APP_SW_CACHE_BUST=$(date +%s) npm-run-all generate-doc build-layout build-grid build-js build-php image-compress",
     "start-js": "react-scripts start",
     "build-js": "react-scripts build",
     "build-layout": "node scripts/build-layout-data.js",
+    "build-grid": "node scripts/build-grid-data.js",
     "build-php": "node scripts/build-php.js",
     "watch-layout": "npm run build-layout && node scripts/watch-layout-data.js",
+    "watch-grid": "npm run build-grid && node scripts/watch-grid-data.js",
     "image-compress": "node scripts/imagemin.js",
     "\n ######################  Support Development Tools  ######################": "",
     "bundle-analyzer": "npm run build-js -- --stats && webpack-bundle-analyzer build/bundle-stats.json",
@@ -30,7 +32,7 @@
     "js-lint": "eslint './src/**/*.js' -c ./.eslintrc.json --quiet --ignore-pattern .gitignore",
     "sass-lint": "stylelint './src/**/*.scss'",
     "linters": "npm-run-all -p js-lint sass-lint",
-    "postinstall": "npm-run-all build-layout"
+    "postinstall": "npm-run-all build-layout build-grid"
   },
   "repository": {
     "type": "git",
