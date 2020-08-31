@@ -29,6 +29,7 @@ bundle-analyzer-report.html
 
 # Dynamically built files
 src/style/layout.scss
+src/style/grid.scss
 
 # Local env variables
 .env.local

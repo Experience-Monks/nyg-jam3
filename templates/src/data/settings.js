@@ -1,11 +1,9 @@
-const settings = {};
-
 // global
-settings.resizeDebounceTime = 10; // in ms
-settings.isDevelopment = process.env.NODE_ENV !== 'production';
+export const resizeDebounceTime = 10; // in ms
+export const isDevelopment = process.env.NODE_ENV !== 'production';
+export const showDebugGridByDefault = false;
+export const prefetchExternalResource = false;
 
 // global paths
-settings.assetPath = `${process.env.PUBLIC_URL}/assets/`;
-settings.imagesPath = `${process.env.PUBLIC_URL}/assets/images/`;
-
-export default settings;
+export const assetPath = `${process.env.PUBLIC_URL}/assets/`;
+export const imagesPath = `${process.env.PUBLIC_URL}/assets/images/`;

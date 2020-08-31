@@ -1,0 +1,25 @@
+{
+  "small-max-columns": 4,
+  "small-column": 20,
+  "small-column-units": "vw",
+  "small-gutter": 0,
+  "small-gutter-units": "px",
+
+  "medium-max-columns": 8,
+  "medium-column": 10,
+  "medium-column-units": "vw",
+  "medium-gutter": 0,
+  "medium-gutter-units": "px",
+
+  "large-max-columns": 12,
+  "large-column": 80,
+  "large-column-units": "px",
+  "large-gutter": 20,
+  "large-gutter-units": "px",
+
+  "xlarge-max-columns": 14,
+  "xlarge-column": 80,
+  "xlarge-column-units": "px",
+  "xlarge-gutter": 20,
+  "xlarge-gutter-units": "px"
+}

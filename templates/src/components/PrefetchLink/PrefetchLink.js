@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { BaseLink } from '@jam3/react-ui';
@@ -6,39 +6,46 @@ import prefetch from 'inject-prefetch';
 import checkProps from '@jam3/react-check-extra-props';
 
 import routeKeys from '../../routes/keys';
+import { prefetchExternalResource } from '../../data/settings';
 
 import './PrefetchLink.scss';
 
 const PrefetchLink = React.memo(
   React.forwardRef((props, ref) => {
-    function getFileExtension(filename) {
+    const { className, onMouseEnter, download, link } = props;
+    const { prefetchExternalResource, ...filteredProps } = props;
+
+    const getFileExtension = useCallback(filename => {
       return /[.]/.exec(filename) ? /[^.]+$/.exec(filename)[0] : undefined;
-    }
+    }, []);
 
-    function onMouseEnter() {
-      props.onMouseEnter && props.onMouseEnter();
+    const mouseEnter = useCallback(() => {
+      onMouseEnter && onMouseEnter();
 
-      if (!props.download) {
-        if (getFileExtension(props.link)) {
-          // prefetch a resource
-          prefetch(props.link);
+      if (!download) {
+        if (getFileExtension(link)) {
+          // prefetch an external resource
+          prefetchExternalResource && prefetch(link);
         } else {
           // prefetch route's js chunk
-          const pageKey = Object.keys(routeKeys).find(key => routeKeys[key] === props.link);
+          const pageKey = Object.keys(routeKeys).find(key => routeKeys[key] === link);
           if (pageKey) {
             const chunkUrl = `${window.location.origin}${process.env.REACT_APP_STATIC_URL}${pageKey}.chunk.js`;
             prefetch(chunkUrl);
           }
         }
       }
-    }
+    }, [onMouseEnter, download, getFileExtension, link, prefetchExternalResource]);
 
-    const componentProps = {
-      ...props,
-      className: classnames('PrefetchLink', props.className),
-      ref,
-      onMouseEnter
-    };
+    const componentProps = useMemo(
+      () => ({
+        ...filteredProps,
+        className: classnames('PrefetchLink', className),
+        ref,
+        onMouseEnter: mouseEnter
+      }),
+      [filteredProps, className, ref, mouseEnter]
+    );
 
     return <BaseLink {...componentProps} />;
   })
@@ -66,12 +73,14 @@ PrefetchLink.propTypes = checkProps({
   onTouchMove: PropTypes.func,
   onTouchStart: PropTypes.func,
   onClick: PropTypes.func,
+  prefetchExternalResource: PropTypes.bool,
   'aria-label': PropTypes.string
 });
 
 PrefetchLink.defaultProps = {
-  link: '',
-  target: '_blank'
+  link: 'hey',
+  target: '_blank',
+  prefetchExternalResource
 };
 
 export default PrefetchLink;

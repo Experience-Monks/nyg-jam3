@@ -15,7 +15,8 @@ import PrefetchLink from '../../components/PrefetchLink/PrefetchLink';
 import { setPreviousRoute, setWindowSize, setLayout, batchActions } from '../../redux/modules/app';
 import { setIsMobileMenuOpen } from '../../redux/modules/main-nav';
 
-import settings from '../../data/settings';
+import { resizeDebounceTime, showDebugGridByDefault } from '../../data/settings';
+
 import mainNavData from '../../data/main-nav';
 import hamburgerNavData from '../../data/hamburger-menu';
 import footerData from '../../data/footer';
@@ -33,18 +34,18 @@ const LazyRotateScreen =
   );
 
 const LazyPreloader = lazy(() => import('../../components/Preloader/Preloader'));
+const LazyDebugGrid =
+  process.env.NODE_ENV !== 'production' ? lazy(() => import('../../components/DebugGrid/DebugGrid')) : null;
 
 class App extends React.PureComponent {
   componentDidMount() {
     // Setup performance measure tooling
     if (process.env.NODE_ENV !== 'production') {
       const { whyDidYouUpdate } = require('why-did-you-update');
-
       if (document.location.search.indexOf('performance') >= 0) {
         whyDidYouUpdate(React);
       }
     }
-
     window.addEventListener('resize', this.handleResize);
   }
 
@@ -64,7 +65,7 @@ class App extends React.PureComponent {
 
   handleResize = debounce(() => {
     this.props.setLayout(window.innerWidth, window.innerHeight, layout.all);
-  }, settings.resizeDebounceTime);
+  }, resizeDebounceTime);
 
   render() {
     return (
@@ -103,6 +104,7 @@ class App extends React.PureComponent {
               {state => state !== 'exited' && <LazyPreloader transitionState={state} />}
             </Transition>
           )}
+          {LazyDebugGrid && <LazyDebugGrid forceShow={showDebugGridByDefault} />}
         </Suspense>
       </Fragment>
     );
